@@ -1,5 +1,4 @@
 alias sRenameScript='cd /home/vinesma/Videos/Anime/Seasonals; bash runScript.sh; cd; notify-send "renameScript finished!"'
-alias cKeyboardFix='setxkbmap -model abnt2 -layout br -variant abnt2'
 alias cls='clear && ls'
 alias mpvd='mpv --ytdl-format 22'
 alias sd='shutdown now'
