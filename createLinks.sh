@@ -3,30 +3,36 @@
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CONFIGDIR="$HOME/.config"
 clear
-echo "\nCreating links... may overwrite some files."
+git pull
+echo
+echo "Creating links... may overwrite some files."
 
 #mpv
 MPVDIR="$CONFIGDIR/mpv"
-ln -sv ${BASEDIR}/mpv/mpv.conf ${MPVDIR}/mpv.conf
-ln -sv ${BASEDIR}/mpv/input.conf ${MPVDIR}/input.conf
-ln -sv ${BASEDIR}/mpv/input.conf.save ${MPVDIR}/input.conf.save
-echo "\nEstablished 'mpv' link."
+ln -svf ${BASEDIR}/mpv/mpv.conf ${MPVDIR}/mpv.conf
+ln -svf ${BASEDIR}/mpv/input.conf ${MPVDIR}/input.conf
+ln -svf ${BASEDIR}/mpv/input.conf.save ${MPVDIR}/input.conf.save
+echo
+echo "Established 'mpv' link."
 
 #Clementine
 CLEMENTINEDIR="$CONFIGDIR/Clementine"
-ln -sv ${BASEDIR}/Clementine/Clementine.conf ${CLEMENTINEDIR}/Clementine.conf
-echo "\nEstablished 'Clementine' link."
+ln -svf ${BASEDIR}/Clementine/Clementine.conf ${CLEMENTINEDIR}/Clementine.conf
+echo
+echo "Established 'Clementine' link."
 
 #qBittorrent
 QBITTORRENTDIR="$CONFIGDIR/qBittorrent"
-ln -sv ${BASEDIR}/qBittorrent ${QBITTORRENTDIR}
-echo "\nEstablished 'qBittorrent' link."
+ln -svf ${BASEDIR}/qBittorrent ${QBITTORRENTDIR}
+echo
+echo "Established 'qBittorrent' link."
 
 #.bashrc
-ln -sv ${BASEDIR}/.bashrc ~/.bashrc
-echo "\nEstablished '.bashrc' link."
+ln -svf ${BASEDIR}/.bashrc ~/.bashrc
+echo
+echo "Established '.bashrc' link."
 
 #Aliases
-ln -sv ${BASEDIR}/.bash_aliases ~/.bash_aliases
+ln -svf ${BASEDIR}/.bash_aliases ~/.bash_aliases
+echo
 echo "\nEstablished '.bash_aliases' link."
-
