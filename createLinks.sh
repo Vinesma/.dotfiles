@@ -1,22 +1,32 @@
 #!/bin/bash
 
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-echo "BASEDIR = ${BASEDIR}"
-echo "Creating links... may overwrite some files."
+CONFIGDIR="$HOME/.config"
+clear
+echo "\nCreating links... may overwrite some files."
 
 #mpv
-ln -s ${BASEDIR}/mpv ~/.config/mpv
-echo "Established 'mpv' link."
+MPVDIR="$CONFIGDIR/mpv"
+ln -sv ${BASEDIR}/mpv/mpv.conf ${MPVDIR}/mpv.conf
+ln -sv ${BASEDIR}/mpv/input.conf ${MPVDIR}/input.conf
+ln -sv ${BASEDIR}/mpv/input.conf.save ${MPVDIR}/input.conf.save
+echo "\nEstablished 'mpv' link."
 
 #Clementine
-ln -s ${BASEDIR}/Clementine ~/.config/Clementine
-echo "Established 'Clementine' link."
+CLEMENTINEDIR="$CONFIGDIR/Clementine"
+ln -sv ${BASEDIR}/Clementine/Clementine.conf ${CLEMENTINEDIR}/Clementine.conf
+echo "\nEstablished 'Clementine' link."
 
 #qBittorrent
-ln -s ${BASEDIR}/qBittorrent ~/.config/qBittorrent
-echo "Established 'qBittorrent' link."
+QBITTORRENTDIR="$CONFIGDIR/qBittorrent"
+ln -sv ${BASEDIR}/qBittorrent ${QBITTORRENTDIR}
+echo "\nEstablished 'qBittorrent' link."
+
+#.bashrc
+ln -sv ${BASEDIR}/.bashrc ~/.bashrc
+echo "\nEstablished '.bashrc' link."
 
 #Aliases
-ln -s ${BASEDIR}/.bash_aliases ~/.bash_aliases
-echo "Established '.bash_aliases' link."
+ln -sv ${BASEDIR}/.bash_aliases ~/.bash_aliases
+echo "\nEstablished '.bash_aliases' link."
 
