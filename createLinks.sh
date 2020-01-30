@@ -2,8 +2,8 @@
 
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CONFIGDIR="$HOME/.config"
-clear
 git pull
+clear
 echo
 echo "Creating links... may overwrite some files."
 
@@ -35,4 +35,4 @@ echo "Established '.bashrc' link."
 #Aliases
 ln -svf ${BASEDIR}/.bash_aliases ~/.bash_aliases
 echo
-echo "\nEstablished '.bash_aliases' link."
+echo "Established '.bash_aliases' link."
