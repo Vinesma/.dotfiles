@@ -23,6 +23,11 @@ QBITTORRENTDIR="$CONFIGDIR/qBittorrent"
 ln -svf ${BASEDIR}/qBittorrent ${QBITTORRENTDIR}
 echo
 
+echo "YOUTUBE-DL";echo
+YOUTUBEDLDIR="$CONFIGDIR/youtube-dl"
+ln -svf ${BASEDIR}/youtube-dl ${YOUTUBEDLDIR}
+echo
+
 echo ".BASHRC:";echo
 ln -svf ${BASEDIR}/.bashrc ~/.bashrc
 echo
