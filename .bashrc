@@ -117,3 +117,10 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+## REACT NATIVE ENVIRONMENT VARS
+export ANDROID_HOME=$HOME/Documents/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
