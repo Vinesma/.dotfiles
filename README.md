@@ -6,36 +6,47 @@ Run `createLinks.sh` to link all files to their directories. The directory needs
 A (probably incomplete) list of applications I use, for quick reference in case I do a clean install.
 
 ### Video
-mpv
+
+- mpv
 
 ### Music
-Clementine
-Spotify
+
+- Clementine
+- Spotify
 
 ### Web
-Firefox
+
+- Firefox
 
 ### Dev
-Visual Studio Code
+
+- Visual Studio Code
 
 ### Downloading
-From youtube (And whatever else they support): youtube-dl
+
+- From youtube (And whatever else they support): youtube-dl
 
 ### Torrenting and RSS
-qbittorrent
+
+- qbittorrent
 
 ### Gaming
-Steam
+
+- Steam
 
 ### Image Editing
-GIMP
+
+- GIMP
 
 ### API testing
-Postman
+
+- Postman
 
 ### Vector
-Inkscape
+
+- Inkscape
 
 ### Others
-Wine
-Redshift
+
+- Wine
+- Redshift
