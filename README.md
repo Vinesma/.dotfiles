@@ -50,3 +50,4 @@ A (probably incomplete) list of applications I use, for quick reference in case 
 
 - Wine
 - Redshift
+- VirtualBox
