@@ -2,6 +2,7 @@ alias sRenameScript='cd /home/vinesma/Videos/Anime/Seasonals; bash runScript.sh;
 alias cls='clear && ls'
 alias mpvd='mpv --ytdl-format 22'
 alias mpvl='mpv --ytdl-format 18'
+alias mpvw='mpvl --fullscreen=no'
 alias youtube-dl-audio='youtube-dl -x --audio-format mp3'
 alias sd='shutdown now'
 alias updateAliases='. ~/.bashrc'
