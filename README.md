@@ -53,3 +53,4 @@ Applications marked with a * can be installed consecutively via the script 'inst
 - Wine
 - Redshift*
 - VirtualBox
+- Syncthing
