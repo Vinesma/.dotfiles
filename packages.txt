@@ -1,0 +1,1 @@
+firefox mpv clementine spotify-client qbittorrent inkscape redshift steam:i386

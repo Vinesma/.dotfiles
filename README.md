@@ -5,18 +5,20 @@ Run `createLinks.sh` to link all files to their directories. The directory needs
 ## Programs:
 A (probably incomplete) list of applications I use, for quick reference in case I do a clean install.
 
+Applications marked with a * can be installed consecutively via the script 'installAllApt.sh'
+
 ### Video
 
-- mpv
+- mpv*
 
 ### Music
 
-- Clementine
-- Spotify
+- Clementine*
+- Spotify*
 
 ### Web
 
-- Firefox
+- Firefox*
 
 ### Dev
 
@@ -28,11 +30,11 @@ A (probably incomplete) list of applications I use, for quick reference in case 
 
 ### Torrenting and RSS
 
-- qbittorrent
+- qbittorrent*
 
 ### Gaming
 
-- Steam
+- Steam*
 
 ### Image Editing
 
@@ -44,10 +46,10 @@ A (probably incomplete) list of applications I use, for quick reference in case 
 
 ### Vector
 
-- Inkscape
+- Inkscape*
 
 ### Others
 
 - Wine
-- Redshift
+- Redshift*
 - VirtualBox
