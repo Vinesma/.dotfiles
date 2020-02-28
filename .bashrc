@@ -125,7 +125,12 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-# cheat.sh function
+# cheat.sh function (Display examples of command usage)
 cheat() {
 	curl cheat.sh/$1
+}
+
+# wttr.in function (Display wheater for selected location)
+weather() {
+	curl wttr.in/$1
 }
