@@ -134,3 +134,11 @@ cheat() {
 weather() {
 	curl wttr.in/$1
 }
+
+# connection check function
+conc() {
+	local sec=30
+	local ping_count=5
+	local website="google.com"
+	watch -g -n $sec ping -c $ping_count "$website" && notify-send "Check your connection!"
+}
