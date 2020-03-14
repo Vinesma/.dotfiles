@@ -54,3 +54,4 @@ Applications marked with a * can be installed consecutively via the script 'inst
 - Redshift*
 - VirtualBox
 - Syncthing
+- Anki
