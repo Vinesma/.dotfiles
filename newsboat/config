@@ -1,10 +1,11 @@
-#RELOADING
-auto-reload yes
-reload-time 60
-refresh-on-startup yes
-#ARTICLE ITEMS
+# BEHAVIOR
+confirm-exit yes
+# RELOADING
+# If using cron set to 'no'
+refresh-on-startup no
+# ARTICLE ITEMS
 max-items 50
-#BROWSER
-browser "firefox %u"
-#NOTIFIER
+# BROWSER
+browser "mpv --profile=youtube720p %u"
+# NOTIFIER
 notify-program /usr/bin/notify-send
