@@ -32,7 +32,7 @@ Applications marked with a * can be installed consecutively via the script 'inst
 
 - qbittorrent*
 
-# RSS and News
+### RSS and News
 
 - Newsboat
 
