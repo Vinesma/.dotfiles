@@ -6,6 +6,8 @@ git pull
 clear
 echo "Creating links... may overwrite some files.";echo
 
+# FORMAT: FROM CONFIG FOLDER -> TO SYSTEM FOLDER
+
 echo "MPV:";echo
 mpv_dir="$config_dir/mpv"
 ln -svf ${BASEDIR}/mpv/mpv.conf ${mpv_dir}/mpv.conf
@@ -26,6 +28,12 @@ echo
 echo "YOUTUBE-DL";echo
 youtubedl_dir="$config_dir/youtube-dl"
 ln -svf ${BASEDIR}/youtube-dl ${youtubedl_dir}
+echo
+
+echo "NEWSBOAT";echo
+newsboat_dir="$HOME/.newsboat"
+ln -svf ${BASEDIR}/newsboat/urls ${newsboat_dir}/urls
+ln -svf ${BASEDIR}/newsboat/config ${newsboat_dir}/config
 echo
 
 echo ".BASHRC:";echo
