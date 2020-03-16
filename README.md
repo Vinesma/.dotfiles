@@ -28,9 +28,13 @@ Applications marked with a * can be installed consecutively via the script 'inst
 
 - From youtube (And whatever else they support): youtube-dl
 
-### Torrenting and RSS
+### Torrenting
 
 - qbittorrent*
+
+# RSS and News
+
+- Newsboat
 
 ### Gaming
 
