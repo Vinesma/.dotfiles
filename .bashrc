@@ -142,3 +142,10 @@ conc() {
 	local website="google.com"
 	watch -g -n $sec ping -c $ping_count "$website" && notify-send "Check your connection!"
 }
+
+# update function
+updatesys() {
+	sudo apt update
+	sudo apt upgrade
+	notify-send "Update complete!"
+}
