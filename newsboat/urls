@@ -1,3 +1,6 @@
+"query:Unread News:tags # \"news\" and unread = \"yes\""
+"query:Subscription Box (Favorites):tags # \"youtube fav\" and unread = \"yes\""
+"query:Subscription Box (Others):tags # \"youtube others\" and unread = \"yes\""
 https://g1.globo.com/rss/g1/ "~G1" news
 https://g1.globo.com/rss/g1/pe/petrolina-regiao/ "~G1 - Petrolina" news
 http://www.bbc.co.uk/portuguese/index.xml "~BBC" news
