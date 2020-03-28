@@ -149,3 +149,9 @@ updatesys() {
 	sudo apt upgrade
 	notify-send "Update complete!"
 }
+
+# stream function
+mpvs() {
+	echo $1 | grep -q twitch && mpv --profile=twitch720p $1 & local twitch_chat=$(echo $1 | cut -d'/' -f4) && firefox --new-window https://www.twitch.tv/popout/"$twitch_chat"/chat?popout=
+	echo $1 | grep -q youtube && notify-send "This is a youtube link"
+}
