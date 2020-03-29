@@ -34,7 +34,7 @@ Applications marked with a * can be installed consecutively via the script 'inst
 
 ### RSS and News
 
-- Newsboat
+- Newsboat*
 
 ### Gaming
 
