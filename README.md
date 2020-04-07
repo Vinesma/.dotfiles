@@ -26,7 +26,7 @@ Applications marked with a * can be installed consecutively via the script 'inst
 
 ### Downloading
 
-- From youtube (And whatever else they support): youtube-dl
+- From youtube (And others) -> youtube-dl
 
 ### Torrenting
 
@@ -39,6 +39,7 @@ Applications marked with a * can be installed consecutively via the script 'inst
 ### Gaming
 
 - Steam*
+- mGBA
 
 ### Image Editing
 
@@ -52,6 +53,10 @@ Applications marked with a * can be installed consecutively via the script 'inst
 
 - Inkscape*
 
+### Language Engine
+
+- Fcitx -> Mozc (日本語) 
+
 ### Others
 
 - Wine
@@ -59,3 +64,4 @@ Applications marked with a * can be installed consecutively via the script 'inst
 - VirtualBox
 - Syncthing
 - Anki
+- Timeshift
