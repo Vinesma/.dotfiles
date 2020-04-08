@@ -5,20 +5,22 @@ Run `createLinks.sh` to link all files to their directories. The directory needs
 ## Programs:
 A (probably incomplete) list of applications I use, for quick reference in case I do a clean install.
 
-Applications marked with a * can be installed consecutively via the script 'installAllApt.sh'
+Applications marked with a ¹ can be installed consecutively via the script 'installAllApt.sh'
+
+Applications marked with a ² can be installed consecutively via the script 'installAllPacman.sh'
 
 ### Video
 
-- mpv*
+- mpv¹
 
 ### Music
 
-- Clementine*
-- Spotify*
+- Clementine¹
+- Spotify¹
 
 ### Web
 
-- Firefox*
+- Firefox¹²
 
 ### Dev
 
@@ -26,24 +28,24 @@ Applications marked with a * can be installed consecutively via the script 'inst
 
 ### Downloading
 
-- From youtube (And others) -> youtube-dl
+- From youtube (And others) -> youtube-dl²
 
 ### Torrenting
 
-- qbittorrent*
+- qbittorrent¹²
 
 ### RSS and News
 
-- Newsboat*
+- Newsboat¹²
 
 ### Gaming
 
-- Steam*
+- Steam¹²
 - mGBA
 
 ### Image Editing
 
-- GIMP
+- GIMP²
 
 ### API testing
 
@@ -51,17 +53,23 @@ Applications marked with a * can be installed consecutively via the script 'inst
 
 ### Vector
 
-- Inkscape*
+- Inkscape¹²
 
 ### Language Engine
 
 - Fcitx -> Mozc (日本語) 
 
+### Programming
+
+- Node.js²
+- npm²
+- git
+
 ### Others
 
-- Wine
-- Redshift*
+- Wine²
+- Redshift¹²
 - VirtualBox
-- Syncthing
-- Anki
+- Syncthing²
+- Anki²
 - Timeshift

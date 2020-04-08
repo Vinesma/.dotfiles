@@ -1,77 +1,21 @@
 {
-    "FGO": {
-        "addPaused": false,
-        "affectedFeeds": [
-            "http://www.horriblesubs.info/rss.php?res=720"
-        ],
-        "assignedCategory": "Seasonals",
-        "enabled": true,
-        "episodeFilter": "",
-        "ignoreDays": 0,
-        "lastMatch": "25 Jan 2020 16:04:18 +0000",
-        "mustContain": "Fate Grand Order",
-        "mustNotContain": "",
-        "savePath": "",
-        "useRegex": false
-    },
-    "Heya Camp": {
-        "addPaused": false,
-        "affectedFeeds": [
-            "http://www.horriblesubs.info/rss.php?res=720"
-        ],
-        "assignedCategory": "Seasonals",
-        "enabled": true,
-        "episodeFilter": "",
-        "ignoreDays": 0,
-        "lastMatch": "27 Jan 2020 14:00:45 +0000",
-        "mustContain": "Heya Camp",
-        "mustNotContain": "",
-        "savePath": "",
-        "useRegex": false
-    },
     "Isekai Quartet": {
         "addPaused": false,
         "affectedFeeds": [
             "http://www.horriblesubs.info/rss.php?res=720"
         ],
         "assignedCategory": "Seasonals",
-        "enabled": true,
+        "createSubfolder": null,
+        "enabled": false,
         "episodeFilter": "",
         "ignoreDays": 0,
-        "lastMatch": "28 Jan 2020 16:32:19 +0000",
+        "lastMatch": "31 Mar 2020 16:32:21 +0000",
         "mustContain": "Isekai Quartet",
         "mustNotContain": "",
-        "savePath": "",
-        "useRegex": false
-    },
-    "Kyokou Suiri": {
-        "addPaused": false,
-        "affectedFeeds": [
-            "http://www.horriblesubs.info/rss.php?res=720"
+        "previouslyMatchedEpisodes": [
         ],
-        "assignedCategory": "Seasonals",
-        "enabled": true,
-        "episodeFilter": "",
-        "ignoreDays": 0,
-        "lastMatch": "25 Jan 2020 19:07:51 +0000",
-        "mustContain": "Kyokou Suiri",
-        "mustNotContain": "",
         "savePath": "",
-        "useRegex": false
-    },
-    "Magia Record": {
-        "addPaused": false,
-        "affectedFeeds": [
-            "http://www.horriblesubs.info/rss.php?res=720"
-        ],
-        "assignedCategory": "Seasonals",
-        "enabled": true,
-        "episodeFilter": "",
-        "ignoreDays": 0,
-        "lastMatch": "25 Jan 2020 16:34:02 +0000",
-        "mustContain": "Magia Record",
-        "mustNotContain": "",
-        "savePath": "",
+        "smartFilter": false,
         "useRegex": false
     }
 }
