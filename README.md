@@ -11,7 +11,7 @@ Applications marked with a ² can be installed consecutively via the script 'ins
 
 ### Video
 
-- mpv¹
+- mpv¹²
 
 ### Music
 
@@ -47,6 +47,10 @@ Applications marked with a ² can be installed consecutively via the script 'ins
 
 - GIMP²
 
+### Image Viewer
+
+- feh²
+
 ### API testing
 
 - Postman
@@ -73,3 +77,4 @@ Applications marked with a ² can be installed consecutively via the script 'ins
 - Syncthing²
 - Anki²
 - Timeshift
+- albert²
