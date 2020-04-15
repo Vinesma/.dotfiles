@@ -36,6 +36,11 @@ ln -svf ${BASEDIR}/newsboat/urls ${newsboat_dir}/urls
 ln -svf ${BASEDIR}/newsboat/config ${newsboat_dir}/config
 echo
 
+echo "REDSHIFT";echo
+redshift_dir="$config_dir/redshift"
+ln -svf ${BASEDIR}/redshift/redshift.conf ${redshift_dir}/redshift.conf
+echo
+
 echo ".BASHRC:";echo
 ln -svf ${BASEDIR}/.bashrc ~/.bashrc
 echo
