@@ -1,4 +1,3 @@
 #!/bin/bash
 
-sudo pacman -Syu
-sudo pacman -S $(cat packagesPacman.txt) 
+sudo pacman -Syu $(cat packagesPacman.txt)
