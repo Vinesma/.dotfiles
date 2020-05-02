@@ -1,1 +1,1 @@
-firefox mpv clementine spotify-client qbittorrent inkscape redshift steam:i386 newsboat
+firefox mpv youtube-dl qbittorrent gimp inkscape redshift steam-manjaro newsboat wine syncthing anki nodejs npm feh albert
