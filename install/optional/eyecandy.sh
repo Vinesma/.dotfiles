@@ -1,7 +1,7 @@
 #!/bin/sh
 
 apps="feh picom lxappearance python-pywal"
-theming="matcha-gtk-theme papirus-icon-theme ttf-bitstream-vera ttf-anonymous-pro"
+theming="matcha-gtk-theme papirus-icon-theme ttf-bitstream-vera ttf-anonymous-pro otf-ipafont"
 
 echo "- Installing some eyecandy stuff"
 sudo pacman -Syu "$apps"
