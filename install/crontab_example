@@ -1,0 +1,5 @@
+SHELL=/bin/bash
+
+0 17 * * 3 cd ~/Documents/cron-jobs/triforce/ && bash triforceScript.sh > output.log
+
+0 1-23/2 * * * cd ~/Documents/cron-jobs/newsboat/ && bash newsboat-notify.sh >/dev/null 2>&1
