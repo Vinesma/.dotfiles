@@ -10,10 +10,6 @@ mnt_helper="udiskie"
 echo "Initializing install..."
 echo
 
-echo "Cloning dotfiles"
-git clone https://github.com/Vinesma/.dotfiles.git
-echo
-
 echo "- Installing xorg and xinit"
 sudo pacman -Syu xorg-server xorg-xinit
 echo
