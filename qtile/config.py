@@ -65,6 +65,15 @@ keys = [
     Key([mod, "control"], "r", lazy.restart()),
     Key([mod, "control"], "q", lazy.shutdown()),
     Key([mod], "r", lazy.spawncmd()),
+
+    # Custom commands
+
+    # cmus-remote
+    Key([], "Pause", lazy.spawn("cmus-remote -u")),
+    Key([mod], "Page_Up", lazy.spawn("cmus-remote -v +10%")),
+    Key([mod], "Page_Down", lazy.spawn("cmus-remote -v -10%")),
+    Key([mod], "period", lazy.spawn("cmus-remote -n")),
+    Key([mod], "comma", lazy.spawn("cmus-remote -r")),
 ]
 
 groups = [Group("1"), Group("2"), Group("3"),]
@@ -111,13 +120,12 @@ screens = [
                 widget.GroupBox(),
                 widget.Prompt(),
                 widget.TaskList(highlight_method='block', margin=1, rounded=False),
-		widget.Sep(padding=6),
-		widget.Battery(),
+		widget.Cmus(max_chars=35),
 		widget.Sep(padding=6),
                 widget.Systray(),
                 widget.Clock(format='%d/%m/%Y %a [%I:%M %p]'),
             ],
-            28, margin=[4,4,0,4], opacity=0.9,
+            28, opacity=0.9,
         ),
     ),
 ]
@@ -148,6 +156,7 @@ floating_layout = layout.Floating(float_rules=[
     {'wmclass': 'splash'},
     {'wmclass': 'toolbar'},
     {'wmclass': 'lxappearance'},
+    {'wmclass': 'albert'},
     {'wmclass': 'confirmreset'},  # gitk
     {'wmclass': 'makebranch'},  # gitk
     {'wmclass': 'maketag'},  # gitk

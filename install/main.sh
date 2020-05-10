@@ -1,21 +1,27 @@
 #!/bin/sh
 
+# VARS
 key_map="br"
 terminal_em="xterm kitty"
 window_manager="qtile"
-display_manager="lightdm"
-file_manager="thunar"
+display_manager="lightdm lightdm-gtk-greeter"
+file_manager="thunar tumbler ffmpegthumbnailer"
 mnt_helper="udiskie"
+ibrowser="firefox"
+
+# CONFIG DIRS
+# mcf = main config dir
+# dcf = .dotfiles config dir
+mcf_term="$HOME/.config/kitty/"
+dcf_term="$HOME/.dotfiles/kitty/*"
+mcf_wm="$HOME/.config/qtile/"
+dcf_wm="$HOME/.dotfiles/qtile/*"
 
 echo "Initializing install..."
 echo
 
-echo "- Installing xorg and xinit"
-sudo pacman -Syu xorg-server xorg-xinit
-echo
-
-echo "- Setting keymap..."
-localectl --no-convert set-x11-keymap "$key_map"
+echo "- Installing xinit"
+sudo pacman -Syu xorg-xinit
 echo
 
 echo "- Creating user dirs..."
@@ -24,11 +30,19 @@ xdg-user-dirs-update
 echo
 
 echo "- Installing terminal emulator"
-sudo pacman -S "$terminal_em"
+sudo pacman -S $terminal_em
+mkdir -p $mcf_term
+echo "Directory: $mcf_term created"
+cp $dcf_term $mcf_term
+echo "Config files copied over"
 echo
 
 echo "- Installing WM"
-sudo pacman -S "$window_manager"
+sudo pacman -S $window_manager
+mkdir -p $mcf_wm
+echo "Directory: $mcf_wm created"
+cp $dcf_wm $mcf_wm
+echo "Config files copied over"
 echo
 
 echo "- Installing settings manager"
@@ -36,11 +50,11 @@ sudo pacman -S manjaro-settings-manager
 echo
 
 echo "- Installing file manager"
-sudo pacman -S "$file_manager"
+sudo pacman -S $file_manager
 echo
 
 echo "- Installing mount helper"
-sudo pacman -S "$mnt_helper"
+sudo pacman -S $mnt_helper
 echo
 
 echo "- Configuring audio..."
@@ -48,7 +62,7 @@ sudo pacman -S alsa-utils alsa-plugins
 amixer sset Master unmute
 amixer sset Speaker unmute
 amixer sset Headphone unmute
-echo "You can use alsamixer to change the volume"
+echo -e "You can use alsamixer to change the volume\npulsemixer as well"
 sudo pacman -S pulseaudio pulseaudio-alsa pulsemixer
 echo
 
@@ -56,11 +70,16 @@ echo "- Configuring notifications..."
 sudo pacman -S dunst
 echo
 
+echo "- Installing browser"
+sudo pacman -S $ibrowser
+echo
+
 echo "- Installing a display manager"
-sudo pacman -S "$display_manager"
+sudo pacman -S $display_manager
 echo
 echo "Make sure to later enable the: lightdm.service"
 echo "Also maybe install a greeter like: lightdm-gtk-greeter"
 echo
 
-echo "All done! Enjoy the 5 days of work that went into this!"
+echo "All done! Enjoy the days of work that went into this!"
+echo "Maybe give the system a restart..."

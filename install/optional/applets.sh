@@ -3,7 +3,7 @@
 applets="network-manager-applet pasystray"
 
 echo "- Installing applets"
-sudo pacman -Syu "$applets"
+sudo pacman -Syu $applets
 echo
 
 echo "Done."
