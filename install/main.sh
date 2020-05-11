@@ -45,7 +45,7 @@ sudo pacman -S $terminal_em
 mkdir -p $mcf_term
 echo "Directory: $mcf_term created"
 cp $dcf_term $mcf_term
-echo "Config files copied over"
+echo "Terminal config files copied over"
 echo
 
 echo "- Installing WM"
@@ -53,7 +53,7 @@ sudo pacman -S $window_manager
 mkdir -p $mcf_wm
 echo "Directory: $mcf_wm created"
 cp $dcf_wm $mcf_wm
-echo "Config files copied over"
+echo "WM config files copied over"
 echo
 
 echo "- Installing settings manager"
@@ -91,9 +91,7 @@ echo
 
 echo "- Installing a display manager"
 sudo pacman -S $display_manager
-echo
 echo "Make sure to later enable the: lightdm.service"
-echo "Also maybe install a greeter like: lightdm-gtk-greeter"
 echo
 
 echo "All done! Enjoy the days of work that went into this!"
