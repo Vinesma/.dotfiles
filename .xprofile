@@ -1,0 +1,6 @@
+feh --bg-scale "$(< "${HOME}/.cache/wal/wal")" &
+picom &
+udiskie &
+albert &
+redshift-gtk &
+sleep 10 && syncthing --no-browser &

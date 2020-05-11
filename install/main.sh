@@ -12,10 +12,14 @@ ibrowser="firefox"
 # CONFIG DIRS
 # mcf = main config dir
 # dcf = .dotfiles config dir
+mcf_dotfiles="$HOME/"
+dcf_dotfiles="$HOME/.dotfiles"
 mcf_term="$HOME/.config/kitty/"
 dcf_term="$HOME/.dotfiles/kitty/*"
 mcf_wm="$HOME/.config/qtile/"
 dcf_wm="$HOME/.dotfiles/qtile/*"
+mcf_dunst="$HOME/.config/dunst/"
+dcf_dunst="$HOME/.dotfiles/dunst/*"
 
 echo "Initializing install..."
 echo
@@ -27,6 +31,13 @@ echo
 echo "- Creating user dirs..."
 sudo pacman -S xdg-user-dirs
 xdg-user-dirs-update
+echo
+
+echo "- Copying .bashrc..."
+cp $dcf_dotfiles/.bashrc $mcf_dotfiles
+echo "- Copying x init files..."
+cp $dcf_dotfiles/.xinitrc $mcf_dotfiles
+cp $dcf_dotfiles/.xprofile $mcf_dotfiles
 echo
 
 echo "- Installing terminal emulator"
@@ -68,6 +79,10 @@ echo
 
 echo "- Configuring notifications..."
 sudo pacman -S dunst
+mkdir -p $mcf_dunst
+echo "Directory: $mcf_dunst created"
+cp $dcf_dunst $mcf_dunst
+echo "Config files copied over"
 echo
 
 echo "- Installing browser"
@@ -82,4 +97,4 @@ echo "Also maybe install a greeter like: lightdm-gtk-greeter"
 echo
 
 echo "All done! Enjoy the days of work that went into this!"
-echo "Maybe give the system a restart..."
+echo "Give the system a restart, or install the optional packages."
