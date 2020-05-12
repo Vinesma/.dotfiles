@@ -5,8 +5,8 @@ app_list="mpv youtube-dl qbittorrent gimp inkscape steam-manjaro newsboat wine s
 # DIRS
 mcf_mpv="$HOME/.config/mpv"
 dcf_mpv="$HOME/.dotfiles/mpv/*"
-mcf_youtubedl="$HOME/.config/youtube_dl"
-dcf_youtubedl="$HOME/.dotfiles/youtube_dl/*"
+mcf_youtubedl="$HOME/.config/youtube-dl"
+dcf_youtubedl="$HOME/.dotfiles/youtube-dl/*"
 mcf_newsboat="$HOME/.config/newsboat"
 dcf_newsboat="$HOME/.dotfiles/newsboat/*"
 mcf_qtile="$HOME/.config/qtile"

@@ -1,10 +1,10 @@
-# Manjaro Architect Install Guide
+# How to use these scripts
 
 These folders contain scripts to basically auto install my stuff, however some things do require manual intervention. I will try to outline them in this guide.
 
 ## Architect
 
-First of all, get the architect [link here] and run it. Follow the steps and get a CLI system up and running.
+First of all, get the [architect](https://manjaro.org/download/) and run it. Follow the steps and get a CLI system up and running.
 
 Recommendations:
 
@@ -14,7 +14,7 @@ When the architect is done, chroot into the system and install `networkmanager`.
 
 ## Bare CLI
 
-After the reboot you need to find a network to connect to with the `nmcli` interface. [Examples here](https://wiki.archlinux.org/index.php/NetworkManager#nmcli_examples), once you are connected the scripts can do most of the heavy lifting for you. Go ahead and run main.sh to install an configure the important stuff.
+After the reboot you need to find a network to connect to with the `nmcli` interface. [Examples here](https://wiki.archlinux.org/index.php/NetworkManager#nmcli_examples), once you are connected the scripts can do most of the heavy lifting for you. Go ahead and run main.sh to install and configure the important stuff.
 
 ## Laptop
 

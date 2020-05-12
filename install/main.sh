@@ -25,7 +25,7 @@ echo "Initializing install..."
 echo
 
 echo "- Installing xinit"
-sudo pacman -Syu xorg-xinit
+sudo pacman -Syu xorg-server xorg-xinit
 echo
 
 echo "- Creating user dirs..."
