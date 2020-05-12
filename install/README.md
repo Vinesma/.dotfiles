@@ -16,8 +16,18 @@ When the architect is done, chroot into the system and install `networkmanager`.
 
 After the reboot you need to find a network to connect to with the `nmcli` interface. [Examples here](https://wiki.archlinux.org/index.php/NetworkManager#nmcli_examples), once you are connected the scripts can do most of the heavy lifting for you. Go ahead and run main.sh to install and configure the important stuff.
 
+## Basic WM running
+
+Once here, you can install anything in `optionals/`, most of it will also automatically get added to `.xprofile` to autostart.
+
+- [To setup the notification DBUS](https://wiki.archlinux.org/index.php/Desktop_notifications#Standalone)
+
+- [If the system clock is wrong](https://wiki.archlinux.org/index.php/System_time#Read_clock) (run `timedatectl` to check, can also be used to set time)
+
+- [To enable cron](https://wiki.archlinux.org/index.php/Cron#Activation_and_autostart)
+
 ## Laptop
 
-If installing on a laptop a few more things require attention, such as [ACPI Events]() and [the touchpad.](https://wiki.archlinux.org/index.php/Libinput#Installation)
+If installing on a laptop a few more things require attention, such as [ACPI Events](https://wiki.archlinux.org/index.php/Power_management#Power_management_with_systemd) and [the touchpad.](https://wiki.archlinux.org/index.php/Libinput#Installation)
 
 [Power saving](https://wiki.archlinux.org/index.php/Power_management#Power_saving) is also a thing I've yet to dive deep into.
