@@ -5,6 +5,8 @@ theming="matcha-gtk-theme papirus-icon-theme ttf-bitstream-vera ttf-anonymous-pr
 
 echo "- Installing some eyecandy stuff"
 sudo pacman -Syu $apps
+echo 'feh --bg-scale "$(< "${HOME}/.cache/wal/wal")" &' >> $HOME/.xprofile
+echo "picom &" >> $HOME/.xprofile
 echo
 
 echo "- Installing some themes and fonts"

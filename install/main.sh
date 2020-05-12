@@ -14,11 +14,11 @@ ibrowser="firefox"
 # dcf = .dotfiles config dir
 mcf_dotfiles="$HOME/"
 dcf_dotfiles="$HOME/.dotfiles"
-mcf_term="$HOME/.config/kitty/"
+mcf_term="$HOME/.config/kitty"
 dcf_term="$HOME/.dotfiles/kitty/*"
-mcf_wm="$HOME/.config/qtile/"
+mcf_wm="$HOME/.config/qtile"
 dcf_wm="$HOME/.dotfiles/qtile/*"
-mcf_dunst="$HOME/.config/dunst/"
+mcf_dunst="$HOME/.config/dunst"
 dcf_dunst="$HOME/.dotfiles/dunst/*"
 
 echo "Initializing install..."
@@ -37,23 +37,24 @@ echo "- Copying .bashrc..."
 cp $dcf_dotfiles/.bashrc $mcf_dotfiles
 echo "- Copying x init files..."
 cp $dcf_dotfiles/.xinitrc $mcf_dotfiles
-cp $dcf_dotfiles/.xprofile $mcf_dotfiles
+touch $HOME/.xprofile
+echo -e "The .xprofile file can be used to autostart programs like so:\nredshift-gtk &\nsleep 10 && syncthing --no-browser &"
 echo
 
 echo "- Installing terminal emulator"
 sudo pacman -S $terminal_em
-mkdir -p $mcf_term
+mkdir -p $mcf_term/
 echo "Directory: $mcf_term created"
-cp $dcf_term $mcf_term
+cp $dcf_term $mcf_term/
 echo "Terminal config files copied over"
 echo
 
 echo "- Installing WM"
 sudo pacman -S $window_manager
-mkdir -p $mcf_wm
+mkdir -p $mcf_wm/
 echo "Directory: $mcf_wm created"
-cp $dcf_wm $mcf_wm
-echo "WM config files copied over"
+cp /usr/share/doc/qtile/default_config.py $mcf_wm/config.py
+echo -e "WM default config files copied over"
 echo
 
 echo "- Installing settings manager"
@@ -66,6 +67,8 @@ echo
 
 echo "- Installing mount helper"
 sudo pacman -S $mnt_helper
+echo "Enabling autostart..."
+echo "udiskie &" >> $HOME/.xprofile
 echo
 
 echo "- Configuring audio..."
@@ -79,10 +82,10 @@ echo
 
 echo "- Configuring notifications..."
 sudo pacman -S dunst
-mkdir -p $mcf_dunst
+mkdir -p $mcf_dunst/
 echo "Directory: $mcf_dunst created"
-cp $dcf_dunst $mcf_dunst
-echo "Config files copied over"
+cp $dcf_dunst $mcf_dunst/
+echo -e "Config files copied over\nRemember to configure DBUS later"
 echo
 
 echo "- Installing browser"

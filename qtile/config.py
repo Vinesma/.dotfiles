@@ -38,12 +38,22 @@ terminal = "kitty"
 
 keys = [
     # Switch between windows in current stack pane
-    Key([mod], "k", lazy.layout.down()),
-    Key([mod], "j", lazy.layout.up()),
+    Key([mod], "Down", lazy.layout.down()),
+    Key([mod], "Up", lazy.layout.up()),
+    Key([mod], "Left", lazy.layout.left()),
+    Key([mod], "Right", lazy.layout.right()),
 
     # Move windows up or down in current stack
-    Key([mod, "control"], "k", lazy.layout.shuffle_down()),
-    Key([mod, "control"], "j", lazy.layout.shuffle_up()),
+    Key([mod, "shift"], "Down", lazy.layout.shuffle_down()),
+    Key([mod, "shift"], "Up", lazy.layout.shuffle_up()),
+    Key([mod, "shift"], "Left", lazy.layout.shuffle_left()),
+    Key([mod, "shift"], "Right", lazy.layout.shuffle_right()),
+
+    # Grow windows in current stack
+    Key([mod, "control"], "Down", lazy.layout.grow_down()),
+    Key([mod, "control"], "Up", lazy.layout.grow_up()),
+    Key([mod, "control"], "Left", lazy.layout.grow_left()),
+    Key([mod, "control"], "Right", lazy.layout.grow_right()),
 
     # Switch window focus to other pane(s) of stack
     Key([mod], "space", lazy.layout.next()),
@@ -67,7 +77,6 @@ keys = [
     Key([mod], "r", lazy.spawncmd()),
 
     # Custom commands
-
     # cmus-remote
     Key([], "Pause", lazy.spawn("cmus-remote -u")),
     Key([mod], "Page_Up", lazy.spawn("cmus-remote -v +10%")),
@@ -76,7 +85,7 @@ keys = [
     Key([mod], "comma", lazy.spawn("cmus-remote -r")),
 ]
 
-groups = [Group("1"), Group("2"), Group("3"),]
+groups = [Group("a", spawn="firefox", layout="max", label="MAIN"), Group("s", label="MISC"), Group("d", spawn="kitty cmus", layout="max", label="MUSIC"),]
 
 for i in groups:
     keys.extend([
@@ -106,7 +115,7 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font='Inter Regular',
+    font='Source Code Pro Bold',
     fontsize=12,
     padding=3,
 )
@@ -116,16 +125,17 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayoutIcon(),
-                widget.GroupBox(),
+                widget.CurrentLayoutIcon(scale=0.6),
+                widget.GroupBox(highlight_method='block', rounded=False),
+                widget.Spacer(length=10),
                 widget.Prompt(),
-                widget.TaskList(highlight_method='block', margin=1, rounded=False),
-		widget.Cmus(max_chars=35),
-		widget.Sep(padding=6),
+                widget.WindowName(),
+                widget.Cmus(max_chars=40),
+                widget.Spacer(length=10),
+                widget.Clock(format='%d/%m/%Y %a %I:%M %p'),
                 widget.Systray(),
-                widget.Clock(format='%d/%m/%Y %a [%I:%M %p]'),
             ],
-            28, opacity=0.9,
+            30,
         ),
     ),
 ]
@@ -156,7 +166,8 @@ floating_layout = layout.Floating(float_rules=[
     {'wmclass': 'splash'},
     {'wmclass': 'toolbar'},
     {'wmclass': 'lxappearance'},
-    {'wmclass': 'albert'},
+    {'wmclass': 'gimp'},
+    {'wmclass': 'anki'},
     {'wmclass': 'confirmreset'},  # gitk
     {'wmclass': 'makebranch'},  # gitk
     {'wmclass': 'maketag'},  # gitk
