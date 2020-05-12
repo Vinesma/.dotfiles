@@ -54,7 +54,7 @@ sudo pacman -S $window_manager
 mkdir -p $mcf_wm/
 echo "Directory: $mcf_wm created"
 cp /usr/share/doc/qtile/default_config.py $mcf_wm/config.py
-echo -e "WM default config files copied over"
+echo "WM default config files copied over"
 echo
 
 echo "- Installing settings manager"
