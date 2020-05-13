@@ -30,6 +30,11 @@ from libqtile import layout, bar, widget
 
 from typing import List  # noqa: F401
 
+## PYWAL
+from pywal import theme
+from os import getenv, path
+homepath = getenv("HOME", getenv("USERPROFILE"))
+
 ## MODKEY
 mod = "mod4"
 
@@ -56,7 +61,7 @@ keys = [
     Key([mod, "control"], "Right", lazy.layout.grow_right()),
 
     # Switch window focus to other pane(s) of stack
-    Key([mod], "space", lazy.layout.next()),
+    Key(["mod1"], "Tab", lazy.layout.next()),
 
     # Swap panes of split stack
     Key([mod, "shift"], "space", lazy.layout.rotate()),
@@ -85,7 +90,7 @@ keys = [
     Key([mod], "comma", lazy.spawn("cmus-remote -r")),
 ]
 
-groups = [Group("a", spawn="firefox", layout="max", label="MAIN"), Group("s", label="MISC"), Group("d", spawn="kitty cmus", layout="max", label="MUSIC"),]
+groups = [Group("a", spawn="firefox", label="MAIN"), Group("s", layout="max", label="MISC"), Group("d", spawn="kitty cmus", layout="max", label="MUSIC"),]
 
 for i in groups:
     keys.extend([
@@ -99,8 +104,12 @@ for i in groups:
         # Key([mod, "shift"], i.name, lazy.window.togroup(i.name)),
     ])
 
+theme = theme.file(path.join(homepath, ".cache", "wal", "colors.json"))
+colors_main = theme.get("special")
+colors = theme.get("colors")
+
 layouts = [
-	layout.Columns(border_focus='#00909E', border_normal='#21243D', margin=4),
+	layout.Columns(border_focus=colors["color1"], border_normal=colors_main["background"], margin=4),
 	layout.Max(),
     	# layout.Stack(num_stacks=2),
     	# layout.Bsp(border_focus='#00909E', border_normal='#21243D', margin=4),
@@ -113,11 +122,11 @@ layouts = [
     	# layout.VerticalTile(),
     	# layout.Zoomy(),
 ]
-
 widget_defaults = dict(
     font='Source Code Pro Bold',
     fontsize=12,
-    padding=3,
+    padding=4,
+    foreground=colors_main["foreground"],
 )
 extension_defaults = widget_defaults.copy()
 
@@ -125,17 +134,17 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayoutIcon(scale=0.6),
-                widget.GroupBox(highlight_method='block', rounded=False),
-                widget.Spacer(length=10),
+                widget.CurrentLayoutIcon(scale=0.8),
+                widget.GroupBox(this_current_screen_border=colors["color2"],urgent_border=colors_main["background"],highlight_method='block', rounded=False),
+                widget.Spacer(length=2),
                 widget.Prompt(),
                 widget.WindowName(),
-                widget.Cmus(max_chars=40),
+                widget.Cmus(max_chars=45, play_color=colors["color2"]),
                 widget.Spacer(length=10),
-                widget.Clock(format='%d/%m/%Y %a %I:%M %p'),
+                widget.Clock(format='%d/%m/%y %a %I:%M %p'),
                 widget.Systray(),
             ],
-            30,
+            23, opacity=0.9, background=colors_main["background"],
         ),
     ),
 ]
@@ -166,7 +175,6 @@ floating_layout = layout.Floating(float_rules=[
     {'wmclass': 'splash'},
     {'wmclass': 'toolbar'},
     {'wmclass': 'lxappearance'},
-    {'wmclass': 'gimp'},
     {'wmclass': 'anki'},
     {'wmclass': 'confirmreset'},  # gitk
     {'wmclass': 'makebranch'},  # gitk
