@@ -4,7 +4,7 @@ These folders contain scripts to basically auto install my stuff, however some t
 
 ## Architect
 
-First of all, get the [architect](https://manjaro.org/download/) and run it. Follow the steps and get a CLI system up and running.
+First of all, get the [architect](https://manjaro.org/download/) shove it into a pendrive and use it to boot. Follow the steps and get a CLI system up and running.
 
 Recommendations:
 
@@ -20,11 +20,9 @@ After the reboot you need to find a network to connect to with the `nmcli` inter
 
 Once here, you can install anything in `optionals/`, most of it will also automatically get added to `.xprofile` to autostart.
 
-- [To setup the notification DBUS](https://wiki.archlinux.org/index.php/Desktop_notifications#Standalone)
+- [Setup the notification DBUS.](https://wiki.archlinux.org/index.php/Desktop_notifications#Standalone)
 
-- [If the system clock is wrong](https://wiki.archlinux.org/index.php/System_time#Read_clock) (run `timedatectl` to check, can also be used to set time)
-
-- [To enable cron](https://wiki.archlinux.org/index.php/Cron#Activation_and_autostart)
+- [cron won't be running by default, it needs to be enabled.](https://wiki.archlinux.org/index.php/Cron#Activation_and_autostart)
 
 ## Laptop
 
@@ -34,14 +32,18 @@ If installing on a laptop a few more things require attention, such as [ACPI Eve
 
 ## Problems encountered:
 
-- cron fails to send notifications via notify-send.
+### A script run via cron fails to send notifications via notify-send.
 
-[Untested solution](https://wiki.archlinux.org/index.php/Cron#Running_X.org_server-based_applications). Will try this later.
+[Solution: cron has no access to the DBUS adress and the DISPLAY variable, they have to be set inside your script or before the notify-send call.](https://wiki.archlinux.org/index.php/Cron#Running_X.org_server-based_applications).
 
-- Laptop only boots or runs when charging, as soon as it gets unplugged the laptop freezes half a second later.
+### The system clock is wrong.
+
+[Solution](https://wiki.archlinux.org/index.php/System_time#Read_clock) (run `timedatectl` to check, can also be used to set time)
+
+### Laptop only boots or runs when charging, as soon as it gets unplugged the laptop freezes half a second later.
 
 Solution: Disabling tlp in `/etc/tlp.conf` by editing the line TLP_ENABLE=1 to TLP_ENABLE=0. Afterwards, edit `/etc/default/cpupower` and set `governor` to "performance". This fixes the problem but leaves the laptop without any powersaving capability. I will update this with more info as I investigate the issue.
 
-- Laptop won't shutdown or reboot completely. Screen goes black but external lights stay on and the fan keeps spinning no matter how long I wait.
+### Laptop won't shutdown or reboot completely. Screen goes black but external lights stay on and the fan keeps spinning no matter how long I wait.
 
-Solution: I've yet to find one. Investigating.
+Solution: Unknown...
