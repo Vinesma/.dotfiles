@@ -1,80 +1,89 @@
 # .dotfiles
 
-Run `createLinks.sh` to link all files to their directories. The directory needs to exist first (i.e. you need the respective application to have run at least once/create them yourself).
+A script to link these is a current WIP.
 
 ## Programs:
 A (probably incomplete) list of applications I use, for quick reference in case I do a clean install.
 
-Applications marked with a ¹ can be installed consecutively via the script 'installAllApt.sh'
+Applications in brackets are installed automatically in one way or another via my own scripts.
 
-Applications marked with a ² can be installed consecutively via the script 'installAllPacman.sh'
+### WM
+
+- (Qtile)
 
 ### Video
 
-- mpv¹²
+- (mpv)
 
 ### Music
 
-- Clementine¹
-- Spotify¹
+- (cmus)
 
 ### Web
 
-- Firefox¹²
+- (Firefox)
 
 ### Dev
 
 - Visual Studio Code
+- (nano)
 
 ### Downloading
 
-- From youtube (And others) -> youtube-dl²
+- (youtube-dl)
 
 ### Torrenting
 
-- qbittorrent¹²
+- (qbittorrent)
 
 ### RSS and News
 
-- Newsboat¹²
+- (Newsboat)
 
 ### Gaming
 
-- Steam¹²
+- (Steam)
 - mGBA
 
-### Image Editing
+### Images/Vectors
 
-- GIMP²
+- (GIMP)
+- (Inkscape)
 
 ### Image Viewer
 
-- feh²
+- (feh)
 
 ### API testing
 
 - Postman
 
-### Vector
-
-- Inkscape¹²
-
 ### Language Engine
 
-- Fcitx -> Mozc (日本語) 
+- (Fcitx) -> (Mozc) (日本語)
 
 ### Programming
 
-- Node.js²
-- npm²
+- (Node.js)
+- (npm)
 - git
+
+### Terminal
+
+- (Kitty)
+
+### Notifications
+
+- (Dunst)
 
 ### Others
 
-- Wine²
-- Redshift¹²
+- htop
+- neofetch
+- scrot
+- (Wine)
+- (Redshift)
 - VirtualBox
-- Syncthing²
-- Anki²
+- (Syncthing)
+- (Anki)
 - Timeshift
-- albert²

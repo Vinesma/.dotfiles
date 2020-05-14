@@ -34,7 +34,7 @@ If installing on a laptop a few more things require attention, such as [ACPI Eve
 
 ### A script run via cron fails to send notifications via notify-send.
 
-[Solution: cron has no access to the DBUS adress and the DISPLAY variable, they have to be set inside your script or before the notify-send call.](https://wiki.archlinux.org/index.php/Cron#Running_X.org_server-based_applications).
+[Solution: cron has no access to the DBUS adress and the DISPLAY variable, they have to be set inside your script or before the notify-send call.](https://wiki.archlinux.org/index.php/Cron#Running_X.org_server-based_applications)
 
 ### The system clock is wrong.
 
