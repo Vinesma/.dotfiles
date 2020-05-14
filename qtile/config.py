@@ -26,7 +26,7 @@
 
 from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.lazy import lazy
-from libqtile import layout, bar, widget
+from libqtile import layout, bar, widget, hook
 
 from typing import List  # noqa: F401
 
@@ -34,12 +34,13 @@ from typing import List  # noqa: F401
 from pywal import theme
 from os import getenv, path
 homepath = getenv("HOME", getenv("USERPROFILE"))
-
 ## MODKEY
 mod = "mod4"
-
 ## APPS
 terminal = "kitty"
+
+## HOOKS
+# WIP
 
 keys = [
     # Switch between windows in current stack pane
@@ -82,6 +83,10 @@ keys = [
     Key([mod], "r", lazy.spawncmd()),
 
     # Custom commands
+    # spawn apps
+    Key([mod, "mod1"], "e", lazy.spawn("thunar")),
+    Key([mod, "mod1"], "b", lazy.spawn("firefox")),
+    Key([mod, "mod1"], "n", lazy.spawn("kitty newsboat")),
     # cmus-remote
     Key([], "Pause", lazy.spawn("cmus-remote -u")),
     Key([mod], "Page_Up", lazy.spawn("cmus-remote -v +10%")),
@@ -90,7 +95,12 @@ keys = [
     Key([mod], "comma", lazy.spawn("cmus-remote -r")),
 ]
 
-groups = [Group("a", spawn="firefox", label="MAIN"), Group("s", layout="max", label="MISC"), Group("d", spawn="kitty cmus", layout="max", label="MUSIC"),]
+groups = [
+    Group("a", spawn="firefox", label="1"),
+    Group("s", layout="max", label="2"),
+    Group("d", layout="max", label="3"),
+    Group("f", spawn="kitty cmus", layout="max", label="4"),
+]
 
 for i in groups:
     keys.extend([
@@ -109,7 +119,7 @@ colors_main = theme.get("special")
 colors = theme.get("colors")
 
 layouts = [
-	layout.Columns(border_focus=colors["color1"], border_normal=colors_main["background"], margin=4),
+	layout.Columns(border_focus=colors["color4"], border_normal=colors_main["background"], margin=4),
 	layout.Max(),
     	# layout.Stack(num_stacks=2),
     	# layout.Bsp(border_focus='#00909E', border_normal='#21243D', margin=4),
@@ -126,6 +136,7 @@ widget_defaults = dict(
     font='Source Code Pro Bold',
     fontsize=12,
     padding=4,
+    fontshadow='#3F3F44',
     foreground=colors_main["foreground"],
 )
 extension_defaults = widget_defaults.copy()
@@ -135,11 +146,11 @@ screens = [
         top=bar.Bar(
             [
                 widget.CurrentLayoutIcon(scale=0.8),
-                widget.GroupBox(this_current_screen_border=colors["color2"],urgent_border=colors_main["background"],highlight_method='block', rounded=False),
+                widget.GroupBox(this_current_screen_border=colors["color4"],urgent_border=colors_main["background"],highlight_method='block', rounded=False),
                 widget.Spacer(length=2),
                 widget.Prompt(),
                 widget.WindowName(),
-                widget.Cmus(max_chars=45, play_color=colors["color2"]),
+                widget.Cmus(max_chars=45, play_color=colors["color4"]),
                 widget.Spacer(length=10),
                 widget.Clock(format='%d/%m/%y %a %I:%M %p'),
                 widget.Systray(),
