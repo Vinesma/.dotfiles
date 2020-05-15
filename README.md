@@ -1,6 +1,6 @@
 # .dotfiles
 
-A script to link these is a current WIP.
+Use `create-links.sh` to link the config files to this repo.
 
 ## Programs:
 A (probably incomplete) list of applications I use, for quick reference in case I do a clean install.
@@ -18,6 +18,7 @@ Applications in brackets are installed automatically in one way or another via m
 ### Music
 
 - (cmus)
+- quodlibet
 
 ### Web
 
