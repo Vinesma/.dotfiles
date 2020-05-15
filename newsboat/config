@@ -14,3 +14,12 @@ notify-format "newsboat: %f unread feeds (%n total unread articles)"
 # FORMATS
 datetime-format "%b %d - %I:%M %p"
 articlelist-format "%4i %f %D  %?T?|%-17T|  ?%t"
+
+# COLORS
+color background          white   black
+color listnormal          white   black
+color listfocus           default blue   bold
+color listnormal_unread   green   black
+color listfocus_unread    default   blue   bold
+color info                default blue   bold
+color article             white   black

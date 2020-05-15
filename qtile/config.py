@@ -117,6 +117,7 @@ for i in groups:
 theme = theme.file(path.join(homepath, ".cache", "wal", "colors.json"))
 colors_main = theme.get("special")
 colors = theme.get("colors")
+shadow='#3F3F44'
 
 layouts = [
 	layout.Columns(border_focus=colors["color4"], border_normal=colors_main["background"], margin=4),
@@ -136,7 +137,6 @@ widget_defaults = dict(
     font='Source Code Pro Bold',
     fontsize=12,
     padding=4,
-    fontshadow='#3F3F44',
     foreground=colors_main["foreground"],
 )
 extension_defaults = widget_defaults.copy()
@@ -146,11 +146,11 @@ screens = [
         top=bar.Bar(
             [
                 widget.CurrentLayoutIcon(scale=0.8),
-                widget.GroupBox(this_current_screen_border=colors["color4"],urgent_border=colors_main["background"],highlight_method='block', rounded=False),
+                widget.GroupBox(fontshadow=shadow,this_current_screen_border=colors["color4"],urgent_border=colors_main["background"],highlight_method='block', rounded=False),
                 widget.Spacer(length=2),
                 widget.Prompt(),
                 widget.WindowName(),
-                widget.Cmus(max_chars=45, play_color=colors["color4"]),
+                widget.Cmus(max_chars=45,play_color=colors["color4"]),
                 widget.Spacer(length=10),
                 widget.Clock(format='%d/%m/%y %a %I:%M %p'),
                 widget.Systray(),
