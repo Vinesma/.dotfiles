@@ -18,7 +18,7 @@ Applications in brackets are installed automatically in one way or another via m
 ### Music
 
 - (cmus)
-- quodlibet
+- (quodlibet)
 
 ### Web
 
@@ -79,9 +79,9 @@ Applications in brackets are installed automatically in one way or another via m
 
 ### Others
 
-- htop
-- neofetch
-- scrot
+- (htop)
+- (neofetch)
+- (scrot)
 - (Wine)
 - (Redshift)
 - VirtualBox

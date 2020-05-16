@@ -1,6 +1,6 @@
 #!/bin/sh
 
-app_list="mpv youtube-dl qbittorrent gimp inkscape steam-manjaro newsboat wine syncthing anki nodejs npm cmus"
+app_list="htop scrot neofetch mpv youtube-dl qbittorrent gimp inkscape steam-manjaro newsboat wine syncthing anki nodejs npm cmus quodlibet"
 
 # DIRS
 mcf_mpv="$HOME/.config/mpv"

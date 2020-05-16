@@ -20,6 +20,8 @@ mcf_wm="$HOME/.config/qtile"
 dcf_wm="$HOME/.dotfiles/qtile/*"
 mcf_dunst="$HOME/.config/dunst"
 dcf_dunst="$HOME/.dotfiles/dunst/*"
+mcf_nano="$HOME/.config/nano"
+dcf_nano="$HOME/.dotfiles/nano/*"
 
 echo "Initializing install..."
 echo
@@ -47,6 +49,11 @@ mkdir -p $mcf_term/
 echo "Directory: $mcf_term created"
 cp $dcf_term $mcf_term/
 echo "Terminal config files copied over"
+echo "Configuring nano..."
+mkdir -p $mcf_nano/
+echo "Directory: $mcf_nano created"
+cp $dcf_nano $mcf_nano/
+echo "[nano] Config files copied over"
 echo
 
 echo "- Installing WM"
@@ -85,7 +92,7 @@ sudo pacman -S dunst
 mkdir -p $mcf_dunst/
 echo "Directory: $mcf_dunst created"
 cp $dcf_dunst $mcf_dunst/
-echo -e "Config files copied over\nRemember to configure DBUS later"
+echo -e "[dunst] Config files copied over\nRemember to configure DBUS later"
 echo
 
 echo "- Installing browser"
