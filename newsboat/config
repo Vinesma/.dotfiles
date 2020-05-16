@@ -6,7 +6,7 @@ refresh-on-startup no
 # ARTICLE ITEMS
 max-items 50
 # BROWSER
-browser "mpv --profile=youtube720p %u"
+browser "$HOME/.dotfiles/newsboat/browser.sh %u"
 # NOTIFIER
 notify-program /usr/bin/notify-send
 notify-format "newsboat: %f unread feeds (%n total unread articles)"
