@@ -17,15 +17,15 @@ ln -sfv $dotfiles_dir/nano/nanorc $config_dir/nano/nanorc
 echo
 
 echo "- KITTY";echo
-ls -sfv $dotfiles_dir/kitty/kitty.conf $config_dir/kitty/kitty.conf
+ln -sfv $dotfiles_dir/kitty/kitty.conf $config_dir/kitty/kitty.conf
 echo
 
 echo "- REDSHIFT";echo
-ls -sfv $dotfiles_dir/redshift/redshift.conf $config_dir/redshift.conf
+ln -sfv $dotfiles_dir/redshift/redshift.conf $config_dir/redshift.conf
 echo
 
 echo "- DUNST";echo
-ls -sfv $dotfiles_dir/dunst/dunstrc $config_dir/dunst/dunstrc
+ln -sfv $dotfiles_dir/dunst/dunstrc $config_dir/dunst/dunstrc
 echo
 
 echo "- NEWSBOAT";echo
