@@ -9,7 +9,7 @@ echo "Files will be overwritten."
 # FORMAT: .dotfiles/ -> .config/
 
 echo "- .BASHRC";echo
-ln -sfv $dotfiles_dir/.bashrc $config_dir/.bashrc
+ln -sfv $dotfiles_dir/.bashrc $HOME/.bashrc
 echo
 
 echo "- NANO";echo
