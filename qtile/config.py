@@ -120,7 +120,11 @@ colors = theme.get("colors")
 shadow='#3F3F44'
 
 layouts = [
-	layout.Columns(border_focus=colors["color4"], border_normal=colors_main["background"], margin=4),
+	layout.Columns(
+        border_focus=colors["color4"],
+        border_normal=colors_main["background"],
+        margin=4,
+    ),
 	layout.Max(),
     	# layout.Stack(num_stacks=2),
     	# layout.Bsp(border_focus='#00909E', border_normal='#21243D', margin=4),
@@ -145,17 +149,36 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayoutIcon(scale=0.8),
-                widget.GroupBox(fontshadow=shadow,this_current_screen_border=colors["color4"],urgent_border=colors_main["background"],highlight_method='block', rounded=False),
-                widget.Spacer(length=2),
+                widget.CurrentLayoutIcon(
+                    scale=0.8,
+                ),
+                widget.GroupBox(
+                    this_current_screen_border=colors["color4"],
+                    urgent_border=colors_main["background"],
+                    highlight_method='block',
+                    rounded=False,
+                    fontshadow=shadow,
+                ),
+                widget.Spacer(
+                    length=2,
+                ),
                 widget.Prompt(),
                 widget.WindowName(),
-                widget.Cmus(max_chars=45,play_color=colors["color4"]),
-                widget.Spacer(length=10),
-                widget.Clock(format='%d/%m/%y %a %I:%M %p'),
+                widget.Cmus(
+                    play_color=colors["color4"],
+                    max_chars=45,
+                ),
+                widget.Spacer(
+                    length=10,
+                ),
+                widget.Clock(
+                    format='%d/%m/%y %a %I:%M %p',
+                ),
                 widget.Systray(),
             ],
-            23, opacity=0.9, background=colors_main["background"],
+            23,
+            background=colors_main["background"],
+            opacity=0.9,
         ),
     ),
 ]
