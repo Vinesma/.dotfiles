@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ $(echo $1 | grep youtube) ]
+if [ $(echo $1 | grep youtube.com) ]
 then
     echo
     echo "This appears to be a youtube link, what to do?"

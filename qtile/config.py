@@ -117,11 +117,12 @@ for i in groups:
 theme = theme.file(path.join(homepath, ".cache", "wal", "colors.json"))
 colors_main = theme.get("special")
 colors = theme.get("colors")
-shadow='#3F3F44'
+shadow ='#3F3F44'
+highlight = colors.get("color4")
 
 layouts = [
 	layout.Columns(
-        border_focus=colors["color4"],
+        border_focus=highlight,
         border_normal=colors_main["background"],
         margin=4,
     ),
@@ -153,7 +154,7 @@ screens = [
                     scale=0.8,
                 ),
                 widget.GroupBox(
-                    this_current_screen_border=colors["color4"],
+                    this_current_screen_border=highlight,
                     urgent_border=colors_main["background"],
                     highlight_method='block',
                     rounded=False,
@@ -165,7 +166,7 @@ screens = [
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Cmus(
-                    play_color=colors["color4"],
+                    play_color=highlight,
                     max_chars=45,
                 ),
                 widget.Spacer(
