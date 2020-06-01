@@ -169,6 +169,10 @@ screens = [
                     play_color=highlight,
                     max_chars=45,
                 ),
+                #widget.Spacer(
+                #    length=10,
+                #),
+                #widget.Battery(),
                 widget.Spacer(
                     length=10,
                 ),
