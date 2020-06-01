@@ -46,4 +46,8 @@ echo "- PICOM";echo
 ln -sfv $dotfiles_dir/picom/picom.conf $config_dir/picom/picom.conf
 echo
 
+echo "- CMUS";echo
+ln -sfv $dotfiles_dir/cmus/rc $config_dir/cmus/rc
+echo
+
 echo "Done."
