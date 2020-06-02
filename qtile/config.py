@@ -88,8 +88,22 @@ keys = [
     Key([], "Pause", lazy.spawn("cmus-remote -u")),
     Key([mod], "Page_Up", lazy.spawn("cmus-remote -v +10%")),
     Key([mod], "Page_Down", lazy.spawn("cmus-remote -v -10%")),
+    Key([mod], "Home", lazy.spawn("cmus-remote -k +10")),
+    Key([mod], "End", lazy.spawn("cmus-remote -k -10")),
     Key([mod], "period", lazy.spawn("cmus-remote -n")),
     Key([mod], "comma", lazy.spawn("cmus-remote -r")),
+    Key([mod], "F10",
+        lazy.spawn("cmus-remote -C 'filter genre=\"*calm*\"'"), 
+        lazy.spawn("notify-send 'CMUS: playlist set to Calm'")
+    ),
+    Key([mod], "F11",
+        lazy.spawn("cmus-remote -C 'filter genre=\"*fast*\"'"),
+        lazy.spawn("notify-send 'CMUS: playlist set to Fast'")
+    ),
+    Key([mod], "F12",
+        lazy.spawn("cmus-remote -C 'filter genre=\"*epic*\"'"),
+        lazy.spawn("notify-send 'CMUS: playlist set to Epic'")
+    ),
 ]
 
 groups = [
@@ -104,11 +118,10 @@ for i in groups:
         # mod1 + letter of group = switch to group
         Key([mod], i.name, lazy.group[i.name].toscreen()),
 
-        # mod1 + shift + letter of group = switch to & move focused window to group
-        Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True)),
-        # Or, use below if you prefer not to switch to that group.
-        # # mod1 + shift + letter of group = move focused window to group
-        # Key([mod, "shift"], i.name, lazy.window.togroup(i.name)),
+        # mod1 + shift + letter of group = send to group
+        Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=False)),
+        # mod1 + shift + letter of group = send to group & switch screens
+        Key([mod, "control"], i.name, lazy.window.togroup(i.name, switch_group=True)),
     ])
 
 ## COLORS
@@ -118,11 +131,11 @@ colors = theme.get("colors")
 shadow ='#3F3F44'
 highlight = colors.get("color4")
 
+## LAYOUTS
 layouts = [
 	layout.Columns(
         border_focus=highlight,
         border_normal=colors_main["background"],
-        border_width=2,
         margin=4,
     ),
 	layout.Max(),
@@ -164,13 +177,13 @@ def init_widgets():
         widget.Systray(),
     ]
     if path.isdir("/sys/class/power_supply/BAT1/"):
-        widgets.insert(-3,widget.Battery(
+        widgets.insert(-3, widget.Battery(
             format="{char} {percent:2.0%}",
-            charge_char="⚡",
-            discharge_char="v",
+            charge_char="⬆️",
+            discharge_char="⬇️",
             full_char="⚡",
             unknown_char="⚡",
-            empty_char="⁉️ ",
+            empty_char="⚠️ ",
             ))
         widgets.insert(-4, widget.Spacer(length=8))
     return widgets
