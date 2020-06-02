@@ -122,7 +122,7 @@ layouts = [
 	layout.Columns(
         border_focus=highlight,
         border_normal=colors_main["background"],
-        border_width=3,
+        border_width=2,
         margin=4,
     ),
 	layout.Max(),
@@ -156,16 +156,23 @@ def init_widgets():
             max_chars=45,
         ),
         widget.Spacer(
-            length=10,
+            length=8,
         ),
         widget.Clock(
             format='%d/%m/%y %a %I:%M %p',
         ),
         widget.Systray(),
     ]
-    if path.isdir("/sys/class/power_supply/0/"):
-        widgets.insert(-4, widget.Spacer(length=10))
-        widgets.insert(-5, widget.Battery(format="{char} {percent:2.0%}"))
+    if path.isdir("/sys/class/power_supply/BAT1/"):
+        widgets.insert(-3,widget.Battery(
+            format="{char} {percent:2.0%}",
+            charge_char="⚡",
+            discharge_char="v",
+            full_char="⚡",
+            unknown_char="⚡",
+            empty_char="⁉️ ",
+            ))
+        widgets.insert(-4, widget.Spacer(length=8))
     return widgets
 
 def init_bar():
