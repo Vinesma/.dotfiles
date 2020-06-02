@@ -94,7 +94,7 @@ keys = [
 
 groups = [
     Group("a", spawn="firefox", label="1"),
-    Group("s", layout="max", label="2"),
+    Group("s", label="2"),
     Group("d", layout="max", label="3"),
     Group("f", spawn="kitty cmus", layout="max", label="4"),
 ]
@@ -111,6 +111,7 @@ for i in groups:
         # Key([mod, "shift"], i.name, lazy.window.togroup(i.name)),
     ])
 
+## COLORS
 theme = theme.file(path.join(homepath, ".cache", "wal", "colors.json"))
 colors_main = theme.get("special")
 colors = theme.get("colors")
@@ -121,20 +122,13 @@ layouts = [
 	layout.Columns(
         border_focus=highlight,
         border_normal=colors_main["background"],
+        border_width=3,
         margin=4,
     ),
 	layout.Max(),
-    	# layout.Stack(num_stacks=2),
-    	# layout.Bsp(border_focus='#00909E', border_normal='#21243D', margin=4),
-    	# layout.Matrix(),
-    	# layout.MonadTall(),
-    	# layout.MonadWide(),
-    	# layout.RatioTile(),
-    	# layout.Tile(),
-    	# layout.TreeTab(),
-    	# layout.VerticalTile(),
-    	# layout.Zoomy(),
 ]
+
+## BAR & SCREENS
 widget_defaults = dict(
     font='Source Code Pro Bold',
     fontsize=12,
@@ -145,9 +139,6 @@ extension_defaults = widget_defaults.copy()
 
 def init_widgets():
     widgets = [
-        widget.CurrentLayoutIcon(
-            scale=0.8,
-        ),
         widget.GroupBox(
             this_current_screen_border=highlight,
             urgent_border=colors_main["background"],
@@ -177,10 +168,12 @@ def init_widgets():
         widgets.insert(-5, widget.Battery(format="{char} {percent:2.0%}"))
     return widgets
 
+def init_bar():
+    main_bar = bar.Bar(widgets=init_widgets(), size=23, background=colors_main["background"], opacity=0.9)
+    return main_bar
+
 screens = [
-    Screen(
-        top=bar.Bar(widgets=init_widgets(), size=23, background=colors_main["background"], opacity=0.9,),
-    ),
+    Screen(top=init_bar())
 ]
 
 # Drag floating layouts.

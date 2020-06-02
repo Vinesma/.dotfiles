@@ -50,4 +50,8 @@ echo "- CMUS";echo
 ln -sfv $dotfiles_dir/cmus/rc $config_dir/cmus/rc
 echo
 
+echo "- QTILE";echo
+ln -sfv $dotfiles_dir/qtile/config.py $config_dir/qtile/config.py
+echo
+
 echo "Done."
