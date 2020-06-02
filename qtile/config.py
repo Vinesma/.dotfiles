@@ -39,9 +39,6 @@ mod = "mod4"
 ## APPS
 terminal = "kitty"
 
-## HOOKS
-# WIP
-
 keys = [
     # Switch between windows in current stack pane
     Key([mod], "Down", lazy.layout.down()),
@@ -146,45 +143,43 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+def init_widgets():
+    widgets = [
+        widget.CurrentLayoutIcon(
+            scale=0.8,
+        ),
+        widget.GroupBox(
+            this_current_screen_border=highlight,
+            urgent_border=colors_main["background"],
+            highlight_method='block',
+            rounded=False,
+            fontshadow=shadow,
+        ),
+        widget.Spacer(
+            length=2,
+        ),
+        widget.Prompt(),
+        widget.WindowName(),
+        widget.Cmus(
+            play_color=highlight,
+            max_chars=45,
+        ),
+        widget.Spacer(
+            length=10,
+        ),
+        widget.Clock(
+            format='%d/%m/%y %a %I:%M %p',
+        ),
+        widget.Systray(),
+    ]
+    if path.isdir("/sys/class/power_supply/0/"):
+        widgets.insert(-4, widget.Spacer(length=10))
+        widgets.insert(-5, widget.Battery(format="{char} {percent:2.0%}"))
+    return widgets
+
 screens = [
     Screen(
-        top=bar.Bar(
-            [
-                widget.CurrentLayoutIcon(
-                    scale=0.8,
-                ),
-                widget.GroupBox(
-                    this_current_screen_border=highlight,
-                    urgent_border=colors_main["background"],
-                    highlight_method='block',
-                    rounded=False,
-                    fontshadow=shadow,
-                ),
-                widget.Spacer(
-                    length=2,
-                ),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Cmus(
-                    play_color=highlight,
-                    max_chars=45,
-                ),
-                #widget.Spacer(
-                #    length=10,
-                #),
-                #widget.Battery(),
-                widget.Spacer(
-                    length=10,
-                ),
-                widget.Clock(
-                    format='%d/%m/%y %a %I:%M %p',
-                ),
-                widget.Systray(),
-            ],
-            23,
-            background=colors_main["background"],
-            opacity=0.9,
-        ),
+        top=bar.Bar(widgets=init_widgets(), size=23, background=colors_main["background"], opacity=0.9,),
     ),
 ]
 
@@ -234,3 +229,6 @@ focus_on_window_activation = "smart"
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
+
+## HOOKS
+#...
