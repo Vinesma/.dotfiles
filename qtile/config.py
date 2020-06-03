@@ -92,17 +92,21 @@ keys = [
     Key([mod], "End", lazy.spawn("cmus-remote -k -10")),
     Key([mod], "period", lazy.spawn("cmus-remote -n")),
     Key([mod], "comma", lazy.spawn("cmus-remote -r")),
+    Key([mod], "F9",
+        lazy.spawn("cmus-remote -C 'filter"),
+        lazy.spawn("notify-send 'CMUS: filter cleared'")
+    ),
     Key([mod], "F10",
-        lazy.spawn("cmus-remote -C 'filter genre=\"*calm*\"'"), 
-        lazy.spawn("notify-send 'CMUS: playlist set to Calm'")
+        lazy.spawn("cmus-remote -C 'filter genre=\"*calm*\"'"),
+        lazy.spawn("notify-send 'CMUS: filter set to Calm'")
     ),
     Key([mod], "F11",
         lazy.spawn("cmus-remote -C 'filter genre=\"*fast*\"'"),
-        lazy.spawn("notify-send 'CMUS: playlist set to Fast'")
+        lazy.spawn("notify-send 'CMUS: filter set to Fast'")
     ),
     Key([mod], "F12",
         lazy.spawn("cmus-remote -C 'filter genre=\"*epic*\"'"),
-        lazy.spawn("notify-send 'CMUS: playlist set to Epic'")
+        lazy.spawn("notify-send 'CMUS: filter set to Epic'")
     ),
 ]
 
@@ -120,7 +124,7 @@ for i in groups:
 
         # mod1 + shift + letter of group = send to group
         Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=False)),
-        # mod1 + shift + letter of group = send to group & switch screens
+        # mod1 + control + letter of group = send to group & switch screens
         Key([mod, "control"], i.name, lazy.window.togroup(i.name, switch_group=True)),
     ])
 
@@ -178,9 +182,9 @@ def init_widgets():
     ]
     if path.isdir("/sys/class/power_supply/BAT1/"):
         widgets.insert(-3, widget.Battery(
-            format="{char} {percent:2.0%}",
-            charge_char="⬆️",
-            discharge_char="⬇️",
+            format="{char}{percent:2.0%}",
+            charge_char="🔸",
+            discharge_char="🔻",
             full_char="⚡",
             unknown_char="⚡",
             empty_char="⚠️ ",
