@@ -93,7 +93,7 @@ keys = [
     Key([mod], "period", lazy.spawn("cmus-remote -n")),
     Key([mod], "comma", lazy.spawn("cmus-remote -r")),
     Key([mod], "F9",
-        lazy.spawn("cmus-remote -C 'filter"),
+        lazy.spawn("cmus-remote -C 'filter genre=\"*\"'"),
         lazy.spawn("notify-send 'CMUS: filter cleared'")
     ),
     Key([mod], "F10",
@@ -183,6 +183,7 @@ def init_widgets():
     if path.isdir("/sys/class/power_supply/BAT1/"):
         widgets.insert(-3, widget.Battery(
             format="{char}{percent:2.0%}",
+            update_interval=30,
             charge_char="🔸",
             discharge_char="🔻",
             full_char="⚡",
