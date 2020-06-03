@@ -18,8 +18,8 @@ articlelist-format "%4i %f %D  %?T?|%-17T|  ?%t"
 # COLORS
 color background          white   black
 color listnormal          white   black
-color listfocus           default blue   bold
+color listfocus           black   blue   bold
 color listnormal_unread   green   black
-color listfocus_unread    default   blue   bold
-color info                default blue   bold
+color listfocus_unread    black   blue   bold
+color info                black   blue   bold
 color article             white   black
