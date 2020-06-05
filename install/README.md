@@ -30,6 +30,10 @@ If installing on a laptop a few more things require attention, such as [ACPI Eve
 
 [Power saving](https://wiki.archlinux.org/index.php/Power_management#Power_saving) is also a thing I've yet to dive deep into.
 
+## pywal:
+
+For pywal to work with dunst, copy the template file in `dunst/colors-dunst` to `~/.config/wal/templates/`. Edit the template accordingly and then run `wal-scale` with the a path to your desired wallpaper in a terminal.
+
 ## Problems encountered:
 
 ### A script run via cron fails to send notifications via notify-send.

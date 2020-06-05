@@ -24,10 +24,6 @@ echo "- REDSHIFT";echo
 ln -sfv $dotfiles_dir/redshift/redshift.conf $config_dir/redshift.conf
 echo
 
-echo "- DUNST";echo
-ln -sfv $dotfiles_dir/dunst/dunstrc $config_dir/dunst/dunstrc
-echo
-
 echo "- NEWSBOAT";echo
 ln -sfv $dotfiles_dir/newsboat/urls $config_dir/newsboat/urls
 ln -sfv $dotfiles_dir/newsboat/config $config_dir/newsboat/config
