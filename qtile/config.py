@@ -184,10 +184,10 @@ def init_widgets():
         widgets.insert(-3, widget.Battery(
             format="{char}{percent:2.0%}",
             update_interval=30,
-            charge_char="🔸",
-            discharge_char="🔻",
-            full_char="⚡",
-            unknown_char="⚡",
+            charge_char="🔹",
+            discharge_char="🔸",
+            full_char="🔹",
+            unknown_char="🔹",
             empty_char="⚠️ ",
             ))
         widgets.insert(-4, widget.Spacer(length=8))
