@@ -1,13 +1,19 @@
 # .dotfiles
 
-Use `create-links.sh` to link the config files to this repo.
+dotfiles are the config files used by applications, some of them are hidden files in folders that start with a '.', thus the name. You can upload them to a repo to manage and backup them for future installs, just like I've done here.
+
+Use `create-links.sh` to link the config files to this repo. This will ensure the files in your system are updated along with the repo and vice versa.
+
+## Install
+
+Info on how to install my Manjaro Linux setup is [here.](https://github.com/Vinesma/.dotfiles/tree/master/install)
 
 ## Programs:
-A (probably incomplete) list of applications I use, for quick reference in case I do a clean install.
+A (probably incomplete) list of applications I use.
 
 Applications in brackets are installed automatically in one way or another via my own scripts.
 
-### WM
+### Window Manager
 
 - (Qtile)
 

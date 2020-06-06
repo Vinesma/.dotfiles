@@ -4,35 +4,37 @@ These folders contain scripts to basically auto install my stuff, however some t
 
 ## Architect
 
-First of all, get the [architect](https://manjaro.org/download/) shove it into a pendrive and use it to boot. Follow the steps and get a CLI system up and running.
+- Get the [architect.](https://manjaro.org/download/) 
+
+- Shove it into a pendrive using rufus or this command: `sudo dd bs=4M if=/path/to/iso of=/dev/sdx status=progress` (check partitions with `sudo fdisk -l`)
+
+- Use that to boot.
+
+- [Follow the steps](https://wiki.manjaro.org/index.php?title=Installation_with_Manjaro_Architect) and get a CLI system up and running.
 
 Recommendations:
 
-- Set the virtual console keymap to `br-abnt2`.
+- Set the virtual console keymap to `br-abnt2` if you're Brazilian like me. 
 
 When the architect is done, chroot into the system and install `networkmanager`. Enable it with `systemctl enable NetworkManager` then reboot into the bare CLI system.
 
 ## Bare CLI
 
-After the reboot you need to find a network to connect to with the `nmcli` interface. [Examples here](https://wiki.archlinux.org/index.php/NetworkManager#nmcli_examples), remember to also install `git` so you can clone this repo. Once you have git and are connected the scripts can do most of the heavy lifting for you. Go ahead and run main.sh to install and configure the important stuff.
+After the reboot you need to find a network to connect to with the `nmcli` interface. [Examples here](https://wiki.archlinux.org/index.php/NetworkManager#nmcli_examples), remember to also install `git` so you can clone this repo. Once you have git and are connected the scripts can do most of the heavy lifting for you. Go ahead and run `main.sh` to install and configure the important stuff.
 
 ## Basic WM running
 
-Once here, you can install anything in `optionals/`, most of it will also automatically get added to `.xprofile` to autostart.
+Once here, you can install anything in `optionals/`. You'll certainly want to, unless you like looking at a wallpaperless WM with no font support. Most of it will automatically get added to `.xprofile` to autostart.
 
 - [Setup the notification DBUS.](https://wiki.archlinux.org/index.php/Desktop_notifications#Standalone)
 
 - [cron won't be running by default, it needs to be enabled.](https://wiki.archlinux.org/index.php/Cron#Activation_and_autostart)
 
-## Laptop
+## Laptop considerations
 
 If installing on a laptop a few more things require attention, such as [ACPI Events](https://wiki.archlinux.org/index.php/Power_management#Power_management_with_systemd) and [the touchpad.](https://wiki.archlinux.org/index.php/Libinput#Installation)
 
 [Power saving](https://wiki.archlinux.org/index.php/Power_management#Power_saving) is also a thing I've yet to dive deep into.
-
-## pywal:
-
-For pywal to work with dunst, copy the template file in `dunst/colors-dunst` to `~/.config/wal/templates/`. Edit the template accordingly and then run `wal-scale` with the a path to your desired wallpaper in a terminal.
 
 ## Problems encountered:
 
@@ -50,4 +52,8 @@ Solution: Disabling tlp in `/etc/tlp.conf` by editing the line TLP_ENABLE=1 to T
 
 ### Laptop won't shutdown or reboot completely. Screen goes black but external lights stay on and the fan keeps spinning no matter how long I wait.
 
-Solution: Unknown...
+Solution: None, yet.
+
+### pywal has no support for dunst
+
+For pywal to work with dunst, copy the template file in `dunst/colors-dunst` to `~/.config/wal/templates/`. Edit the template accordingly and then run `wal-scale` with a path to your desired wallpaper in a terminal.
