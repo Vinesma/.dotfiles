@@ -24,7 +24,7 @@ After the reboot you need to find a network to connect to with the `nmcli` inter
 
 ## Basic WM running
 
-Once here, you can install anything in `optionals/`. You'll certainly want to, unless you like looking at a wallpaperless WM with no font support. Most of it will automatically get added to `.xprofile` to autostart.
+Once here, you can install anything in `optional/`. You'll certainly want to, unless you like looking at a wallpaperless WM with no font support. Most of it will automatically get added to `.xprofile` to autostart.
 
 - [Setup the notification DBUS.](https://wiki.archlinux.org/index.php/Desktop_notifications#Standalone)
 
