@@ -162,7 +162,6 @@ alias updateAliases='. ~/.bashrc'
 wal-scale() {
     wal -n -i "$@"
     feh --bg-scale "$(< "${HOME}/.cache/wal/wal")"
-    cp -f $HOME/.cache/wal/colors-dunst $HOME/.config/dunst/dunstrc
 }
 
 # cheat.sh function (Display examples of command usage)
