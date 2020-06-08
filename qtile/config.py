@@ -86,8 +86,14 @@ keys = [
     Key([mod, "mod1"], "n", lazy.spawn("kitty newsboat")),
     # cmus-remote
     Key([], "Pause", lazy.spawn("cmus-remote -u")),
-    Key([mod], "Page_Up", lazy.spawn("cmus-remote -v +10%")),
-    Key([mod], "Page_Down", lazy.spawn("cmus-remote -v -10%")),
+    Key([mod], "Page_Up",
+        lazy.spawn("cmus-remote -v +10%"),
+        lazy.spawn(path.join(homepath, ".dotfiles", "scripts", "cmus-vol.sh"))
+    ),
+    Key([mod], "Page_Down",
+        lazy.spawn("cmus-remote -v -10%"),
+        lazy.spawn(path.join(homepath, ".dotfiles", "scripts", "cmus-vol.sh"))
+    ),
     Key([mod], "Home", lazy.spawn("cmus-remote -k +10")),
     Key([mod], "End", lazy.spawn("cmus-remote -k -10")),
     Key([mod], "period", lazy.spawn("cmus-remote -n")),
