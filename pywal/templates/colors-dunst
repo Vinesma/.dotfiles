@@ -238,8 +238,8 @@
     # * close_current: Close current notification.
     # * close_all: Close all notifications.
     mouse_left_click = close_current
-    mouse_middle_click = do_action
-    mouse_right_click = close_all
+    mouse_middle_click = close_all
+    mouse_right_click = do_action
 
 # Experimental features that may or may not work correctly. Do not expect them
 # to have a consistent behaviour across releases.
@@ -268,7 +268,7 @@
     # On the US keyboard layout "grave" is normally above TAB and left
     # of "1". Make sure this key actually exists on your keyboard layout,
     # e.g. check output of 'xmodmap -pke'
-    history = ctrl+grave
+    history = mod4+h
 
     # Context menu.
     context = ctrl+shift+period
