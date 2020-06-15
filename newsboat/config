@@ -9,7 +9,7 @@ max-items 50
 browser "$HOME/.dotfiles/newsboat/browser.sh %u"
 # NOTIFIER
 notify-program /usr/bin/notify-send
-notify-format "newsboat: %f unread feeds (%n total unread articles)"
+notify-format "NEWSBOAT: %f unread feeds (%n total unread articles)"
 
 # FORMATS
 datetime-format "%b %d - %I:%M %p"
