@@ -120,7 +120,8 @@ groups = [
     Group("a", spawn="firefox", label="1"),
     Group("s", label="2"),
     Group("d", layout="max", label="3"),
-    Group("f", spawn="kitty cmus", layout="max", label="4"),
+    Group("f", layout="max", label="4"),
+    Group("g", spawn="kitty cmus", layout="max", label="5"),
 ]
 
 for i in groups:
