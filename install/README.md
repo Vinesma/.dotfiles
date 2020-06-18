@@ -36,6 +36,24 @@ If installing on a laptop a few more things require attention, such as [ACPI Eve
 
 [Power saving](https://wiki.archlinux.org/index.php/Power_management#Power_saving) is also a thing I've yet to dive deep into.
 
+## Dev stuff
+
+### AUR
+
+[How to use the AUR.](https://wiki.archlinux.org/index.php/Arch_User_Repository#Getting_started)
+
+### Setting up Flutter
+
+- Clone the flutter repo somewhere appropriate: `git clone https://github.com/flutter/flutter.git`
+
+- Add the line `export PATH="$PATH:[PATH_TO_FLUTTER_GIT_DIRECTORY]/flutter/bin"` to `.bashrc`
+
+- Run `flutter doctor` to verify missing dependencies
+
+- [Install Android Studio from the AUR](https://aur.archlinux.org/packages/android-studio)
+
+- Install the VSCode Flutter extension
+
 ## Problems encountered:
 
 ### A script run via cron fails to send notifications via notify-send.
