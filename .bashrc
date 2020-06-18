@@ -143,6 +143,7 @@ ex ()
 
 # Exports
 export EDITOR="/usr/bin/nano"
+export PATH="$PATH:$HOME/Documents/flutter/bin"
 
 # Personal aliases
 alias mpvd='mpv --profile=youtube720p'
