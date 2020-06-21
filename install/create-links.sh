@@ -42,8 +42,13 @@ echo "- PICOM";echo
 ln -sfv $dotfiles_dir/picom/picom.conf $config_dir/picom/picom.conf
 echo
 
-echo "- CMUS";echo
-ln -sfv $dotfiles_dir/cmus/rc $config_dir/cmus/rc
+echo "- MPD";echo
+ln -sfv $dotfiles_dir/mpd/mpd.conf $config_dir/mpd/mpd.conf
+echo
+
+echo "- NCMPCPP";echo
+ln -sfv $dotfiles_dir/ncmpcpp/config $config_dir/mpd/config
+ln -sfv $dotfiles_dir/ncmpcpp/bindings $config_dir/mpd/bindings
 echo
 
 echo "- QTILE";echo
