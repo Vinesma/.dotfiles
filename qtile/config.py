@@ -88,29 +88,30 @@ keys = [
     Key([mod, "mod1"], "m", lazy.spawn("kitty ncmpcpp")),
     # mpc (mpd controller)
     Key([], "Pause", lazy.spawn("mpc toggle")),
-    Key([mod], "Page_Up", lazy.spawn("mpc volume +10")),
-    Key([mod], "Page_Down", lazy.spawn("mpc volume -10")),
+    Key([mod], "Page_Up",
+        lazy.spawn("mpc volume +10"),
+        lazy.spawn(path.join(homepath, ".dotfiles", "scripts", "query-vol.sh")),
+    ),
+    Key([mod], "Page_Down",
+        lazy.spawn("mpc volume -10"),
+        lazy.spawn(path.join(homepath, ".dotfiles", "scripts", "query-vol.sh")),
+    ),
     Key([mod], "Home", lazy.spawn("mpc seek +10")),
     Key([mod], "End", lazy.spawn("mpc seek -10")),
     Key([mod], "period", lazy.spawn("mpc next")),
     Key([mod], "comma", lazy.spawn("mpc prev")),
-    # cmus-remote 
-    # WIP: replace these with mpd equivalents
     Key([mod], "F9",
-        lazy.spawn("cmus-remote -C 'filter genre=\"*\"'"),
-        lazy.spawn("notify-send 'CMUS: filter cleared'")
+        lazy.spawn("mpc crop"),
+        lazy.spawn("notify-send \"MPD:\" 'Queue cleared'"),
     ),
     Key([mod], "F10",
-        lazy.spawn("cmus-remote -C 'filter genre=\"*calm*\"'"),
-        lazy.spawn("notify-send 'CMUS: filter set to Calm'")
+        lazy.spawn(path.join(homepath, ".dotfiles", "scripts", "queue-calm.sh")),
     ),
     Key([mod], "F11",
-        lazy.spawn("cmus-remote -C 'filter genre=\"*fast*\"'"),
-        lazy.spawn("notify-send 'CMUS: filter set to Fast'")
+        lazy.spawn(path.join(homepath, ".dotfiles", "scripts", "queue-fast.sh")),
     ),
     Key([mod], "F12",
-        lazy.spawn("cmus-remote -C 'filter genre=\"*epic*\"'"),
-        lazy.spawn("notify-send 'CMUS: filter set to Epic'")
+        lazy.spawn(path.join(homepath, ".dotfiles", "scripts", "queue-epic.sh")),
     ),
 ]
 
