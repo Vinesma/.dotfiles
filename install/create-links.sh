@@ -47,8 +47,8 @@ ln -sfv $dotfiles_dir/mpd/mpd.conf $config_dir/mpd/mpd.conf
 echo
 
 echo "- NCMPCPP";echo
-ln -sfv $dotfiles_dir/ncmpcpp/config $config_dir/mpd/config
-ln -sfv $dotfiles_dir/ncmpcpp/bindings $config_dir/mpd/bindings
+ln -sfv $dotfiles_dir/ncmpcpp/config $config_dir/ncmpcpp/config
+ln -sfv $dotfiles_dir/ncmpcpp/bindings $config_dir/ncmpcpp/bindings
 echo
 
 echo "- QTILE";echo
