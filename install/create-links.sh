@@ -51,6 +51,10 @@ ln -sfv $dotfiles_dir/ncmpcpp/config $config_dir/ncmpcpp/config
 ln -sfv $dotfiles_dir/ncmpcpp/bindings $config_dir/ncmpcpp/bindings
 echo
 
+echo "- ROFI";echo
+ln -sfv $dotfiles_dir/rofi/config.rasi $config_dir/rofi/config.rasi
+echo
+
 echo "- QTILE";echo
 ln -sfv $dotfiles_dir/qtile/config.py $config_dir/qtile/config.py
 echo
