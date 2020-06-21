@@ -29,6 +29,7 @@ from libqtile.lazy import lazy
 from libqtile import layout, bar, widget, hook
 
 from typing import List  # noqa: F401
+import subprocess
 
 ## PYWAL
 from pywal import theme
@@ -84,20 +85,17 @@ keys = [
     Key([mod, "mod1"], "e", lazy.spawn("thunar")),
     Key([mod, "mod1"], "b", lazy.spawn("firefox")),
     Key([mod, "mod1"], "n", lazy.spawn("kitty newsboat")),
-    # cmus-remote
-    Key([], "Pause", lazy.spawn("cmus-remote -u")),
-    Key([mod], "Page_Up",
-        lazy.spawn("cmus-remote -v +10%"),
-        lazy.spawn(path.join(homepath, ".dotfiles", "scripts", "cmus-vol.sh"))
-    ),
-    Key([mod], "Page_Down",
-        lazy.spawn("cmus-remote -v -10%"),
-        lazy.spawn(path.join(homepath, ".dotfiles", "scripts", "cmus-vol.sh"))
-    ),
-    Key([mod], "Home", lazy.spawn("cmus-remote -k +10")),
-    Key([mod], "End", lazy.spawn("cmus-remote -k -10")),
-    Key([mod], "period", lazy.spawn("cmus-remote -n")),
-    Key([mod], "comma", lazy.spawn("cmus-remote -r")),
+    Key([mod, "mod1"], "m", lazy.spawn("kitty ncmpcpp")),
+    # mpc (mpd controller)
+    Key([], "Pause", lazy.spawn("mpc toggle")),
+    Key([mod], "Page_Up", lazy.spawn("mpc volume +10")),
+    Key([mod], "Page_Down", lazy.spawn("mpc volume -10")),
+    Key([mod], "Home", lazy.spawn("mpc seek +10")),
+    Key([mod], "End", lazy.spawn("mpc seek -10")),
+    Key([mod], "period", lazy.spawn("mpc next")),
+    Key([mod], "comma", lazy.spawn("mpc prev")),
+    # cmus-remote 
+    # WIP: replace these with mpd equivalents
     Key([mod], "F9",
         lazy.spawn("cmus-remote -C 'filter genre=\"*\"'"),
         lazy.spawn("notify-send 'CMUS: filter cleared'")
@@ -121,7 +119,6 @@ groups = [
     Group("s", label="2"),
     Group("d", layout="max", label="3"),
     Group("f", layout="max", label="4"),
-    Group("g", spawn="kitty cmus", layout="max", label="5"),
 ]
 
 for i in groups:
@@ -205,7 +202,8 @@ def init_bar():
     return main_bar
 
 screens = [
-    Screen(top=init_bar())
+    Screen()
+    #Screen(top=init_bar())
 ]
 
 # Drag floating layouts.
@@ -256,4 +254,7 @@ focus_on_window_activation = "smart"
 wmname = "LG3D"
 
 ## HOOKS
-#...
+@hook.subscribe.startup_once
+def autostart():
+    home = path.expanduser('~')
+    subprocess.Popen([home + '/.config/polybar/launch.sh'])
