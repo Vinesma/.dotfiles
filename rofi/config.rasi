@@ -1,7 +1,7 @@
 configuration {
 	modi: "window,run";
 	width: 50;
-	lines: 15;
+	lines: 8;
 	columns: 1;
 	font: "Source Code Pro 12";
 /*	bw: 1;*/
