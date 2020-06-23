@@ -184,6 +184,7 @@ type = internal/battery
 battery = BAT1
 ;adapter = ADP1
 ;full-at = 98
+poll-interval = 5
 
 format-charging = <label-charging>
 format-charging-underline = ${{colors.fine}}
@@ -193,7 +194,8 @@ format-discharging = <label-discharging>
 format-discharging-underline = ${{colors.alert}}
 label-discharging = "▾ %percentage%%"
 
-format-full-underline = ${{self.format-charging-underline}}
+format-full = <label-full>
+format-full-underline = ${{colors.fine}}
 label-full = "%percentage%%"
 
 [settings]
