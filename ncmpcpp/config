@@ -305,9 +305,9 @@ visualizer_color = blue, cyan, green, yellow, magenta, red
 #
 #incremental_seeking = yes
 #
-#seek_time = 1
+seek_time = 5
 #
-#volume_change_step = 2
+volume_change_step = 10
 #
 #autocenter_mode = no
 #
