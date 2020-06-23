@@ -162,7 +162,7 @@ label-disconnected-underline = ${{colors.alert}}
 
 [module/wireless-network]
 type = internal/network
-interface = wlan1
+interface = wlp2s0
 
 interval = 5.0
 ;ping-interval = 3
