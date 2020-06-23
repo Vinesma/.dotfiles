@@ -24,7 +24,7 @@ Applications in brackets are installed automatically in one way or another via m
 ### Music
 
 - (mpd)
-- (mpd)
+- (mpc)
 - (ncmpcpp)
 - (quodlibet)
 
