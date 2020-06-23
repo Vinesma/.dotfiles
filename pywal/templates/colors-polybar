@@ -20,7 +20,7 @@
 background = #E5{background.strip}
 foreground = {foreground}
 primary = {color4}
-secondary = {color5}
+secondary = {color3}
 fine = #40bad5
 alert = #d92027
 
