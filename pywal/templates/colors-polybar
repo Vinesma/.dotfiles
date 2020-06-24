@@ -21,8 +21,8 @@ background = #E5{background.strip}
 foreground = {foreground}
 primary = {color4}
 secondary = {color3}
-fine = #40bad5
-alert = #d92027
+thirdary = {color2}
+alert = #888888
 
 [bar/main]
 ;monitor = ${{env:MONITOR:HDMI-1}}
@@ -71,9 +71,10 @@ cursor-scroll = ns-resize
 type = internal/xwindow
 
 format = <label>
-;format-background = #DD
+;format-background = ${{colors.secondary}}
 format-foreground = ${{colors.foreground}}
-format-padding = 0
+format-underline = ${{colors.secondary}}
+format-padding = 1
 
 label = %title%
 label-maxlen = 40
@@ -101,7 +102,7 @@ time = "%I:%M %p"
 format = <label>
 ;format-background = #DD
 format-foreground = ${{colors.foreground}}
-format-underline = ${{colors.secondary}}
+format-underline = ${{colors.thirdary}}
 
 label = %date% %time%
 label-font = 1
@@ -154,7 +155,7 @@ format-packetloss = <label-connected>
 
 label-connected = [Wired] %downspeed%
 label-connected-foreground = ${{colors.foreground}}
-label-connected-underline = ${{colors.fine}}
+label-connected-underline = ${{colors.thirdary}}
 
 label-disconnected = [Wired]
 label-disconnected-foreground = ${{colors.foreground}}
@@ -173,7 +174,7 @@ format-packetloss = <label-connected>
 
 label-connected = [Wifi] %downspeed%
 label-connected-foreground = ${{colors.foreground}}
-label-connected-underline = ${{colors.fine}}
+label-connected-underline = ${{colors.thirdary}}
 
 label-disconnected = [Wifi]
 label-disconnected-foreground = ${{colors.foreground}}
@@ -184,7 +185,7 @@ type = custom/script
 exec = ~/.dotfiles/scripts/pacman-updates.sh
 interval = 3600
 
-format-underline = ${colors.alert}
+format-underline = ${{colors.alert}}
 
 [module/battery]
 type = internal/battery
@@ -194,7 +195,7 @@ adapter = ACAD
 poll-interval = 5
 
 format-charging = <label-charging>
-format-charging-underline = ${{colors.fine}}
+format-charging-underline = ${{colors.thirdary}}
 label-charging = "▴ %percentage%%"
 
 format-discharging = <label-discharging>
@@ -202,7 +203,7 @@ format-discharging-underline = ${{colors.alert}}
 label-discharging = "▾ %percentage%%"
 
 format-full = <label-full>
-format-full-underline = ${{colors.fine}}
+format-full-underline = ${{colors.thirdary}}
 label-full = "%percentage%%"
 
 [settings]
