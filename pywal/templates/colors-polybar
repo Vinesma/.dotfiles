@@ -152,11 +152,11 @@ format-connected = <label-connected>
 format-disconnected = <label-disconnected>
 format-packetloss = <label-connected>
 
-label-connected = [Wired][C] %downspeed%
+label-connected = [Wired] %downspeed%
 label-connected-foreground = ${{colors.foreground}}
 label-connected-underline = ${{colors.fine}}
 
-label-disconnected = [Wired][X]
+label-disconnected = [Wired]
 label-disconnected-foreground = ${{colors.foreground}}
 label-disconnected-underline = ${{colors.alert}}
 
@@ -171,18 +171,18 @@ format-connected = <label-connected>
 format-disconnected = <label-disconnected>
 format-packetloss = <label-connected>
 
-label-connected = [Wifi][C] %downspeed%
+label-connected = [Wifi] %downspeed%
 label-connected-foreground = ${{colors.foreground}}
 label-connected-underline = ${{colors.fine}}
 
-label-disconnected = [Wifi][X]
+label-disconnected = [Wifi]
 label-disconnected-foreground = ${{colors.foreground}}
 label-disconnected-underline = ${{colors.alert}}
 
 [module/battery]
 type = internal/battery
 battery = BAT1
-;adapter = ADP1
+adapter = ACAD
 ;full-at = 98
 poll-interval = 5
 
