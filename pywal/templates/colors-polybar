@@ -56,7 +56,7 @@ font-3 = Noto Color Emoji:style=Regular:scale=10;0
 
 modules-left = ewmh xwindow
 modules-center = mpd
-modules-right = battery wireless-network wired-network updates-pacman date
+modules-right = battery wireless-network wired-network rss updates-pacman date
 
 tray-position = right
 tray-padding = 1
@@ -141,6 +141,14 @@ label-urgent-font = 2
 label-empty = " %icon% "
 label-empty-font = 2
 label-empty-foreground = #FFFFFF
+
+[module/rss]
+type = custom/script
+exec = ~/.dotfiles/scripts/newsboat-bar.sh
+interval = 7200
+
+click-left = "kitty newsboat"
+format-underline = ${colors.thirdary}
 
 [module/wired-network]
 type = internal/network
