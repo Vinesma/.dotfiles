@@ -15,6 +15,10 @@ notify-format "NEWSBOAT: %f unread feeds (%n total unread articles)"
 datetime-format "%b %d - %I:%M %p"
 articlelist-format "%4i %f %D  %?T?|%-17T|  ?%t"
 
+# MACROS
+macro p toggle-article-read
+macro i set browser "feh %u" ; open-in-browser ; set browser "$HOME/.dotfiles/newsboat/browser.sh %u"
+
 # COLORS
 color background          white   black
 color listnormal          white   black
