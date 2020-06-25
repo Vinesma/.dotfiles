@@ -147,8 +147,8 @@ type = custom/script
 exec = ~/.dotfiles/scripts/newsboat-bar.sh
 interval = 7200
 
-click-left = "kitty newsboat"
-format-underline = ${colors.thirdary}
+click-left = "kitty newsboat >/dev/null 2>&1 &"
+format-underline = ${{colors.thirdary}}
 
 [module/wired-network]
 type = internal/network
