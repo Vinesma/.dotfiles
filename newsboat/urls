@@ -1,22 +1,24 @@
 "query:Unread News:tags # \"news\" and unread = \"yes\""
 "query:Subscription Box (Favorites):tags # \"youtube-favorite\" and unread = \"yes\""
 "query:Subscription Box (Others):tags # \"youtube-others\" and unread = \"yes\""
+"query:Subscription Box (Tech):tags # \"tech\" and unread = \"yes\""
+"query:Subscription Box (Japanese):tags # \"japanese\" and unread = \"yes\""
 https://g1.globo.com/rss/g1/pe/petrolina-regiao/ "~G1 - Petrolina" news
 http://www.bbc.co.uk/portuguese/index.xml "~BBC" news
 https://feeds.folha.uol.com.br/poder/rss091.xml "~FOLHA - Poder" news
 https://feeds.folha.uol.com.br/tec/rss091.xml "~FOLHA - Tecnologia" news
 https://feeds.folha.uol.com.br/mundo/rss091.xml "~FOLHA - Mundo" news
 https://www.youtube.com/feeds/videos.xml?channel_id=UCE1jXbVAGJQEORz9nZqb5bQ "~Ahoy" youtube-favorite
-https://www.youtube.com/feeds/videos.xml?channel_id=UCS0N5baNlQWJCUrhCEo8WlA "~Ben Eater" youtube-others
+https://www.youtube.com/feeds/videos.xml?channel_id=UCS0N5baNlQWJCUrhCEo8WlA "~Ben Eater" youtube-others tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UCEOXxzW2vU0P-0THehuIIeg "~Captain Disillusion" youtube-favorite
 https://www.youtube.com/feeds/videos.xml?channel_id=UCKOvOaJv4GK-oDqx-sj7VVg "~Chubbyemu" youtube-others
 https://www.youtube.com/feeds/videos.xml?channel_id=UCYZtp0YIxYOipX15v_h_jnA "~Crowbcat" youtube-others
 https://www.youtube.com/feeds/videos.xml?channel_id=UCyhvJR_nYEeSuv_9XlWLRYw "~DemoD 2" youtube-others
-https://www.youtube.com/feeds/videos.xml?channel_id=UCwRXb5dUK4cvsHbx-rGzSgw "~Derek Banas" youtube-others
+https://www.youtube.com/feeds/videos.xml?channel_id=UCwRXb5dUK4cvsHbx-rGzSgw "~Derek Banas" youtube-others tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UCVyRiMvfUNMA1UPlDPzG5Ow "~DesignCourse" youtube-others
 https://www.youtube.com/feeds/videos.xml?channel_id=UCcAvljdM2NMdMYq_pvT9pBw "~DemoD" youtube-favorite
 https://www.youtube.com/feeds/videos.xml?channel_id=UCwOQebwcuh9HfTJcRfg7A6w "~Drakon Astron" youtube-others
-https://www.youtube.com/feeds/videos.xml?channel_id=UCsBjURrPoezykLs9EqgamOA "~Fireship" youtube-favorite
+https://www.youtube.com/feeds/videos.xml?channel_id=UCsBjURrPoezykLs9EqgamOA "~Fireship" youtube-favorite tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UCbWcXB0PoqOsAvAdfzWMf0w "~Down The Rabbit Hole" youtube-favorite
 https://www.youtube.com/feeds/videos.xml?channel_id=UCqJ-Xo29CKyLTjn6z2XwYAw "~Game Maker's Toolkit" youtube-favorite
 https://www.youtube.com/feeds/videos.xml?channel_id=UCv_vLHiWVBh_FR9vbeuiY-A "~Historia Civilis" youtube-favorite
@@ -25,7 +27,7 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCZFipeZtQM5CKUjx6grh54g "~I
 https://www.youtube.com/feeds/videos.xml?channel_id=UCsXVk37bltHxD1rDPwtNM8Q "~Kurzgesagt" youtube-favorite
 https://www.youtube.com/feeds/videos.xml?channel_id=UCRcgy6GzDeccI7dkbbBna3Q "~LEMMiNO" youtube-favorite
 https://www.youtube.com/feeds/videos.xml?channel_id=UCIoNgwHpavUi2UnC68cKgbw "~Marshall McGee" youtube-favorite
-https://www.youtube.com/feeds/videos.xml?channel_id=UC7YOGHUfC1Tb6E4pudI9STA "~Mental Outlaw" youtube-favorite
+https://www.youtube.com/feeds/videos.xml?channel_id=UC7YOGHUfC1Tb6E4pudI9STA "~Mental Outlaw" youtube-favorite tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UCSdma21fnJzgmPodhC9SJ3g "~NakeyJakey" youtube-favorite
 https://www.youtube.com/feeds/videos.xml?channel_id=UCxO_ya-RmAXCXJCU54AxYFw "~New Frame Plus" youtube-favorite
 https://www.youtube.com/feeds/videos.xml?channel_id=UCKzJFdi57J53Vr_BkTfN3uQ "~Primer" youtube-favorite
@@ -33,17 +35,16 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCD6VugMZKRhSyzWEWA9W2fg "~S
 https://www.youtube.com/feeds/videos.xml?channel_id=UCyfZeYmP1HqRSMEqgrsWTXg "~Sseth 2" youtube-others
 https://www.youtube.com/feeds/videos.xml?channel_id=UCtUbO6rBht0daVIOGML3c8w "~Summoning Salt" youtube-favorite
 https://www.youtube.com/feeds/videos.xml?channel_id=UCz4ZjuO7HrynjRrRlur1yWg "~Canipa Effect" youtube-favorite
-https://www.youtube.com/feeds/videos.xml?channel_id=UCn5YKM5JTCZW8OIErRePo5Q "~Today I Played" youtube-favorite
-https://www.youtube.com/feeds/videos.xml?channel_id=UC29ju8bIPH5as8OGnQzwJyA "~Traversy Media" youtube-others
+https://www.youtube.com/feeds/videos.xml?channel_id=UC29ju8bIPH5as8OGnQzwJyA "~Traversy Media" youtube-others tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UC0WJULmXyNAvyLJCBi7r_TQ "~Xenophyte" youtube-others
 https://www.youtube.com/feeds/videos.xml?channel_id=UCH-_hzb2ILSCo9ftVSnrCIQ "~Yogscast Lewis & Simon" youtube-others
 https://www.youtube.com/feeds/videos.xml?channel_id=UCkkejFv496PdWWk-q9cnx6Q "~Qubec (Vtuber Highlights)" youtube-favorite
-https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA "~Luke Smith" youtube-others
-https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg "~DistroTube" youtube-others
-https://www.youtube.com/feeds/videos.xml?channel_id=UCld68syR8Wi-GY_n4CaoJGA "~Brodie Robertson" youtube-others
-https://www.youtube.com/feeds/videos.xml?channel_id=UCMZxtiWIdrXUUbWMAe6D-Iw "~msjche" youtube-others
-https://www.youtube.com/feeds/videos.xml?channel_id=UCg6gPGh8HU2U01vaFCAsvmQ "~Chris Titus Tech" youtube-others
-https://www.youtube.com/feeds/videos.xml?channel_id=UCUmLRMERmJrmUtgnbFfknAg "~Randall (Gamedev Diary)" youtube-favorite
-https://www.youtube.com/feeds/videos.xml?channel_id=UCLuymDHiOySsAQ9Nc-4NoEQ "~Onomappu オノマップ" youtube-others
-https://www.youtube.com/feeds/videos.xml?channel_id=UCEw0sdrCOjcsjtXGJibItJA "~Easy Peasy Japanesey" youtube-others
+https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA "~Luke Smith" youtube-others tech
+https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg "~DistroTube" youtube-others tech
+https://www.youtube.com/feeds/videos.xml?channel_id=UCld68syR8Wi-GY_n4CaoJGA "~Brodie Robertson" youtube-others tech
+https://www.youtube.com/feeds/videos.xml?channel_id=UCMZxtiWIdrXUUbWMAe6D-Iw "~msjche" youtube-others tech
+https://www.youtube.com/feeds/videos.xml?channel_id=UCg6gPGh8HU2U01vaFCAsvmQ "~Chris Titus Tech" youtube-others tech
+https://www.youtube.com/feeds/videos.xml?channel_id=UCUmLRMERmJrmUtgnbFfknAg "~Randall (Gamedev Diary)" youtube-favorite tech
+https://www.youtube.com/feeds/videos.xml?channel_id=UCLuymDHiOySsAQ9Nc-4NoEQ "~Onomappu オノマップ" youtube-others japanese
+https://www.youtube.com/feeds/videos.xml?channel_id=UCEw0sdrCOjcsjtXGJibItJA "~Easy Peasy Japanesey" youtube-others japanese
 https://www.youtube.com/feeds/videos.xml?channel_id=UCNepEAWZH0TBu7dkxIbluDw "~Dad, how do I?" youtube-others
