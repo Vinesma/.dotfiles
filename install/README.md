@@ -6,7 +6,7 @@ These folders contain scripts to basically auto install my stuff, however some t
 
 - Get the [architect.](https://manjaro.org/download/) 
 
-- Shove it into a pendrive using rufus or this command: `sudo dd bs=4M if=/path/to/iso of=/dev/sdx status=progress` (check partitions with `sudo fdisk -l`)
+- Shove it into a pendrive using rufus or this (destructive, be careful) command: `sudo dd bs=4M if=[/path/to/iso] of=/dev/sd[x] status=progress` (check partitions with `sudo fdisk -l`)
 
 - Use that to boot.
 
