@@ -8,8 +8,7 @@ video-info() {
         feh "$thumbnail" -F --title "$title" --info "echo \"LENGTH: $duration\""
 }
 
-if [ $(echo $1 | grep youtube.com) ]
-then
+if [[ "$1" == *youtube.com* ]]; then
     echo
     echo "This appears to be a youtube link, what to do?"
     echo -e "1. Watch it\n2. Download it\n3. Open in browser\n4. Show video info\n5. Exit"
@@ -21,6 +20,8 @@ then
 	4) video-info $1;;
         *) echo;;
     esac
+elif [[ "$1" == @(*.jpg|*.jpeg|*.png) ]]; then
+    feh -F "$1"
 else
-    firefox $1
+    firefox "$1"
 fi

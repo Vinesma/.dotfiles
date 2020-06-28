@@ -2,12 +2,17 @@
 "query:Subscription Box (Favorites):tags # \"youtube-favorite\" and unread = \"yes\""
 "query:Subscription Box (Others):tags # \"youtube-others\" and unread = \"yes\""
 "query:Subscription Box (Tech):tags # \"tech\" and unread = \"yes\""
-"query:Subscription Box (Japanese):tags # \"japanese\" and unread = \"yes\""
+"query:Subscription Box (Japanese):tags # \"japanese\""
+"query:4chan:tags # \"chan\""
 https://g1.globo.com/rss/g1/pe/petrolina-regiao/ "~G1 - Petrolina" news
 http://www.bbc.co.uk/portuguese/index.xml "~BBC" news
 https://feeds.folha.uol.com.br/poder/rss091.xml "~FOLHA - Poder" news
 https://feeds.folha.uol.com.br/tec/rss091.xml "~FOLHA - Tecnologia" news
 https://feeds.folha.uol.com.br/mundo/rss091.xml "~FOLHA - Mundo" news
+https://boards.4channel.org/g/index.rss "~/g/ - Technology" chan
+https://boards.4channel.org/a/index.rss "~/a/ - Anime & Manga" chan
+https://boards.4channel.org/w/index.rss "~/w/ - Anime/Wallpapers" chan
+https://boards.4channel.org/wg/index.rss "~/wg/ - Wallpapers/General" chan
 https://www.youtube.com/feeds/videos.xml?channel_id=UCE1jXbVAGJQEORz9nZqb5bQ "~Ahoy" youtube-favorite
 https://www.youtube.com/feeds/videos.xml?channel_id=UCS0N5baNlQWJCUrhCEo8WlA "~Ben Eater" youtube-others tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UCEOXxzW2vU0P-0THehuIIeg "~Captain Disillusion" youtube-favorite
