@@ -85,8 +85,8 @@ keys = [
     # spawn apps
     Key([mod, "mod1"], "e", lazy.spawn("thunar")),
     Key([mod, "mod1"], "b", lazy.spawn("firefox")),
-    Key([mod, "mod1"], "n", lazy.spawn("kitty newsboat")),
-    Key([mod, "mod1"], "m", lazy.spawn("kitty -o background_opacity=0.7 -T \"MPD\" ncmpcpp")),
+    Key([mod, "mod1"], "n", lazy.spawn("kitty newsboat -q")),
+    Key([mod, "mod1"], "m", lazy.spawn("kitty -o background_opacity=0.7 -T \"MPD\" ncmpcpp -q")),
     # mpc (mpd controller)
     Key([], "Pause", lazy.spawn("mpc toggle")),
     Key([mod], "Page_Up",
