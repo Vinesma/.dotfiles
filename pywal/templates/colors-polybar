@@ -20,7 +20,7 @@
 background = #E5{background.strip}
 foreground = {foreground}
 primary = {color4}
-secondary = {color3}
+secondary = {color6}
 thirdary = {color2}
 alert = #888888
 
@@ -154,14 +154,30 @@ type = custom/script
 exec = ~/.dotfiles/scripts/curl-weather.sh
 interval = 3600
 
+format = <label>
 format-underline = ${{colors.thirdary}}
+
+label = %output%
 
 [module/rss]
 type = custom/script
 exec = ~/.dotfiles/scripts/newsboat-bar.sh
 interval = 6
 
+format = <label>
 format-underline = ${{colors.thirdary}}
+
+label = %{{F{color2}}} 索%{{F-}} #%output%
+
+[module/updates-pacman]
+type = custom/script
+exec = ~/.dotfiles/scripts/pacman-updates.sh
+interval = 3600
+
+format = <label>
+format-underline = ${{colors.alert}}
+
+label = %{{F{color2}}} %{{F-}} #%output%
 
 [module/wired-network]
 type = internal/network
@@ -174,11 +190,11 @@ format-connected = <label-connected>
 format-disconnected = <label-disconnected>
 format-packetloss = <label-connected>
 
-label-connected =  %downspeed%
+label-connected = %{{F{color2}}}%{{F-}} %downspeed%
 label-connected-foreground = ${{colors.foreground}}
 label-connected-underline = ${{colors.thirdary}}
 
-label-disconnected = 
+label-disconnected = %{{F#888888}}%{{F-}}
 label-disconnected-foreground = ${{colors.foreground}}
 label-disconnected-underline = ${{colors.alert}}
 
@@ -193,20 +209,13 @@ format-connected = <label-connected>
 format-disconnected = <label-disconnected>
 format-packetloss = <label-connected>
 
-label-connected = 直 %downspeed%
+label-connected = %{{F{color2}}} 直%{{F-}} %downspeed%
 label-connected-foreground = ${{colors.foreground}}
 label-connected-underline = ${{colors.thirdary}}
 
-label-disconnected = 睊
+label-disconnected = %{{F#888888}} 睊%{{F-}}
 label-disconnected-foreground = ${{colors.foreground}}
 label-disconnected-underline = ${{colors.alert}}
-
-[module/updates-pacman]
-type = custom/script
-exec = ~/.dotfiles/scripts/pacman-updates.sh
-interval = 3600
-
-format-underline = ${{colors.alert}}
 
 [module/battery]
 type = internal/battery
@@ -217,15 +226,15 @@ poll-interval = 5
 
 format-charging = <label-charging>
 format-charging-underline = ${{colors.thirdary}}
-label-charging = " %percentage%%"
+label-charging = %{{F{color2}}}%{{F-}} %percentage%%
 
 format-discharging = <label-discharging>
 format-discharging-underline = ${{colors.alert}}
-label-discharging = " %percentage%%"
+label-discharging = %{{F{color2}}}%{{F-}} %percentage%%
 
 format-full = <label-full>
 format-full-underline = ${{colors.thirdary}}
-label-full = " %percentage%%"
+label-full = %{{F{color2}}}%{{F-}} %percentage%%
 
 [settings]
 screenchange-reload = true
