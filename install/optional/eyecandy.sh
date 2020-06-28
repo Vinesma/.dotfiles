@@ -1,7 +1,7 @@
 #!/bin/sh
 
 apps="feh picom lxappearance python-pywal"
-theming="matcha-gtk-theme papirus-icon-theme ttf-bitstream-vera ttf-anonymous-pro otf-ipafont noto-fonts-emoji"
+theming="matcha-gtk-theme papirus-icon-theme ttf-bitstream-vera ttf-anonymous-pro otf-ipafont noto-fonts-emoji ttf-nerd-fonts-symbols"
 mcf_picom="$HOME/.config/picom"
 dcf_picom="$HOME/.dotfiles/picom/*"
 

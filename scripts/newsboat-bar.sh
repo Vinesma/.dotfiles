@@ -11,4 +11,4 @@ newsboat_path="/usr/bin/newsboat"
 
 unread_articles=$(newsboat -x print-unread | cut -d' ' -f 1)
 
-[ "$unread_articles" ] && [ "$unread_articles" -gt 0 ] && echo "[RSS] #$unread_articles" || echo ""
+[ "$unread_articles" ] && [ "$unread_articles" -gt 0 ] && echo " #$unread_articles" || echo ""

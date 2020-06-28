@@ -52,11 +52,12 @@ module-margin-right = 1
 font-0 = Source Code Pro:style=Bold:size=9;1
 font-1 = Source Code Pro:style=Bold:size=10;1
 font-2 = IPAPGothic,IPA Pゴシック:style=Regular:size=10;0
-font-3 = Noto Color Emoji:style=Regular:scale=10;0
+font-3 = Symbols Nerd Font:style=2048-em:size=11;0
+font-4 = Noto Color Emoji:style=Regular:scale=10;0
 
 modules-left = ewmh xwindow
 modules-center = mpd
-modules-right = battery wireless-network wired-network rss updates-pacman date
+modules-right = battery wireless-network wired-network rss weather updates-pacman date
 
 tray-position = right
 tray-padding = 1
@@ -84,11 +85,11 @@ label-empty-foreground = ${{colors.foreground}}
 
 [module/mpd]
 type = internal/mpd
-format-online = <label-song> <label-time>
-format-paused = <label-song> [P]
+format-online =  <label-song> <label-time>
+format-paused =  <label-song>
 format-online-foreground = ${{colors.primary}}
 
-label-song = ♫ %title% - %artist%
+label-song = %title% - %artist%
 label-song-maxlen = 45
 label-song-ellipsis = true
 
@@ -96,7 +97,7 @@ label-song-ellipsis = true
 type = internal/date
 interval = 1
 
-date = "%d/%m/%y %a"
+date = "%d/%m %a"
 time = "%I:%M %p"
 
 format = <label>
@@ -142,6 +143,13 @@ label-empty = " %icon% "
 label-empty-font = 2
 label-empty-foreground = #FFFFFF
 
+[module/weather]
+type = custom/script
+exec = ~/.dotfiles/scripts/curl-weather.sh
+interval = 3600
+
+format-underline = ${{colors.thirdary}}
+
 [module/rss]
 type = custom/script
 exec = ~/.dotfiles/scripts/newsboat-bar.sh
@@ -160,11 +168,11 @@ format-connected = <label-connected>
 format-disconnected = <label-disconnected>
 format-packetloss = <label-connected>
 
-label-connected = [Wired] %downspeed%
+label-connected =  %downspeed%
 label-connected-foreground = ${{colors.foreground}}
 label-connected-underline = ${{colors.thirdary}}
 
-label-disconnected = [Wired]
+label-disconnected = 
 label-disconnected-foreground = ${{colors.foreground}}
 label-disconnected-underline = ${{colors.alert}}
 
@@ -179,11 +187,11 @@ format-connected = <label-connected>
 format-disconnected = <label-disconnected>
 format-packetloss = <label-connected>
 
-label-connected = [Wifi] %downspeed%
+label-connected = 直 %downspeed%
 label-connected-foreground = ${{colors.foreground}}
 label-connected-underline = ${{colors.thirdary}}
 
-label-disconnected = [Wifi]
+label-disconnected = 睊
 label-disconnected-foreground = ${{colors.foreground}}
 label-disconnected-underline = ${{colors.alert}}
 
@@ -203,15 +211,15 @@ poll-interval = 5
 
 format-charging = <label-charging>
 format-charging-underline = ${{colors.thirdary}}
-label-charging = "▴ %percentage%%"
+label-charging = " %percentage%%"
 
 format-discharging = <label-discharging>
 format-discharging-underline = ${{colors.alert}}
-label-discharging = "▾ %percentage%%"
+label-discharging = " %percentage%%"
 
 format-full = <label-full>
 format-full-underline = ${{colors.thirdary}}
-label-full = "%percentage%%"
+label-full = " %percentage%%"
 
 [settings]
 screenchange-reload = true
