@@ -27,7 +27,7 @@ alert = #888888
 [bar/main]
 ;monitor = ${{env:MONITOR:HDMI-1}}
 width = 100%
-height = 24
+height = 25
 ;offset-x = 1%
 ;offset-y = 3%
 radius = 0
@@ -85,13 +85,19 @@ label-empty-foreground = ${{colors.foreground}}
 
 [module/mpd]
 type = internal/mpd
-format-online =  <label-song> <label-time>
-format-paused =  <label-song>
+format-online = <label-time> <toggle> <label-song>
+format-paused = <toggle> <label-song>
+format-stopped =
 format-online-foreground = ${{colors.primary}}
+
+icon-play = 
+icon-pause = 
 
 label-song = %title% - %artist%
 label-song-maxlen = 45
 label-song-ellipsis = true
+
+label-time = %elapsed%/%total%
 
 [module/date]
 type = internal/date
