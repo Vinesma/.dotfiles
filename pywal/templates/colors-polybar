@@ -167,7 +167,7 @@ interval = 6
 format = <label>
 format-underline = ${{colors.thirdary}}
 
-label = %{{F{color2}}} 索%{{F-}} #%output%
+label = %{{F{color2}}}%{{F-}} #%output%
 
 [module/updates-pacman]
 type = custom/script
