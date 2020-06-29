@@ -217,7 +217,7 @@ label-connected = %{{F{color2}}} 直%{{F-}} %downspeed%
 label-connected-foreground = ${{colors.foreground}}
 label-connected-underline = ${{colors.thirdary}}
 
-label-disconnected = %{{F#888888}} 睊%{{F-}}
+label-disconnected = %{{F#888888}} 睊 %{{F-}}
 label-disconnected-foreground = ${{colors.foreground}}
 label-disconnected-underline = ${{colors.alert}}
 
@@ -232,9 +232,15 @@ format-charging = <label-charging>
 format-charging-underline = ${{colors.thirdary}}
 label-charging = %{{F{color2}}}%{{F-}} %percentage%%
 
-format-discharging = <label-discharging>
+format-discharging = %{{F#888888}}<ramp-capacity>%{{F-}} <label-discharging>
 format-discharging-underline = ${{colors.alert}}
-label-discharging = %{{F#888888}}%{{F-}} %percentage%%
+label-discharging = %percentage%%
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
 
 format-full = <label-full>
 format-full-underline = ${{colors.thirdary}}
