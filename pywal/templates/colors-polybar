@@ -97,7 +97,7 @@ label-song = %title% - %artist%
 label-song-maxlen = 45
 label-song-ellipsis = true
 
-label-time = %elapsed%/%total%
+label-time = %elapsed% / %total%
 
 [module/date]
 type = internal/date
@@ -169,6 +169,8 @@ format-underline = ${{colors.thirdary}}
 
 label = %{{F{color2}}}%{{F-}} #%output%
 
+click-right = kitty newsboat -q &
+
 [module/updates-pacman]
 type = custom/script
 exec = ~/.dotfiles/scripts/pacman-updates.sh
@@ -178,6 +180,8 @@ format = <label>
 format-underline = ${{colors.alert}}
 
 label = %{{F{color2}}} %{{F-}} #%output%
+
+click-right = kitty sudo pacman -Syu &
 
 [module/wired-network]
 type = internal/network
@@ -230,7 +234,7 @@ label-charging = %{{F{color2}}}%{{F-}} %percentage%%
 
 format-discharging = <label-discharging>
 format-discharging-underline = ${{colors.alert}}
-label-discharging = %{{F{color2}}}%{{F-}} %percentage%%
+label-discharging = %{{F#888888}}%{{F-}} %percentage%%
 
 format-full = <label-full>
 format-full-underline = ${{colors.thirdary}}
