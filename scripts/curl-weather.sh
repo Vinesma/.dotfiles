@@ -2,7 +2,9 @@
 
 curl_dir="/usr/bin/curl"
 site="wttr.in"
-city="-9.3817334,-40.4968875"
+city="Petrolina"
 format="+%c+%t"
 
-echo $($curl_dir -s "$site"/"$city"?format="$format" || echo "")
+response=$($curl_dir -s "$site"/"$city"?format="$format")
+
+echo "$response" | grep "⁰C" && echo "$response" || echo ""
