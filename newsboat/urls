@@ -1,8 +1,9 @@
 "query:Unread News:tags # \"news\" and unread = \"yes\""
 "query:Subscription Box (Favorites):tags # \"youtube-favorite\" and unread = \"yes\""
 "query:Subscription Box (Others):tags # \"youtube-others\" and unread = \"yes\""
-"query:Subscription Box (Tech):tags # \"tech\" and unread = \"yes\""
+"query:Subscription Box (Tech):tags # \"tech\""
 "query:Subscription Box (Japanese):tags # \"japanese\""
+"query:Twitter:tags # \"twitter\""
 "query:4chan:tags # \"chan\""
 https://g1.globo.com/rss/g1/pe/petrolina-regiao/ "~G1 - Petrolina" news
 http://www.bbc.co.uk/portuguese/index.xml "~BBC" news
@@ -53,3 +54,4 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCUmLRMERmJrmUtgnbFfknAg "~R
 https://www.youtube.com/feeds/videos.xml?channel_id=UCLuymDHiOySsAQ9Nc-4NoEQ "~Onomappu オノマップ" japanese
 https://www.youtube.com/feeds/videos.xml?channel_id=UCEw0sdrCOjcsjtXGJibItJA "~Easy Peasy Japanesey" japanese
 https://www.youtube.com/feeds/videos.xml?channel_id=UCNepEAWZH0TBu7dkxIbluDw "~Dad, how do I?" youtube-others
+https://nitter.net/click_burgundy/rss "~@click_burgundy" twitter artist
