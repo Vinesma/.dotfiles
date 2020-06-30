@@ -29,4 +29,6 @@ color info                black   blue   bold
 color article             white   black
 
 # KILLFILE
-ignore-article "*" "title =~ \"RT by\""
+
+# ignore retweets in twitter feeds
+ignore-article "*" "link =~ \"nitter.net\" and title =~ \"RT by\""

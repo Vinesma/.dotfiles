@@ -16,12 +16,14 @@ if [[ "$1" == *youtube.com* ]]; then
     case $option in
         1) mpv --fullscreen=no --profile=youtube720p $1;;
         2) youtube-dl -f 22/18 $1;;
-        3) firefox $1;;
+        3) firefox $1 &;;
 	4) video-info $1;;
         *) echo;;
     esac
 elif [[ "$1" == @(*.jpg|*.jpeg|*.png) ]]; then
     feh -F "$1"
 else
-    firefox "$1"
+    firefox "$1" &
 fi
+
+clear
