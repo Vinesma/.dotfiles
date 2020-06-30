@@ -1,16 +1,16 @@
 "query:Unread News:tags # \"news\" and unread = \"yes\""
 "query:Subscription Box (Favorites):tags # \"youtube-favorite\" and unread = \"yes\""
 "query:Subscription Box (Others):tags # \"youtube-others\" and unread = \"yes\""
-"query:Subscription Box (Tech):tags # \"tech\""
+"query:Subscription Box (Tech):tags # \"tech\" and age < 60"
 "query:Subscription Box (Japanese):tags # \"japanese\""
 "query:Twitter:tags # \"twitter\" and unread = \"yes\""
 "query:Artists:tags # \"artist\" and title !~ \"RT by\" and age < 2"
 "query:4chan:tags # \"chan\""
 https://g1.globo.com/rss/g1/pe/petrolina-regiao/ "~G1 - Petrolina" news
-http://www.bbc.co.uk/portuguese/index.xml "!~BBC" news
-https://feeds.folha.uol.com.br/poder/rss091.xml "!~FOLHA - Poder" news
-https://feeds.folha.uol.com.br/tec/rss091.xml "!~FOLHA - Tecnologia" news
-https://feeds.folha.uol.com.br/mundo/rss091.xml "!~FOLHA - Mundo" news
+http://www.bbc.co.uk/portuguese/index.xml "~BBC" news
+https://feeds.folha.uol.com.br/poder/rss091.xml "~FOLHA - Poder" news
+https://feeds.folha.uol.com.br/tec/rss091.xml "~FOLHA - Tecnologia" news
+https://feeds.folha.uol.com.br/mundo/rss091.xml "~FOLHA - Mundo" news
 https://boards.4channel.org/g/index.rss "~/g/ - Technology" chan
 https://boards.4channel.org/w/index.rss "~/w/ - Anime/Wallpapers" chan
 https://boards.4channel.org/wg/index.rss "~/wg/ - Wallpapers/General" chan
@@ -120,4 +120,3 @@ https://nitter.net/_Satchely/rss "~Satchel" artist
 https://nitter.net/t_ippers/rss "~ippers" artist
 https://nitter.net/Jirachirachi/rss "~@Jirachirachi" artist
 https://nitter.net/cyangmou/rss "~Cyangmou" artist
-
