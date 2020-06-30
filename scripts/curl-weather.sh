@@ -7,4 +7,4 @@ format="+%c+%t"
 
 response=$($curl_dir -s "$site"/"$city"?format="$format")
 
-echo "$response" | grep "⁰C" && echo "$response" || echo ""
+echo "$response" | grep -q "°C" && echo "$response" || echo ""
