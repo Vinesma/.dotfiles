@@ -55,7 +55,7 @@ font-2 = IPAPGothic,IPA Pゴシック:style=Regular:size=10;0
 font-3 = Symbols Nerd Font:style=2048-em:size=11;0
 font-4 = Noto Color Emoji:style=Regular:scale=10;0
 
-modules-left = ewmh xwindow
+modules-left = workspaces xwindow
 modules-center = mpd
 modules-right = battery wireless-network wired-network rss weather updates-pacman date
 
@@ -115,7 +115,7 @@ label = %date% %time%
 label-font = 1
 label-foreground = ${{colors.foreground}}
 
-[module/ewmh]
+[module/workspaces]
 type = internal/xworkspaces
 
 pin-workspaces = false
@@ -152,7 +152,7 @@ label-empty-foreground = #FFFFFF
 [module/weather]
 type = custom/script
 exec = ~/.dotfiles/scripts/curl-weather.sh
-interval = 3600
+interval = 1800
 
 format = <label>
 format-underline = ${{colors.thirdary}}
@@ -174,10 +174,10 @@ click-right = kitty newsboat -q &
 [module/updates-pacman]
 type = custom/script
 exec = ~/.dotfiles/scripts/pacman-updates.sh
-interval = 3600
+interval = 1800
 
 format = <label>
-format-underline = ${{colors.alert}}
+format-underline = ${{colors.thirdary}}
 
 label = %{{F{color2}}} %{{F-}} #%output%
 
