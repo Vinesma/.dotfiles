@@ -57,7 +57,7 @@ font-4 = Noto Color Emoji:style=Regular:scale=10;0
 
 modules-left = workspaces xwindow
 modules-center = mpd
-modules-right = battery wireless-network wired-network rss weather updates-pacman date
+modules-right = wireless-network wired-network updates-pacman battery rss weather date
 
 tray-position = right
 tray-padding = 1
