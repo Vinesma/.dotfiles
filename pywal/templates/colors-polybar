@@ -103,15 +103,14 @@ label-time = %elapsed% / %total%
 type = internal/date
 interval = 1
 
-date = "%d/%m %a"
+date = "%d/%m"
 time = "%I:%M %p"
 
 format = <label>
-;format-background = #DD
 format-foreground = ${{colors.foreground}}
 format-underline = ${{colors.thirdary}}
 
-label = %date% %time%
+label = %date% - %time%
 label-font = 1
 label-foreground = ${{colors.foreground}}
 
@@ -188,17 +187,17 @@ type = internal/network
 interface = enp4s0
 
 interval = 2
-;ping-interval = 3
 
 format-connected = <label-connected>
 format-disconnected = <label-disconnected>
 format-packetloss = <label-connected>
 
-label-connected = %{{F{color2}}}%{{F-}} %downspeed%
+label-connected = %{{F{color2}}}  %{{F-}}
+;label-connected = %{{F{color2}}}%{{F-}} %downspeed%
 label-connected-foreground = ${{colors.foreground}}
 label-connected-underline = ${{colors.thirdary}}
 
-label-disconnected = %{{F#888888}}%{{F-}}
+label-disconnected = %{{F#888888}}  %{{F-}}
 label-disconnected-foreground = ${{colors.foreground}}
 label-disconnected-underline = ${{colors.alert}}
 
@@ -207,13 +206,13 @@ type = internal/network
 interface = wlp2s0
 
 interval = 3
-;ping-interval = 3
 
 format-connected = <label-connected>
 format-disconnected = <label-disconnected>
 format-packetloss = <label-connected>
 
-label-connected = %{{F{color2}}} 直%{{F-}} %downspeed%
+label-connected = %{{F{color2}}} 直 %{{F-}}
+;label-connected = %{{F{color2}}} 直%{{F-}} %downspeed%
 label-connected-foreground = ${{colors.foreground}}
 label-connected-underline = ${{colors.thirdary}}
 
