@@ -5,7 +5,7 @@
 "query:Subscription Box (Japanese):tags # \"japanese\""
 "query:Twitter:tags # \"twitter\" and unread = \"yes\""
 "query:Artists:tags # \"artist\" and title !~ \"RT by\" and age < 2"
-"query:4chan:tags # \"chan\""
+"query:4chan:tags # \"chan\" and age < 3"
 https://g1.globo.com/rss/g1/pe/petrolina-regiao/ "~G1 - Petrolina" news
 http://www.bbc.co.uk/portuguese/index.xml "~BBC" news
 https://feeds.folha.uol.com.br/poder/rss091.xml "~FOLHA - Poder" news
