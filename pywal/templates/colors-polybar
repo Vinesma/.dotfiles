@@ -78,7 +78,7 @@ format-underline = ${{colors.secondary}}
 format-padding = 1
 
 label = %title%
-label-maxlen = 40
+label-maxlen = 36
 
 label-empty = 
 label-empty-foreground = ${{colors.foreground}}

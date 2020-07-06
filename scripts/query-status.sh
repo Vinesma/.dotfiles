@@ -4,10 +4,15 @@
 notify_send_dir="/usr/bin/notify-send"
 pgrep_dir="/usr/bin/pgrep"
 
-current_status=$(mpc)
+# Uncomment these to use the old notification style
+#current_status=$(mpc)
+#title=$(echo "$current_status" | head -n 1)
+#message=$(echo "$current_status" | tail -n +2)
 
-title=$(echo "$current_status" | head -n 1)
-message=$(echo "$current_status" | tail -n +2)
+# Uncomment these to use the new notification style
+current_status=$(mpc current)
+title="Now Playing"
+message="$current_status"
 
 $pgrep_dir steam > /dev/null && $notify_send_dir "$title" "$message"
 
