@@ -1,0 +1,10 @@
+#!/bin/bash
+
+curl_dir="/usr/bin/curl"
+site="wttr.in"
+city="Petrolina"
+format="+%c+%t+%p"
+
+response=$($curl_dir -s "$site"/"$city"?format="$format")
+
+echo "$response" | grep -q "°C" && echo "$response" || echo ""
