@@ -22,6 +22,8 @@ if [[ "$1" == *youtube.com* ]]; then
     esac
 elif [[ "$1" == @(*.jpg|*.jpeg|*.png) ]]; then
     feh -F "$1"
+elif [[ "$1" == @(*.mp4) ]]; then
+    mpv --loop "$1"
 else
     firefox "$1" &
 fi
