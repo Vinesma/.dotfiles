@@ -84,7 +84,8 @@ visualizer_type = wave
 #
 visualizer_look = ●▮
 #
-visualizer_color = blue, cyan, green, yellow, magenta, red
+#visualizer_color = blue, cyan, green, yellow, magenta, red
+visualizer_color = blue, cyan, green
 #
 ## Alternative subset of 256 colors for terminals that support it.
 ##
