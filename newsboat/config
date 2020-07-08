@@ -7,7 +7,7 @@ refresh-on-startup no
 # ARTICLE ITEMS
 max-items 100
 # BROWSER
-browser "$HOME/.dotfiles/newsboat/browser.sh %u"
+browser "$HOME/.dotfiles/scripts/browser-newsboat.sh %u"
 # NOTIFIER
 notify-program /usr/bin/notify-send
 notify-format "NEWSBOAT: %f unread feeds (%n total unread articles)"

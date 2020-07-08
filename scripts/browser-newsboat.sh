@@ -1,4 +1,14 @@
 #!/bin/bash
+#
+# Script meant to be used by newsboat for handling links from youtube, images and other videos.
+# Features:
+# - YOUTUBE: Download, Watch or view thumbnail and duration of videos in the command line.
+# - IMAGES: View images in the command line.
+# - VIDEOS: Other than youtube, open in mpv in a loop. (Mainly, to emulate twitter video functionality)
+# - OTHERS: Open in the browser.
+# Dependencies:
+# - feh, mpv, youtube-dl, firefox
+#
 
 video-info() {
         local video=$(youtube-dl --get-title --get-duration --get-thumbnail $1)
@@ -9,16 +19,15 @@ video-info() {
 }
 
 if [[ "$1" == *youtube.com* ]]; then
-    echo
-    echo "This appears to be a youtube link, what to do?"
+    echo -e "\nThis appears to be a youtube link, what to do?"
     echo -e "1. Watch it\n2. Download it\n3. Open in browser\n4. Show video info\n5. Exit"
     read option
     case $option in
-        1) mpv --fullscreen=no --profile=youtube720p $1;;
-        2) youtube-dl -f 22/18 $1;;
-        3) firefox $1 &;;
-	4) video-info $1;;
-        *) echo;;
+        1) mpv --fullscreen=no --profile=youtube720p $1 ;;
+        2) youtube-dl -f 22/18 $1 ;;
+        3) firefox $1 & ;;
+	4) video-info $1 ;;
+        *) echo ;;
     esac
 elif [[ "$1" == @(*.jpg|*.jpeg|*.png) ]]; then
     feh -F "$1"
