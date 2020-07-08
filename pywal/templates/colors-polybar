@@ -110,7 +110,7 @@ format = <label>
 format-foreground = ${{colors.foreground}}
 format-underline = ${{colors.thirdary}}
 
-label = %date% - %time%
+label = %{{F{color2}}} %{{F-}}%date% %{{F{color2}}} %{{F-}}%time%
 label-font = 1
 label-foreground = ${{colors.foreground}}
 
