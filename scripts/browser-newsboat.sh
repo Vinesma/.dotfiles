@@ -11,11 +11,11 @@
 #
 
 video-info() {
-        local video=$(youtube-dl --get-title --get-duration --get-thumbnail $1)
-        local title=$(echo "$video" | head -n 1)
-        local thumbnail=$(echo "$video" | head -n 2 | tail -n 1)
-        local duration=$(echo "$video" | tail -n 1)
-        feh "$thumbnail" -F --title "$title" --info "echo \"LENGTH: $duration\""
+    local video=$(youtube-dl --get-title --get-duration --get-thumbnail $1)
+    local title=$(echo "$video" | head -n 1)
+    local thumbnail=$(echo "$video" | head -n 2 | tail -n 1)
+    local duration=$(echo "$video" | tail -n 1)
+    feh "$thumbnail" -F --title "$title" --info "echo \"LENGTH: $duration\""
 }
 
 if [[ "$1" == *youtube.com* ]]; then
