@@ -1,10 +1,11 @@
 "query:Unread News:tags # \"news\" and unread = \"yes\""
-"query:Subscription Box (Favorites):tags # \"youtube-favorite\" and unread = \"yes\""
-"query:Subscription Box (Others):tags # \"youtube-others\" and unread = \"yes\""
-"query:Subscription Box (Tech):tags # \"tech\" and age < 60"
-"query:Subscription Box (Japanese):tags # \"japanese\""
-"query:Twitter:tags # \"twitter\" and unread = \"yes\""
-"query:Artists:tags # \"artist\" and title !~ \"RT by\" and age < 2"
+"query:Youtube (Favorites):tags # \"youtube-favorite\" and unread = \"yes\""
+"query:Youtube (Others):tags # \"youtube-others\" and unread = \"yes\""
+"query:Youtube (Tech):tags # \"tech\" and age < 60"
+"query:Youtube (Japanese):tags # \"japanese\""
+"query:Twitter (News):tags # \"twitter-news\" and unread = \"yes\""
+"query:Twitter (People):tags # \"twitter-people\" and unread = \"yes\""
+"query:Twitter (Artists):tags # \"twitter-artist\" and title !~ \"RT by\" and age < 2"
 "query:4chan:tags # \"chan\" and age < 3"
 https://g1.globo.com/rss/g1/pe/petrolina-regiao/ "~G1 - Petrolina" news
 http://www.bbc.co.uk/portuguese/index.xml "~BBC" news
@@ -54,70 +55,114 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCUmLRMERmJrmUtgnbFfknAg "~R
 https://www.youtube.com/feeds/videos.xml?channel_id=UCLuymDHiOySsAQ9Nc-4NoEQ "~Onomappu オノマップ" japanese
 https://www.youtube.com/feeds/videos.xml?channel_id=UCEw0sdrCOjcsjtXGJibItJA "~Easy Peasy Japanesey" japanese
 https://www.youtube.com/feeds/videos.xml?channel_id=UCNepEAWZH0TBu7dkxIbluDw "~Dad, how do I?" youtube-others
-https://nitter.net/AIR_News01/rss "~@A.I.R - Anime News" twitter
-https://nitter.net/fosspost/rss "~Linux & Open Source" twitter
-https://nitter.net/fullstackpython/rss "~@Full Stack Python" twitter
-https://nitter.net/css/rss "~CSS-Tricks" twitter
-https://nitter.net/freeCodeCamp/rss "~@freeCodeCamp" twitter
-https://nitter.net/Anime/rss "~@Anime News Network" twitter
-https://nitter.net/TechRaptr/rss "~@TechRaptor" twitter
-https://nitter.net/factoriogame/rss "~Factorio" twitter
-https://nitter.net/click_burgundy/rss "~@click_burgundy" artist
-https://nitter.net/Kukie_nyan/rss "~@Kukie_nyan" artist
-https://nitter.net/taninao1988/rss "~@taninao1988" artist
-https://nitter.net/Cheon1986/rss "~HxxG" artist
-https://nitter.net/jeonghee1414/rss "~モ誰" artist
-https://nitter.net/SSAMBAtea/rss "~@SSAMBAtea" artist
-https://nitter.net/hews__/rss "~@hews" artist
-https://nitter.net/dowmansayman/rss "~@dowmansayman" artist
-https://nitter.net/tanjiu9/rss "~@tanjiu9" artist
-https://nitter.net/yoshiku449/rss "~@yoshiku449" artist
-https://nitter.net/wishbone777/rss "~@wishbone777" artist
-https://nitter.net/jmw327/rss "~jmw327" artist
-https://nitter.net/ataruman/rss "~ataruman" artist
-https://nitter.net/jokanhiyou/rss "~@jokanhiyou" artist
-https://nitter.net/chihun815/rss "~CHoney" artist
-https://nitter.net/shirahamakamome/rss "~@shirahamakamome" artist
-https://nitter.net/kawanocy/rss "~河CY" artist
-https://nitter.net/meziosaur/rss "~Mezio メジオ" artist
-https://nitter.net/Velahka/rss "~@Velahka" artist
-https://nitter.net/udon0531/rss "~@udon0531" artist
-https://nitter.net/DaveRapoza/rss "~Dave Rapoza" artist
-https://nitter.net/Atdan86/rss "~@ATDAN" artist
-https://nitter.net/tenchan_man/rss "~てん" artist
-https://nitter.net/syumimimimi1234/rss "~@syumimimimi1234" artist
-https://nitter.net/Artgerm/rss "~Stanley Artgerm Lau" artist
-https://nitter.net/wadadot_Lv/rss "~ワダサチコ" artist
-https://nitter.net/wafferscotch/rss "~@wafferscotch" artist
-https://nitter.net/hcnone/rss "~hcnone" artist
-https://nitter.net/y_o_m_y_o_m/rss "~よむ" artist
-https://nitter.net/imigimuru/rss "~いみぎむる" artist
-https://nitter.net/_tatsuyaendo_/rss "~@_tatsuyaendo_" artist
-https://nitter.net/NEBU_KURO/rss "~@NEBU_KURO" artist
-https://nitter.net/kayahachi/rss "~kaya8" artist
-https://nitter.net/Dishwasher1910/rss "~Bach Do" artist
-https://nitter.net/chocojax/rss "~@chocojax" artist
-https://nitter.net/mery__S2_/rss "~mery" artist
-https://nitter.net/yagaminoue/rss "~@yagaminoue" artist
-https://nitter.net/yrfreakyneighbr/rss "~yourfreakyneighbourh" artist
-https://nitter.net/WasabiYam/rss "~@WasabiYam" artist
-https://nitter.net/Miv4t_/rss "~@Miv4t" artist
-https://nitter.net/umaiyo_puyoman/rss "~がおう" artist
-https://nitter.net/Kaejunni/rss "~Kaejunni" artist
-https://nitter.net/pailand/rss "~@pailand" artist
-https://nitter.net/zunbayasi/rss "~@zunbayasi" artist
-https://nitter.net/asatani_tomoyo/rss "~@asatani_tomoyo" artist
-https://nitter.net/SteamyTomatoes/rss "~@SteamyTomatoes" artist
-https://nitter.net/aconbwakame/rss "~@aconbwakame" artist
-https://nitter.net/GrimmelsDaThird/rss "~Grimmels" artist
-https://nitter.net/mayo_moyo/rss "~まよ" artist
-https://nitter.net/lleftt/rss "~左" artist
-https://nitter.net/katuwo___/rss "~カツヲ" artist
-https://nitter.net/cuboon/rss "~@cuboon" artist
-https://nitter.net/gobbbgo/rss "~bbb" artist
-https://nitter.net/kitazzinger/rss "~キタズィンガー" artist
-https://nitter.net/_Satchely/rss "~Satchel" artist
-https://nitter.net/t_ippers/rss "~ippers" artist
-https://nitter.net/Jirachirachi/rss "~@Jirachirachi" artist
-https://nitter.net/cyangmou/rss "~Cyangmou" artist
-https://nitter.net/shin_shiros/rss "~シロス" artist
+https://nitter.net/AIR_News01/rss "~@A.I.R - Anime News" twitter-news
+https://nitter.net/fosspost/rss "~Linux & Open Source" twitter-news
+https://nitter.net/fullstackpython/rss "~@Full Stack Python" twitter-news
+https://nitter.net/css/rss "~CSS-Tricks" twitter-news
+https://nitter.net/freeCodeCamp/rss "~@freeCodeCamp" twitter-news
+https://nitter.net/Anime/rss "~@Anime News Network" twitter-news
+https://nitter.net/TechRaptr/rss "~@TechRaptor" twitter-news
+https://nitter.net/factoriogame/rss "~Factorio" twitter-news
+https://nitter.net/olhardigital/rss "~Olhar Digital" twitter-news
+https://nitter.net/click_burgundy/rss "~@click_burgundy" twitter-artist
+https://nitter.net/Kukie_nyan/rss "~@Kukie_nyan" twitter-artist
+https://nitter.net/taninao1988/rss "~@taninao1988" twitter-artist
+https://nitter.net/Cheon1986/rss "~HxxG" twitter-artist
+https://nitter.net/jeonghee1414/rss "~モ誰" twitter-artist
+https://nitter.net/SSAMBAtea/rss "~@SSAMBAtea" twitter-artist
+https://nitter.net/hews__/rss "~@hews" twitter-artist
+https://nitter.net/dowmansayman/rss "~@dowmansayman" twitter-artist
+https://nitter.net/tanjiu9/rss "~@tanjiu9" twitter-artist
+https://nitter.net/yoshiku449/rss "~@yoshiku449" twitter-artist
+https://nitter.net/wishbone777/rss "~@wishbone777" twitter-artist
+https://nitter.net/jmw327/rss "~jmw327" twitter-artist
+https://nitter.net/ataruman/rss "~ataruman" twitter-artist
+https://nitter.net/jokanhiyou/rss "~@jokanhiyou" twitter-artist
+https://nitter.net/chihun815/rss "~CHoney" twitter-artist
+https://nitter.net/shirahamakamome/rss "~@shirahamakamome" twitter-artist
+https://nitter.net/kawanocy/rss "~河CY" twitter-artist
+https://nitter.net/meziosaur/rss "~Mezio メジオ" twitter-artist
+https://nitter.net/Velahka/rss "~@Velahka" twitter-artist
+https://nitter.net/udon0531/rss "~@udon0531" twitter-artist
+https://nitter.net/DaveRapoza/rss "~Dave Rapoza" twitter-artist
+https://nitter.net/Atdan86/rss "~@ATDAN" twitter-artist
+https://nitter.net/tenchan_man/rss "~てん" twitter-artist
+https://nitter.net/syumimimimi1234/rss "~@syumimimimi1234" twitter-artist
+https://nitter.net/Artgerm/rss "~Stanley Artgerm Lau" twitter-artist
+https://nitter.net/wadadot_Lv/rss "~ワダサチコ" twitter-artist
+https://nitter.net/wafferscotch/rss "~@wafferscotch" twitter-artist
+https://nitter.net/hcnone/rss "~hcnone" twitter-artist
+https://nitter.net/y_o_m_y_o_m/rss "~よむ" twitter-artist
+https://nitter.net/imigimuru/rss "~いみぎむる" twitter-artist
+https://nitter.net/_tatsuyaendo_/rss "~@_tatsuyaendo_" twitter-artist
+https://nitter.net/NEBU_KURO/rss "~@NEBU_KURO" twitter-artist
+https://nitter.net/kayahachi/rss "~kaya8" twitter-artist
+https://nitter.net/Dishwasher1910/rss "~Bach Do" twitter-artist
+https://nitter.net/chocojax/rss "~@chocojax" twitter-artist
+https://nitter.net/mery__S2_/rss "~mery" twitter-artist
+https://nitter.net/yagaminoue/rss "~@yagaminoue" twitter-artist
+https://nitter.net/yrfreakyneighbr/rss "~yourfreakyneighbourh" twitter-artist
+https://nitter.net/WasabiYam/rss "~@WasabiYam" twitter-artist
+https://nitter.net/Miv4t_/rss "~@Miv4t" twitter-artist
+https://nitter.net/umaiyo_puyoman/rss "~がおう" twitter-artist
+https://nitter.net/Kaejunni/rss "~Kaejunni" twitter-artist
+https://nitter.net/pailand/rss "~@pailand" twitter-artist
+https://nitter.net/zunbayasi/rss "~@zunbayasi" twitter-artist
+https://nitter.net/asatani_tomoyo/rss "~@asatani_tomoyo" twitter-artist
+https://nitter.net/SteamyTomatoes/rss "~@SteamyTomatoes" twitter-artist
+https://nitter.net/aconbwakame/rss "~@aconbwakame" twitter-artist
+https://nitter.net/GrimmelsDaThird/rss "~Grimmels" twitter-artist
+https://nitter.net/mayo_moyo/rss "~まよ" twitter-artist
+https://nitter.net/lleftt/rss "~左" twitter-artist
+https://nitter.net/katuwo___/rss "~カツヲ" twitter-artist
+https://nitter.net/cuboon/rss "~@cuboon" twitter-artist
+https://nitter.net/gobbbgo/rss "~bbb" twitter-artist
+https://nitter.net/kitazzinger/rss "~キタズィンガー" twitter-artist
+https://nitter.net/_Satchely/rss "~Satchel" twitter-artist
+https://nitter.net/t_ippers/rss "~ippers" twitter-artist
+https://nitter.net/Jirachirachi/rss "~@Jirachirachi" twitter-artist
+https://nitter.net/cyangmou/rss "~Cyangmou" twitter-artist
+https://nitter.net/shin_shiros/rss "~シロス" twitter-artist
+https://nitter.net/TynanSylvester/rss "~Tynan Sylvester" twitter-people
+https://nitter.net/LAGTVNovaWar/rss "~Adam (Novawar)" twitter-people
+https://nitter.net/ConcernedApe/rss "~ConcernedApe" twitter-people
+https://nitter.net/akasaka_aka/rss "~赤坂アカ" twitter-people
+https://nitter.net/ObsidianWasp/rss "~ObsidianWasp" twitter-people
+https://nitter.net/PAWORKS_eng/rss "~P.A.WORKS" twitter-people
+https://nitter.net/gamemakerstk/rss "~Game Maker's Toolkit" twitter-people
+https://nitter.net/NyaaV2/rss "~Nyaa Torrents" twitter-people
+https://nitter.net/CDisillusion/rss "~Captain Disillusion" twitter-people
+https://nitter.net/garupan/rss "~Girls Und Panzer" twitter-people
+https://nitter.net/kevinpenkin/rss "~Kevin Penkin" twitter-people
+https://nitter.net/composerandreas/rss "~Andreas Waldetoft" twitter-people
+https://nitter.net/CanipaShow/rss "~Canipa Effect" twitter-people
+https://nitter.net/Demolition_d/rss "~Demolition D" twitter-people
+https://nitter.net/Yuyucow/rss "~kViN" twitter-people
+https://nitter.net/jasonschreier/rss "~Jason Schreier" twitter-people
+https://nitter.net/garoadmusic/rss "~Garoad" twitter-people
+https://nitter.net/PlebeusOciosos/rss "~Plebeus Ociosos" twitter-people
+https://nitter.net/DanFloydPlus/rss "~Daniel Floyd" twitter-people
+https://nitter.net/SukebanGames/rss "~Sukeban Games" twitter-people
+https://nitter.net/NetHistorian/rss "~Internet Historian" twitter-people
+https://nitter.net/FredInTheKnud/rss "~FredInTheKnud" twitter-people
+https://nitter.net/traversymedia/rss "~traversymedia" twitter-people
+https://nitter.net/tsuki_akari/rss "~Tsutomu Mizushima" twitter-people
+https://nitter.net/SsethTzeentach/rss "~SsethTzeentach" twitter-people
+https://nitter.net/CG_Orange_eng/rss "~Orange Animation Studio" twitter-people
+https://nitter.net/summoningsalt/rss "~Summoningsalt" twitter-people
+https://nitter.net/MrMarshall/rss "~Marshall McGee" twitter-people
+https://nitter.net/haveibeenpwned/rss "~haveibeenpwned" twitter-people
+https://nitter.net/MangaDex/rss "~MangaDex" twitter-people
+https://nitter.net/telewaifus/rss "~telewaifus" twitter-people
+https://nitter.net/lulu_suzuhara/rss "~lulu_suzuhara" twitter-people
+https://nitter.net/ars_almal/rss "~ars_almal" twitter-people
+https://nitter.net/inugamikorone/rss "~inugamikorone" twitter-people
+https://nitter.net/LygerT/rss "~lyger" twitter-people
+https://nitter.net/Artia_Hololive/rss "~Artia_Hololive" twitter-people
+https://nitter.net/suisei_hosimati/rss "~suisei_hosimati" twitter-people
+https://nitter.net/oatila/rss "~Atila Iamarino" twitter-people
+https://nitter.net/houshoumarine/rss "~houshoumarine" twitter-people
+https://nitter.net/hakuhakku0/rss "~hakuhakku0" twitter-people
+https://nitter.net/tokoyamitowa/rss "~tokoyamitowa" twitter-people
+https://nitter.net/thomasjrandall/rss "~randall game" twitter-people
+https://nitter.net/hololive_En/rss "~Hololive" twitter-people
