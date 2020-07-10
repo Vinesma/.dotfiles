@@ -170,7 +170,7 @@ alias sd='shutdown now'
 alias ip='ip -br -c'
 alias update-aliases='. ~/.bashrc'
 alias update-sync='sudo pacman -Sy'
-alias update-packages='sudo pacman -Syu'
+alias update-packages="sudo pacman -Syu && notify-send 'PACMAN' 'Update complete!' || notify-send 'PACMAN' 'Exited with non-zero error code!'"
 
 # Functions
 # set wallpaper using feh instead of pywal itself
