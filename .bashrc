@@ -146,17 +146,31 @@ export EDITOR="/usr/bin/nano"
 export PATH="$PATH:$HOME/Documents/flutter/bin"
 
 # Personal aliases
+# mpv
 alias mpvd='mpv --profile=youtube720p'
 alias mpvl='mpv --profile=youtube360p'
 alias mpvw='mpv --profile=window'
 alias mpva='mpv --profile=audio-only'
 alias mpvsw='mpv --profile=window-stream'
+#youtube-dl
 alias youtube-dl-audio='youtube-dl -x --audio-format mp3'
+# git
+alias gs='git status'
+alias ga='git add .'
+alias gc='git commit'
+alias gca='git commit -a'
+alias gcam='git commit --amend'
+alias gl='git log'
+alias gch='git checkout'
+alias gps='git push'
+alias gpl='git pull'
+alias git-aliases="grep 'alias g' ~/.bashrc | less"
+#
 alias sd='shutdown now'
 alias ip='ip -br -c'
-alias music='cmus-remote -l'
-alias music-clear='music -c'
-alias updateAliases='. ~/.bashrc'
+alias update-aliases='. ~/.bashrc'
+alias update-sync='sudo pacman -Sy'
+alias update-packages='sudo pacman -Syu'
 
 # Functions
 # set wallpaper using feh instead of pywal itself
