@@ -46,7 +46,7 @@ border-color = ${{colors.primary}}
 padding-left = 0
 padding-right = 0
 
-module-margin-left = 1
+module-margin-left = 0
 module-margin-right = 1
 
 font-0 = Source Code Pro:style=Bold:size=9;1
@@ -55,7 +55,7 @@ font-2 = IPAPGothic,IPA Pゴシック:style=Regular:size=10;0
 font-3 = Symbols Nerd Font:style=2048-em:size=11;0
 font-4 = Noto Color Emoji:style=Regular:scale=10;0
 
-modules-left = workspaces xwindow
+modules-left = workspaces window-count xwindow
 modules-center = mpd
 modules-right = wireless-network wired-network updates-pacman battery rss weather date
 
@@ -181,6 +181,17 @@ format-underline = ${{colors.thirdary}}
 label = %{{F{color2}}} %{{F-}} #%output%
 
 click-right = kitty sudo pacman -Syu &
+
+[module/window-count]
+type = custom/script
+exec = ~/.dotfiles/scripts/count-windows.sh
+interval = 2
+
+format = <label>
+format-underline = ${{colors.secondary}}
+format-margin = 0
+
+label = %{{F{color6}}}%{{F-}} %output%
 
 [module/wired-network]
 type = internal/network
