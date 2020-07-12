@@ -116,6 +116,8 @@ keys = [
     Key([mod], "F12",
         lazy.spawn(path.join(homepath, ".dotfiles", "scripts", "queue-epic.sh")),
     ),
+    # mpv (video player)
+    Key([mod, "mod1"], "p", lazy.spawn(path.join(homepath, ".dotfiles", "scripts", "clipboard-mpv.sh"))),
 ]
 
 groups = [
