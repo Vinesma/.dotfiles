@@ -17,8 +17,10 @@ send-error() {
 }
 
 start-playback() {
+    timestamp="$(echo -e '0%\n25%\n50%\n75%\n90%' | $rofi_dir -dmenu -p 'Timestamp' -lines 5)"
+
     notify-send -t 1800 "MPV" "Starting playback..."
-    "$mpv_dir" --ytdl-format="$1" "$link" &
+    "$mpv_dir" --ytdl-format="$1" --start="$timestamp" "$link" &
 }
 
 parse-video-info() {
@@ -26,7 +28,7 @@ parse-video-info() {
     awk '{print $1 "  " $3}' | \
     sed '1,3d' | \
     sort | \
-    "$rofi_dir" -dmenu | \
+    "$rofi_dir" -dmenu -no-custom -p 'Video format' -lines 15 | \
     cut -d' ' -f 1)
 
     start-playback "$format"

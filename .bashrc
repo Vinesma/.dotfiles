@@ -156,15 +156,17 @@ alias mpvsw='mpv --profile=window-stream'
 alias youtube-dl-audio='youtube-dl -x --audio-format mp3'
 # git
 alias gs='git status'
-alias ga='git add .'
+alias ga='git add'
 alias gc='git commit'
+alias gd='git diff'
+alias gaa='git add .'
 alias gca='git commit -a'
 alias gcam='git commit --amend'
 alias gl='git log'
 alias gch='git checkout'
 alias gps='git push'
 alias gpl='git pull'
-alias git-aliases="grep 'alias g' ~/.bashrc | less"
+alias git-aliases="grep 'alias g' ~/.bashrc | sed '1d'"
 #
 alias sd='shutdown now'
 alias ip='ip -br -c'
