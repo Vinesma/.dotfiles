@@ -12,14 +12,22 @@ city="Petrolina"
 format="+%t+%p+%C"
 
 response=$($curl_dir -s "$site"/"$city"?format="$format")
+temperature=$(echo "$response"   | cut -d' ' -f -3 | cut -d' ' -f 2)
+precipitation=$(echo "$response" | cut -d' ' -f -3 | cut -d' ' -f 3)
+
+# 0.0mm precipitation is not shown
+print_weather() {
+    [[ "$precipitation" == "0.0mm" ]] \
+        && echo "$1 $temperature" \
+        || echo "$1 $temperature $precipitation"
+}
 
 assign_icon() {
-    local weather_info=$(echo "$response" | cut -d' ' -f -3)
     case "$response" in
-        *Partly\ cloudy*|*Overcast*) echo "杖$weather_info" ;;
-        *Light\ rain*) echo "殺$weather_info" ;;
-        *Cloudy*) echo "摒$weather_info" ;;
-        *Clear*|*Sunny*) echo "滛$weather_info" ;;
+        *Partly\ cloudy*|*Overcast*) print_weather "杖" ;;
+        *Light\ rain*) print_weather "殺" ;;
+        *Cloudy*) print_weather "摒" ;;
+        *Clear*|*Sunny*) print_weather "滛" ;;
         *) echo "$response" ;;
     esac
 }
