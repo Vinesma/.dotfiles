@@ -25,9 +25,10 @@ start-playback() {
 
 parse-video-info() {
     format=$(echo "$1" | \
-    awk '{print $1 "  " $3}' | \
-    sed '1,3d' | \
-    sort | \
+    awk '{print $1 "  " $3 " - " $4}' | \
+    sed '/\[.*\]/d' | \
+    sed '1d' | \
+    sort -n | \
     "$rofi_dir" -dmenu -no-custom -p 'Video format' -lines 15 | \
     cut -d' ' -f 1)
 
