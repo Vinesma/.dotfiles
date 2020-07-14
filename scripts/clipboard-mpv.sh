@@ -23,16 +23,23 @@ start-playback() {
     "$mpv_dir" --ytdl-format="$1" --start="$timestamp" "$link" &
 }
 
-parse-video-info() {
-    format=$(echo "$1" | \
-    awk '{print $1 "  " $3 " - " $4}' | \
-    sed '/\[.*\]/d' | \
-    sed '1d' | \
-    sort -n | \
+show-menu() {
+    format=$(echo -e "$1\nExit" | \
     "$rofi_dir" -dmenu -no-custom -p 'Video format' -lines 15 | \
     cut -d' ' -f 1)
 
-    start-playback "$format"
+    [[ "$format" != "Exit" ]] && start-playback "$format" || \
+        send-error "Canceled by user" && exit 1
+}
+
+parse-video-info() {
+    choice=$(echo "$1" | \
+    awk '{print $1 "  " $3 " - " $4}' | \
+    sed '/\[.*\]/d' | \
+    sed '1d' | \
+    sort -n)
+
+    show-menu "$choice"
 }
 
 get-video-info() {
