@@ -55,9 +55,9 @@ font-2 = IPAPGothic,IPA Pゴシック:style=Regular:size=10;0
 font-3 = Symbols Nerd Font:style=2048-em:size=11;0
 font-4 = Noto Color Emoji:style=Regular:scale=10;0
 
-modules-left = workspaces window-count xwindow
+modules-left = workspaces xwindow
 modules-center = mpd
-modules-right = wireless-network wired-network updates-pacman battery rss weather date
+modules-right = wireless-network wired-network battery updates-pacman rss weather date
 
 tray-position = right
 tray-padding = 1
@@ -67,52 +67,6 @@ tray-scale = 1.0
 
 cursor-click = pointer
 cursor-scroll = ns-resize
-
-[module/xwindow]
-type = internal/xwindow
-
-format = <label>
-;format-background = ${{colors.secondary}}
-format-foreground = ${{colors.foreground}}
-format-underline = ${{colors.secondary}}
-format-padding = 1
-
-label = %title%
-label-maxlen = 36
-
-label-empty = 
-label-empty-foreground = ${{colors.foreground}}
-
-[module/mpd]
-type = internal/mpd
-format-online = <label-time> <toggle> <label-song>
-format-paused = <toggle> <label-song>
-format-stopped =
-format-online-foreground = ${{colors.primary}}
-
-icon-play = 
-icon-pause = 
-
-label-song = %title% - %artist%
-label-song-maxlen = 45
-label-song-ellipsis = true
-
-label-time = %elapsed% / %total%
-
-[module/date]
-type = internal/date
-interval = 1
-
-date = "%d/%m"
-time = "%I:%M %p"
-
-format = <label>
-format-foreground = ${{colors.foreground}}
-format-underline = ${{colors.thirdary}}
-
-label = %{{F{color2}}} %{{F-}}%date% %{{F{color2}}} %{{F-}}%time%
-label-font = 1
-label-foreground = ${{colors.foreground}}
 
 [module/workspaces]
 type = internal/xworkspaces
@@ -148,50 +102,36 @@ label-empty = " %icon% "
 label-empty-font = 2
 label-empty-foreground = #FFFFFF
 
-[module/weather]
-type = custom/script
-exec = ~/.dotfiles/scripts/curl-weather.sh
-interval = 1800
+[module/xwindow]
+type = internal/xwindow
 
 format = <label>
-format-underline = ${{colors.thirdary}}
-
-label = %output%
-
-[module/rss]
-type = custom/script
-exec = ~/.dotfiles/scripts/newsboat-bar.sh
-interval = 6
-
-format = <label>
-format-underline = ${{colors.thirdary}}
-
-label = %{{F{color2}}}%{{F-}} #%output%
-
-click-right = kitty newsboat -q &
-
-[module/updates-pacman]
-type = custom/script
-exec = ~/.dotfiles/scripts/pacman-updates.sh
-interval = 1800
-
-format = <label>
-format-underline = ${{colors.thirdary}}
-
-label = %{{F{color2}}} %{{F-}} #%output%
-
-click-right = kitty sudo pacman -Syu &
-
-[module/window-count]
-type = custom/script
-exec = ~/.dotfiles/scripts/count-windows.sh
-interval = 2
-
-format = <label>
+;format-background = ${{colors.secondary}}
+format-foreground = ${{colors.foreground}}
 format-underline = ${{colors.secondary}}
-format-margin = 0
+format-padding = 1
 
-label = %{{F{color6}}}%{{F-}} %output%
+label = %title%
+label-maxlen = 36
+
+label-empty = 
+label-empty-foreground = ${{colors.foreground}}
+
+[module/mpd]
+type = internal/mpd
+format-online = <label-time> <toggle> <label-song>
+format-paused = <toggle> <label-song>
+format-stopped =
+format-online-foreground = ${{colors.primary}}
+
+icon-play = 
+icon-pause = 
+
+label-song = %title% - %artist%
+label-song-maxlen = 45
+label-song-ellipsis = true
+
+label-time = %elapsed% / %total%
 
 [module/wired-network]
 type = internal/network
@@ -255,6 +195,66 @@ ramp-capacity-4 = 
 format-full = <label-full>
 format-full-underline = ${{colors.thirdary}}
 label-full = %{{F{color2}}}%{{F-}} %percentage%%
+
+[module/updates-pacman]
+type = custom/script
+exec = ~/.dotfiles/scripts/pacman-updates.sh
+interval = 1800
+
+format = <label>
+format-underline = ${{colors.thirdary}}
+
+label = %{{F{color2}}} %{{F-}} #%output%
+
+click-right = kitty sudo pacman -Syu &
+
+[module/rss]
+type = custom/script
+exec = ~/.dotfiles/scripts/newsboat-bar.sh
+interval = 6
+
+format = <label>
+format-underline = ${{colors.thirdary}}
+
+label = %{{F{color2}}}%{{F-}} #%output%
+
+click-right = kitty newsboat -q &
+
+[module/weather]
+type = custom/script
+exec = ~/.dotfiles/scripts/curl-weather.sh
+interval = 1800
+
+format = <label>
+format-underline = ${{colors.thirdary}}
+
+label = %output%
+
+[module/window-count]
+type = custom/script
+exec = ~/.dotfiles/scripts/count-windows.sh
+interval = 2
+
+format = <label>
+format-underline = ${{colors.secondary}}
+format-margin = 0
+
+label = %{{F{color6}}}%{{F-}} %output%
+
+[module/date]
+type = internal/date
+interval = 1
+
+date = "%d/%m"
+time = "%I:%M %p"
+
+format = <label>
+format-foreground = ${{colors.foreground}}
+format-underline = ${{colors.thirdary}}
+
+label = %{{F{color2}}} %{{F-}}%date% %{{F{color2}}} %{{F-}}%time%
+label-font = 1
+label-foreground = ${{colors.foreground}}
 
 [settings]
 screenchange-reload = true
