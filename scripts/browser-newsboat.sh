@@ -7,26 +7,29 @@
 # - VIDEOS: Other than youtube, open in mpv in a loop. (Mainly, to emulate twitter video functionality)
 # - OTHERS: Open in the browser.
 # Dependencies:
-# - feh, mpv, youtube-dl, firefox
+# - feh, mpv, youtube-dl, firefox, rofi, clipboard-mpv.sh
 #
 
+clipboard_mpv_dir="$HOME/.dotfiles/scripts/clipboard-mpv.sh"
+youtubedl_dir="/usr/bin/youtube-dl"
+
 video-info() {
-    local video=$(youtube-dl --get-title --get-duration --get-thumbnail $1)
+    local video=$("$youtubedl_dir" --get-title --get-duration --get-thumbnail "$1")
     local title=$(echo "$video" | head -n 1)
     local thumbnail=$(echo "$video" | head -n 2 | tail -n 1)
     local duration=$(echo "$video" | tail -n 1)
+
     feh "$thumbnail" -F --title "$title" --info "echo \"LENGTH: $duration\""
 }
 
 if [[ "$1" == *youtube.com* ]]; then
-    echo -e "\nThis appears to be a youtube link, what to do?"
-    echo -e "1. Watch it\n2. Download it\n3. Open in browser\n4. Show video info\n5. Exit"
-    read option
+    option=$(echo -e "Watch\nDownload\nOpen in browser\nShow video info\nExit" | \
+        rofi -dmenu -no-custom -p 'option' -format 'd' -mesg 'This is a youtube link, what to do?')
     case $option in
-        1) mpv --fullscreen=no --profile=youtube720p $1 ;;
-        2) youtube-dl -f 22/18 $1 ;;
-        3) firefox $1 & ;;
-	4) video-info $1 ;;
+        1) "$clipboard_mpv_dir" "$1" ;;
+        2) "$youtubedl_dir" -f 22/18 "$1" ;;
+        3) firefox "$1" & ;;
+	4) video-info "$1" ;;
         *) echo ;;
     esac
 elif [[ "$1" == @(*.jpg|*.jpeg|*.png) ]]; then
