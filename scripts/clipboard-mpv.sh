@@ -44,7 +44,7 @@ parse-video-info() {
 
 get-video-info() {
     notify-send -t 1800 "MPV" "[youtube-dl] Loading video information..."
-    video_info="$($youtubedl_dir -F $link)"
+    video_info="$($youtubedl_dir -F --no-playlist $link)"
 
     [[ $? -eq 0 ]] && parse-video-info "$video_info" || \
         send-error '[youtube-dl] Error while fetching video info' && exit 1
