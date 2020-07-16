@@ -6,7 +6,6 @@
 # Dependencies:
 # mpv, xclip, youtube-dl, rofi
 
-youtubedl_dir="/usr/bin/youtube-dl"
 notify_time="2000"
 
 icon_error="/usr/share/icons/Papirus-Dark/32x32/emblems/emblem-error.svg"
@@ -50,7 +49,7 @@ parse-video-info() {
 
 get-video-info() {
     notify-send -i "$icon_youtube_dl" -t "$notify_time" "MPV" "[youtube-dl] Loading video information..."
-    video_info="$($youtubedl_dir -F --no-playlist $link)"
+    video_info="$(youtube-dl -F --no-playlist $link)"
 
     [[ $? -eq 0 ]] && parse-video-info "$video_info" || \
         send-error '[youtube-dl] Error while fetching video info' && exit 1

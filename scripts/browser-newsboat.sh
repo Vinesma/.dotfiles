@@ -11,23 +11,22 @@
 #
 
 clipboard_mpv_dir="$HOME/.dotfiles/scripts/clipboard-mpv.sh"
-youtubedl_dir="/usr/bin/youtube-dl"
 
 video-info() {
-    local video=$("$youtubedl_dir" --get-title --get-duration --get-thumbnail "$1")
+    local video=$(youtube-dl --get-title --get-duration --get-thumbnail "$1")
     local title=$(echo "$video" | head -n 1)
-    local thumbnail=$(echo "$video" | head -n 2 | tail -n 1)
+    local thumbnail=$(echo "$video" | sed -e '1d' -e '3d')
     local duration=$(echo "$video" | tail -n 1)
 
     feh "$thumbnail" -F --title "$title" --info "echo \"LENGTH: $duration\""
 }
 
 if [[ "$1" == *youtube.com* ]]; then
-    option=$(echo -e "Watch\nDownload\nOpen in browser\nShow video info\nExit" | \
+    option=$(echo -e "1. Watch\n2. Download\n3. Open in browser\n4. Show video info\n5. Exit" | \
         rofi -dmenu -no-custom -p 'option' -format 'd' -mesg 'This is a youtube link, what to do?')
     case $option in
         1) "$clipboard_mpv_dir" "$1" ;;
-        2) "$youtubedl_dir" -f 22/18 "$1" ;;
+        2) youtube-dl -f 22/18 "$1" ;;
         3) firefox "$1" & ;;
 	4) video-info "$1" ;;
         *) echo ;;
