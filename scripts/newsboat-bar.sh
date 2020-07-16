@@ -1,7 +1,4 @@
 #!/bin/sh
-
-newsboat_path="/usr/bin/newsboat"
-
 # This script can be used to reload newsboat but that means the bar can't be updated as often
 # Just comment out the next 3 lines if you don't want to reload
 

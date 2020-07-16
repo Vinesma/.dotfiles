@@ -13,10 +13,15 @@
 clipboard_mpv_dir="$HOME/.dotfiles/scripts/clipboard-mpv.sh"
 
 video-info() {
-    local video=$(youtube-dl --get-title --get-duration --get-thumbnail "$1")
-    local title=$(echo "$video" | head -n 1)
-    local thumbnail=$(echo "$video" | sed -e '1d' -e '3d')
-    local duration=$(echo "$video" | tail -n 1)
+    local video
+    local title
+    local thumbnail
+    local duration
+
+    video=$(youtube-dl --get-title --get-duration --get-thumbnail "$1")
+    title=$(echo "$video" | head -n 1)
+    thumbnail=$(echo "$video" | sed -e '1d' -e '3d')
+    duration=$(echo "$video" | tail -n 1)
 
     feh "$thumbnail" -F --title "$title" --info "echo \"LENGTH: $duration\""
 }
