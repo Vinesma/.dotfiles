@@ -22,13 +22,19 @@ send-error() {
 }
 
 start-playback() {
+    local timestamp
+
     timestamp="$(echo -e '0%\n25%\n50%\n75%\n90%' | rofi -dmenu -p 'Timestamp' -lines 5)"
 
     notify-send -i "$icon_mpv" -t "$notify_time" "MPV" "Starting playback..."
-    mpv --ytdl-format="$1" --start="$timestamp" "$link"
+    if ! mpv --ytdl-format="$1" --start="$timestamp" "$link"; then
+        send-error "Error during playback"
+    fi
 }
 
 show-menu() {
+    local format
+
     format=$(echo -e "$1\nExit" | \
     rofi -dmenu -no-custom -p 'Video format' -lines 15 | \
     cut -d' ' -f 1)
@@ -38,6 +44,8 @@ show-menu() {
 }
 
 parse-video-info() {
+    local choice
+
     choice=$(echo "$1" | \
     awk '{print $1 "  " $3 " - " $4}' | \
     sed '/\[.*\]/d' | \
@@ -48,11 +56,15 @@ parse-video-info() {
 }
 
 get-video-info() {
-    notify-send -i "$icon_youtube_dl" -t "$notify_time" "MPV" "[youtube-dl] Loading video information..."
-    video_info="$(youtube-dl -F --no-playlist "$link")"
+    local video_info
 
-    [[ $? -eq 0 ]] && parse-video-info "$video_info" || \
+    notify-send -i "$icon_youtube_dl" -t "$notify_time" "MPV" "[youtube-dl] Loading video information..."
+
+    if video_info="$(youtube-dl -F --no-playlist "$link")"; then
+        parse-video-info "$video_info"
+    else
         send-error '[youtube-dl] Error while fetching video info' && exit 1
+    fi
 }
 
 case "$link" in
