@@ -87,6 +87,8 @@ keys = [
     Key([mod, "mod1"], "b", lazy.spawn("firefox")),
     Key([mod, "mod1"], "n", lazy.spawn("kitty newsboat -q")),
     Key([mod, "mod1"], "m", lazy.spawn("kitty -o background_opacity=0.7 -T \"MPD\" ncmpcpp -q")),
+    # take screenshot (emulates usual prntscrn functionality)
+    Key([mod], "Print", lazy.spawn(path.join(homepath, ".dotfiles", "scripts", "take-screenshot.sh"))),
     # mpc (mpd controller)
     Key([], "Pause", lazy.spawn("mpc toggle")),
     Key([mod], "Page_Up",
