@@ -8,7 +8,7 @@
 
 notify_time="2000"
 
-icon_error="/usr/share/icons/Papirus-Dark/32x32/emblems/emblem-error.svg"
+icon_error="/usr/share/icons/Papirus-Dark/32x32/status/dialog-error.svg"
 icon_youtube_dl="/usr/share/icons/Papirus-Dark/32x32/apps/youtube-dl.svg"
 icon_mpv="/usr/share/icons/Papirus-Dark/32x32/apps/mpv.svg"
 

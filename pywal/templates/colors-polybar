@@ -211,7 +211,7 @@ click-right = kitty sudo pacman -Syu &
 [module/rss]
 type = custom/script
 exec = ~/.dotfiles/scripts/newsboat-bar.sh
-interval = 6
+interval = 9
 
 format = <label>
 format-underline = ${{colors.thirdary}}

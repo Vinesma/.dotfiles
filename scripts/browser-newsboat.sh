@@ -27,7 +27,7 @@ video-info() {
 }
 
 if [[ "$1" == *youtube.com* ]]; then
-    option=$(echo -e "1. Watch\n2. Download\n3. Open in browser\n4. Show video info\n5. Exit" | \
+    option=$(echo -e "1  Watch\n2  Download\n3  Open in browser\n4  Show video info\n5  Exit" | \
         rofi -dmenu -no-custom -p 'option' -format 'd' -mesg 'This is a youtube link, what to do?')
     case $option in
         1) "$clipboard_mpv_dir" "$1" ;;
