@@ -204,7 +204,7 @@ interval = 1800
 format = <label>
 format-underline = ${{colors.thirdary}}
 
-label = %{{F{color2}}} %{{F-}} #%output%
+label = %{{F{color2}}} %{{F-}}#%output%
 
 click-right = kitty sudo pacman -Syu &
 
