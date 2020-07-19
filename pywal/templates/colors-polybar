@@ -204,9 +204,7 @@ interval = 1800
 format = <label>
 format-underline = ${{colors.thirdary}}
 
-label = %{{F{color2}}} %{{F-}}#%output%
-
-click-right = kitty sudo pacman -Syu &
+label = %{{F{color2}}}%{{F-}} #%output%
 
 [module/rss]
 type = custom/script
