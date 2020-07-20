@@ -57,7 +57,7 @@ font-4 = Noto Color Emoji:style=Regular:scale=10;0
 
 modules-left = workspaces xwindow
 modules-center = mpd
-modules-right = wireless-network wired-network battery updates-pacman rss weather date
+modules-right = wireless-network wired-network battery updates-pacman rss weather date redshift sep
 
 tray-position = right
 tray-padding = 1
@@ -253,6 +253,25 @@ format-underline = ${{colors.thirdary}}
 label = %{{F{color2}}} %{{F-}}%date% %{{F{color2}}} %{{F-}}%time%
 label-font = 1
 label-foreground = ${{colors.foreground}}
+
+[module/redshift]
+type = custom/script
+exec = ~/.dotfiles/scripts/tempsetter-check.sh
+interval = 10
+
+format = <label>
+format-underline = ${{colors.thirdary}}
+format-margin = 0
+
+label = %output%
+
+[module/sep]
+type = custom/text
+
+content = |
+content-background = ${{colors.background}}
+content-foreground = ${{colors.background}}
+content-padding = 0
 
 [settings]
 screenchange-reload = true
