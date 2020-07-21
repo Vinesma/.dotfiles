@@ -6,5 +6,5 @@
 if pgrep -u "$UID" redshift >/dev/null; then
     echo "ﯦ"
 else
-    echo "ﯧ"
+    echo ""
 fi
