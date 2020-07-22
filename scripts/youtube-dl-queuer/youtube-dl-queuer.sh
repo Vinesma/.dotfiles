@@ -20,7 +20,7 @@ video_format="22/18"
 # If no, use the clipboard.
 [[ "$#" -gt 0 ]] && link="$1" || link="$(xclip -o)"
 
-# Check no of items in queue
+# Check no. of items in queue
 if [[ -e "$files_folder/queue" ]]; then
     queue_count=$(wc -l "$files_folder/queue" | cut -d' ' -f 1)
 else
@@ -33,22 +33,25 @@ send-error() {
 
 clear-queue() {
     if [[ -e "$files_folder/queue" ]]; then
-        rm -f "$files_folder/queue"
-        notify-send -i "$icon_youtube_dl_queuer" "[youtube-dl-queuer]" "Queue cleared!"
+        rm -f "$files_folder/queue" && \
+        notify-send -i "$icon_youtube_dl_queuer" -t "$notify_time" "[youtube-dl-queuer]" "Queue cleared!"
     else
         send-error "There's no queue to clear..."
     fi
 }
 
 start-download() {
+    local output
     if [[ -e "$files_folder/queue" ]]; then
-        notify-send -i "$icon_youtube_dl" "[youtube-dl]" "Starting download..."
+        notify-send -i "$icon_youtube_dl" -t "$notify_time" "[youtube-dl]" "Starting download..."
 
-        if youtube-dl -f "$video_format" --no-playlist -a "$files_folder/queue"; then
-            notify-send -i "$icon_youtube_dl" "[youtube-dl]" "All items successfully downloaded!"
+        if output=$(youtube-dl -f "$video_format" --no-playlist -a "$files_folder/queue"); then
+            notify-send -i "$icon_youtube_dl" -t "$notify_time" "[youtube-dl]" "All items successfully downloaded!"
             clear-queue
+            echo "$output" > "$files_folder/output"
         else
-            send-error "An error ocurred while downloading one or more items... the queue was preserved."
+            echo "$output" > "$files_folder/output"
+            send-error "An error ocurred while downloading one or more items... the queue was preserved. Output saved to file."
         fi
     else
         send-error "No queued items! Aborting download..."
@@ -65,7 +68,7 @@ show-queue() {
 
 add-to-queue() {
     echo "$link" >> "$files_folder/queue"
-    notify-send -i "$icon_youtube_dl_queuer" "[youtube-dl-queuer]" "Video added to download queue!"
+    notify-send -i "$icon_youtube_dl_queuer" -t "$notify_time" "[youtube-dl-queuer]" "Video added to download queue!"
 }
 
 show-menu() {
