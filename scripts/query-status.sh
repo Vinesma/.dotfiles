@@ -18,6 +18,3 @@ title="Now Playing"
 message="$current_status"
 
 $pgrep_dir steam > /dev/null && $notify_send_dir -i "$icon" "$title" "$message"
-
-
-
