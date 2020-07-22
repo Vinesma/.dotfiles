@@ -20,10 +20,10 @@ output_string="$home_path/Sync/%(title)s.%(ext)s"
 
 date=$("$cat_path" lastDate)
 
-if ! "$youtube_dl_path" --download-archive archive.txt \
-        -x --audio-format "$audio_format" \
-        --playlist-start "$start_at" --dateafter "$date" \
-        -o "$output_string" "$playlist";
+if "$youtube_dl_path" --download-archive archive.txt \
+    -x --audio-format "$audio_format" \
+    --playlist-start "$start_at" --dateafter "$date" \
+    -o "$output_string" "$playlist";
     then
         "$notify_send_path" -i "$icon_info" "CRON" "[download-playlist] Playlist(s) have been downloaded"
     else
