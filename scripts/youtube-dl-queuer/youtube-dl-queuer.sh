@@ -13,12 +13,17 @@ icon_error="/usr/share/icons/Papirus/32x32/status/dialog-error.svg"
 icon_youtube_dl="/usr/share/icons/Papirus/32x32/apps/youtube-dl.svg"
 icon_youtube_dl_queuer="/usr/share/icons/Papirus/32x32/status/dialog-information.svg"
 
-video_format="22/18"
-
 # Check if script is passed and argument or not.
 # If yes, use the argument
 # If no, use the clipboard.
 [[ "$#" -gt 0 ]] && link="$1" || link="$(xclip -o)"
+
+# Check if user has a defined format
+if [[ -e "$files_folder/format" ]]; then
+    video_format=$(cat "$files_folder/format")
+else
+    video_format="22/18"
+fi
 
 # Check no. of items in queue
 if [[ -e "$files_folder/queue" ]]; then
@@ -71,15 +76,29 @@ add-to-queue() {
     notify-send -i "$icon_youtube_dl_queuer" -t "$notify_time" "[youtube-dl-queuer]" "Video added to download queue!"
 }
 
+change-format() {
+    local option
+    option=$(echo -e "22/18\n22\n18\nCancel" | \
+    rofi -dmenu -p 'Format' -lines 4 -mesg 'Type new format (default=22/18)')
+
+    case "$option" in
+        "Cancel") exit ;;
+        *) echo "$option" > "$files_folder/format" && \
+           notify-send -i "$icon_youtube_dl_queuer" -t "$notify_time" "[youtube-dl-queuer]" "Format changed!" ;;
+    esac
+}
+
 show-menu() {
-    option=$(echo -e "1  Queue video\n2  Start downloads\n3  Show queue\n4 裸 Clear queue\n5  Exit" | \
-    rofi -dmenu -no-custom -p 'Option' -lines 5 -format 'd' -mesg "Current queue has $queue_count item(s).")
+    local option
+    option=$(echo -e "1  Queue video\n2  Start downloads\n3  Show queue\n4 裸 Clear queue\n5  Change video format\n6  Exit" | \
+    rofi -dmenu -no-custom -p 'Option' -lines 6 -format 'd' -mesg "Format: $video_format - Queue: $queue_count")
 
     case "$option" in
         1) add-to-queue ;;
         2) start-download ;;
         3) show-queue ;;
         4) clear-queue ;;
+        5) change-format ;;
         *) exit ;;
     esac
 }
