@@ -117,6 +117,8 @@ keys = [
     ),
     # mpv (video player)
     Key([mod, "mod1"], "p", lazy.spawn(path.join(homepath, ".dotfiles", "scripts", "clipboard-mpv.sh"))),
+    # youtube-dl mass downloading
+    Key([mod, "mod1"], "y", lazy.spawn(path.join(homepath, ".dotfiles", "scripts", "youtube-dl-queuer", "youtube-dl-queuer.sh"))),
 ]
 
 groups = [

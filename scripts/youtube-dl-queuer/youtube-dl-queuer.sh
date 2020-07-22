@@ -20,6 +20,13 @@ video_format="22/18"
 # If no, use the clipboard.
 [[ "$#" -gt 0 ]] && link="$1" || link="$(xclip -o)"
 
+# Check no of items in queue
+if [[ -e "$files_folder/queue" ]]; then
+    queue_count=$(wc -l "$files_folder/queue" | cut -d' ' -f 1)
+else
+    queue_count=0
+fi
+
 send-error() {
     notify-send -i "$icon_error"  -t "$notify_time" "[youtube-dl-queuer]" "$1"
 }
@@ -50,10 +57,7 @@ start-download() {
 
 show-queue() {
     if [[ -e "$files_folder/queue" ]]; then
-        local queue_count
-        queue_count=$(cat "$files_folder/queue" | wc -l)
-
-        rofi -dmenu -p 'Queue' -mesg "Current queue has $queue_count items." -input "$files_folder/queue" >/dev/null
+        rofi -dmenu -p 'Queue' -mesg "Current queue has $queue_count item(s)." -input "$files_folder/queue" >/dev/null
     else
         send-error "No queued items!"
     fi
@@ -66,7 +70,7 @@ add-to-queue() {
 
 show-menu() {
     option=$(echo -e "1  Queue video\n2  Start downloads\n3  Show queue\n4 裸 Clear queue\n5  Exit" | \
-    rofi -dmenu -no-custom -p 'Option' -lines 5 -format 'd')
+    rofi -dmenu -no-custom -p 'Option' -lines 5 -format 'd' -mesg "Current queue has $queue_count item(s).")
 
     case "$option" in
         1) add-to-queue ;;
