@@ -122,7 +122,7 @@ keys = [
 ]
 
 groups = [
-    Group("a", spawn="firefox", label="1"),
+    Group("a", layout="max", spawn="firefox", label="1"),
     Group("s", label="2"),
     Group("d", layout="max", label="3"),
     Group("f", layout="max", label="4"),
