@@ -182,6 +182,7 @@ wal-scale() {
     kill $(pgrep dunst)
     notify-send "DUNST" "New dunst theme set"
     qtile-cmd -o cmd -f restart >/dev/null 2>&1
+    pywalfox update
 }
 
 # cheat.sh function (Display examples of command usage)
