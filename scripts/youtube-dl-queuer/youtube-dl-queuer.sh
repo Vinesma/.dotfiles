@@ -51,7 +51,7 @@ start-download() {
         notify-send -i "$icon_youtube_dl" -t "$notify_time" "[youtube-dl]" "Starting download..."
 
         if output=$(youtube-dl -f "$video_format" --no-playlist -a "$files_folder/queue"); then
-            notify-send -i "$icon_youtube_dl" -t "$notify_time" "[youtube-dl]" "All items successfully downloaded!"
+            notify-send -i "$icon_youtube_dl" "[youtube-dl]" "All items successfully downloaded!"
             clear-queue
             echo "$output" > "$files_folder/output"
         else
