@@ -18,6 +18,11 @@ icon_youtube_dl_queuer="/usr/share/icons/Papirus/32x32/status/dialog-information
 # If no, use the clipboard.
 [[ "$#" -gt 0 ]] && link="$1" || link="$(xclip -o)"
 
+# Check if user wants to download subtitles
+if [[ -e "$files_folder/writesub" ]]; then
+    menu_sub="- Subs: write"
+fi
+
 # Check if user has a defined format
 if [[ -e "$files_folder/format" ]]; then
     video_format=$(cat "$files_folder/format")
@@ -47,10 +52,17 @@ clear-queue() {
 
 start-download() {
     local output
+
     if [[ -e "$files_folder/queue" ]]; then
         notify-send -i "$icon_youtube_dl" -t "$notify_time" "[youtube-dl]" "Starting download..."
 
-        if output=$(youtube-dl -f "$video_format" --no-playlist -a "$files_folder/queue"); then
+        if [[ -e "$files_folder/writesub" ]]; then
+            output=$(youtube-dl --write-sub -f "$video_format" --no-playlist -a "$files_folder/queue")
+        else
+            output=$(youtube-dl -f "$video_format" --no-playlist -a "$files_folder/queue")
+        fi
+
+        if [[ "$?" -eq 0 ]]; then
             notify-send -i "$icon_youtube_dl" "[youtube-dl]" "All items successfully downloaded!"
             clear-queue
             echo "$output" > "$files_folder/output"
@@ -88,10 +100,18 @@ change-format() {
     esac
 }
 
+write-subs() {
+    if [[ -e "$files_folder/writesub" ]]; then
+        rm -f "$files_folder/writesub"
+    else
+        touch "$files_folder/writesub"
+    fi
+}
+
 show-menu() {
     local option
-    option=$(echo -e "1  Queue video\n2  Start downloads\n3  Show queue\n4 裸 Clear queue\n5  Change video format\n6  Exit" | \
-    rofi -dmenu -no-custom -p 'Option' -lines 6 -format 'd' -mesg "Format: $video_format - Queue: $queue_count")
+    option=$(echo -e "1  Queue video\n2  Start downloads\n3  Show queue\n4 裸 Clear queue\n5  Change video format\n6  Toggle subtitles\n7  Exit" | \
+    rofi -dmenu -no-custom -p 'Option' -lines 7 -format 'd' -mesg "Format: $video_format - Queue: $queue_count $menu_sub")
 
     case "$option" in
         1) add-to-queue ;;
@@ -99,6 +119,7 @@ show-menu() {
         3) show-queue ;;
         4) clear-queue ;;
         5) change-format ;;
+        6) write-subs ;;
         *) exit ;;
     esac
 }
