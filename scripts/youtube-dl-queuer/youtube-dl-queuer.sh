@@ -20,7 +20,9 @@ icon_youtube_dl_queuer="/usr/share/icons/Papirus/32x32/status/dialog-information
 
 # Check if user wants to download subtitles
 if [[ -e "$files_folder/writesub" ]]; then
-    menu_sub="- Subs: write"
+    menu_sub="Yes"
+else
+    menu_sub="No"
 fi
 
 # Check if user has a defined format
@@ -103,15 +105,17 @@ change-format() {
 write-subs() {
     if [[ -e "$files_folder/writesub" ]]; then
         rm -f "$files_folder/writesub"
+        notify-send -i "$icon_youtube_dl_queuer" -t "$notify_time" "[youtube-dl-queuer]" "Disabled subtitles!"
     else
         touch "$files_folder/writesub"
+        notify-send -i "$icon_youtube_dl_queuer" -t "$notify_time" "[youtube-dl-queuer]" "Enabled subtitles!"
     fi
 }
 
 show-menu() {
     local option
     option=$(echo -e "1  Queue video\n2  Start downloads\n3  Show queue\n4 裸 Clear queue\n5  Change video format\n6  Toggle subtitles\n7  Exit" | \
-    rofi -dmenu -no-custom -p 'Option' -lines 7 -format 'd' -mesg "Format: $video_format - Queue: $queue_count $menu_sub")
+    rofi -dmenu -no-custom -p 'Option' -lines 7 -format 'd' -mesg "Format: $video_format / Queue: $queue_count / Subs: $menu_sub")
 
     case "$option" in
         1) add-to-queue ;;
