@@ -64,13 +64,13 @@ start-download() {
             output=$(youtube-dl -f "$video_format" --no-playlist -a "$files_folder/queue")
         fi
 
+        echo "$output" > "$files_folder/output"
+
         if [[ "$?" -eq 0 ]]; then
-            notify-send -i "$icon_youtube_dl" "[youtube-dl]" "All items successfully downloaded!"
+            notify-send -i "$icon_youtube_dl" "[youtube-dl]" "$queue_count item(s) successfully downloaded!"
             clear-queue
-            echo "$output" > "$files_folder/output"
         else
-            echo "$output" > "$files_folder/output"
-            send-error "An error ocurred while downloading one or more items... the queue was preserved. Output saved to file."
+            send-error "An error ocurred while downloading one or more items. The queue was preserved.\nOutput saved to file."
         fi
     else
         send-error "No queued items! Aborting download..."
@@ -86,8 +86,13 @@ show-queue() {
 }
 
 add-to-queue() {
+    local new_queue
+    new_queue=$(( "$queue_count" + 1 ))
     echo "$link" >> "$files_folder/queue"
-    notify-send -i "$icon_youtube_dl_queuer" -t "$notify_time" "[youtube-dl-queuer]" "Video added to download queue!"
+    notify-send \
+        -i "$icon_youtube_dl_queuer" \
+        -t "$notify_time" "[youtube-dl-queuer]" \
+        "Video added to download queue!\nQueue: $new_queue"
 }
 
 change-format() {
@@ -114,8 +119,9 @@ write-subs() {
 
 show-menu() {
     local option
-    option=$(echo -e "1  Queue video\n2  Start downloads\n3  Show queue\n4 裸 Clear queue\n5  Change video format\n6  Toggle subtitles\n7  Exit" | \
-    rofi -dmenu -no-custom -p 'Option' -lines 7 -format 'd' -mesg "Format: $video_format / Queue: $queue_count / Subs: $menu_sub")
+    option=$(echo -e \
+        "1  Queue video\n2  Start downloads\n3  Show queue\n4 裸 Clear queue\n5  Change video format\n6  Toggle subtitles\n7  Exit" | \
+        rofi -dmenu -no-custom -p 'Option' -lines 7 -format 'd' -mesg "Format: $video_format / Queue: $queue_count / Subs: $menu_sub")
 
     case "$option" in
         1) add-to-queue ;;

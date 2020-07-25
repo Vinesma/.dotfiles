@@ -34,7 +34,9 @@ import subprocess
 ## PYWAL
 from pywal import theme
 from os import getenv, path
+# PATHS
 homepath = getenv("HOME", getenv("USERPROFILE"))
+scripts_path = path.join(homepath, ".dotfiles", "scripts")
 ## MODKEY
 mod = "mod4"
 ## APPS
@@ -88,15 +90,15 @@ keys = [
     Key([mod, "mod1"], "n", lazy.spawn("kitty newsboat -q")),
     Key([mod, "mod1"], "m", lazy.spawn("kitty -o background_opacity=0.7 -T \"MPD\" ncmpcpp -q")),
     # take screenshot, either fullscreen or a selection
-    Key([mod], "Print", lazy.spawn(path.join(homepath, ".dotfiles", "scripts", "take-screenshot.sh"))),
-    Key([mod, "mod1"], "Print", lazy.spawn(path.join(homepath, ".dotfiles", "scripts", "take-screenshot.sh select"))),
+    Key([mod], "Print", lazy.spawn(path.join(scripts_path, "take-screenshot.sh"))),
+    Key([mod, "mod1"], "Print", lazy.spawn(path.join(scripts_path, "take-screenshot.sh select"))),
     # mpc (mpd controller)
     Key([], "Pause", lazy.spawn("mpc toggle")),
     Key([mod], "Page_Up",
-        lazy.spawn(path.join(homepath, ".dotfiles", "scripts", "query-vol.sh +10")),
+        lazy.spawn(path.join(scripts_path, "query-vol.sh +10")),
     ),
     Key([mod], "Page_Down",
-        lazy.spawn(path.join(homepath, ".dotfiles", "scripts", "query-vol.sh -10")),
+        lazy.spawn(path.join(scripts_path, "query-vol.sh -10")),
     ),
     Key([mod], "Home", lazy.spawn("mpc seek +10")),
     Key([mod], "End", lazy.spawn("mpc seek -10")),
@@ -104,21 +106,22 @@ keys = [
     Key([mod], "period", lazy.spawn("mpc next")),
     Key([mod], "comma", lazy.spawn("mpc prev")),
     Key([mod], "F9",
-        lazy.spawn(path.join(homepath, ".dotfiles", "scripts", "queue-clear.sh")),
+        lazy.spawn(path.join(scripts_path, "queue-clear.sh")),
     ),
     Key([mod], "F10",
-        lazy.spawn(path.join(homepath, ".dotfiles", "scripts", "queue-songs.sh calm")),
+        lazy.spawn(path.join(scripts_path, "queue-songs.sh calm")),
     ),
     Key([mod], "F11",
-        lazy.spawn(path.join(homepath, ".dotfiles", "scripts", "queue-songs.sh fast")),
+        lazy.spawn(path.join(scripts_path, "queue-songs.sh fast")),
     ),
     Key([mod], "F12",
-        lazy.spawn(path.join(homepath, ".dotfiles", "scripts", "queue-songs.sh epic")),
+        lazy.spawn(path.join(scripts_path, "queue-songs.sh epic")),
     ),
     # mpv (video player)
-    Key([mod, "mod1"], "p", lazy.spawn(path.join(homepath, ".dotfiles", "scripts", "clipboard-mpv.sh"))),
+    Key([mod, "mod1"], "p", lazy.spawn(path.join(scripts_path, "clipboard-mpv.sh"))),
     # youtube-dl mass downloading
-    Key([mod, "mod1"], "y", lazy.spawn(path.join(homepath, ".dotfiles", "scripts", "youtube-dl-queuer", "youtube-dl-queuer.sh"))),
+    Key([mod, "mod1"], "y", lazy.spawn(path.join(scripts_path, "youtube-dl-queuer", "youtube-dl-queuer.sh"))),
+    Key([mod, "control"], "y", lazy.spawn(path.join(scripts_path, "youtube-dl-queuer", "hot-queue.sh"))),
 ]
 
 groups = [
