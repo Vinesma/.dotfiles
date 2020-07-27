@@ -45,4 +45,4 @@ highlight article ":.*\\(embedded flash\\)$" magenta default
 # ignore retweets in twitter feeds
 ignore-article "*" "link =~ \"nitter.net\" and title =~ \"RT by\""
 # other
-ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCH-_hzb2ILSCo9ftVSnrCIQ" "title =~ \"Gmod TTT\""
+ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCH-_hzb2ILSCo9ftVSnrCIQ" "title =~ \"Gmod \""
