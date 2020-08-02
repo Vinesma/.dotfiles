@@ -27,19 +27,19 @@ echo -e "==> Initializing install...\n"
 ## XINIT ##
 echo "==> Installing xorg server and xinit"
 sudo pacman -Syu xorg-server xorg-xinit
-echo
+echo "-> Done."
 
 ## USER DIRECTORIES ##
 echo "==> Creating user dirs..."
 sudo pacman -S xdg-user-dirs \
-    && xdg-user-dirs-update
-echo
+    && xdg-user-dirs-update \
+    && echo "-> Done."
 
 ## BASHRC AND INIT FILES ##
 echo "-> Copying .bashrc..."
-cp "$dcf_dotfiles"/.bashrc "$mcf_dotfiles"
+cp -v "$dcf_dotfiles"/.bashrc "$mcf_dotfiles"
 echo "-> Copying x init files..."
-cp "$dcf_dotfiles"/.xinitrc "$mcf_dotfiles"
+cp -v "$dcf_dotfiles"/.xinitrc "$mcf_dotfiles"
 echo "-> Initializing xprofile file..."
 touch "$HOME"/.xprofile
 echo -e "[i] The .xprofile file can be used to autostart programs like so:\nredshift-gtk &\nsleep 10 && syncthing --no-browser &\n"
@@ -47,24 +47,24 @@ echo -e "[i] The .xprofile file can be used to autostart programs like so:\nreds
 ## TERMINAL & EDITOR ##
 echo "==> Installing terminal emulator"
 sudo pacman -S $terminal_em \
-    && mkdir -p "$mcf_term"/ \
-    && echo "Directory: $mcf_term created" \
-    && cp "$dcf_term" "$mcf_term"/ \
-    && echo "[terminal] Config files copied over"
+    && mkdir -pv "$mcf_term"/ \
+    && cp -v "$dcf_term" "$mcf_term"/ \
+    && echo "[terminal] Config files copied over" \
+    && echo "-> Done."
 
 echo "Configuring nano..."
-    mkdir -p "$mcf_nano"/ \
-    && echo "Directory: $mcf_nano created" \
-    && cp "$dcf_nano" "$mcf_nano"/ \
-    && echo -e "[nano] Config files copied over\n"
+    mkdir -pv "$mcf_nano"/ \
+    && cp -v "$dcf_nano" "$mcf_nano"/ \
+    && echo "[nano] Config files copied over" \
+    && echo "-> Done."
 
 ## WINDOW MANAGER ##
 echo "==> Installing WM"
 sudo pacman -S $window_manager \
-    && mkdir -p "$mcf_wm"/ \
-    && echo "Directory: $mcf_wm created" \
-    && cp /usr/share/doc/qtile/default_config.py "$mcf_wm"/config.py \
-    && echo "[window manager] Default config files copied over\n"
+    && mkdir -pv "$mcf_wm"/ \
+    && cp -v /usr/share/doc/qtile/default_config.py "$mcf_wm"/config.py \
+    && echo "[window manager] Default config files copied over\n" \
+    && echo "-> Done."
 
 ## MANJARO SETTINGS MANAGER ##
 echo "==> Installing settings manager"
@@ -80,8 +80,8 @@ echo
 echo "==> Installing mount helper"
 sudo pacman -S $mnt_helper \
     && echo "-> Enabling mount helper autostart..." \
-    && echo "udiskie &" >> "$HOME"/.xprofile
-echo
+    && echo "udiskie &" >> "$HOME"/.xprofile \
+    && echo "-> Done."
 
 ## AUDIO ##
 echo "==> Configuring audio..."
@@ -89,17 +89,20 @@ sudo pacman -S alsa-utils alsa-plugins
 amixer sset Master unmute
 amixer sset Speaker unmute
 amixer sset Headphone unmute
-echo -e "[i] You can use alsamixer to change the volume\n[i] pulsemixer as well"
+echo "[i] You can use alsamixer or pulsemixer to change the volume"
 sudo pacman -S pulseaudio pulseaudio-alsa pulsemixer
 echo
 
 ## NOTIFICATIONS ##
 echo "==> Configuring notifications..."
 sudo pacman -S dunst \
-    && mkdir -p "$mcf_dunst"/ \
-    && echo "Directory: $mcf_dunst created" \
-    && cp "$dcf_dunst" "$mcf_dunst"/ \
-    && echo -e "[dunst] Config files copied over\n[dunst] Remember to configure DBUS later\n"
+    && mkdir -pv "$mcf_dunst"/ \
+    && cp -v "$dcf_dunst" "$mcf_dunst"/ \
+    && echo "[dunst] Config files copied over" \
+    && echo "-> Configuring DBUS..." \
+    && sudo cp -v "$HOME/.dotfiles/install/org.freedesktop.Notifications.service" "/usr/share/dbus-1/services/" \
+    && echo "dunst &" >> "$HOME"/.xprofile \
+    && echo "-> Done."
 
 ## WEB BROWSER ##
 echo "==> Installing browser"

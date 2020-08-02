@@ -20,13 +20,25 @@ When the architect is done, chroot into the system and install `networkmanager`.
 
 ## Bare CLI
 
-After the reboot you need to find a network to connect to with the `nmcli` interface. [Examples here](https://wiki.archlinux.org/index.php/NetworkManager#nmcli_examples), remember to also install `git` so you can clone this repo. Once you have git and are connected the scripts can do most of the heavy lifting for you. Go ahead and run `main.sh` to install and configure the important stuff.
+These steps should be taken after a reboot.
+
+Find a connection:
+
+- List: `nmcli device wifi list`
+
+- List (UUIDs): `nmcli connection show`
+
+- Connect: `nmcli device wifi connect SSID password PASS`
+
+- Show devices: `nmcli device`
+
+[More examples here](https://wiki.archlinux.org/index.php/NetworkManager#nmcli_examples)
+
+Install `git` so you can clone this repo. Once you have git and are connected the scripts can do most of the heavy lifting for you. Go ahead and run `main.sh` to install and configure the important stuff.
 
 ## Basic WM running
 
 Once here, you can install anything in `optional/`. You'll certainly want to, unless you like looking at a wallpaperless WM with no font support. Most of it will automatically get added to `.xprofile` to autostart.
-
-- [Setup the notification DBUS.](https://wiki.archlinux.org/index.php/Desktop_notifications#Standalone)
 
 - [cron won't be running by default, it needs to be enabled.](https://wiki.archlinux.org/index.php/Cron#Activation_and_autostart)
 
