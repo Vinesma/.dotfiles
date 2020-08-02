@@ -8,9 +8,6 @@ refresh-on-startup no
 max-items 100
 # BROWSER
 browser "$HOME/.dotfiles/scripts/browser-newsboat.sh %u"
-# NOTIFIER
-notify-program /usr/bin/notify-send
-notify-format "NEWSBOAT: %f unread feeds (%n total unread articles)"
 
 # FORMATS
 datetime-format "%b %d - %I:%M %p"
