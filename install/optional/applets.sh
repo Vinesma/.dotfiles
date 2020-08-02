@@ -7,10 +7,10 @@ mcf_redshift="$HOME/.config"
 dcf_redshift="$HOME/.dotfiles/redshift/*"
 
 echo "- Installing applets"
-sudo pacman -Syu $applets
-echo "redshift-gtk &" >> $HOME/.xprofile
+sudo pacman -Syu "$applets"
+echo "redshift &" >> "$HOME"/.xprofile
 echo "Configuring redshift..."
-cp $dcf_redshift $mcf_redshift/
+cp "$dcf_redshift" "$mcf_redshift"/
 echo
 
 echo "Done."

@@ -36,16 +36,6 @@ If installing on a laptop a few more things require attention, such as [ACPI Eve
 
 [Power saving](https://wiki.archlinux.org/index.php/Power_management#Power_saving) is also a thing I've yet to dive deep into.
 
-## Hell machines (Printers)
-
-- Install the `manjaro-printer` package
-
-- Run `sudo gpasswd -a yourusername sys` to add yourself to the sys group
-
-- Enable printing capabilities with `sudo systemctl enable --now org.cups.cupsd.service`
-
-- http://localhost:631/ <- Web interface to manage printers. In the 'Administration' tab you can add and manage local or networked printers and jobs.
-
 More info [here.](https://wiki.manjaro.org/index.php?title=Printing#Overview)
 
 ## Dev stuff

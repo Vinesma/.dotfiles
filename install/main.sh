@@ -1,7 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
 # VARS
-key_map="br"
 terminal_em="xterm kitty"
 window_manager="qtile"
 display_manager="lightdm lightdm-gtk-greeter"
@@ -23,61 +22,67 @@ dcf_dunst="$HOME/.dotfiles/dunst/*"
 mcf_nano="$HOME/.config/nano"
 dcf_nano="$HOME/.dotfiles/nano/*"
 
-echo "Initializing install..."
-echo
+echo -e "Initializing install...\n"
 
+## XINIT ##
 echo "- Installing xinit"
 sudo pacman -Syu xorg-server xorg-xinit
 echo
 
+## USER DIRECTORIES ##
 echo "- Creating user dirs..."
 sudo pacman -S xdg-user-dirs
 xdg-user-dirs-update
 echo
 
+## BASHRC AND INIT FILES ##
 echo "- Copying .bashrc..."
-cp $dcf_dotfiles/.bashrc $mcf_dotfiles
+cp "$dcf_dotfiles"/.bashrc "$mcf_dotfiles"
 echo "- Copying x init files..."
-cp $dcf_dotfiles/.xinitrc $mcf_dotfiles
-touch $HOME/.xprofile
-echo -e "The .xprofile file can be used to autostart programs like so:\nredshift-gtk &\nsleep 10 && syncthing --no-browser &"
-echo
+cp "$dcf_dotfiles"/.xinitrc "$mcf_dotfiles"
+echo "- Initializing xprofile file..."
+touch "$HOME"/.xprofile
+echo -e "The .xprofile file can be used to autostart programs like so:\nredshift-gtk &\nsleep 10 && syncthing --no-browser &\n"
 
+## TERMINAL & EDITOR ##
 echo "- Installing terminal emulator"
-sudo pacman -S $terminal_em
-mkdir -p $mcf_term/
+sudo pacman -S "$terminal_em"
+mkdir -p "$mcf_term"/
 echo "Directory: $mcf_term created"
-cp $dcf_term $mcf_term/
+cp "$dcf_term" "$mcf_term"/
 echo "Terminal config files copied over"
 echo "Configuring nano..."
-mkdir -p $mcf_nano/
+mkdir -p "$mcf_nano"/
 echo "Directory: $mcf_nano created"
-cp $dcf_nano $mcf_nano/
-echo "[nano] Config files copied over"
-echo
+cp "$dcf_nano" "$mcf_nano"/
+echo -e "[nano] Config files copied over\n"
 
+## WINDOW MANAGER ##
 echo "- Installing WM"
-sudo pacman -S $window_manager
-mkdir -p $mcf_wm/
+sudo pacman -S "$window_manager"
+mkdir -p "$mcf_wm"/
 echo "Directory: $mcf_wm created"
-cp /usr/share/doc/qtile/default_config.py $mcf_wm/config.py
-echo "WM default config files copied over"
-echo
+cp /usr/share/doc/qtile/default_config.py "$mcf_wm"/config.py
+echo "WM default config files copied over\n"
 
+## MANJARO SETTINGS MANAGER ##
 echo "- Installing settings manager"
 sudo pacman -S manjaro-settings-manager
 echo
 
+## FILE MANAGER ##
 echo "- Installing file manager"
-sudo pacman -S $file_manager
+sudo pacman -S "$file_manager"
 echo
 
+## MOUNT HELPER ##
 echo "- Installing mount helper"
-sudo pacman -S $mnt_helper
+sudo pacman -S "$mnt_helper"
 echo "Enabling autostart..."
-echo "udiskie &" >> $HOME/.xprofile
+echo "udiskie &" >> "$HOME"/.xprofile
 echo
 
+## AUDIO ##
 echo "- Configuring audio..."
 sudo pacman -S alsa-utils alsa-plugins
 amixer sset Master unmute
@@ -87,22 +92,24 @@ echo -e "You can use alsamixer to change the volume\npulsemixer as well"
 sudo pacman -S pulseaudio pulseaudio-alsa pulsemixer
 echo
 
+## NOTIFICATIONS ##
 echo "- Configuring notifications..."
 sudo pacman -S dunst
-mkdir -p $mcf_dunst/
+mkdir -p "$mcf_dunst"/
 echo "Directory: $mcf_dunst created"
-cp $dcf_dunst $mcf_dunst/
-echo -e "[dunst] Config files copied over\nRemember to configure DBUS later"
-echo
+cp "$dcf_dunst" "$mcf_dunst"/
+echo -e "[dunst] Config files copied over\nRemember to configure DBUS later\n"
 
+## WEB BROWSER ##
 echo "- Installing browser"
-sudo pacman -S $ibrowser
+sudo pacman -S "$ibrowser"
 echo
 
+## DISPLAY MANAGER ##
 echo "- Installing a display manager"
-sudo pacman -S $display_manager
-echo "Make sure to later enable the: lightdm.service"
-echo
+sudo pacman -S "$display_manager"
+echo -e "Make sure to later enable the: lightdm.service\n"
 
-echo "All done! Enjoy the days of work that went into this!"
-echo "Give the system a restart, or install the optional packages."
+echo "All done! Enjoy the weeks of work that went into this!"
+echo "Make sure to review any errors that may have occured during the process."
+echo "Now, give the system a restart and install the optional packages."

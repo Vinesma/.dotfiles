@@ -11,11 +11,12 @@ Info on how to install my Manjaro Linux setup is [here.](https://github.com/Vine
 ## Programs:
 A (probably incomplete) list of applications I use.
 
-Applications in brackets are installed automatically in one way or another via my own scripts.
+Applications in brackets are installed via my own scripts, so there's no need to install those if you run them.
 
-### Window Manager
+### Window Manager & System bar
 
 - (Qtile)
+- (polybar)
 
 ### Video
 
@@ -26,7 +27,7 @@ Applications in brackets are installed automatically in one way or another via m
 - (mpd)
 - (mpc)
 - (ncmpcpp)
-- (quodlibet)
+- quodlibet
 
 ### Web
 
@@ -66,6 +67,7 @@ Applications in brackets are installed automatically in one way or another via m
 ### API testing
 
 - Postman
+- curl
 
 ### Language Engine
 
