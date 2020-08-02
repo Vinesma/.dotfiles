@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 package_list="$HOME/.dotfiles/install/optional/list_appsuite"
 
@@ -21,43 +21,44 @@ mcf_rofi="$HOME/.config/rofi"
 dcf_rofi="$HOME/.dotfiles/rofi/*"
 
 ## INSTALL ##
-echo "- Installing suite of apps"
+echo "==> Installing suite of apps."
 sudo pacman -Syu - < "$package_list"
 echo
 ## MPV ##
-echo "Configuring mpv..."
-mkdir -p "$mcf_mpv"
-cp "$dcf_mpv" "$mcf_mpv"
+echo "-> Configuring mpv..."
+    mkdir -p "$mcf_mpv" \
+    && cp "$dcf_mpv" "$mcf_mpv"
 echo
 ## YOUTUBE-DL ##
-echo "Configuring youtube-dl..."
-mkdir -p "$mcf_youtubedl"
-cp "$dcf_youtubedl" "$mcf_youtubedl"
+echo "-> Configuring youtube-dl..."
+    mkdir -p "$mcf_youtubedl" \
+    && cp "$dcf_youtubedl" "$mcf_youtubedl"
 echo
 ## NEWSBOAT ##
-echo "Configuring newsboat..."
-mkdir -p "$mcf_newsboat"
-cp "$dcf_newsboat" "$mcf_newsboat"
+echo "-> Configuring newsboat..."
+    mkdir -p "$mcf_newsboat" \
+    && cp "$dcf_newsboat" "$mcf_newsboat"
 echo
 ## QTILE & POLYBAR ##
-echo "Copying qtile config over..."
+echo "-> Copying qtile config over..."
 cp "$dcf_qtile" "$mcf_qtile"
 echo
-echo "Copying polybar config over..."
-mkdir -p "$mcf_polybar"
-cp "$dcf_polybar" "$mcf_polybar"
+echo "-> Copying polybar config over..."
+    mkdir -p "$mcf_polybar" \
+    && cp "$dcf_polybar" "$mcf_polybar"
 echo
 ## MUSIC PLAYER ##
-echo "Configuring mpd and auxiliaries..."
-mkdir -p "$mcf_mpd"
-cp "$dcf_mpd" "$mcf_mpd"
-echo "[ ! -s ~/.config/mpd/pid ] && mpd" >> "$HOME"/.xprofile
-mkdir -p "$mcf_ncmpcpp"
-cp "$dcf_ncmpcpp" "$mcf_ncmpcpp"
+echo "-> Configuring mpd and auxiliaries..."
+    mkdir -p "$mcf_mpd" \
+    && cp "$dcf_mpd" "$mcf_mpd" \
+    && echo "[ ! -s ~/.config/mpd/pid ] && mpd" >> "$HOME"/.xprofile
+
+    mkdir -p "$mcf_ncmpcpp" \
+    && cp "$dcf_ncmpcpp" "$mcf_ncmpcpp"
 echo
 ## ROFI ##
-echo "Configuring rofi..."
-mkdir -p "$mcf_rofi"
-cp "$dcf_rofi" "$mcf_rofi"
+echo "-> Configuring rofi..."
+    mkdir -p "$mcf_rofi" \
+    && cp "$dcf_rofi" "$mcf_rofi"
 
-echo "Done."
+echo "-> Done."

@@ -1,11 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 
 backlight_util="xorg-xbacklight"
 
-echo "- Installing backlight utility"
-sudo pacman -Syu "$backlight_util"
-echo
-
-echo "[sudo] Usage: xbacklight -set 12"
-
-echo "Done."
+echo "==> Installing backlight utility"
+sudo pacman -Syu $backlight_util \
+    && echo "[i] Usage: xbacklight -set 12" \
+    && echo "-> Done." \
+    || echo "-> Failed..."

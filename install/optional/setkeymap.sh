@@ -1,10 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
 keymp="br"
 
-echo "- Setting keymap..."
+echo "==> Setting keymap..."
 localectl --no-convert set-x11-keymap $keymp
-echo "Keymap set, a restart is required"
-echo
-
-echo "Done."
+echo "-> Keymap set, a restart is required"
+echo "-> Done."

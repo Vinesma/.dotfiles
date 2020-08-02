@@ -3,10 +3,15 @@
 config_dir="$HOME/.config"
 dotfiles_dir="$HOME/.dotfiles"
 
-echo "Linking files, this makes sure any changes in the filesystem get reflected on the repository and can be committed or reverted."
-echo "Files will be overwritten."
+echo "==> Linking files, this makes sure any changes in the filesystem get reflected on the repository and can be committed or reverted."
+echo "[i] Files will be overwritten."
 
 # FORMAT: .dotfiles/ -> .config/
+
+## TEMPLATE ##
+# echo {NAME};echo
+# ln -sfv {dotfiles}/{file} {config/home}/{file}
+# echo
 
 echo "- .BASHRC";echo
 ln -sfv "$dotfiles_dir"/.bashrc "$HOME"/.bashrc
@@ -59,4 +64,4 @@ echo "- QTILE";echo
 ln -sfv "$dotfiles_dir"/qtile/config.py "$config_dir"/qtile/config.py
 echo
 
-echo "Done."
+echo "-> Done."
