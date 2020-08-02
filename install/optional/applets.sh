@@ -10,7 +10,7 @@ echo "==> Installing applets"
 sudo pacman -Syu $applets \
     && echo "redshift &" >> "$HOME"/.xprofile \
     && echo "-> Configuring redshift..." \
-    && cp "$dcf_redshift" "$mcf_redshift"/ \
+    && cp -v "$dcf_redshift" "$mcf_redshift"/ \
     && echo "-> Done." \
     || echo "-> Failed..."
 

@@ -26,39 +26,39 @@ sudo pacman -Syu - < "$package_list"
 echo
 ## MPV ##
 echo "-> Configuring mpv..."
-    mkdir -p "$mcf_mpv" \
-    && cp "$dcf_mpv" "$mcf_mpv"
+    mkdir -pv "$mcf_mpv" \
+    && cp -v "$dcf_mpv" "$mcf_mpv"
 echo
 ## YOUTUBE-DL ##
 echo "-> Configuring youtube-dl..."
-    mkdir -p "$mcf_youtubedl" \
-    && cp "$dcf_youtubedl" "$mcf_youtubedl"
+    mkdir -pv "$mcf_youtubedl" \
+    && cp -v "$dcf_youtubedl" "$mcf_youtubedl"
 echo
 ## NEWSBOAT ##
 echo "-> Configuring newsboat..."
-    mkdir -p "$mcf_newsboat" \
-    && cp "$dcf_newsboat" "$mcf_newsboat"
+    mkdir -pv "$mcf_newsboat" \
+    && cp -v "$dcf_newsboat" "$mcf_newsboat"
 echo
 ## QTILE & POLYBAR ##
 echo "-> Copying qtile config over..."
-cp "$dcf_qtile" "$mcf_qtile"
+cp -v "$dcf_qtile" "$mcf_qtile"
 echo
 echo "-> Copying polybar config over..."
-    mkdir -p "$mcf_polybar" \
-    && cp "$dcf_polybar" "$mcf_polybar"
+    mkdir -pv "$mcf_polybar" \
+    && cp -v "$dcf_polybar" "$mcf_polybar"
 echo
 ## MUSIC PLAYER ##
 echo "-> Configuring mpd and auxiliaries..."
-    mkdir -p "$mcf_mpd" \
-    && cp "$dcf_mpd" "$mcf_mpd" \
+    mkdir -pv "$mcf_mpd" \
+    && cp -v "$dcf_mpd" "$mcf_mpd" \
     && echo "[ ! -s ~/.config/mpd/pid ] && mpd" >> "$HOME"/.xprofile
 
-    mkdir -p "$mcf_ncmpcpp" \
-    && cp "$dcf_ncmpcpp" "$mcf_ncmpcpp"
+    mkdir -pv "$mcf_ncmpcpp" \
+    && cp -v "$dcf_ncmpcpp" "$mcf_ncmpcpp"
 echo
 ## ROFI ##
 echo "-> Configuring rofi..."
-    mkdir -p "$mcf_rofi" \
-    && cp "$dcf_rofi" "$mcf_rofi"
+    mkdir -pv "$mcf_rofi" \
+    && cp -v "$dcf_rofi" "$mcf_rofi"
 
 echo "-> Done."

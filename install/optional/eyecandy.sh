@@ -14,8 +14,8 @@ echo 'feh --bg-scale "$(< "${HOME}/.cache/wal/wal")" &' >> "$HOME"/.xprofile
 
 ## PICOM ##
 echo "-> Configuring picom..."
-    mkdir -p "$mcf_picom"/ \
-    && cp "$dcf_picom" "$mcf_picom"/ \
+    mkdir -pv "$mcf_picom"/ \
+    && cp -v "$dcf_picom" "$mcf_picom"/ \
     && echo "picom &" >> "$HOME"/.xprofile
 echo
 
