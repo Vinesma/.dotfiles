@@ -10,4 +10,4 @@ icon="/usr/share/icons/Papirus/32x32/apps/akregator.svg"
 
 unread=$("$newsboat_path" -x print-unread)
 
-"$notify_send_path" -i "$icon" "NEWSBOAT" "$num_unread"
+"$notify_send_path" -i "$icon" "NEWSBOAT" "$unread"
