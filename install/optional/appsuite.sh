@@ -61,4 +61,8 @@ echo "-> Configuring rofi..."
     mkdir -pv "$mcf_rofi" \
     && cp -v "$dcf_rofi" "$mcf_rofi"
 
+echo "[i] youtube-dl should be installed separately, so that it can be updated quickly via 'youtube-dl -U'"
+echo "[i] Run these commands when ready to install:"
+echo "[i] sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl"
+echo "[i] sudo chmod a+rx /usr/local/bin/youtube-dl"
 echo "-> Done."
