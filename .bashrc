@@ -171,7 +171,7 @@ alias gl='git log'
 alias gch='git checkout'
 alias gps='git push'
 alias gpl='git pull'
-alias git-aliases="grep 'alias g' ~/.bashrc | sed '1d'"
+alias git-aliases="grep --color=never \"='git \" ~/.bashrc"
 #
 alias sd='shutdown now'
 alias ip='ip -br -c'
