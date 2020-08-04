@@ -84,6 +84,8 @@ keys = [
     Key([mod], "e", lazy.spawn("rofi -show window")),
 
     # Custom commands
+    # emulate win ctrl+alt+del (spawn task manager)
+    Key(["mod1", "control"], "Delete", lazy.spawn("kitty htop")),
     # spawn apps
     Key([mod, "mod1"], "e", lazy.spawn("thunar")),
     Key([mod, "mod1"], "b", lazy.spawn("firefox")),
