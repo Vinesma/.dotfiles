@@ -66,5 +66,6 @@ echo
 
 echo "- NVIM";echo
 ln -sfv "$dotfiles_dir"/nvim/init.vim "$config_dir"/nvim/init.vim
+echo
 
 echo "-> Done."

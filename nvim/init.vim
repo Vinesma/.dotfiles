@@ -1,8 +1,9 @@
 " enable syntax highlighting
 syntax enable
 
-" show line numbers
+" show line numbers (relative)
 set number
+set relativenumber
 
 " set tabs to have 4 spaces
 set ts=4
