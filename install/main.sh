@@ -20,7 +20,8 @@ dcf_wm="$HOME/.dotfiles/qtile/*"
 mcf_dunst="$HOME/.config/dunst"
 dcf_dunst="$HOME/.dotfiles/dunst/*"
 mcf_nano="$HOME/.config/nano"
-dcf_nano="$HOME/.dotfiles/nano/*"
+dmcf_nvim="$HOME/.config/nvim"
+dcf_nvim="$HOME/.dotfiles/nvim/*"
 
 echo -e "==> Initializing install...\n"
 
@@ -44,12 +45,19 @@ echo "-> Initializing xprofile file..."
 touch "$HOME"/.xprofile
 echo -e "[i] The .xprofile file can be used to autostart programs like so:\nredshift-gtk &\nsleep 10 && syncthing --no-browser &\n"
 
-## TERMINAL & EDITOR ##
+## TERMINAL & EDITORS ##
 echo "==> Installing terminal emulator"
 sudo pacman -S $terminal_em \
     && mkdir -pv "$mcf_term"/ \
     && cp -v "$dcf_term" "$mcf_term"/ \
     && echo "[terminal] Config files copied over" \
+    && echo "-> Done."
+
+echo "==> Installing neovim"
+sudo pacman -S neovim\
+    && mkdir -pv "$mcf_nvim"/ \
+    && cp -v "$dcf_nvim" "$mcf_nvim"/ \
+    && echo "[nvim] Config files copied over" \
     && echo "-> Done."
 
 echo "Configuring nano..."

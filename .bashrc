@@ -142,10 +142,13 @@ ex ()
 (cat ~/.cache/wal/sequences &)
 
 # Exports
-export EDITOR="/usr/bin/nano"
+export EDITOR="/usr/bin/nvim"
+export VISUAL="/usr/bin/nvim"
 export PATH="$PATH:$HOME/Documents/flutter/bin"
 
 # Personal aliases
+# nvim
+alias v='nvim'
 # cd
 alias ..='cd ..'
 # mpv

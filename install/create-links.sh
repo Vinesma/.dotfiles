@@ -9,8 +9,8 @@ echo "[i] Files will be overwritten."
 # FORMAT: .dotfiles/ -> .config/
 
 ## TEMPLATE ##
-# echo {NAME};echo
-# ln -sfv {dotfiles}/{file} {config/home}/{file}
+# echo "{NAME}";echo
+# ln -sfv "$dotfiles_dir"/{file} "config_dir"/{file}
 # echo
 
 echo "- .BASHRC";echo
@@ -63,5 +63,8 @@ echo
 echo "- QTILE";echo
 ln -sfv "$dotfiles_dir"/qtile/config.py "$config_dir"/qtile/config.py
 echo
+
+echo "- NVIM";echo
+ln -sfv "$dotfiles_dir"/nvim/init.vim "$config_dir"/nvim/init.vim
 
 echo "-> Done."
