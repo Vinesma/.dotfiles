@@ -6,66 +6,65 @@ dotfiles_dir="$HOME/.dotfiles"
 echo "==> Linking files, this makes sure any changes in the filesystem get reflected on the repository and can be committed or reverted."
 echo "[i] Files will be overwritten."
 
-# FORMAT: .dotfiles/ -> .config/
+create-link-config() {
+    ln -sfv "$dotfiles_dir"/"$1" "$config_dir"/"$1"
+    echo
+}
 
-## TEMPLATE ##
-# echo "{NAME}";echo
-# ln -sfv "$dotfiles_dir"/{file} "config_dir"/{file}
-# echo
+create-link-config-diff() {
+    ln -sfv "$dotfiles_dir"/"$1" "$config_dir"/"$2"
+    echo
+}
 
-echo "- .BASHRC";echo
-ln -sfv "$dotfiles_dir"/.bashrc "$HOME"/.bashrc
-echo
+create-link-home() {
+    ln -sfv "$dotfiles_dir"/"$1" "$HOME"/"$1"
+    echo
+}
+
+echo "- BASHRC";echo
+create-link-home ".bashrc"
 
 echo "- NANO";echo
-ln -sfv "$dotfiles_dir"/nano/nanorc "$config_dir"/nano/nanorc
-echo
+create-link-config "nano/nanorc"
 
 echo "- KITTY";echo
-ln -sfv "$dotfiles_dir"/kitty/kitty.conf "$config_dir"/kitty/kitty.conf
-echo
+create-link-config "kitty/kitty.conf"
 
 echo "- REDSHIFT";echo
-ln -sfv "$dotfiles_dir"/redshift/redshift.conf "$config_dir"/redshift.conf
-echo
+create-link-config-diff "redshift/redshift.conf" "redshift.conf"
 
 echo "- NEWSBOAT";echo
-ln -sfv "$dotfiles_dir"/newsboat/urls "$config_dir"/newsboat/urls
-ln -sfv "$dotfiles_dir"/newsboat/config "$config_dir"/newsboat/config
-echo
+create-link-config "newsboat/urls"
+create-link-config "newsboat/config"
 
 echo "- MPV";echo
-ln -svf "$dotfiles_dir"/mpv/mpv.conf "$config_dir"/mpv/mpv.conf
-ln -svf "$dotfiles_dir"/mpv/input.conf "$config_dir"/mpv/input.conf
-echo
+create-link-config "mpv/mpv.conf"
+create-link-config "mpv/input.conf"
 
 echo "- YOUTUBE-DL";echo
-ln -sfv "$dotfiles_dir"/youtube-dl/config "$config_dir"/youtube-dl/config
-echo
+create-link-config "youtube-dl/config"
 
 echo "- PICOM";echo
-ln -sfv "$dotfiles_dir"/picom/picom.conf "$config_dir"/picom/picom.conf
-echo
+create-link-config "picom/picom.conf"
 
 echo "- MPD";echo
-ln -sfv "$dotfiles_dir"/mpd/mpd.conf "$config_dir"/mpd/mpd.conf
-echo
+create-link-config "mpd/mpd.conf"
 
 echo "- NCMPCPP";echo
-ln -sfv "$dotfiles_dir"/ncmpcpp/config "$config_dir"/ncmpcpp/config
-ln -sfv "$dotfiles_dir"/ncmpcpp/bindings "$config_dir"/ncmpcpp/bindings
-echo
+create-link-config "ncmpcpp/config"
+create-link-config "ncmpcpp/bindings"
 
 echo "- ROFI";echo
-ln -sfv "$dotfiles_dir"/rofi/config.rasi "$config_dir"/rofi/config.rasi
-echo
+create-link-config "rofi/config.rasi"
 
 echo "- QTILE";echo
-ln -sfv "$dotfiles_dir"/qtile/config.py "$config_dir"/qtile/config.py
-echo
+create-link-config "qtile/config.py"
 
 echo "- NVIM";echo
-ln -sfv "$dotfiles_dir"/nvim/init.vim "$config_dir"/nvim/init.vim
-echo
+create-link-config "nvim/init.vim"
+
+# TEMPLATE
+# echo "- {NAME}";echo
+# create-link-{foo} "{path}"
 
 echo "-> Done."
