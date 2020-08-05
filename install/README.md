@@ -82,6 +82,10 @@ More info [here.](https://wiki.manjaro.org/index.php?title=Printing#Overview)
 
 [Solution](https://wiki.archlinux.org/index.php/System_time#Read_clock) (run `timedatectl` to check, can also be used to set time)
 
+Run this to enable clock syncronization:
+
+- `timedatectl set-ntp true`
+
 ### Laptop only boots or runs when charging, as soon as it gets unplugged the laptop freezes half a second later.
 
 Solution: Disabling tlp in `/etc/tlp.conf` by editing the line TLP_ENABLE=1 to TLP_ENABLE=0. Afterwards, edit `/etc/default/cpupower` and set `governor` to "performance". This fixes the problem but leaves the laptop without any powersaving capability. I will update this with more info as I investigate the issue.

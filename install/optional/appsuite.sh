@@ -51,7 +51,10 @@ echo
 echo "-> Configuring mpd and auxiliaries..."
     mkdir -pv "$mcf_mpd" \
     && cp -v "$dcf_mpd" "$mcf_mpd" \
-    && echo "[ ! -s ~/.config/mpd/pid ] && mpd" >> "$HOME"/.xprofile
+    && echo "[ ! -s ~/.config/mpd/pid ] && mpd" >> "$HOME"/.xprofile \
+    && echo "mpc random on" >> "$HOME"/.xprofile \
+    && echo "mpc repeat on" >> "$HOME"/.xprofile \
+    && echo "mpc crossfade 2" >> "$HOME"/.xprofile
 
     mkdir -pv "$mcf_ncmpcpp" \
     && cp -v "$dcf_ncmpcpp" "$mcf_ncmpcpp"
