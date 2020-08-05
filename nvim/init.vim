@@ -1,9 +1,8 @@
 " enable syntax highlighting
-syntax enable
+syntax on
 
 " show line numbers (relative)
-set number
-set relativenumber
+set number relativenumber
 
 " set tabs to have 4 spaces
 set ts=4
@@ -22,3 +21,12 @@ set showmatch
 
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
+
+" Alias replace inline: S
+nnoremap S :s///g<Left><Left><Left>
+
+" Autocomplete
+set wildmode=longest,list,full
+
+" Fix splits
+set splitbelow splitright
