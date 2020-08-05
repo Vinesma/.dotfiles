@@ -4,7 +4,7 @@ config_dir="$HOME/.config"
 dotfiles_dir="$HOME/.dotfiles"
 
 echo "==> Linking files, this makes sure any changes in the filesystem get reflected on the repository and can be committed or reverted."
-echo "[i] Files will be overwritten."
+echo "-> [i] Files will be overwritten."
 
 create-link-config() {
     ln -sfv "$dotfiles_dir"/"$1" "$config_dir"/"$1"

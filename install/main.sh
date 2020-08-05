@@ -43,7 +43,7 @@ echo "-> Copying x init files..."
 cp -v "$dcf_dotfiles"/.xinitrc "$mcf_dotfiles"
 echo "-> Initializing xprofile file..."
 touch "$HOME"/.xprofile
-echo -e "[i] The .xprofile file can be used to autostart programs like so:\nredshift-gtk &\nsleep 10 && syncthing --no-browser &\n"
+echo -e "-> [i] The .xprofile file can be used to autostart programs like so:\nredshift-gtk &\nsleep 10 && syncthing --no-browser &\n"
 
 ## TERMINAL & EDITORS ##
 echo "==> Installing terminal emulator"
@@ -97,7 +97,7 @@ sudo pacman -S alsa-utils alsa-plugins
 amixer sset Master unmute
 amixer sset Speaker unmute
 amixer sset Headphone unmute
-echo "[i] You can use alsamixer or pulsemixer to change the volume"
+echo "-> [i] You can use alsamixer or pulsemixer to change the volume"
 sudo pacman -S pulseaudio pulseaudio-alsa pulsemixer
 echo
 
@@ -120,8 +120,8 @@ echo
 ## DISPLAY MANAGER ##
 echo "==> Installing a display manager"
 sudo pacman -S $display_manager
-echo -e "[i] Make sure to later enable lightdm.service\n"
+echo -e "-> [i] Make sure to later enable lightdm.service\n"
 
 echo "-> All done! Enjoy the weeks of work that went into this!"
-echo "[i] Make sure to review any errors that may have occured during the process."
-echo "[i] Now, give the system a restart and install the optional packages."
+echo "-> [i] Make sure to review any errors that may have occured during the process."
+echo "-> [i] Now, give the system a restart and install the optional packages."
