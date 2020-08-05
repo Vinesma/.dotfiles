@@ -48,8 +48,6 @@ If installing on a laptop a few more things require attention, such as [ACPI Eve
 
 [Power saving](https://wiki.archlinux.org/index.php/Power_management#Power_saving) is also a thing I've yet to dive deep into.
 
-More info [here.](https://wiki.manjaro.org/index.php?title=Printing#Overview)
-
 ## Dev stuff
 
 ### Arch User Repository (AUR)
@@ -90,10 +88,20 @@ Run this to enable clock syncronization:
 
 Solution: Disabling tlp in `/etc/tlp.conf` by editing the line TLP_ENABLE=1 to TLP_ENABLE=0. Afterwards, edit `/etc/default/cpupower` and set `governor` to "performance". This fixes the problem but leaves the laptop without any powersaving capability. I will update this with more info as I investigate the issue.
 
+[TLP debugging](https://linrunner.de/tlp/support/troubleshooting.html#step-3-disable-tlp-temporarily)
+
 ### Laptop won't shutdown or reboot completely. Screen goes black but external lights stay on and the fan keeps spinning no matter how long I wait.
 
 Solution: None, yet.
 
 ### pywal has no support for dunst
 
-For pywal to work with dunst, copy the template file in `dunst/colors-dunst` to `~/.config/wal/templates/`. Edit the template accordingly and then run `wal-scale` with a path to your desired wallpaper in a terminal. I have provided scripts to help with this.
+Solution: For pywal to work with dunst, copy the template file in `dunst/colors-dunst` to `~/.config/wal/templates/`. Edit the template accordingly and then run `wal-scale` with a path to your desired wallpaper in a terminal. I have provided scripts to help with this.
+
+This also applies to anything else unsupported by pywal.
+
+## Links/Resources
+
+Things that had their own section and were moved or removed, along with other resources that don't fit anywhere else:
+
+- Info on [manjaro-printer.](https://wiki.manjaro.org/index.php?title=Printing#Overview)
