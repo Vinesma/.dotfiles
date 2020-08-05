@@ -182,6 +182,7 @@ alias update-packages="sudo pacman -Syu && notify-send 'PACMAN' 'Update complete
 # Functions
 # set wallpaper using feh instead of pywal itself
 wal-scale() {
+    bash "$HOME/.dotfiles/pywal/copy-templates.sh"
     wal -n -i "$@"
     feh --bg-scale "$(< "${HOME}/.cache/wal/wal")"
     kill $(pgrep dunst)
