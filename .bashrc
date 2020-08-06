@@ -149,6 +149,7 @@ export PATH="$PATH:$HOME/Documents/flutter/bin"
 # Personal aliases
 # nvim
 alias v='nvim'
+alias sv='sudo nvim'
 # cd
 alias ..='cd ..'
 # mpv
