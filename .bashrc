@@ -177,7 +177,6 @@ alias git-aliases="grep --color=never \"='git \" ~/.bashrc"
 alias sd='shutdown now'
 alias ip='ip -br -c'
 alias update-aliases='. ~/.bashrc'
-alias update-sync='sudo pacman -Sy'
 alias update-packages="sudo pacman -Syu && notify-send 'PACMAN' 'Update complete!' || notify-send 'PACMAN' 'Exited with non-zero error code!'"
 
 # Functions
@@ -199,18 +198,4 @@ cheat() {
 # wttr.in function (Display wheater for selected location)
 weather() {
         curl wttr.in/$1
-}
-
-# stream function
-mpvs() {
-        echo $1 | grep -q twitch && local twitch_chat=$(echo $1 | cut -d'/' -f4) && firefox --new-window "https://www.twitch.tv/popout/$twitch_chat/chat?popout=" && mpv --profile=stream720p $1
-        echo $1 | grep -q youtube && local youtube_chat=$(echo $1 | cut -d'=' -f2) && firefox --new-window "https://www.youtube.com/live_chat?v=$youtube_chat&is_popout=1" && mpv --profile=stream720p $1
-}
-
-# connection check
-conc() {
-	state=$(nmcli n connectivity check)
-	echo "Connectivity status: $state"
-	echo -e "Checking ping...\n"
-	ping -c 5 google.com
 }
