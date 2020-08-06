@@ -221,23 +221,12 @@ click-right = kitty newsboat -q &
 [module/weather]
 type = custom/script
 exec = ~/.dotfiles/scripts/curl-weather.sh
-interval = 1800
+interval = 3600
 
 format = <label>
 format-underline = ${{colors.thirdary}}
 
 label = %output%
-
-[module/window-count]
-type = custom/script
-exec = ~/.dotfiles/scripts/count-windows.sh
-interval = 2
-
-format = <label>
-format-underline = ${{colors.secondary}}
-format-margin = 0
-
-label = %{{F{color6}}}%{{F-}} %output%
 
 [module/date]
 type = internal/date
