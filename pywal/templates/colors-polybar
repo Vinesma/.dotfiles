@@ -208,15 +208,13 @@ label = %{{F{color2}}}%{{F-}} #%output%
 
 [module/rss]
 type = custom/script
-exec = ~/.dotfiles/scripts/newsboat-bar.sh
-interval = 9
+exec = ~/.dotfiles/scripts/newsboat/cat-unread.sh
+interval = 5
 
 format = <label>
 format-underline = ${{colors.thirdary}}
 
 label = %{{F{color2}}}%{{F-}} #%output%
-
-click-right = kitty newsboat -q &
 
 [module/weather]
 type = custom/script
