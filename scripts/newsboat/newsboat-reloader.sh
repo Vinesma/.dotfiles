@@ -13,4 +13,4 @@ folder="$HOME/.dotfiles/scripts/newsboat"
 unread=$("$newsboat_path" -x print-unread)
 
 "$notify_send_path" -i "$icon" "NEWSBOAT" "$unread"
-echo "$unread" | "$cut_path" -d ' ' -f 1 > "$folder/unread_count"
+echo "$unread" | "$cut_path" -d ' ' -f 1 > "$folder/unread_count.tmp"

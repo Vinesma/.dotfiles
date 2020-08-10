@@ -7,6 +7,5 @@
 newsboat -q
 
 folder="$HOME/.dotfiles/scripts/newsboat"
-unread=$(newsboat -x print-unread | cut -d' ' -f 1)
 
-echo "$unread" > "$folder/unread_count"
+newsboat -x print-unread | cut -d' ' -f 1 > "$folder/unread_count.tmp"
