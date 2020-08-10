@@ -1,5 +1,19 @@
 #!/bin/bash
 
 folder="$HOME/.dotfiles/scripts/newsboat"
+upper_limit=500
+lower_limit=50
 
-[[ -e "$folder/unread_count.tmp" ]] && cat "$folder/unread_count.tmp" || echo ""
+if [[ -e "$folder/unread_count.tmp" ]]; then
+    unread_count=$(cat "$folder/unread_count.tmp")
+
+    if [[ "$unread_count" -gt "$upper_limit" ]]; then
+        echo "$upper_limit+"
+    elif [[ "$unread_count" -lt "$lower_limit" ]]; then
+        echo ""
+    else
+        echo "$unread_count"
+    fi
+else
+    echo ""
+fi
