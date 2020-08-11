@@ -7,14 +7,11 @@ notify_send_dir="/usr/bin/notify-send"
 pgrep_dir="/usr/bin/pgrep"
 icon="/usr/share/icons/Papirus-Dark/32x32/apps/org.processing.processingide.svg"
 
-# Uncomment these to use the old notification style
-#current_status=$(mpc)
-#title=$(echo "$current_status" | head -n 1)
-#message=$(echo "$current_status" | sed '2,3d')
+if "$pgrep_dir" steam > /dev/null; then
+    song_title=$(mpc current -f "%title%")
+    song_artist=$(mpc current -f "%artist%")
+    title="Now Playing"
+    message="$song_title\n$song_artist"
 
-# Uncomment these to use the new notification style
-current_status=$(mpc current)
-title="Now Playing"
-message="$current_status"
-
-$pgrep_dir steam > /dev/null && $notify_send_dir -i "$icon" "$title" "$message"
+    "$notify_send_dir" -i "$icon" "$title" "$message"
+fi
