@@ -10,12 +10,12 @@ max-items 100
 browser "$HOME/.dotfiles/scripts/browser-newsboat.sh %u"
 
 # FORMATS
-datetime-format "%b %d - %I:%M %p"
+#datetime-format "%b %d - %I:%M %p"
 articlelist-format "%4i %f %D  %?T?|%-17T|  ?%t"
+articlelist-title-format "Articles in feed '%T' (%u unread, %t total)"
 
 # MACROS
 macro p toggle-article-read
-macro i set browser "feh %u" ; open-in-browser ; set browser "$HOME/.dotfiles/newsboat/browser.sh %u"
 
 # COLORS
 color background          white   black
@@ -41,5 +41,8 @@ highlight article ":.*\\(embedded flash\\)$" magenta default
 
 # ignore retweets in twitter feeds
 ignore-article "*" "link =~ \"nitter.net\" and title =~ \"RT by\""
-# other
+# ignore any Gmod from the yogs
 ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCH-_hzb2ILSCo9ftVSnrCIQ" "title =~ \"Gmod \""
+# ignore AO VIVO and VÍDEOS
+ignore-article "https://g1.globo.com/rss/g1/pe/petrolina-regiao/" "title =~ \"AO VIVO\""
+ignore-article "https://g1.globo.com/rss/g1/pe/petrolina-regiao/" "title =~ \"VÍDEOS\""
