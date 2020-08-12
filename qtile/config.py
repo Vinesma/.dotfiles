@@ -80,12 +80,16 @@ keys = [
 
     Key([mod, "control"], "r", lazy.restart()),
     Key([mod, "control"], "q", lazy.shutdown()),
-    Key([mod], "r", lazy.spawn("rofi -show run")),
-    Key([mod], "e", lazy.spawn("rofi -show window")),
+
+    # Toggle between floating window on/off
+    Key([mod], "t", lazy.window.toggle_floating()),
 
     # Custom commands
     # emulate win ctrl+alt+del (spawn task manager)
     Key(["mod1", "control"], "Delete", lazy.spawn("kitty htop")),
+    # rofi
+    Key([mod], "r", lazy.spawn("rofi -show run")),
+    Key([mod], "e", lazy.spawn("rofi -show window")),
     # spawn apps
     Key([mod, "mod1"], "e", lazy.spawn("thunar")),
     Key([mod, "mod1"], "b", lazy.spawn("firefox")),
@@ -221,9 +225,9 @@ screens = [
 # Drag floating layouts.
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(),
-         start=lazy.window.get_position()),
+        start=lazy.window.get_position()),
     Drag([mod], "Button3", lazy.window.set_size_floating(),
-         start=lazy.window.get_size()),
+        start=lazy.window.get_size()),
     Click([mod], "Button2", lazy.window.bring_to_front())
 ]
 
