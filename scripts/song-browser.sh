@@ -5,19 +5,18 @@
 # - mpd, mpc, rofi
 
 music_folder="$HOME/Music"
-notify_time=2000
 icon="/usr/share/icons/Papirus/32x32/apps/mpd.svg"
 
 clear-queue() {
     mpc clear
-    notify-send -t "$notify_time" -i "$icon" "MPD" "Queue cleared!"
+    notify-send -i "$icon" "MPD" "Queue cleared!"
 }
 
 add-album() {
     echo "$1" | mpc add
     mpc shuffle
     mpc play
-    notify-send -t "$notify_time" -i "$icon" "MPD" "$1 added to queue!"
+    notify-send -i "$icon" "MPD" "$1 added to queue!"
 }
 
 show-menu() {
