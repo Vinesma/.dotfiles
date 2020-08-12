@@ -1,1 +1,1 @@
--o ~/Videos/%(uploader)s/%(title)s.%(ext)s
+-o ~/Videos/Others/%(uploader)s/%(title)s.%(ext)s
