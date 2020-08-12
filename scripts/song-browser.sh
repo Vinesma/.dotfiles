@@ -1,17 +1,23 @@
 #!/bin/bash
 
-# //Description//
-# Features:
-# -
+# Creates a popup window for the user to select an album, then immediately starts playing.
 # Dependencies:
-# -
+# - mpd, mpc, rofi
 
 music_folder="$HOME/Music"
+notify_time=2000
+icon="/usr/share/icons/Papirus/32x32/apps/mpd.svg"
+
+clear-queue() {
+    mpc clear
+    notify-send -t "$notify_time" -i "$icon" "MPD" "Queue cleared!"
+}
 
 add-album() {
     echo "$1" | mpc add
     mpc shuffle
     mpc play
+    notify-send -t "$notify_time" -i "$icon" "MPD" "$1 added to queue!"
 }
 
 show-menu() {
@@ -23,7 +29,7 @@ show-menu() {
 
     case "$album" in
         *Exit) exit ;;
-        *Clear\ Queue) mpc clear ;;
+        *Clear\ Queue) clear-queue ;;
         *) add-album "$album" ;;
     esac
 }
