@@ -21,9 +21,13 @@ add-album() {
 
 show-all-music() {
     local track
+    local title
     track=$(mpc listall | rofi -dmenu -no-custom -i -p ' Play one' -lines 15)
+    title=$(echo "$track" | sed -e 's/.*\///' -e 's/\.mp3//')
+
     echo "$track" | mpc add
     mpc play
+    notify-send -i "$icon" "MPD" "$title added to queue!"
 }
 
 show-menu() {
@@ -32,11 +36,11 @@ show-menu() {
     all_albums=$(ls "$music_folder")
     
     while true; do
-        album=$(echo -e " Exit\n Clear Queue\n All Tracks\n$all_albums" | \
-        rofi -dmenu -no-custom -i -p ' Play' -lines 10)
+        album=$(echo -e " EXIT\n Clear Queue\n况 All Tracks\n$all_albums" | \
+        rofi -dmenu -no-custom -i -p ' Play' -lines 15)
 
         case "$album" in
-            *Exit) exit ;;
+            *EXIT) exit ;;
             *Clear\ Queue) clear-queue ;;
             *All\ Tracks) show-all-music ;;
             *) add-album "$album" ;;
