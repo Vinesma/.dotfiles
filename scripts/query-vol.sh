@@ -8,8 +8,6 @@ notify_time="800"
 
 [[ "$#" -gt 0 ]] && mpc volume "$1"
 
-current_vol=$(mpc | grep volume | cut -d' ' -f2)
-
-[[ "$current_vol" ]] && message="VOL: $current_vol" || message="VOL: 100%"
+message=$(mpc volume)
 
 notify-send -i "$icon" -t "$notify_time" "MPD" "$message"
