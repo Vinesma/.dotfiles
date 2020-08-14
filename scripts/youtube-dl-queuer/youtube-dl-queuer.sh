@@ -13,31 +13,37 @@ icon_error="/usr/share/icons/Papirus/32x32/status/dialog-error.svg"
 icon_youtube_dl="/usr/share/icons/Papirus/32x32/apps/youtube-dl.svg"
 icon_youtube_dl_queuer="/usr/share/icons/Papirus/32x32/status/dialog-information.svg"
 
+local menu_sub
+local video_format
+local queue_count
+
 # Check if script is passed and argument or not.
 # If yes, use the argument
 # If no, use the clipboard.
 [[ "$#" -gt 0 ]] && link="$1" || link="$(xclip -o)"
 
-# Check if user wants to download subtitles
-if [[ -e "$files_folder/writesub" ]]; then
-    menu_sub="Yes"
-else
-    menu_sub="No"
-fi
+load-config() {
+    # Check if user wants to download subtitles
+    if [[ -e "$files_folder/writesub" ]]; then
+        menu_sub="Yes"
+    else
+        menu_sub="No"
+    fi
 
-# Check if user has a defined format
-if [[ -e "$files_folder/format" ]]; then
-    video_format=$(cat "$files_folder/format")
-else
-    video_format="22/18"
-fi
+    # Check if user has a defined format
+    if [[ -e "$files_folder/format" ]]; then
+        video_format=$(cat "$files_folder/format")
+    else
+        video_format="22/18"
+    fi
 
-# Check no. of items in queue
-if [[ -e "$files_folder/queue" ]]; then
-    queue_count=$(wc -l "$files_folder/queue" | cut -d' ' -f 1)
-else
-    queue_count=0
-fi
+    # Check no. of items in queue
+    if [[ -e "$files_folder/queue" ]]; then
+        queue_count=$(wc -l "$files_folder/queue" | cut -d' ' -f 1)
+    else
+        queue_count=0
+    fi
+}
 
 send-error() {
     notify-send -i "$icon_error"  -t "$notify_time" "[youtube-dl-queuer]" "$1"
@@ -125,7 +131,7 @@ show-menu() {
 
     case "$option" in
         1) add-to-queue ;;
-        2) start-download ;;
+        2) start-download && exit ;;
         3) show-queue ;;
         4) clear-queue ;;
         5) change-format ;;
@@ -134,7 +140,10 @@ show-menu() {
     esac
 }
 
-case "$link" in
-    *youtube.com*|*youtu.be*) show-menu ;;
-    *) send-error "Unsupported link, exiting" && exit 1 ;;
-esac
+while true; do
+    load-config
+    case "$link" in
+        *youtube.com*|*youtu.be*) show-menu ;;
+        *) send-error "Unsupported link, exiting" && exit 1 ;;
+    esac
+done
