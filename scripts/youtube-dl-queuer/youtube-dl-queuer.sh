@@ -6,7 +6,7 @@
 # Dependencies:
 # xclip, youtube-dl, rofi
 
-notify_time="2200"
+notify_time=2200
 files_folder="$HOME/.dotfiles/scripts/youtube-dl-queuer"
 
 icon_error="/usr/share/icons/Papirus/32x32/status/dialog-error.svg"
@@ -123,7 +123,7 @@ show-menu() {
     local option
     option=$(echo -e \
         "1  Queue video\n2  Start downloads\n3  Show queue\n4 裸 Clear queue\n5  Change video format\n6  Toggle subtitles\n7  Exit" | \
-        rofi -dmenu -no-custom -p 'Option' -lines 7 -format 'd' -mesg "Format: $video_format / Queue: $queue_count / Subs: $menu_sub")
+        rofi -dmenu -only-match -p 'Option' -lines 7 -format 'd' -mesg "Format: $video_format / Queue: $queue_count / Subs: $menu_sub")
 
     case "$option" in
         1) add-to-queue ;;

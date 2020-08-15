@@ -6,7 +6,7 @@
 # Dependencies:
 # mpv, xclip, youtube-dl, rofi
 
-notify_time="2000"
+notify_time=2000
 
 icon_error="/usr/share/icons/Papirus/32x32/status/dialog-error.svg"
 icon_youtube_dl="/usr/share/icons/Papirus/32x32/apps/youtube-dl.svg"
@@ -36,7 +36,7 @@ show-menu() {
     local format
 
     format=$(echo -e "$1\nExit" | \
-    rofi -dmenu -no-custom -p 'Video format' -lines 15 | \
+    rofi -dmenu -only-match -p 'Video format' -lines 15 | \
     cut -d' ' -f 1)
 
     [[ "$format" != "Exit" ]] && start-playback "$format" || \
