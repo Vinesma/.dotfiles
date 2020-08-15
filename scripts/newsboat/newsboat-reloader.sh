@@ -10,7 +10,7 @@ folder="$HOME/.dotfiles/scripts/newsboat"
 
 "$newsboat_path" -x reload
 
-unread=$("$newsboat_path" -x print-unread)
-
-"$notify_send_path" -i "$icon" "NEWSBOAT" "$unread"
-echo "$unread" | "$cut_path" -d ' ' -f 1 > "$folder/unread_count.tmp"
+if unread=$("$newsboat_path" -x print-unread); then
+    "$notify_send_path" -i "$icon" "NEWSBOAT" "$unread"
+    echo "$unread" | "$cut_path" -d ' ' -f 1 > "$folder/unread_count.tmp"
+fi
