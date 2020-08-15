@@ -16,6 +16,8 @@ articlelist-title-format "Articles in feed '%T' (%u unread, %t total)"
 
 # MACROS
 macro p toggle-article-read
+macro f set-filter "content =~ \"nitter.net/pic/\""
+macro F clear-filter
 
 # COLORS
 color background          white   black

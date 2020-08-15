@@ -5,7 +5,7 @@
 "query:Youtube (Japanese):tags # \"japanese\""
 "query:Twitter (News):tags # \"twitter-news\" and unread = \"yes\""
 "query:Twitter (People):tags # \"twitter-people\" and unread = \"yes\""
-"query:Twitter (Artists):tags # \"twitter-artist\" and title !~ \"RT by\" and age < 2"
+"query:Twitter (Artists):tags # \"twitter-artist\" and age < 2"
 https://g1.globo.com/rss/g1/pe/petrolina-regiao/ "~G1 - Petrolina" news
 http://www.bbc.co.uk/portuguese/index.xml "~BBC" news
 https://feeds.folha.uol.com.br/poder/rss091.xml "~FOLHA - Poder" news
