@@ -13,10 +13,6 @@ icon_error="/usr/share/icons/Papirus/32x32/status/dialog-error.svg"
 icon_youtube_dl="/usr/share/icons/Papirus/32x32/apps/youtube-dl.svg"
 icon_youtube_dl_queuer="/usr/share/icons/Papirus/32x32/status/dialog-information.svg"
 
-local menu_sub
-local video_format
-local queue_count
-
 # Check if script is passed and argument or not.
 # If yes, use the argument
 # If no, use the clipboard.
