@@ -7,10 +7,9 @@ if [[ "$#" -gt 0 ]]; then
     mpc crop
     mpc search "(genre contains \"$1\")" | mpc add
     mpc shuffle
-    mpc random on
     mpc repeat on
 
-    notify-send -i "$icon" "MPD" "Queue set to '$1'"
+    notify-send -i "$icon" "MPD" "Playing all $1 tracks!"
 else
     notify-send -i "$icon_error" "[queue-songs]" "Invalid number of arguments"
 fi

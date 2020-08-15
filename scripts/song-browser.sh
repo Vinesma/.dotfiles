@@ -30,6 +30,18 @@ show-all-music() {
     notify-send -i "$icon" "MPD" "$title added to queue!"
 }
 
+show-genres() {
+    local genre
+    genre=$(mpc list genre | rofi -dmenu -only-match -i -p 'Play all from' -lines 10)
+
+    mpc crop
+    mpc search "(genre contains \"$genre\")" | mpc add
+    mpc shuffle
+    mpc repeat on
+    mpc play
+    notify-send -i "$icon" "MPD" "Playing all $genre tracks!"
+}
+
 play-all-music() {
     mpc add /
     mpc shuffle
@@ -43,13 +55,14 @@ show-menu() {
     all_albums=$(ls "$music_folder")
     
     while true; do
-        album=$(echo -e " EXIT\n Play All\n Clear Queue\n况 Show All\n$all_albums" | \
+        album=$(echo -e " EXIT\n Play All\n Clear Queue\n Show Genres\n况 Show All\n$all_albums" | \
         rofi -dmenu -only-match -i -p ' Play' -lines 15)
 
         case "$album" in
             *EXIT) exit ;;
             *Play\ All) play-all-music && exit ;;
             *Clear\ Queue) clear-queue ;;
+            *Show\ Genres) show-genres ;;
             *Show\ All) show-all-music ;;
             *) add-album "$album" ;;
         esac
