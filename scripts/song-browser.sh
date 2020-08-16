@@ -35,7 +35,7 @@ show-genres() {
     genre=$(mpc list genre | rofi -dmenu -only-match -i -p 'Play all from' -lines 10)
 
     mpc crop
-    mpc search "(genre contains \"$genre\")" | mpc add
+    mpc search genre "$1" | mpc add
     mpc shuffle
     mpc repeat on
     mpc play
