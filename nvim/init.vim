@@ -30,3 +30,15 @@ set wildmode=longest,list,full
 
 " Fix splits
 set splitbelow splitright
+
+if !exists('g:vscode')
+    " Plugin start
+    call plug#begin('~/.local/share/nvim/plugged')
+
+    " Declare the list of plugins.
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'vim-airline/vim-airline'
+
+    " List ends here. Plugins become visible to Vim after this call.
+    call plug#end()
+endif

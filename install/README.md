@@ -50,6 +50,24 @@ If installing on a laptop a few more things require attention, such as [ACPI Eve
 
 ## Dev stuff
 
+### NeoVim
+
+[neovim's](https://neovim.io/) huge ecosystem of settings and plugins is a lot to deal with.
+
+- Run `:checkhealth` for a overview of what is supported, like python support and others.
+
+Plugins:
+
+- Install [vim-plug](https://github.com/junegunn/vim-plug/wiki/tutorial#setting-up)
+
+- [Declare the plugins to be used inside the init.vim file.](https://github.com/junegunn/vim-plug/wiki/tutorial#installing-plugins)
+
+- Restart nvim. Now run `:PlugInstall` to install the plugins.
+
+- To upgrade plugins, run `:PlugUpdate`.
+
+- Remove plugins by removing their lines in the config file, restarting nvim and then running `:PlugClean`.
+
 ### Arch User Repository (AUR)
 
 [How to use the AUR.](https://wiki.archlinux.org/index.php/Arch_User_Repository#Getting_started)
