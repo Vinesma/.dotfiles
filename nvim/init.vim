@@ -31,6 +31,9 @@ set wildmode=longest,list,full
 " Fix splits
 set splitbelow splitright
 
+" Remove trailing whitespace on save
+autocmd BufWritePre * %s/\s\+$//e
+
 if !exists('g:vscode')
     " Plugin start
     call plug#begin('~/.local/share/nvim/plugged')
