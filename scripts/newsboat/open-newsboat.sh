@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# Opens newsboat and updates unread counts after exiting out so that other scripts can use the info
+# Opens newsboat and updates unread counts after exiting out so that other scripts can use the info, syncing is also supported.
 # Dependencies
 # - newsboat
+
+folder="$HOME/.dotfiles/scripts/newsboat"
+sync_folder="$HOME/Sync"
 
 [[ -e "$sync_folder/.newsboat_archive" ]] && newsboat -q -I "$sync_folder/.newsboat_archive"
 
 newsboat -q
-
-folder="$HOME/.dotfiles/scripts/newsboat"
-sync_folder="$HOME/Sync"
 
 newsboat -x print-unread | cut -d' ' -f 1 > "$folder/unread_count.tmp"
 
