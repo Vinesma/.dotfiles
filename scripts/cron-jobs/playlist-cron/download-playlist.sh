@@ -22,7 +22,7 @@ icon_error="/usr/share/icons/Papirus-Dark/32x32/status/dialog-error.svg"
 
 # VIDEO AND PLAYLIST OPTIONS
 audio_format="mp3"
-output_string="$HOME/Sync/%(title)s.%(ext)s"
+output_string="$HOME/Podcasts/Phone/%(title)s.%(ext)s"
 
 ## CHECKS ##
 # Check if playlists file exists
