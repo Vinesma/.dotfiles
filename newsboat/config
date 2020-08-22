@@ -1,6 +1,8 @@
 # BEHAVIOR
 confirm-exit no
 prepopulate-query-feeds yes
+goto-next-feed no
+wrap-scroll yes
 # RELOADING
 # If using cron set to 'no'
 refresh-on-startup no
@@ -14,10 +16,11 @@ browser "$HOME/.dotfiles/scripts/browser-newsboat.sh %u"
 articlelist-format "%4i %f %D  %?T?|%-17T|  ?%t"
 articlelist-title-format "Articles in feed '%T' (%u unread, %t total)"
 
+# FILTERS
+define-filter "Only twitter posts with multimedia" "content =~ \"nitter.net/pic/\""
+
 # MACROS
 macro p toggle-article-read
-macro f set-filter "content =~ \"nitter.net/pic/\""
-macro F clear-filter
 
 # COLORS
 color background          white   black
