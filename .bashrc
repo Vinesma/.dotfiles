@@ -179,17 +179,6 @@ alias ip='ip -br -c'
 alias update-aliases='. ~/.bashrc'
 alias update-packages="sudo pacman -Syu && notify-send 'PACMAN' 'Update complete!' || notify-send 'PACMAN' 'Exited with non-zero error code!'"
 
-# Functions
-# set wallpaper using feh instead of pywal itself
-wal-scale() {
-    wal -n -i "$@"
-    feh --bg-scale "$(< "${HOME}/.cache/wal/wal")"
-    kill $(pgrep dunst)
-    notify-send "DUNST" "New dunst theme set"
-    qtile-cmd -o cmd -f restart >/dev/null 2>&1
-    pywalfox update
-}
-
 # cheat.sh function (Display examples of command usage)
 cheat() {
         curl cheat.sh/$1
