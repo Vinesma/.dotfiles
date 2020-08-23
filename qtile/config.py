@@ -99,6 +99,8 @@ keys = [
     # take screenshot, either fullscreen or a selection
     Key([mod], "Print", lazy.spawn(path.join(scripts_path, "take-screenshot.sh"))),
     Key([mod, "mod1"], "Print", lazy.spawn(path.join(scripts_path, "take-screenshot.sh select"))),
+    # wallpaper setter
+    Key([mod, "mod1"], "w", lazy.spawn(path.join(scripts_path, "bg-setter", "choose-bg.sh"))),
     # mpc (mpd controller)
     Key([], "Pause", lazy.spawn("mpc toggle")),
     Key([mod], "Page_Up",
