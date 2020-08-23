@@ -44,7 +44,7 @@ clear-cache() {
 
 show-chooser() {
     local wallpaper
-    wallpaper=$(feh -A ';echo %F' --max-dimension "$width"x"$height" -d -F "$wallpaper_dir")
+    wallpaper=$(feh -G -A ';[Choose this image]echo %F' --max-dimension "$width"x"$height" -d -F "$wallpaper_dir")
     wallpaper=$(echo "$wallpaper" | tail -n 1)
 
     if [[ -n "$wallpaper" ]]; then
