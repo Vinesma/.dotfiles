@@ -2,4 +2,6 @@ SHELL=/bin/bash
 
 0 17 * * 3 cd ~/.dotfiles/scripts/cron-jobs/playlist-cron/ && bash download-playlist.sh > output
 
-0 1-23/2 * * * cd ~/.dotfiles/scripts/cron-jobs/newsboat && bash newsboat-reloader.sh >/dev/null 2>&1
+0 1-23/2 * * * cd ~/.dotfiles/scripts/newsboat/ && bash newsboat-reloader.sh >/dev/null 2>&1
+
+0 11,19 * * * [ $(/usr/bin/ls ~/Podcasts/Phone/ | /usr/bin/wc -l) -lt 3 ] && cd ~/Podcasts/Triforce\!/ && /usr/bin/python PickRandom.py 4 >/dev/null 2>&1
