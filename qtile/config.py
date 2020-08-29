@@ -140,7 +140,7 @@ keys = [
 ]
 
 groups = [
-    Group("a", layout="max", spawn="firefox", label="1"),
+    Group("a", layout="max", label="1"),
     Group("s", label="2"),
     Group("d", layout="max", label="3"),
     Group("f", layout="max", label="4"),
@@ -282,4 +282,4 @@ wmname = "LG3D"
 @hook.subscribe.startup_once
 def autostart():
     home = path.expanduser('~')
-    subprocess.Popen([home + '/.config/polybar/launch.sh'])
+    subprocess.Popen([home + '/.config/qtile/autostart.sh'])
