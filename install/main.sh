@@ -41,9 +41,9 @@ echo "-> Copying .bashrc..."
 cp -v "$dcf_dotfiles"/.bashrc "$mcf_dotfiles"
 echo "-> Copying x init files..."
 cp -v "$dcf_dotfiles"/.xinitrc "$mcf_dotfiles"
-echo "-> Initializing xprofile file..."
-touch "$HOME"/.xprofile
-echo -e "-> [i] The .xprofile file can be used to autostart programs like so:\nredshift-gtk &\nsleep 10 && syncthing --no-browser &\n"
+echo "-> Initializing autostart file..."
+echo '#!/bin/bash' > "$HOME"/.autostart
+echo -e "-> [i] The autostart file can be used to start programs like so:\nredshift-gtk &\nsleep 10 && syncthing --no-browser &\n"
 
 ## TERMINAL & EDITORS ##
 echo "==> Installing terminal emulator"
@@ -88,7 +88,7 @@ echo
 echo "==> Installing mount helper"
 sudo pacman -S $mnt_helper \
     && echo "-> Enabling mount helper autostart..." \
-    && echo "udiskie &" >> "$HOME"/.xprofile \
+    && echo "udiskie &" >> "$HOME"/.autostart \
     && echo "-> Done."
 
 ## AUDIO ##
@@ -109,7 +109,7 @@ sudo pacman -S dunst \
     && echo "[dunst] Config files copied over" \
     && echo "-> Configuring DBUS..." \
     && sudo cp -v "$HOME/.dotfiles/install/org.freedesktop.Notifications.service" "/usr/share/dbus-1/services/" \
-    && echo "dunst &" >> "$HOME"/.xprofile \
+    && echo "dunst &" >> "$HOME"/.autostart \
     && echo "-> Done."
 
 ## WEB BROWSER ##

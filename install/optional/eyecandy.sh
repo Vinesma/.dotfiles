@@ -10,13 +10,13 @@ echo "==> Installing some eyecandy stuff"
 sudo pacman -Syu $apps
 
 ## INIT FEH WALLPAPER ##
-echo 'feh --bg-scale "$(< "${HOME}/.cache/wal/wal")" &' >> "$HOME"/.xprofile
+echo 'feh --bg-scale "$(< "${HOME}/.cache/wal/wal")" &' >> "$HOME"/.autostart
 
 ## PICOM ##
 echo "-> Configuring picom..."
     mkdir -pv "$mcf_picom"/ \
     && cp -v "$dcf_picom" "$mcf_picom"/ \
-    && echo "picom &" >> "$HOME"/.xprofile
+    && echo "picom &" >> "$HOME"/.autostart
 echo
 
 ## THEMES & FONTS ##

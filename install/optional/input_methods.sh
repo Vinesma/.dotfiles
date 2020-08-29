@@ -4,7 +4,7 @@ iengine="fcitx fcitx-mozc fcitx-configtool"
 
 echo "==> Installing fcitx with mozc module"
 sudo pacman -Syu $iengine \
-    && echo "fcitx &" >> "$HOME"/.xprofile \
+    && echo "fcitx &" >> "$HOME"/.autostart \
     && echo "-> [i] Run these commands to configure the language engine:" \
     && echo "-> [i] $ fcitx" \
     && echo "-> [i] $ fcitx-configtool" \

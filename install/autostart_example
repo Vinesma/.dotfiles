@@ -1,0 +1,17 @@
+#!/bin/bash
+udiskie &
+. $HOME/.config/polybar/launch.sh &
+feh --bg-scale "$(< "${HOME}/.cache/wal/wal")" &
+picom &
+redshift &
+fcitx &
+syncthing --no-browser &
+sleep 10 && nm-online && bash $HOME/.dotfiles/scripts/newsboat/newsboat-reloader.sh &
+nm-online && firefox &
+if [[ ! -s ~/.config/mpd/pid ]]; then
+    mpd
+    mpc random on
+    mpc repeat on
+    mpc crossfade 3
+fi
+xinput set-prop 12 301 1

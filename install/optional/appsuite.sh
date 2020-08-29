@@ -45,16 +45,19 @@ cp -v "$dcf_qtile" "$mcf_qtile"
 echo
 echo "-> Copying polybar config over..."
     mkdir -pv "$mcf_polybar" \
-    && cp -v "$dcf_polybar" "$mcf_polybar"
+    && cp -v "$dcf_polybar" "$mcf_polybar" \
+    && echo '. $HOME/.config/polybar/launch.sh &' >> "$HOME"/.autostart
 echo
 ## MUSIC PLAYER ##
 echo "-> Configuring mpd and auxiliaries..."
     mkdir -pv "$mcf_mpd" \
     && cp -v "$dcf_mpd" "$mcf_mpd" \
-    && echo "[ ! -s ~/.config/mpd/pid ] && mpd" >> "$HOME"/.xprofile \
-    && echo "mpc random on" >> "$HOME"/.xprofile \
-    && echo "mpc repeat on" >> "$HOME"/.xprofile \
-    && echo "mpc crossfade 2" >> "$HOME"/.xprofile
+    && echo 'if [[ ! -s ~/.config/mpd/pid ]]; then' >> "$HOME"/.autostart \
+    && echo "    mpc" >> "$HOME"/.autostart \
+    && echo "    mpc random on" >> "$HOME"/.autostart \
+    && echo "    mpc repeat on" >> "$HOME"/.autostart \
+    && echo "    mpc crossfade 2" >> "$HOME"/.autostart \
+    && echo 'fi' >> "$HOME"/.autostart
 
     mkdir -pv "$mcf_ncmpcpp" \
     && cp -v "$dcf_ncmpcpp" "$mcf_ncmpcpp"
