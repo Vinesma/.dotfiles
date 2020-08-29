@@ -1,12 +1,12 @@
 #!/bin/bash
 udiskie &
-. $HOME/.config/polybar/launch.sh &
+. ~/.config/polybar/launch.sh &
 feh --bg-scale "$(< "${HOME}/.cache/wal/wal")" &
 picom &
 redshift &
 fcitx &
 syncthing --no-browser &
-sleep 10 && nm-online && bash $HOME/.dotfiles/scripts/newsboat/newsboat-reloader.sh &
+sleep 10 && nm-online && bash ~/.dotfiles/scripts/newsboat/newsboat-reloader.sh &
 nm-online && firefox &
 if [[ ! -s ~/.config/mpd/pid ]]; then
     mpd
