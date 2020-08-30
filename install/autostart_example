@@ -6,12 +6,17 @@ picom &
 redshift &
 fcitx &
 syncthing --no-browser &
-sleep 10 && nm-online && bash ~/.dotfiles/scripts/newsboat/newsboat-reloader.sh &
-nm-online && firefox &
+xinput set-prop 12 301 1
+
 if [[ ! -s ~/.config/mpd/pid ]]; then
     mpd
     mpc random on
     mpc repeat on
     mpc crossfade 3
 fi
-xinput set-prop 12 301 1
+
+if nm-online; then
+    firefox &
+    qbittorrent &
+    sleep 10 && bash ~/.dotfiles/scripts/newsboat/newsboat-reloader.sh &
+fi
