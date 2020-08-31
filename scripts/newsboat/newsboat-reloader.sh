@@ -8,6 +8,7 @@ cut_path="/usr/bin/cut"
 cat_path="/usr/bin/cat"
 stat_path="/usr/bin/stat"
 icon="/usr/share/icons/Papirus/32x32/apps/akregator.svg"
+icon_sync="/usr/share/icons/Papirus/32x32/apps/syncthing-gtk.svg"
 folder="$HOME/.dotfiles/scripts/newsboat"
 sync_folder="$HOME/Sync"
 
@@ -18,6 +19,7 @@ last_read_time=$("$stat_path" -c %Y "$sync_folder/.newsboat_archive")
 
 if [[ -e "$sync_folder/.newsboat_archive" ]] && [[ "$last_read_saved" != "$last_read_time" ]]; then
     "$newsboat_path" -q -I "$sync_folder/.newsboat_archive"
+    "$notify_send_path" -i "$icon_sync" "Syncthing" "[Newsboat] Sync successful!"
 fi
 
 if [[ -e "$sync_folder" ]]; then
