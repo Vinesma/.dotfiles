@@ -19,6 +19,8 @@ mcf_ncmpcpp="$HOME/.config/ncmpcpp"
 dcf_ncmpcpp="$HOME/.dotfiles/ncmpcpp/*"
 mcf_rofi="$HOME/.config/rofi"
 dcf_rofi="$HOME/.dotfiles/rofi/*"
+mcf_qbittorrent="$HOME/.config/qBittorrent"
+dcf_qbittorrent="$HOME/.dotfiles/qBittorrent/*"
 
 ## INSTALL ##
 echo "==> Installing suite of apps."
@@ -66,6 +68,11 @@ echo
 echo "-> Configuring rofi..."
     mkdir -pv "$mcf_rofi" \
     && cp -v "$dcf_rofi" "$mcf_rofi"
+echo
+## QBITTORRENT ##
+echo "-> Configuring qBittorrent..."
+    mkdir -pv "$mcf_qbittorrent" \
+    && cp -v "$dcf_qbittorrent" "$mcf_qbittorrent"
 
 echo "-> [i] youtube-dl should be installed separately, so that it can be updated quickly via 'youtube-dl -U'"
 echo "-> [i] Run these commands when ready to install:"
