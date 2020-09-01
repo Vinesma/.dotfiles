@@ -2,7 +2,6 @@
 confirm-exit no
 prepopulate-query-feeds yes
 goto-next-feed no
-wrap-scroll yes
 # RELOADING
 # If using cron set to 'no'
 refresh-on-startup no
