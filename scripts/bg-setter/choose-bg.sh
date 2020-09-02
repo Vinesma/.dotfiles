@@ -97,8 +97,10 @@ download-image() {
 
         if [[ "$link" == *i.pximg.net/* ]]; then
             # Handle pixiv links
-            local pixiv_id=$(echo "$link" | cut -d '_' -f1 | grep -o "[0-9]\+\$")
-            local pixiv_ref="https://www.pixiv.net/en/artworks/$pixiv_id"
+            local pixiv_id
+            local pixiv_ref
+            pixiv_id=$(echo "$link" | cut -d '_' -f1 | grep -o "[0-9]\+\$")
+            pixiv_ref="https://www.pixiv.net/en/artworks/$pixiv_id"
 
             curl -H "Referer: $pixiv_ref" -s "$link" -o "$files_folder/output$extension"
         else
