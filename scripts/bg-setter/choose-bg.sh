@@ -94,7 +94,17 @@ download-image() {
 
     if extension=$(echo "$link" | grep -o '\(\.jpg\|\.jpeg\|\.png\)'); then
         notify-send -i "$icon_download" "choose-bg" "Downloading image"
-        curl -s "$link" -o "$files_folder/output$extension"
+
+        if [[ "$link" == *i.pximg.net/* ]]; then
+            # Handle pixiv links
+            local pixiv_id=$(echo "$link" | cut -d '_' -f1 | grep -o "[0-9]\+\$")
+            local pixiv_ref="https://www.pixiv.net/en/artworks/$pixiv_id"
+
+            curl -H "Referer: $pixiv_ref" -s "$link" -o "$files_folder/output$extension"
+        else
+            curl -s "$link" -o "$files_folder/output$extension"
+        fi
+
         resize-image "$extension"
     else
         send-error "Unsupported link."
