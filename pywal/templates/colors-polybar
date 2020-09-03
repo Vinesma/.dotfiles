@@ -114,20 +114,20 @@ format-padding = 1
 label = %title%
 label-maxlen = 36
 
-label-empty = 
+label-empty =
 label-empty-foreground = ${{colors.foreground}}
 
 [module/mpd]
 type = internal/mpd
 format-online = <label-time> <toggle> <label-song>
-format-paused = <toggle> <label-song>
+format-paused = <label-time> <toggle> <label-song>
 format-stopped =
 format-online-foreground = ${{colors.primary}}
 
 icon-play = 
 icon-pause = 
 
-label-song = %title% - %artist%
+label-song = %title%
 label-song-maxlen = 45
 label-song-ellipsis = true
 
