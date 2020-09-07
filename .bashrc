@@ -198,8 +198,8 @@ youtube-dl-stream() {
     error_icon="/usr/share/icons/Papirus/32x32/status/dialog-error.svg"
 
     youtube-dl -o "$HOME/Videos/Streams/%(uploader)s/%(title)s.%(ext)s" "$@" \
-        && notify-send -i "$download_icon" "[youtube-dl-stream] Download complete!" \
-        || notify-send -i "$error_icon" "[youtube-dl-stream] Download failed!"
+        && notify-send -i "$download_icon" "[youtube-dl-stream]\nDownload complete!" \
+        || notify-send -i "$error_icon" "[youtube-dl-stream]\nDownload failed!"
 }
 
 # creates pieces of a file
