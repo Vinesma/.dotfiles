@@ -181,10 +181,19 @@ alias update-packages="sudo pacman -Syu && notify-send 'PACMAN' 'Update complete
 
 # cheat.sh function (Display examples of command usage)
 cheat() {
-        curl cheat.sh/$1
+    curl cheat.sh/$1
 }
 
-# wttr.in function (Display wheater for selected location)
+# wttr.in function (Display weather for selected location)
 weather() {
-        curl wttr.in/$1
+    curl wttr.in/$1
+}
+
+# youtube-dl-stream function, made for easy stream downloading
+youtube-dl-stream() {
+    youtube-dl \
+        -o "~/Videos/Streams/%(uploader)s/%(title)s.%(ext)s" \
+        "$@" \
+        && notify-send "[youtube-dl-stream] Download complete!" \
+        || notify-send "[youtube-dl-stream] Download failed! :("
 }
