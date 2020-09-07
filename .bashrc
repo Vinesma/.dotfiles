@@ -123,7 +123,7 @@ ex ()
       *.tar.bz2)   tar xjf "$1"   ;;
       *.tar.gz)    tar xzf "$1"   ;;
       *.bz2)       bunzip2 "$1"   ;;
-      *.rar)       unrar x "$1"     ;;
+      *.rar)       unrar x "$1"   ;;
       *.gz)        gunzip "$1"    ;;
       *.tar)       tar xf "$1"    ;;
       *.tbz2)      tar xjf "$1"   ;;
@@ -141,12 +141,12 @@ ex ()
 # Colorscheme import from wal
 (cat ~/.cache/wal/sequences &)
 
-# Exports
+### EXPORTS ###
 export EDITOR="/usr/bin/nvim"
 export VISUAL="/usr/bin/nvim"
 export PATH="$PATH:$HOME/Documents/flutter/bin"
 
-# Personal aliases
+### PERSONAL ALIASES ###
 # nvim
 alias v='nvim'
 alias sv='sudo nvim'
@@ -179,21 +179,66 @@ alias ip='ip -br -c'
 alias update-aliases='. ~/.bashrc'
 alias update-packages="sudo pacman -Syu && notify-send 'PACMAN' 'Update complete!' || notify-send 'PACMAN' 'Exited with non-zero error code!'"
 
-# cheat.sh function (Display examples of command usage)
+### PERSONAL FUNCTIONS ###
+# cheat.sh (Display examples of command usage)
 cheat() {
-    curl cheat.sh/$1
+    curl cheat.sh/"$1"
 }
 
-# wttr.in function (Display weather for selected location)
+# wttr.in (Display weather for selected location)
 weather() {
-    curl wttr.in/$1
+    curl wttr.in/"$1"
 }
 
-# youtube-dl-stream function, made for easy stream downloading
+# for easy downloading of streams
 youtube-dl-stream() {
-    youtube-dl \
-        -o "~/Videos/Streams/%(uploader)s/%(title)s.%(ext)s" \
-        "$@" \
-        && notify-send "[youtube-dl-stream] Download complete!" \
-        || notify-send "[youtube-dl-stream] Download failed! :("
+    local download_icon
+    local error_icon
+    download_icon="/usr/share/icons/Papirus/32x32/apps/youtube-dl.svg"
+    error_icon="/usr/share/icons/Papirus/32x32/status/dialog-error.svg"
+
+    youtube-dl -o "$HOME/Videos/Streams/%(uploader)s/%(title)s.%(ext)s" "$@" \
+        && notify-send -i "$download_icon" "[youtube-dl-stream] Download complete!" \
+        || notify-send -i "$error_icon" "[youtube-dl-stream] Download failed!"
+}
+
+# creates pieces of a file
+split-create() {
+    if [[ "$#" -eq 2 ]]; then
+        split -b "$1" "$2" "$2.part"
+    else
+        echo "Usage: split-create [piece size] [filename]"
+        echo "[piece size] Example: 1G"
+        echo "[filename] Example: myfile.tar.gz"
+    fi
+}
+
+# recreates files that were once split
+split-recreate() {
+    if [[ "$#" -gt 2 ]]; then
+        cat "${@:2}" > "$1"
+    else
+        echo "Usage: split-recreate [output filename] [file pieces]"
+        echo "[file pieces] Example: myfile.tar.gz.part* (The glob expands to cover all the pieces in order)"
+    fi
+}
+
+# create .tar archive
+ca() {
+    if [[ "$#" -ne 0 ]]; then
+        tar cvf "$1.tar" "${@:2}"
+    else
+        echo "ca: create a .tar archive"
+        echo "Usage: ca [archive name (no extension)] [input]"
+    fi
+}
+
+# create compressed .tar.gz archive
+cca() {
+    if [[ "$#" -ne 0 ]]; then
+        tar czvf "$1.tar.gz" "${@:2}"
+    else
+        echo "cca: create a compressed .tar.gz archive"
+        echo "Usage: cca [archive name (no extension)] [input]"
+    fi
 }
