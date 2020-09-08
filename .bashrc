@@ -198,14 +198,15 @@ youtube-dl-stream() {
     error_icon="/usr/share/icons/Papirus/32x32/status/dialog-error.svg"
 
     youtube-dl -o "$HOME/Videos/Streams/%(uploader)s/%(title)s.%(ext)s" "$@" \
-        && notify-send -i "$download_icon" "[youtube-dl-stream]\nDownload complete!" \
-        || notify-send -i "$error_icon" "[youtube-dl-stream]\nDownload failed!"
+        && notify-send -i "$download_icon" "[youtube-dl-stream]" "Download complete!" \
+        || notify-send -i "$error_icon" "[youtube-dl-stream]" "Download failed!"
 }
 
 # creates pieces of a file
 split-create() {
     if [[ "$#" -eq 2 ]]; then
-        split -b "$1" "$2" "$2.part"
+        split -b "$1" "$2" "$2.part" \
+            && notify-send "[split-create]" "Split completed!"
     else
         echo "Usage: split-create [piece size] [filename]"
         echo "[piece size] Example: 1G"
@@ -216,7 +217,8 @@ split-create() {
 # recreates files that were once split
 split-recreate() {
     if [[ "$#" -gt 2 ]]; then
-        cat "${@:2}" > "$1"
+        cat "${@:2}" > "$1" \
+            && notify-send "[split-recreate]" "Operation completed!"
     else
         echo "Usage: split-recreate [output filename] [file pieces]"
         echo "[file pieces] Example: myfile.tar.gz.part* (The glob expands to cover all the pieces in order)"
@@ -226,7 +228,8 @@ split-recreate() {
 # create .tar archive
 ca() {
     if [[ "$#" -gt 2 ]]; then
-        tar cvf "$1.tar" "${@:2}"
+        tar cvf "$1.tar" "${@:2}" \
+            && notify-send "[ca]" "Archive created!"
     else
         echo "ca: create a .tar archive"
         echo "Usage: ca [archive name (no extension)] [input]"
@@ -236,7 +239,8 @@ ca() {
 # create compressed .tar.gz archive
 cca() {
     if [[ "$#" -gt 2 ]]; then
-        tar czvf "$1.tar.gz" "${@:2}"
+        tar czvf "$1.tar.gz" "${@:2}" \
+            && notify-send "[cca]" "Compressed archive created!"
     else
         echo "cca: create a compressed .tar.gz archive"
         echo "Usage: cca [archive name (no extension)] [input]"
