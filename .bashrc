@@ -225,7 +225,7 @@ split-recreate() {
 
 # create .tar archive
 ca() {
-    if [[ "$#" -ne 0 ]]; then
+    if [[ "$#" -gt 2 ]]; then
         tar cvf "$1.tar" "${@:2}"
     else
         echo "ca: create a .tar archive"
@@ -235,7 +235,7 @@ ca() {
 
 # create compressed .tar.gz archive
 cca() {
-    if [[ "$#" -ne 0 ]]; then
+    if [[ "$#" -gt 2 ]]; then
         tar czvf "$1.tar.gz" "${@:2}"
     else
         echo "cca: create a compressed .tar.gz archive"
