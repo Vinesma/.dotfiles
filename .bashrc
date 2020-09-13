@@ -246,3 +246,26 @@ cca() {
         echo "Usage: cca [archive name (no extension)] [input]"
     fi
 }
+
+# trim video/music files
+trim-ffmpeg() {
+    if [[ "$#" -eq 4 ]]; then
+        local input_filename
+        local input_extension
+        local output_filename
+        local output_extension
+        input_filename="${3%.*}"
+        input_extension="${3##*.}"
+        output_filename="${4%.*}"
+        output_extension="${4##*.}"
+
+        if [[ "$input_extension" = "$output_extension" ]]; then
+            ffmpeg -ss "$1" -to "$2" -i "$3" -codec copy "$output_filename.$output_extension"
+        else
+            ffmpeg -ss "$1" -to "$2" -i "$3" "$output_filename.$output_extension"
+        fi
+    else
+        echo "trim-ffmpeg: trim video and audio files"
+        echo "Usage: trim-ffmpeg [start timestamp (mm:ss)] [end timestamp (mm:ss)] [input file.ext] [output file.ext]"
+    fi
+}
