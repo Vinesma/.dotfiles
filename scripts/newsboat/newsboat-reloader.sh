@@ -2,6 +2,9 @@
 export DISPLAY=:0
 export DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus'
 
+# Quit early if already running.
+/usr/bin/pgrep "newsboat" && exit
+
 newsboat_path="/usr/bin/newsboat"
 notify_send_path="/usr/bin/notify-send"
 cut_path="/usr/bin/cut"
