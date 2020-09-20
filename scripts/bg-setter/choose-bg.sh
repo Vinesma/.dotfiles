@@ -90,7 +90,7 @@ resize-image() {
 
 download-image() {
     local link
-    link=$(xclip -o)
+    link=$(xclip -selection clipboard -o)
 
     if extension=$(echo "$link" | grep -o '\(\.jpg\|\.jpeg\|\.png\)'); then
         notify-send -i "$icon_download" "choose-bg" "Downloading image"

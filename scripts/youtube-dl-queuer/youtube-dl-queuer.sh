@@ -16,7 +16,7 @@ icon_youtube_dl_queuer="/usr/share/icons/Papirus/32x32/status/dialog-information
 # Check if script is passed and argument or not.
 # If yes, use the argument
 # If no, use the clipboard.
-[[ "$#" -gt 0 ]] && link="$1" || link="$(xclip -o)"
+[[ "$#" -gt 0 ]] && link="$1" || link="$(xclip -selection clipboard -o)"
 
 load-config() {
     # Check if user wants to download subtitles

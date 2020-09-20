@@ -15,7 +15,7 @@ icon_mpv="/usr/share/icons/Papirus/32x32/apps/mpv.svg"
 # Check if script is passed and argument or not.
 # If yes, use the argument
 # If no, use the clipboard.
-[[ "$#" -gt 0 ]] && link="$1" || link="$(xclip -o)"
+[[ "$#" -gt 0 ]] && link="$1" || link="$(xclip -selection clipboard -o)"
 
 send-error() {
     notify-send -i "$icon_error"  -t "$notify_time" "MPV" "$1"
