@@ -1,12 +1,14 @@
 #!/bin/bash
-udiskie &
-. ~/.config/polybar/launch.sh &
+
 feh --bg-scale "$(< "${HOME}/.cache/wal/wal")" &
+. ~/.config/polybar/launch.sh &
 picom &
+dunst &
+udiskie &
 redshift &
+numlockx &
 fcitx &
 syncthing --no-browser &
-xinput set-prop 12 301 1
 
 if [[ ! -s ~/.config/mpd/pid ]]; then
     mpd
@@ -16,7 +18,7 @@ if [[ ! -s ~/.config/mpd/pid ]]; then
 fi
 
 if ping -c 3 google.com; then
-    firefox &
+    firefox about:newtab https://en.wikipedia.org/wiki/Main_Page &
     qbittorrent &
     sleep 10 && bash ~/.dotfiles/scripts/newsboat/newsboat-reloader.sh &
 fi
