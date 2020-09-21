@@ -31,7 +31,7 @@ if [[ "$1" == *youtube.com* ]]; then
     option=$(echo -e "1  Watch\n2  Send to download/queue\n3  Open in browser\n4  Show video info\n5  Exit" | \
         rofi -dmenu -only-match -p 'option' -format 'd' -mesg 'This is a youtube link, what to do?')
     case $option in
-        1) "$clipboard_mpv_dir" "$1" ;;
+        1) "$clipboard_mpv_dir" "$1" & ;;
         2) "$youtube_dl_queuer_dir" "$1" ;;
         3) firefox "$1" & ;;
         4) video-info "$1" ;;

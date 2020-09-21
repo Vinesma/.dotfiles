@@ -88,13 +88,17 @@ show-queue() {
 }
 
 add-to-queue() {
-    local new_queue
-    new_queue=$(( "$queue_count" + 1 ))
-    echo "$link" >> "$files_folder/queue"
-    notify-send \
-        -i "$icon_youtube_dl_queuer" \
-        -t "$notify_time" "[youtube-dl-queuer]" \
-        "Video added to download queue!\nQueue: $new_queue"
+    if [[ "$link" = @(*youtube.com*|*youtu.be*) ]]; then
+        local new_queue
+        new_queue=$(( "$queue_count" + 1 ))
+        echo "$link" >> "$files_folder/queue"
+        notify-send \
+            -i "$icon_youtube_dl_queuer" \
+            -t "$notify_time" "[youtube-dl-queuer]" \
+            "Video added to download queue!\nQueue: $new_queue"
+    else
+        send-error "Unsupported link!"
+    fi
 }
 
 change-format() {
@@ -138,8 +142,5 @@ show-menu() {
 
 while true; do
     load-config
-    case "$link" in
-        *youtube.com*|*youtu.be*) show-menu ;;
-        *) send-error "Unsupported link, exiting" && exit 1 ;;
-    esac
+    show-menu
 done
