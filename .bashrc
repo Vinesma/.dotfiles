@@ -158,8 +158,6 @@ alias mpvl='mpv --profile=youtube360p'
 alias mpvw='mpv --profile=window'
 alias mpva='mpv --profile=audio-only'
 alias mpvsw='mpv --profile=window-stream'
-#youtube-dl
-alias youtube-dl-audio='youtube-dl -x --audio-format mp3'
 # git
 alias gs='git status'
 alias ga='git add'
@@ -188,6 +186,11 @@ cheat() {
 # wttr.in (Display weather for selected location)
 weather() {
     curl wttr.in/"$1"
+}
+
+# for easy downloading of music
+youtube-dl-audio() {
+    youtube-dl -x --audio-format mp3 -o "$HOME/Downloads/Audio/%(title)s.%(ext)s" "$@"
 }
 
 # for easy downloading of streams
