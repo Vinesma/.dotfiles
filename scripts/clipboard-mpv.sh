@@ -27,8 +27,14 @@ start-playback() {
     timestamp="$(echo -e '0%\n25%\n50%\n75%\n90%' | rofi -dmenu -p 'Timestamp' -lines 5)"
 
     notify-send -i "$icon_mpv" -t "$notify_time" "MPV" "Starting playback..."
-    if ! mpv --no-terminal --ytdl-format="$1" --start="$timestamp" "$link"; then
-        send-error "Error during playback"
+    if [[ "$timestamp" = "0%" ]]; then
+        if ! mpv --no-terminal --ytdl-format="$1" "$link"; then
+            send-error "Error during playback"
+        fi
+    else
+        if ! mpv --no-terminal --ytdl-format="$1" --start="$timestamp" "$link"; then
+            send-error "Error during playback"
+        fi
     fi
 }
 
