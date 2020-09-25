@@ -8,16 +8,26 @@ folder="$HOME/.dotfiles/scripts/newsboat"
 sync_folder="$HOME/Sync"
 last_read_saved=$(cat "$folder/archive_last_read.tmp")
 last_read_time=$(stat -c %Y "$sync_folder/.newsboat_archive")
+icon_error="/usr/share/icons/Papirus/32x32/status/dialog-error.svg"
 
-if [[ -e "$sync_folder/.newsboat_archive" ]] && [[ "$last_read_saved" != "$last_read_time" ]]; then
-    newsboat -q -I "$sync_folder/.newsboat_archive"
-fi
+# This check prevents newsboat from running on top of another instance and overwriting files
+if [[ ! -e "$folder/run-newsboat.tmp" ]]; then
+    touch "$folder/run-newsboat.tmp"
 
-newsboat -q
+    if [[ -e "$sync_folder/.newsboat_archive" ]] && [[ "$last_read_saved" != "$last_read_time" ]]; then
+        newsboat -q -I "$sync_folder/.newsboat_archive"
+    fi
 
-newsboat -x print-unread | cut -d' ' -f 1 > "$folder/unread_count.tmp"
+    newsboat -q
 
-if [[ -e "$sync_folder" ]]; then
-    newsboat -q -E "$sync_folder/.newsboat_archive"
-    stat -c %Y "$sync_folder/.newsboat_archive" > "$folder/archive_last_read.tmp"
+    newsboat -x print-unread | cut -d' ' -f 1 > "$folder/unread_count.tmp"
+
+    if [[ -e "$sync_folder" ]]; then
+        newsboat -q -E "$sync_folder/.newsboat_archive"
+        stat -c %Y "$sync_folder/.newsboat_archive" > "$folder/archive_last_read.tmp"
+    fi
+
+    rm "$folder/run-newsboat.tmp"
+else
+    notify-send -i "$icon_error" "NEWSBOAT" "Newsboat is already running, either wait for it to complete or exit the other instance."
 fi
