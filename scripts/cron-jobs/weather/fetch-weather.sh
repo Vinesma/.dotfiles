@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Shows a notification with information about weather conditions in the specified area.
+# Shows a notification with information about weather conditions in the specified location.
 # Features:
 # - DATA: Temperature and current weather condition.
 #
@@ -21,7 +21,7 @@ if [[ ! -e "$folder/running.tmp" ]]; then
             /usr/bin/notify-send -i "$icon" "[Weather report]" "$response"
         fi
     else
-        /usr/bin/notify-send "[Weather report]" "Add a file called city.tmp with the location you want to the folder this script is in to configure it."
+        /usr/bin/notify-send -i "$icon" "[Weather report]" "Add a file called city.tmp with the location you want to the folder this script is in to configure it."
     fi
 
     /usr/bin/rm "$folder/running.tmp"
