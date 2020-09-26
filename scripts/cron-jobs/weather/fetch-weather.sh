@@ -20,8 +20,9 @@ if [[ ! -e "$folder/running.tmp" ]]; then
 
     if [[ -e "$folder/city.tmp" ]]; then
         city=$(< "$folder/city.tmp")
+        response=$($curl_dir -s "$site"/"$city"?format="$format")
 
-        if response=$($curl_dir -s "$site"/"$city"?format="$format"); then
+        if [[ -n "$response" ]]; then
             /usr/bin/notify-send -i "$icon" "[Weather report]" "$response"
         fi
     else
