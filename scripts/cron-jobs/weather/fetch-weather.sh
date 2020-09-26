@@ -5,6 +5,10 @@
 # - DATA: Temperature and current weather condition.
 #
 
+# Exports so that the notification can be sent and seen.
+export DISPLAY=:0
+export DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus'
+
 folder="$HOME/.dotfiles/scripts/cron-jobs/weather"
 icon="/usr/share/icons/Papirus/32x32/apps/weather.svg"
 curl_dir="/usr/bin/curl"
