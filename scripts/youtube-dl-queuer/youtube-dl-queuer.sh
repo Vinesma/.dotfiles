@@ -58,6 +58,8 @@ start-download() {
     local output
 
     if [[ -e "$files_folder/queue" ]]; then
+        touch "$files_folder/running.tmp"
+
         notify-send -i "$icon_youtube_dl" -t "$notify_time" "[youtube-dl]" "Starting download..."
 
         if [[ -e "$files_folder/writesub" ]]; then
@@ -74,6 +76,8 @@ start-download() {
         else
             send-error "An error ocurred while downloading one or more items. The queue was preserved.\nOutput saved to file."
         fi
+
+        rm "$files_folder/running.tmp"
     else
         send-error "No queued items! Aborting download..."
     fi
@@ -140,7 +144,11 @@ show-menu() {
     esac
 }
 
-while true; do
-    load-config
-    show-menu
-done
+if [[ ! -e "$files_folder/running.tmp" ]]; then
+    while true; do
+        load-config
+        show-menu
+    done
+else
+    send-error "Another instance of youtube-dl-queuer is already running!"
+fi

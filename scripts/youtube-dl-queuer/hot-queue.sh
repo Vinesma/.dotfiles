@@ -25,13 +25,17 @@ send-error() {
 }
 
 add-to-queue() {
-    local new_queue
-    new_queue=$(( "$queue_count" + 1 ))
-    echo "$link" >> "$files_folder/queue"
-    notify-send \
-        -i "$icon_youtube_dl_queuer" \
-        -t "$notify_time" "[youtube-dl-queuer]" \
-        "Video added to download queue!\nQueue: $new_queue"
+    if [[ -e "$files_folder/running.tmp" ]]; then
+        send-error "Cannot add item to queue, a download is in progress!"
+    else
+        local new_queue
+        new_queue=$(( "$queue_count" + 1 ))
+        echo "$link" >> "$files_folder/queue"
+        notify-send \
+            -i "$icon_youtube_dl_queuer" \
+            -t "$notify_time" "[youtube-dl-queuer]" \
+            "Video added to download queue!\nQueue: $new_queue"
+    fi
 }
 
 case "$link" in
