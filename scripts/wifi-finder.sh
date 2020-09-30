@@ -19,19 +19,40 @@ password-menu() {
     fi
 }
 
+wifi-toggler() {
+    local status
+
+    wifi toggle
+
+    status=$(wifi | awk '{print $3}')
+
+    if [[ "$status" = "on" ]]; then
+        notify-send -i "$icon_connected" "Wifi" "Online"
+    else
+        notify-send -i "$icon_failed" "Wifi" "Offline"
+    fi
+}
+
 show-menu() {
     local selection
     selection=$(nmcli -f BARS,RATE,SSID device wifi list | sed '1d')
 
     if [[ -n "$selection" ]]; then
-        selection=$(echo -e " Exit\n$selection" | rofi -dmenu -only-match -i -p 'Wifi list' -lines 10)
+        selection=$(echo -e " Exit\n Toggle Wifi\n$selection" | rofi -dmenu -only-match -i -p 'Wifi list' -lines 10)
         ssid=$(echo "$selection" | cut -d' ' -f 6- | sed 's/\s\+$//g')
 
-        if [[ "$selection" != " Exit" ]]; then
-            password-menu "$ssid"
-        fi
+        case "$selection" in
+            " Exit") exit ;;
+            " Toggle Wifi") wifi-toggler ;;
+            *) password-menu "$ssid" ;;
+        esac
     else
-        notify-send -i "$icon_error" "Wifi-finder" "Not near any wifi networks, or no wifi device found."
+        selection=$(echo -e " Exit\n Toggle Wifi" | rofi -dmenu -only-match -i -p 'Wifi list' -lines 3 -mesg 'No networks found, or wifi is offline.')
+
+        case "$selection" in
+            " Toggle Wifi") wifi-toggler ;;
+            *) exit ;;
+        esac
     fi
 }
 

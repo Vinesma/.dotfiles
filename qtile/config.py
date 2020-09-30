@@ -95,6 +95,7 @@ keys = [
     Key([mod, "mod1"], "b", lazy.spawn("firefox")),
     Key([mod, "mod1"], "n", lazy.spawn("kitty -T \"newsboat\" {}{}".format(scripts_path, "/newsboat/open-newsboat.sh"))),
     Key([mod, "mod1"], "m", lazy.spawn("kitty -o background_opacity=0.7 -T \"MPD\" ncmpcpp -q")),
+    Key([mod, "mod1"], "i", lazy.spawn(path.join(scripts_path, "wifi-finder.sh"))),
     Key([mod, "control"], "m", lazy.spawn(path.join(scripts_path, "song-browser.sh"))),
     # take screenshot, either fullscreen or a selection
     Key([mod], "Print", lazy.spawn(path.join(scripts_path, "take-screenshot.sh"))),
