@@ -24,10 +24,12 @@ show-menu() {
     selection=$(nmcli -f BARS,RATE,SSID device wifi list | sed '1d')
 
     if [[ -n "$selection" ]]; then
-        selection=$(echo -e "$available" | rofi -dmenu -only-match -i -p 'Wifi list' -lines 10)
+        selection=$(echo -e " Exit\n$selection" | rofi -dmenu -only-match -i -p 'Wifi list' -lines 10)
         ssid=$(echo "$selection" | cut -d' ' -f 6- | sed 's/\s\+$//g')
 
-        password-menu "$ssid"
+        if [[ "$selection" != " Exit" ]]; then
+            password-menu "$ssid"
+        fi
     else
         notify-send -i "$icon_error" "Wifi-finder" "Not near any wifi networks, or no wifi device found."
     fi
