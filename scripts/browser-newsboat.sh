@@ -11,7 +11,7 @@
 #
 
 clipboard_mpv_dir="$HOME/.dotfiles/scripts/clipboard-mpv.sh"
-youtube_dl_queuer_dir="$HOME/.dotfiles/scripts/youtube-dl-queuer/youtube-dl-queuer.sh"
+youtube_dl_queuer_dir="$HOME/.dotfiles/scripts/youtube-dl-queuer/hot-queue.sh"
 
 video-info() {
     local video
@@ -28,7 +28,7 @@ video-info() {
 }
 
 if [[ "$1" == *youtube.com* ]]; then
-    option=$(echo -e "1  Watch\n2  Send to download/queue\n3  Open in browser\n4  Show video info\n5  Exit" | \
+    option=$(echo -e "1  Watch\n2  Send to queue\n3  Open in browser\n4  Show video info\n5  Exit" | \
         rofi -dmenu -only-match -p 'option' -format 'd' -mesg 'This is a youtube link, what to do?')
     case $option in
         1) "$clipboard_mpv_dir" "$1" & ;;
