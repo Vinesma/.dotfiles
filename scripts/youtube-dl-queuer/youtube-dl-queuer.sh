@@ -12,6 +12,7 @@ files_folder="$HOME/.dotfiles/scripts/youtube-dl-queuer"
 icon_error="/usr/share/icons/Papirus/32x32/status/dialog-error.svg"
 icon_youtube_dl="/usr/share/icons/Papirus/32x32/apps/youtube-dl.svg"
 icon_youtube_dl_queuer="/usr/share/icons/Papirus/32x32/status/dialog-information.svg"
+icon_mpv="/usr/share/icons/Papirus/32x32/apps/mpv.svg"
 
 # Check if script is passed and argument or not.
 # If yes, use the argument
@@ -127,19 +128,41 @@ write-subs() {
     fi
 }
 
+mpv-watch() {
+    local option
+
+    if [[ -e "$files_folder/queue" ]]; then
+        notify-send -i "$icon_mpv" -t "$notify_time" "MPV" "Starting playback..."
+
+        if ! xargs -a "$files_folder/queue" mpv --no-terminal --ytdl-format="$video_format"; then
+            send-error "Error during playback"
+        fi
+
+        option=$(echo -e "陼 Preserve queue\n裸 Clear queue" | \
+        rofi -dmenu -only-match -p 'Option' -lines 2 -format 'd' -mesg "Queue finished, what to do?")
+
+        if [[ "$option" -eq 2 ]]; then
+            clear-queue
+        fi
+    else
+        send-error "There are no queued items!"
+    fi
+}
+
 show-menu() {
     local option
     option=$(echo -e \
-        "1  Queue video\n2  Start downloads\n3  Show queue\n4 裸 Clear queue\n5  Change video format\n6  Toggle subtitles\n7  Exit" | \
-        rofi -dmenu -only-match -p 'Option' -lines 7 -format 'd' -mesg "Format: $video_format / Queue: $queue_count / Subs: $menu_sub")
+        "1  Queue video\n2  Start downloads\n3  Watch queue\n4  Show queue\n5 裸 Clear queue\n6  Change video format\n7  Toggle subtitles\n8  Exit" | \
+        rofi -dmenu -only-match -p 'Option' -lines 8 -format 'd' -mesg "Format: $video_format / Queue: $queue_count / Subs: $menu_sub")
 
     case "$option" in
         1) add-to-queue ;;
         2) start-download && exit ;;
-        3) show-queue ;;
-        4) clear-queue ;;
-        5) change-format ;;
-        6) write-subs ;;
+        3) mpv-watch && exit ;;
+        4) show-queue ;;
+        5) clear-queue ;;
+        6) change-format ;;
+        7) write-subs ;;
         *) exit ;;
     esac
 }
