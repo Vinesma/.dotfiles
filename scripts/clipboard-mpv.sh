@@ -92,31 +92,32 @@ show-menu() {
     local resume
     local lines
 
+    resume=$(grep -h -e "youtube.com/watch" -e "twitch.tv/videos" "$folder_watchlater"/*)
+
     if [[ "$link" == @(*youtube.com/watch*|*youtu.be*|*twitch.tv/videos*) ]]; then
         option=" Watch (default values)\n Watch\n"
         lines=2
 
-        if resume=$(grep -h youtube Sync/.mpv_files/* | cut -d ' ' -f2); then
+        if [[ -n "$resume" ]]; then
             lines="$(( $lines + 2 ))"
-            option=$(echo -e "$option菱 Resume watching\n Exit" | \
-                rofi -dmenu -only-match -p 'Option' -lines "$lines")
+            option=$(echo -e "$option菱 Resume watching\n Exit" | rofi -dmenu -only-match -p 'Option' -lines "$lines")
         else
             lines="$(( $lines + 1 ))"
-            option=$(echo -e "$option Exit" | \
-                rofi -dmenu -only-match -p 'Option' -lines "$lines")
+            option=$(echo -e "$option Exit" | rofi -dmenu -only-match -p 'Option' -lines "$lines")
         fi
     else
         option=""
         lines=0
 
-        if resume=$(grep -h youtube Sync/.mpv_files/* | cut -d ' ' -f2); then
+        if [[ -n "$resume" ]]; then
             lines="$(( $lines + 2 ))"
-            option=$(echo -e "$option菱 Resume watching\n Exit" | \
-                rofi -dmenu -only-match -p 'Option' -lines "$lines")
+            option=$(echo -e "$option菱 Resume watching\n Exit" | rofi -dmenu -only-match -p 'Option' -lines "$lines")
         else
             send-error "Nothing to play or resume."
         fi
     fi
+
+    resume=$(echo "$resume" | cut -d ' ' -f 2)
 
     case "$option" in
         *default*) start-playback "22/18/720p/480p/360p" ;;
