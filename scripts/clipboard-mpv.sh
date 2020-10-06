@@ -12,6 +12,8 @@ icon_error="/usr/share/icons/Papirus/32x32/status/dialog-error.svg"
 icon_youtube_dl="/usr/share/icons/Papirus/32x32/apps/youtube-dl.svg"
 icon_mpv="/usr/share/icons/Papirus/32x32/apps/mpv.svg"
 
+folder_watchlater="$HOME/Sync/.mpv_files"
+
 # Check if script is passed and argument or not.
 # If yes, use the argument
 # If no, use the clipboard.
@@ -38,7 +40,7 @@ start-playback() {
     fi
 }
 
-show-menu() {
+show-format-menu() {
     local format
 
     format=$(echo -e "$1\nExit" | \
@@ -58,7 +60,7 @@ parse-video-info() {
     sed '1d' | \
     sort -n)
 
-    show-menu "$choice"
+    show-format-menu "$choice"
 }
 
 get-video-info() {
@@ -73,7 +75,55 @@ get-video-info() {
     fi
 }
 
-case "$link" in
-    *youtube.com*|*youtu.be*|*twitch.tv*) get-video-info ;;
-    *) send-error "Unsupported link, exiting" && exit 1 ;;
-esac
+show-resume-menu() {
+    local choice
+
+    choice=$(echo -e "$1\n Exit" | \
+        rofi -dmenu -only-match -p 'Choice' -lines 10)
+
+    if [[ "$choice" != " Exit" ]]; then
+        link="$choice"
+        get-video-info
+    fi
+}
+
+show-menu() {
+    local option
+    local resume
+    local lines
+
+    if [[ "$link" == @(*youtube.com/watch*|*youtu.be*|*twitch.tv/videos*) ]]; then
+        option=" Watch (default values)\n Watch\n"
+        lines=2
+
+        if resume=$(grep -h youtube Sync/.mpv_files/* | cut -d ' ' -f2); then
+            lines="$(( $lines + 2 ))"
+            option=$(echo -e "$option菱 Resume watching\n Exit" | \
+                rofi -dmenu -only-match -p 'Option' -lines "$lines")
+        else
+            lines="$(( $lines + 1 ))"
+            option=$(echo -e "$option Exit" | \
+                rofi -dmenu -only-match -p 'Option' -lines "$lines")
+        fi
+    else
+        option=""
+        lines=0
+
+        if resume=$(grep -h youtube Sync/.mpv_files/* | cut -d ' ' -f2); then
+            lines="$(( $lines + 2 ))"
+            option=$(echo -e "$option菱 Resume watching\n Exit" | \
+                rofi -dmenu -only-match -p 'Option' -lines "$lines")
+        else
+            send-error "Nothing to play or resume."
+        fi
+    fi
+
+    case "$option" in
+        *default*) start-playback "22/18/720p/480p/360p" ;;
+        *Watch) get-video-info ;;
+        *Resume*) show-resume-menu "$resume" ;;
+        *) exit ;;
+    esac
+}
+
+show-menu
