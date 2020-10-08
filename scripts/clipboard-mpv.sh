@@ -13,6 +13,7 @@ icon_youtube_dl="/usr/share/icons/Papirus/32x32/apps/youtube-dl.svg"
 icon_mpv="/usr/share/icons/Papirus/32x32/apps/mpv.svg"
 
 folder_watchlater="$HOME/Sync/.mpv_files"
+folder_videos="$HOME/Videos"
 
 # Check if script is passed and argument or not.
 # If yes, use the argument
@@ -82,8 +83,17 @@ show-resume-menu() {
         rofi -dmenu -only-match -p 'Choice' -lines 10)
 
     if [[ "$choice" != " Exit" ]]; then
-        link="$choice"
-        get-video-info
+        if [[ "$choice" != @(*youtube.com/watch*|*youtu.be*|*twitch.tv/videos*) ]]; then
+            cd "$folder_videos"
+            link="$choice"
+
+            if ! mpv --no-terminal "$link"; then
+                send-error "Error during playback"
+            fi
+        else
+            link="$choice"
+            get-video-info
+        fi
     fi
 }
 
@@ -92,7 +102,7 @@ show-menu() {
     local resume
     local lines
 
-    resume=$(grep -h -e "youtube.com/watch" -e "twitch.tv/videos" "$folder_watchlater"/*)
+    resume=$(grep -hve "# redirect entry" "$folder_watchlater"/* | grep "#")
 
     if [[ "$link" == @(*youtube.com/watch*|*youtu.be*|*twitch.tv/videos*) ]]; then
         option=" Watch (default values)\n Watch\n"
@@ -117,7 +127,7 @@ show-menu() {
         fi
     fi
 
-    resume=$(echo "$resume" | cut -d ' ' -f 2)
+    resume=$(echo "$resume" | cut -d ' ' -f 2-)
 
     case "$option" in
         *default*) start-playback "22/18/720p/480p/360p" ;;
