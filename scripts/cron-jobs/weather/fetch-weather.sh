@@ -13,7 +13,7 @@ folder="$HOME/.dotfiles/scripts/cron-jobs/weather"
 icon="/usr/share/icons/Papirus/32x32/apps/weather.svg"
 curl_dir="/usr/bin/curl"
 site="wttr.in"
-format="%l:+%c+%t\nRain:+%p"
+format="%l:+%c+%t+(%f)\nRain:+%p+%o\nHumidity:+%h"
 
 if [[ ! -e "$folder/running.tmp" ]]; then
     /usr/bin/touch "$folder/running.tmp"
