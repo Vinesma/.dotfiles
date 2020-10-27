@@ -44,6 +44,7 @@ cp -v "$dcf_dotfiles"/.xinitrc "$mcf_dotfiles"
 echo "-> Initializing autostart file..."
 echo '#!/bin/bash' > "$HOME"/.autostart
 echo -e "-> [i] The autostart file can be used to start programs like so:\nredshift-gtk &\nsleep 10 && syncthing --no-browser &\n"
+echo -e "-> [i] An example autostart file is included in '/.dotfiles/install/'"
 
 ## TERMINAL & EDITORS ##
 echo "==> Installing terminal emulator"
@@ -75,9 +76,9 @@ sudo pacman -S $window_manager \
     && echo "-> Done."
 
 ## MANJARO SETTINGS MANAGER ##
-echo "==> Installing settings manager"
-sudo pacman -S manjaro-settings-manager
-echo
+# echo "==> Installing settings manager"
+# sudo pacman -S manjaro-settings-manager
+# echo
 
 ## FILE MANAGER ##
 echo "==> Installing file manager"

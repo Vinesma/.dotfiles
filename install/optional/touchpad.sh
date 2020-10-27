@@ -3,7 +3,7 @@
 touchpd="xorg-xinput"
 
 echo "==> Installing touchpad tools."
-sud pacman -Syu $touchpd \
+sudo pacman -Syu $touchpd \
     && echo -e "\n-> [i] $ xinput list -> Grab the device id you want to change" \
     && echo      "-> [i] $ xinput list-props [id] -> List what can be changed" \
     && echo      "-> [i] $ xinput set-prop [id] [prop-id] [1/0] -> non-persistent" \
