@@ -4,7 +4,7 @@ These folders contain scripts to basically auto install my stuff, however some t
 
 ## Architect
 
-- Get the [architect.](https://manjaro.org/download/) 
+- Get the [architect.](https://manjaro.org/download/)
 
 - Shove it into a pendrive using rufus or this (destructive, be careful) command: `sudo dd bs=4M if=[/path/to/iso] of=/dev/sd[x] status=progress` (check partitions with `sudo fdisk -l`)
 
@@ -14,7 +14,7 @@ These folders contain scripts to basically auto install my stuff, however some t
 
 Recommendations:
 
-- Set the virtual console keymap to `br-abnt2` if you're Brazilian like me. 
+- Set the virtual console keymap to `br-abnt2` if you're Brazilian like me.
 
 When the architect is done, chroot into the system and install `networkmanager`. Enable it with `systemctl enable NetworkManager` then reboot into the bare CLI system.
 
@@ -47,6 +47,8 @@ Once here, you can install anything in `optional/`. You'll certainly want to, un
 If installing on a laptop a few more things require attention, such as [ACPI Events](https://wiki.archlinux.org/index.php/Power_management#Power_management_with_systemd) and [the touchpad.](https://wiki.archlinux.org/index.php/Libinput#Installation)
 
 [Power saving](https://wiki.archlinux.org/index.php/Power_management#Power_saving) is also a thing I've yet to dive deep into.
+
+Current lifetime on my ASUS laptop after a full 100% charge is about 3 hours.
 
 ## Dev stuff
 
