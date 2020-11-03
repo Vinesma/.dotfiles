@@ -57,7 +57,7 @@ resize-image() {
 
     while [[ "$accepted" -eq 1 ]]; do
         gravity=$(echo -e "NorthWest\nNorth\nNorthEast\nWest\nCenter\nEast\nSouthWest\nSouth\nSouthEast" \
-            | rofi -dmenu -only-match -p 'Center image at' -lines 9)
+            | rofi -dmenu -only-match -p 'Center image at' -lines 9 -select 'Center')
 
         if magick "$files_folder/output$1" \
             -resize "$width"x"$height"^ \
