@@ -45,3 +45,27 @@ if !exists('g:vscode')
     " List ends here. Plugins become visible to Vim after this call.
     call plug#end()
 endif
+
+" Functions
+
+" Used for groff documents
+" Calls compile
+" Open the PDF from /tmp/
+function! GroffPreview()
+    :call Compile()<CR><CR>
+    execute "! zathura /tmp/op.pdf &"
+endfunction
+
+" [1] Get the extension of the file
+" [2] Apply appropriate compilation command
+" [3] Save PDF as /tmp/op.pdf
+function! Compile()
+        let extension = expand('%:e')
+        if extension == "ms"
+                execute "! groff -ms -t % -T pdf > /tmp/op.pdf"
+        elseif extension == "tex"
+                execute "! pandoc -f latex -t latex % -o /tmp/op.pdf"
+        elseif extension == "md"
+                execute "! pandoc % -s -o /tmp/op.pdf"
+        endif
+endfunction
