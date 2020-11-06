@@ -67,6 +67,9 @@ create-link-to-config "qtile/config.py"
 echo "- NVIM";echo
 create-link-to-config "nvim/init.vim"
 
+echo "- ZATHURA";echo
+create-link-to-config "zathura/zathurarc"
+
 # TEMPLATE
 # echo "- {NAME}";echo
 # create-link-to-{foo} "{path}"
