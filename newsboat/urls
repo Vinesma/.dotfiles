@@ -1,4 +1,5 @@
 "query:Unread News:tags # \"news\" and unread = \"yes\""
+https://forum.manjaro.org/c/announcements.rss "~Manjaro News"
 "query:Youtube (Favorites):tags # \"youtube-favorite\" and unread = \"yes\""
 "query:Youtube (Others):tags # \"youtube-others\" and unread = \"yes\""
 "query:Youtube (Livestreams):tags # \"livestream\" and age < 20"
