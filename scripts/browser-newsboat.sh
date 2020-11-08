@@ -42,7 +42,11 @@ elif [[ "$1" == @(*.jpg|*.jpeg|*.png) ]]; then
 elif [[ "$1" == @(*.mp4) ]]; then
     mpv --loop "$1"
 else
-    firefox "$1" &
+    if [[ "$1" == *nitter.net* ]]; then
+        firefox "${1/nitter.net/twitter.com}" &
+    else
+        firefox "$1" &
+    fi
 fi
 
 clear
