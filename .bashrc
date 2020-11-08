@@ -145,6 +145,7 @@ ex ()
 export EDITOR="/usr/bin/nvim"
 export VISUAL="/usr/bin/nvim"
 export PATH="$PATH:$HOME/Documents/flutter/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 ### PERSONAL ALIASES ###
 # nvim
@@ -186,6 +187,18 @@ cheat() {
 # wttr.in (Display weather for selected location)
 weather() {
     curl wttr.in/"$1"
+}
+
+# for easy saving of video without syncing to other devices
+youtube-dl-save() {
+    local download_icon
+    local error_icon
+    download_icon="/usr/share/icons/Papirus/32x32/apps/youtube-dl.svg"
+    error_icon="/usr/share/icons/Papirus/32x32/status/dialog-error.svg"
+
+    youtube-dl -o "$HOME/Videos/Saved/%(uploader)s/%(title)s.%(ext)s" "$@" \
+        && notify-send -i "$download_icon" "[youtube-dl-save]" "Download complete!" \
+        || notify-send -i "$error_icon" "[youtube-dl-save]" "Download failed!"
 }
 
 # for easy downloading of music
