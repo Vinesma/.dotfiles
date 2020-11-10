@@ -1,9 +1,13 @@
 #!/bin/bash
 
-numpad="numlockx"
+# FILES AND FOLDERS
+main_folder="$HOME/.dotfiles/install"
+pack_lists="$main_folder/packlists"
 
-echo "==> Installing numpad helper"
-sudo pacman -Syu $numpad \
-    && echo "numlockx &" >> "$HOME"/.autostart \
-    && echo "-> Done" \
-    || echo "-> Failed..."
+# Load helper functions
+. "$main_folder/helper-functions.sh"
+
+header-msg "Installing numpad helper."
+install-package numlockx
+arrow-msg "Initializing numpad helper."
+echo "numlockx &" >> "$HOME/.autostart"

@@ -1,3 +1,8 @@
+feh
+picom
+picom,.dotfiles/picom/picom.conf,.config/picom
+lxappearance
+python-pywal
 matcha-gtk-theme
 papirus-icon-theme
 ttf-bitstream-vera

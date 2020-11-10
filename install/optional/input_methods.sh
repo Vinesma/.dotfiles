@@ -1,13 +1,18 @@
 #!/bin/bash
 
-iengine="fcitx fcitx-mozc fcitx-configtool"
+# FILES AND FOLDERS
+main_folder="$HOME/.dotfiles/install"
+pack_lists="$main_folder/packlists"
 
-echo "==> Installing fcitx with mozc module"
-sudo pacman -Syu $iengine \
-    && echo "fcitx &" >> "$HOME"/.autostart \
-    && echo "-> [i] Run these commands to configure the language engine:" \
-    && echo "-> [i] $ fcitx" \
-    && echo "-> [i] $ fcitx-configtool" \
-    && echo "-> [i] Then restart the program (right click on systray icon) to solidify changes." \
-    && echo "-> Done." \
-    || echo "-> Failed..."
+# Load helper functions
+. "$main_folder/helper-functions.sh"
+
+header-msg "Installing language engine."
+install-package fcitx fcitx-mozc fcitx-configtool
+
+arrow-msg "Initializing language engine."
+echo "fcitx &" >> "$HOME/.autostart"
+arrow-msg "Run these commands to configure the language engine:"
+info-msg "$ fcitx"
+info-msg "$ fcitx-configtool"
+info-msg "Then restart the program (right click on systray icon) to solidify changes."

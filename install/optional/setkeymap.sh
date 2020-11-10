@@ -1,8 +1,14 @@
 #!/bin/bash
 
+# FILES AND FOLDERS
+main_folder="$HOME/.dotfiles/install"
+pack_lists="$main_folder/packlists"
+
+# Load helper functions
+. "$main_folder/helper-functions.sh"
+
 keymp="br"
 
-echo "==> Setting keymap..."
+header-msg "Setting keymap."
 localectl --no-convert set-x11-keymap $keymp
-echo "-> Keymap set, a restart is required"
-echo "-> Done."
+arrow-msg "Keymap set, a restart is required."

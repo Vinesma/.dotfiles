@@ -1,16 +1,11 @@
 #!/bin/bash
 
-applets="redshift"
+# FILES AND FOLDERS
+main_folder="$HOME/.dotfiles/install"
+pack_lists="$main_folder/packlists"
 
-# DIRS
-mcf_redshift="$HOME/.config"
-dcf_redshift="$HOME/.dotfiles/redshift/*"
+# Load helper functions
+. "$main_folder/helper-functions.sh"
 
-echo "==> Installing applets"
-sudo pacman -Syu $applets \
-    && echo "redshift &" >> "$HOME"/.autostart \
-    && echo "-> Configuring redshift..." \
-    && cp -v "$dcf_redshift" "$mcf_redshift"/ \
-    && echo "-> Done." \
-    || echo "-> Failed..."
-
+header-msg "Installing applets."
+config-by-file "$pack_lists/applets"

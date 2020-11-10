@@ -1,9 +1,12 @@
 #!/bin/bash
 
-backlight_util="xorg-xbacklight"
+# FILES AND FOLDERS
+main_folder="$HOME/.dotfiles/install"
+pack_lists="$main_folder/packlists"
 
-echo "==> Installing backlight utility"
-sudo pacman -Syu $backlight_util \
-    && echo "-> [i] $ xbacklight -set 12" \
-    && echo "-> Done." \
-    || echo "-> Failed..."
+# Load helper functions
+. "$main_folder/helper-functions.sh"
+
+header-msg "Installing a backlight utility."
+install-package xorg-xbacklight
+info-msg "$ xbacklight -set 12"
