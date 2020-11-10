@@ -34,11 +34,11 @@ Find a connection:
 
 [More examples here](https://wiki.archlinux.org/index.php/NetworkManager#nmcli_examples)
 
-Install `git` so you can clone this repo. Once you have git and are connected the scripts can do most of the heavy lifting for you. Go ahead and run `main.sh` to install and configure the important stuff.
+Install `git` so you can clone this repo. Once you have git and are connected the scripts can do most of the heavy lifting for you. Go ahead and run `main.sh` to install all the things provided.
 
-## Basic WM running
+## Anything missing?
 
-Once here, you can install anything in `optional/`. You'll certainly want to, unless you like looking at a wallpaperless WM with no font support. Most of it will automatically get added to `.xprofile` to autostart.
+Try looking in the `optional/` folder. Some things may not have been installed, either by user mistake or program error. But the modular scripts allow their packages to be installed in any order.
 
 - [cron won't be running by default, it needs to be enabled.](https://wiki.archlinux.org/index.php/Cron#Activation_and_autostart)
 
@@ -69,6 +69,12 @@ Plugins:
 - To upgrade plugins, run `:PlugUpdate`.
 
 - Remove plugins by removing their lines in the config file, restarting nvim and then running `:PlugClean`.
+
+CoC : Code completion:
+
+Run this command inside neovim (after CoC is installed) to install all my code completion extensions:
+
+`CocInstall coc-css coc-emmet coc-html coc-json coc-python coc-sh coc-tsserver`
 
 ### Arch User Repository (AUR)
 

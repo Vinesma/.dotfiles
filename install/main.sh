@@ -10,7 +10,7 @@ pack_lists="$main_folder/packlists"
 count=1
 total=$(grep -c 'header-msg-count' "$main_folder/main.sh")
 total=$(( "$total" - 1 ))
-distribution=$(uname -a)
+distribution=$(uname -r)
 
 # Enable or disable DEBUG mode
 # This mode can be enabled by passing any argument to the script
@@ -31,7 +31,7 @@ update-count() {
 
 # MAIN
 header-msg "Initializing install."
-if [[ "$distribution" == *manjaro* ]]; then
+if [[ "$distribution" == *MANJARO* ]]; then
     info-msg "Identified: MANJARO LINUX"
     info-msg "Specific packages will be installed"
     distribution=manjaro
@@ -112,8 +112,8 @@ if [[ -z "$debug" ]]; then
     # INPUT METHODS
     . "$main_folder/optional/input_methods.sh"
 
+    # PRINTER
     if [[ "$answer_printer" == @(y|Y) ]]; then
-        # PRINTER
         . "$main_folder/optional/printers.sh"
     fi
 
@@ -126,6 +126,7 @@ if [[ -z "$debug" ]]; then
         install-package steam-manjaro
     fi
 
+    # PLATFORM SPECIFIC
     if [[ "$answer" == @(y|Y) ]]; then
         arrow-msg "Installing laptop packages"
 

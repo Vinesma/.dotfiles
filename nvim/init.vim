@@ -34,12 +34,16 @@ set splitbelow splitright
 " Remove trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
 
+" airline powerline symbols
+let g:airline_powerline_fonts = 1
+
 if !exists('g:vscode')
     " Plugin start
     call plug#begin('~/.local/share/nvim/plugged')
 
     " Declare the list of plugins.
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'tpope/vim-fugitive'
     Plug 'vim-airline/vim-airline'
 
     " List ends here. Plugins become visible to Vim after this call.

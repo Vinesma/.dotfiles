@@ -35,7 +35,7 @@ Applications in brackets are installed via my own scripts, so there's no need to
 
 ### Dev
 
-- Visual Studio Code
+- (Visual Studio Code)
 - (nvim)
 - (nano)
 
@@ -87,6 +87,10 @@ Applications in brackets are installed via my own scripts, so there's no need to
 ### Notifications
 
 - (Dunst)
+
+### Launcher
+
+- (rofi)
 
 ### Others
 
