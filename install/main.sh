@@ -30,7 +30,7 @@ update-count() {
 }
 
 # MAIN
-header-msg "Initializing install."
+header-msg "Checking distro..."
 if [[ "$distribution" == *MANJARO* ]]; then
     info-msg "Identified: MANJARO LINUX"
     info-msg "Specific packages will be installed"
@@ -45,6 +45,12 @@ read answer
 
 header-msg "Install printer support? (y/n)"
 read answer_printer
+
+header-msg "Syncing repositories."
+sudo pacman --no-confirm -Syu
+
+header-msg "All good, go grab a coffee, we gon' be here a while."
+arrow-msg "Initializing install..."
 
 ## XORG ##
 header-msg-count "Installing Xorg"
