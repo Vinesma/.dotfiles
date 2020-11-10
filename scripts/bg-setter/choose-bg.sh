@@ -25,6 +25,12 @@ load-config() {
         saturation_amount=1
     fi
 
+    if [[ -e "$files_folder/backend" ]]; then
+        backend=$(cat "$files_folder/backend")
+    else
+        backend=wal
+    fi
+
 #    if [[ -e "$files_folder/transparency" ]]; then
 #        transparency_amount=$(cat "$files_folder/transparency")
 #    else
@@ -37,6 +43,13 @@ set-saturation() {
     value=$(rofi -dmenu -p 'Saturation' -mesg "Type a value between 0.0 and 1.0" -lines 0)
 
     echo "$value" > "$files_folder/saturation"
+}
+
+set-backend() {
+    local value
+    value=$(wal --backend | sed '1d' | cut -d ' ' -f 3- | rofi -dmenu -p 'Backend' -mesg "Which color generation backend to use?" -lines 5)
+
+    echo "$value" > "$files_folder/backend"
 }
 
 set-transparency() {
@@ -81,7 +94,7 @@ resize-image() {
     if [[ "$accepted" -eq 0 ]]; then
         filename="$wallpaper_dir/wallpaper-$RANDOM-$RANDOM-IMG$1"
         mv -f "$files_folder/output-final$1" "$filename"
-        . "$files_folder/set-bg.sh" "$filename" --saturate "$saturation_amount" > "$files_folder/setbg-log"
+        . "$files_folder/set-bg.sh" "$filename" --saturate "$saturation_amount" --backend "$backend" > "$files_folder/setbg-log"
     fi
 
     rm "$files_folder/output$1"
@@ -119,21 +132,22 @@ show-chooser() {
     wallpaper=$(echo "$wallpaper" | tail -n 1)
 
     if [[ -n "$wallpaper" ]]; then
-        . "$files_folder/set-bg.sh" "$wallpaper" --saturate "$saturation_amount" > "$files_folder/setbg-log"
+        . "$files_folder/set-bg.sh" "$wallpaper" --saturate "$saturation_amount" --backend "$backend" > "$files_folder/setbg-log"
     fi
 }
 
 show-menu() {
     local option
-    option=$(echo -e "1  Pick wallpapers\n2  Download image\n3  Clear cache\n4 Set saturation\n5 Set transparency\n6  Exit" \
-        | rofi -dmenu -only-match -p 'option' -format 'd' -mesg "Saturation: $saturation_amount" -lines 6)
+    option=$(echo -e "1  Pick wallpapers\n2  Download image\n3  Clear cache\n4 Set saturation\n5 Set backend\n6 Set transparency\n6  Exit" \
+        | rofi -dmenu -only-match -p 'option' -format 'd' -mesg "Saturation: $saturation_amount | Backend: $backend" -lines 7)
 
     case "$option" in
         1) show-chooser ;;
         2) download-image ;;
         3) clear-cache ;;
         4) set-saturation ;;
-        5) set-transparency ;;
+        5) set-backend ;;
+        6) set-transparency ;;
         *) exit ;;
     esac
 }
