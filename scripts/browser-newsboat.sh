@@ -38,7 +38,14 @@ if [[ "$1" == *youtube.com* ]]; then
         *) exit ;;
     esac
 elif [[ "$1" == @(*.jpg|*.jpeg|*.png) ]]; then
-    feh -F "$1"
+    link="$1"
+    if [[ "$1" == *nitter.net/pic/* ]]; then
+        twitter_id=${1##*media%2F}
+        extension=$(echo "$twitter_id" | cut -d '.' -f 2)
+        twitter_id=$(echo "$twitter_id" | cut -d '.' -f 1)
+        link="https://pbs.twimg.com/media/$twitter_id?format=$extension"
+    fi
+        feh -F "$link"
 elif [[ "$1" == @(*.mp4) ]]; then
     mpv --loop "$1"
 else
