@@ -63,6 +63,14 @@ clear-cache() {
     wal -c
 }
 
+create-filename() {
+    if [[ -n $img_id ]]; then
+        filename="$wallpaper_dir/wallpaper-pixiv_id-$img_id$1"
+    else
+        filename="$wallpaper_dir/wallpaper-$RANDOM-$RANDOM-IMG$1"
+    fi
+}
+
 resize-image() {
     local accepted
     local gravity
@@ -72,18 +80,18 @@ resize-image() {
         gravity=$(echo -e "NorthWest\nNorth\nNorthEast\nWest\nCenter\nEast\nSouthWest\nSouth\nSouthEast" \
             | rofi -dmenu -only-match -p 'Center image at' -lines 9 -select 'Center')
 
-        if magick "$files_folder/output$1" \
+        if magick "/tmp/bg-setter-img$1" \
             -resize "$width"x"$height"^ \
             -gravity "$gravity" \
             -extent "$width"x"$height" \
-            "$files_folder/output-final$1"; \
+            "/tmp/bg-setter-img-final$1"; \
         then
             accepted=$(feh -G \
                 --action ';[Accept this image]echo 0' \
                 --action1 ';[Reject and try again]echo 1' \
                 --action2 ';[Exit]echo 3' \
                 -F \
-                "$files_folder/output-final$1")
+                "/tmp/bg-setter-img-final$1")
             accepted=$(echo "$accepted" | tail -n 1)
         else
             send-error "Download failed or image conversion failed..."
@@ -92,13 +100,10 @@ resize-image() {
     done
 
     if [[ "$accepted" -eq 0 ]]; then
-        filename="$wallpaper_dir/wallpaper-$RANDOM-$RANDOM-IMG$1"
-        mv -f "$files_folder/output-final$1" "$filename"
+        create-filename $1
+        mv -f "/tmp/bg-setter-img-final$1" "$filename"
         . "$files_folder/set-bg.sh" "$filename" --saturate "$saturation_amount" --backend "$backend" > "$files_folder/setbg-log"
     fi
-
-    rm "$files_folder/output$1"
-    rm "$files_folder/output-final$1"
 }
 
 download-image() {
@@ -110,14 +115,13 @@ download-image() {
 
         if [[ "$link" == *i.pximg.net/* ]]; then
             # Handle pixiv links
-            local pixiv_id
             local pixiv_ref
-            pixiv_id=$(echo "$link" | cut -d '_' -f1 | grep -o "[0-9]\+\$")
-            pixiv_ref="https://www.pixiv.net/en/artworks/$pixiv_id"
+            img_id=$(echo "$link" | cut -d '_' -f1 | grep -o "[0-9]\+\$")
+            pixiv_ref="https://www.pixiv.net/en/artworks/$img_id"
 
-            curl -H "Referer: $pixiv_ref" -s "$link" -o "$files_folder/output$extension"
+            curl -H "Referer: $pixiv_ref" -s "$link" -o "/tmp/bg-setter-img$extension"
         else
-            curl -s "$link" -o "$files_folder/output$extension"
+            curl -s "$link" -o "/tmp/bg-setter-img$extension"
         fi
 
         resize-image "$extension"
