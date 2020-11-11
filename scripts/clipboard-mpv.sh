@@ -14,6 +14,7 @@ icon_mpv="/usr/share/icons/Papirus/32x32/apps/mpv.svg"
 
 folder_watchlater="$HOME/Sync/.mpv_files"
 folder_videos="$HOME/Videos"
+default_formats="webm[height=480]+bestaudio/webm[height=720]+bestaudio/22/18/480p/360p/720p"
 
 # Check if script is passed and argument or not.
 # If yes, use the argument
@@ -130,7 +131,7 @@ show-menu() {
     resume=$(echo "$resume" | cut -d ' ' -f 2-)
 
     case "$option" in
-        *default*) start-playback "22/18/720p/480p/360p" ;;
+        *default*) start-playback "$default_formats" ;;
         *Watch) get-video-info ;;
         *Resume*) show-resume-menu "$resume" ;;
         *) exit ;;
