@@ -45,6 +45,7 @@ if !exists('g:vscode')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'tpope/vim-fugitive'
     Plug 'vim-airline/vim-airline'
+    Plug 'ap/vim-css-color'
 
     " List ends here. Plugins become visible to Vim after this call.
     call plug#end()
