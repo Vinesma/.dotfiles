@@ -9,7 +9,7 @@ pack_lists="$main_folder/packlists"
 # VARS
 count=1
 total=$(grep -c 'header-msg-count' "$main_folder/main.sh")
-total=$(( "$total" - 1 ))
+total=$(( total - 1 ))
 distribution=$(uname -r)
 
 # Enable or disable DEBUG mode
@@ -41,13 +41,13 @@ else
 fi
 
 header-msg "Are you installing on a Laptop? (y/n)"
-read answer
+read -r answer
 
 header-msg "Install printer support? (y/n)"
-read answer_printer
+read -r answer_printer
 
 header-msg "Syncing repositories."
-sudo pacman --no-confirm -Syu
+[[ -z "$debug" ]] && sudo pacman --no-confirm -Syu
 
 header-msg "All good, go grab a coffee, we gon' be here a while."
 arrow-msg "Initializing install..."
@@ -59,7 +59,7 @@ install-package xorg-server xorg-xinit
 ## USER DIRECTORIES ##
 header-msg-count "Configuring user dirs."
 install-package xdg-user-dirs
-[[ -z "$debug" ]] && xdg-user-dirs-update && echo "\t-> Done."
+[[ -z "$debug" ]] && xdg-user-dirs-update && echo -e "\t-> Done."
 
 ## BASHRC ##
 header-msg-count "Configuring shell files."

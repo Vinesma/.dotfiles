@@ -3,28 +3,28 @@
 [[ $# -gt 0 ]] && debug=1
 
 debug-msg() {
-    echo -e "\t-> [DEBUG]: $@"
+    echo -e "\t-> [DEBUG]:" "$@"
 }
 
 header-msg() {
-    echo -e "\n==> $@"
+    echo -e "\n==> " "$@"
 }
 
 header-msg-count() {
-    echo -e "\n==> $@ [$count/$total]"
+    echo -e "\n==> " "$@" "[$count/$total]"
     update-count
 }
 
 normal-msg() {
-    echo -e "\t$@"
+    echo -e "\t" "$@"
 }
 
 info-msg() {
-    echo -e "\t-> [i]: $@"
+    echo -e "\t-> [i]: " "$@"
 }
 
 arrow-msg() {
-    echo -e "\t-> $@"
+    echo -e "\t-> " "$@"
 }
 
 create-config() {
@@ -54,7 +54,7 @@ config-by-file() {
     while IFS=, read -r line; do
         package_instructions=$(echo "$line" | cut -d ',' --output-delimiter ' ' -f 1-)
         create-config $package_instructions
-    done < $1;
+    done < "$1";
 }
 
 install-package-file() {
@@ -69,6 +69,6 @@ install-package() {
     if [[ -z "$debug" ]]; then
         sudo pacman --no-confirm --needed -S "$@"
     else
-         debug-msg "Now installing the "$@" package(s)"
+         debug-msg "Now installing the" "$@" "package(s)"
     fi
 }
