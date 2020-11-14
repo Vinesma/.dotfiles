@@ -13,8 +13,8 @@ folder="$HOME/.dotfiles/scripts/newsboat"
 sync_folder="$HOME/Sync"
 
 # This check prevents newsboat from running on top of another instance and overwriting files
-if [[ ! -e "$folder/run-newsboat.tmp" ]]; then
-    /usr/bin/touch "$folder/run-newsboat.tmp"
+if [[ ! -e "/tmp/run-newsboat.tmp" ]]; then
+    /usr/bin/touch "/tmp/run-newsboat.tmp"
 
     "$newsboat_path" -x reload
 
@@ -36,5 +36,5 @@ if [[ ! -e "$folder/run-newsboat.tmp" ]]; then
         echo "$unread" | "$cut_path" -d ' ' -f 1 > "$folder/unread_count.tmp"
     fi
 
-    /usr/bin/rm "$folder/run-newsboat.tmp"
+    /usr/bin/rm "/tmp/run-newsboat.tmp"
 fi

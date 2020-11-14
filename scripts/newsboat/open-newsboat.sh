@@ -11,8 +11,8 @@ last_read_time=$(stat -c %Y "$sync_folder/.newsboat_archive")
 icon_error="/usr/share/icons/Papirus/32x32/status/dialog-error.svg"
 
 # This check prevents newsboat from running on top of another instance and overwriting files
-if [[ ! -e "$folder/run-newsboat.tmp" ]]; then
-    touch "$folder/run-newsboat.tmp"
+if [[ ! -e "/tmp/run-newsboat.tmp" ]]; then
+    touch "/tmp/run-newsboat.tmp"
 
     if [[ -e "$sync_folder/.newsboat_archive" ]] && [[ "$last_read_saved" != "$last_read_time" ]]; then
         newsboat -q -I "$sync_folder/.newsboat_archive"
@@ -27,7 +27,7 @@ if [[ ! -e "$folder/run-newsboat.tmp" ]]; then
         stat -c %Y "$sync_folder/.newsboat_archive" > "$folder/archive_last_read.tmp"
     fi
 
-    rm "$folder/run-newsboat.tmp"
+    rm "/tmp/run-newsboat.tmp"
 else
     notify-send -i "$icon_error" "NEWSBOAT" "Newsboat is already running, either wait for it to complete or exit the other instance."
 fi
