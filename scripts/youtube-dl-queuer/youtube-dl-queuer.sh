@@ -55,11 +55,17 @@ clear-queue() {
     fi
 }
 
+fix-queue() {
+    # Remove ambiguity by stripping out playlist links in the queue file
+    sed "$files_folder/queue" -i -e 's/&list=.*//'
+}
+
 start-download() {
     local output
 
     if [[ -e "$files_folder/queue" ]]; then
-        touch "$files_folder/running.tmp"
+        touch "/tmp/ytqueuer-running.tmp"
+        fix-queue
 
         notify-send -i "$icon_youtube_dl" -t "$notify_time" "[youtube-dl]" "Starting download..."
 
@@ -78,7 +84,7 @@ start-download() {
             send-error "An error ocurred while downloading one or more items. The queue was preserved.\nOutput saved to file."
         fi
 
-        rm "$files_folder/running.tmp"
+        rm "/tmp/ytqueuer-running.tmp"
     else
         send-error "No queued items! Aborting download..."
     fi
@@ -167,7 +173,7 @@ show-menu() {
     esac
 }
 
-if [[ ! -e "$files_folder/running.tmp" ]]; then
+if [[ ! -e "/tmp/ytqueuer-running.tmp" ]]; then
     while true; do
         load-config
         show-menu

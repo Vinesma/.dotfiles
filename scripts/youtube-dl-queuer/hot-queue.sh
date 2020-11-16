@@ -28,11 +28,11 @@ send-error() {
 }
 
 add-to-queue() {
-    if [[ -e "$files_folder/running.tmp" ]]; then
+    if [[ -e "/tmp/ytqueuer-running.tmp" ]]; then
         send-error "Cannot add item to queue, a download is in progress!"
     else
         local new_queue
-        new_queue=$(( "$queue_count" + 1 ))
+        new_queue=$(( queue_count + 1 ))
         echo "$link" >> "$files_folder/queue"
         notify-send \
             -i "$icon_youtube_dl_queuer" \
