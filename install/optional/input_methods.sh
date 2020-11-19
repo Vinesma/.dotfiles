@@ -11,7 +11,7 @@ header-msg "Installing language engine."
 install-package fcitx fcitx-mozc fcitx-configtool
 
 arrow-msg "Initializing language engine."
-echo "fcitx &" >> "$HOME/.autostart"
+add-to-autostart "fcitx &"
 arrow-msg "Run these commands to configure the language engine:"
 info-msg "$ fcitx"
 info-msg "$ fcitx-configtool"

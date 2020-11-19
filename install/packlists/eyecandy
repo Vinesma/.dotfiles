@@ -1,6 +1,7 @@
 feh
 picom
 picom,.dotfiles/picom/picom.conf,.config/picom
+>>,picom &
 lxappearance
 python-pywal
 matcha-gtk-theme

@@ -10,4 +10,4 @@ pack_lists="$main_folder/packlists"
 header-msg "Installing numpad helper."
 install-package numlockx
 arrow-msg "Initializing numpad helper."
-echo "numlockx &" >> "$HOME/.autostart"
+add-to-autostart 'numlockx &'

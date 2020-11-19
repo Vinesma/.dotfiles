@@ -10,17 +10,14 @@ pack_lists="$main_folder/packlists"
 header-msg "Installing suite of apps."
 config-by-file "$pack_lists/miscellaneous"
 
-arrow-msg "Initializing polybar."
-echo '. $HOME/.config/polybar/launch.sh &' >> "$HOME/.autostart"
-
 ## MUSIC PLAYER ##
 arrow-msg "Configuring mpd and auxiliaries."
-echo 'if [[ ! -s ~/.config/mpd/pid ]]; then' >> "$HOME/.autostart"
-echo "    mpc" >> "$HOME/.autostart"
-echo "    mpc random on" >> "$HOME/.autostart"
-echo "    mpc repeat on" >> "$HOME/.autostart"
-echo "    mpc crossfade 2" >> "$HOME/.autostart"
-echo 'fi' >> "$HOME/.autostart"
+add-to-autostart 'if [[ ! -s ~/.config/mpd/pid ]]; then'
+add-to-autostart "    mpc"
+add-to-autostart "    mpc random on"
+add-to-autostart "    mpc repeat on"
+add-to-autostart "    mpc crossfade 2"
+add-to-autostart 'fi'
 
 header-msg "Installing youtube-dl:"
 sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl

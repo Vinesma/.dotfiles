@@ -70,8 +70,6 @@ header-msg-count "Initializing autostart file."
 [[ -z "$debug" ]] && echo '#!/bin/bash' > "$HOME"/.autostart
 info-msg "The autostart file can be used to start programs on startup."
 info-msg "An example autostart file is included in '~/.dotfiles/install/files'"
-[[ -z "$debug" ]] && echo "udiskie &" >> "$HOME"/.autostart
-[[ -z "$debug" ]] && echo "dunst &" >> "$HOME"/.autostart
 
 ## ESSENTIALS ##
 header-msg-count "Installing and configuring essential packages."

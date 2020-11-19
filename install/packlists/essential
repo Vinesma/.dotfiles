@@ -5,6 +5,7 @@ thunar
 thumbler
 ffmpegthumbnailer
 udiskie
+>>,udiskie &
 firefox
 neovim
 neovim,.dotfiles/nvim/init.vim,.config/nvim,create
@@ -16,4 +17,5 @@ pulseaudio-alsa
 pulsemixer
 dunst
 dunst,.dotfiles/dunstrc,.config/dunst,create
+>>,dunst &
 yay
