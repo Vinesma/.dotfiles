@@ -16,3 +16,4 @@ pulseaudio-alsa
 pulsemixer
 dunst
 dunst,.dotfiles/dunstrc,.config/dunst,create
+yay

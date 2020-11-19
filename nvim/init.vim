@@ -16,9 +16,6 @@ set expandtab
 " when using the >> or << commands, shift lines by 4 spaces
 set shiftwidth=4
 
-" show the matching part of the pair for [] {} and ()
-set showmatch
-
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
 
@@ -33,6 +30,9 @@ set splitbelow splitright
 
 " Remove trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
+
+" Use clipboard as unnamed buffer
+set clipboard=unnamedplus
 
 " airline powerline symbols
 let g:airline_powerline_fonts = 1
@@ -55,11 +55,11 @@ if !exists('g:vscode')
     let g:netrw_liststyle = 3
     let g:netrw_browse_split = 4
     let g:netrw_altv = 1
-    let g:netrw_winsize = 25
-    augroup ProjectDrawer
-      autocmd!
-      autocmd VimEnter * :Vexplore
-    augroup END
+    let g:netrw_winsize = 20
+   " augroup ProjectDrawer
+   "   autocmd!
+   "   autocmd VimEnter * :Vexplore
+   " augroup END
 endif
 
 " Functions

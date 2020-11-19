@@ -103,7 +103,7 @@ show-menu() {
     local resume
     local lines
 
-    resume=$(grep -hve "# redirect entry" "$folder_watchlater"/* | grep "#")
+    resume=$(grep -hve "# redirect entry" "$folder_watchlater"/* 2>/dev/null | grep "#")
 
     if [[ "$link" == @(*youtube.com/watch*|*youtu.be*|*twitch.tv/videos*) ]]; then
         option=" Watch (default values)\n Watch\n"
