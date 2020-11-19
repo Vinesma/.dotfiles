@@ -72,6 +72,8 @@ bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
 bindkey "^[[1;5D" backward-word
 bindkey "^[[1;5C" forward-word
+bindkey "^R" history-incremental-search-backward
+bindkey "^S" history-incremental-search-forward
 
 #
 # # ex - archive extractor
@@ -150,7 +152,6 @@ alias android-mount='aft-mtp-cli'
 alias sd='shutdown now'
 alias ip='ip -br -c'
 alias update-aliases='. ~/.zshrc'
-alias update-packages="sudo pacman -Syu | tee ~/last-update-log.tmp && notify-send 'PACMAN' 'Update complete!' || notify-send 'PACMAN' 'Exited with non-zero error code!'"
 
 ### PERSONAL FUNCTIONS ###
 # cheat.sh (Display examples of command usage)
@@ -161,6 +162,28 @@ cheat() {
 # wttr.in (Display weather for selected location)
 weather() {
     curl wttr.in/"$1"
+}
+
+# Update mirrors and then all packages in the system.
+update-packages() {
+    local icon_success
+    local icon_fail
+    local answer
+    icon_success="/usr/share/icons/Papirus/32x32/apps/system-software-update.svg"
+    icon_fail="/usr/share/icons/Papirus/32x32/apps/system-error.svg"
+
+    echo -e "\t:: Update mirrorlist with the fastest mirrors? (y/n)"
+    read -r answer
+
+    [[ "$answer" == @(y|Y) ]] && sudo pacman-mirrors --fasttrack --continent
+
+    sudo pacman -Syyu | tee ~/last-update-log.tmp && \
+    notify-send -i "$icon_success" 'PACMAN' 'Update complete!' || \
+    notify-send -i "$icon_fail" 'PACMAN' 'Update FAILURE!'
+
+    yay -Sua \
+    notify-send -i "$icon_success" 'YAY' 'Update complete!' || \
+    notify-send -i "$icon_fail" 'YAY' 'Update FAILURE!'
 }
 
 # for easy saving of video without syncing to other devices
