@@ -1,32 +1,33 @@
 #!/bin/sh
 
+# Load helper functions
+. "$HOME/.dotfiles/install/helper-functions.sh"
+
+# $1 = name of program
+# $2 = name of template file
 create-link-templates() {
-    # $1 = name of template file
-    ln -sfv "$HOME/.dotfiles/pywal/templates/$1" "$HOME/.config/wal/templates/$1"
+    arrow-msg "$1"
+    ln -sfv "$HOME/.dotfiles/pywal/templates/$2" "$HOME/.config/wal/templates/$2"
     echo
 }
 
+# $1 = name of program
+# $2 = name of template file
+# $3 = path relative to the config folder
 create-link-to-config-diff() {
-    # $1 = name of template file
-    # $2 = path relative to the config folder
-    ln -sfv "$HOME/.cache/wal/$1" "$HOME/.config/$2"
+    arrow-msg "$1"
+    ln -sfv "$HOME/.cache/wal/$2" "$HOME/.config/$3"
     echo
 }
 
-echo "-> Linking dotfile templates to pywal config folder..."
+arrow-msg "Linking dotfile templates to pywal config folder."
 
-echo "- DUNST";echo
-create-link-templates "colors-dunst"
-echo "- POLYBAR";echo
-create-link-templates "colors-polybar"
+create-link-templates "DUNST" "colors-dunst"
+create-link-templates "POLYBAR" "colors-polybar"
 
-echo "-> Done."
-echo "-> Linking pywal output to configs..."
+arrow-msg "Linking pywal output to configs."
 
-echo "- DUNST";echo
-create-link-to-config-diff "colors-dunst" "dunst/dunstrc"
+create-link-to-config-diff "DUNST" "colors-dunst" "dunst/dunstrc"
+create-link-to-config-diff "POLYBAR" "colors-polybar" "polybar/config"
 
-echo "- POLYBAR";echo
-create-link-to-config-diff "colors-polybar" "polybar/config"
-
-echo "-> Done."
+arrow-msg "Done."

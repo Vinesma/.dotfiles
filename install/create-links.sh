@@ -4,7 +4,7 @@ config_dir="$HOME/.config"
 dotfiles_dir="$HOME/.dotfiles"
 
 # Load helper functions
-. "$main_folder/helper-functions.sh"
+. "$dotfiles_dir/install/helper-functions.sh"
 
 arrow-msg "Linking files, this makes sure any changes in the filesystem get reflected on the repository and can be committed or reverted."
 info-msg "Files will be overwritten."
