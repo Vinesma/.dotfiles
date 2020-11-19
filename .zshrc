@@ -150,7 +150,7 @@ alias android-mount='aft-mtp-cli'
 alias sd='shutdown now'
 alias ip='ip -br -c'
 alias update-aliases='. ~/.zshrc'
-alias update-packages="sudo pacman -Syu && notify-send 'PACMAN' 'Update complete!' || notify-send 'PACMAN' 'Exited with non-zero error code!'"
+alias update-packages="sudo pacman -Syu | tee ~/last-update-log.tmp && notify-send 'PACMAN' 'Update complete!' || notify-send 'PACMAN' 'Exited with non-zero error code!'"
 
 ### PERSONAL FUNCTIONS ###
 # cheat.sh (Display examples of command usage)
