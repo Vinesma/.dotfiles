@@ -115,6 +115,8 @@ alias free='free -m'                      # show sizes in MB
 alias np='nano -w PKGBUILD'
 alias more=less
 alias ls='ls --color=auto'
+alias l='ls'                              # fail-proofing
+alias s='ls'                              # fail-proofing
 alias grep='grep --colour=auto'
 alias egrep='egrep --colour=auto'
 alias fgrep='fgrep --colour=auto'
