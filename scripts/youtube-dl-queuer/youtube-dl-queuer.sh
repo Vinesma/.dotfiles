@@ -3,6 +3,7 @@
 # Script meant to be run by a qtile keybind or called by another, opens a rofi menu for downloading many videos.
 # Features:
 # - QUEUE: Queue videos to be downloaded at any time.
+# - WATCH: Watch the whole queue in sucession, you can even save your position and watch later
 # Dependencies:
 # xclip, youtube-dl, rofi
 
@@ -55,8 +56,9 @@ clear-queue() {
     fi
 }
 
+# Remove ambiguity by stripping out playlist links in the queue file
+# Used when --no-playlist was bugging out
 fix-queue() {
-    # Remove ambiguity by stripping out playlist links in the queue file
     sed "$files_folder/queue" -i -e 's/&list=.*//'
 }
 
@@ -65,7 +67,6 @@ start-download() {
 
     if [[ -e "$files_folder/queue" ]]; then
         touch "/tmp/ytqueuer-running.tmp"
-        fix-queue
 
         notify-send -i "$icon_youtube_dl" -t "$notify_time" "[youtube-dl]" "Starting download..."
 
