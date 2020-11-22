@@ -181,7 +181,7 @@ update-packages() {
     notify-send -i "$icon_success" 'PACMAN' 'Update complete!' || \
     notify-send -i "$icon_fail" 'PACMAN' 'Update FAILURE!'
 
-    yay -Sua \
+    yay -Sua && \
     notify-send -i "$icon_success" 'YAY' 'Update complete!' || \
     notify-send -i "$icon_fail" 'YAY' 'Update FAILURE!'
 }
