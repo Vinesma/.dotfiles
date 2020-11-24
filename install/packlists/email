@@ -1,0 +1,6 @@
+neomutt
+neomutt,.dotfiles/neomutt/neomuttrc,.config/neomutt/neomuttrc,create
+neomutt,.dotfiles/neomutt/colors.muttrc,.config/neomutt/colors.muttrc
+isync
+isync,.dotfiles/mbsyncrc,.config
+w3m

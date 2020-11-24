@@ -57,7 +57,7 @@ unset markers
 # Prefer plain text to html.
 # However, for brain dead clients that bundle attachments inside a
 # multipart/alternative, prefer that alternative.
-alternative_order multipart/mixed multipart/related text/plain
+alternative_order multipart/mixed multipart/related text/plain text/html
 
 # Consult mime.types for determining types of these attachments
 mime_lookup application/octet-stream
