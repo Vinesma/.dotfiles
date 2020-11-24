@@ -1,0 +1,17 @@
+# Set default values for all following accounts.
+defaults
+auth           on
+tls            on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+logfile        ~/.msmtp.log
+
+# Gmail
+account        gmail
+host           smtp.gmail.com
+port           587
+from           otaviocos14@gmail.com
+user           otaviocos14@gmail.com
+passwordeval   "gpg --batch -q --decrypt ~/.neomutt/account.gpg"
+
+# Set a default account
+account default : gmail

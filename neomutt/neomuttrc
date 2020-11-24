@@ -33,12 +33,16 @@ mailboxes =Inbox ="[Gmail]/Sent Mail" ="[Gmail]/Starred"
 
 ###############
 # Sending MAIL
-# SMTP
-unset record                  # Gmail auto-stores in "+[Gmail].Sent Mail"
-set smtp_pass = "`gpg --batch -q --decrypt ~/.neomutt/account.gpg`"
-set smtp_url = smtps://smtp.gmail.com:587
-set ssl_force_tls = yes
-set ssl_starttls = yes
+# SMTP (Built-in)
+# unset record                  # Gmail auto-stores in "+[Gmail].Sent Mail"
+# set smtp_pass = "`gpg --batch -q --decrypt ~/.neomutt/account.gpg`"
+# set smtp_url = smtps://smtp.gmail.com:587
+# set ssl_force_tls = yes
+# set ssl_starttls = yes
+
+# MSMTP
+#
+set sendmail = "/usr/bin/msmtp"
 
 ###############
 # General settings
@@ -78,10 +82,6 @@ set edit_headers
 set editor = "nvim"
 
 set mime_type_query_command = "xdg-mime query filetype"
-
-# msmtp is a solid SMTP client.
-# neomutt also has built-in SMTP, or you can use an MTA like exim4 or postfix.
-# set sendmail = "/usr/bin/msmtp"
 
 # lbdb is a versatile contact query tool.
 # Invoke via ctrl-t in an address prompt

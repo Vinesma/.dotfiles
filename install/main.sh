@@ -116,6 +116,9 @@ if [[ -z "$debug" ]]; then
     # INPUT METHODS
     . "$main_folder/optional/input_methods.sh"
 
+    # EMAIL
+    . "$main_folder/optional/email.sh"
+
     # PRINTER
     if [[ "$answer_printer" == @(y|Y) ]]; then
         . "$main_folder/optional/printers.sh"
