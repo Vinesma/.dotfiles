@@ -6,7 +6,7 @@ These folders contain scripts to basically auto install my stuff, however some t
 
 - Get the [architect.](https://manjaro.org/download/)
 
-- Shove it into a pendrive using rufus or this (destructive, be careful) command: `sudo dd bs=4M if=[/path/to/iso] of=/dev/sd[x] status=progress` (check partitions with `sudo fdisk -l`)
+- Shove it into a pen drive using Rufus or this (destructive, be careful) command: `sudo dd bs=4M if=[/path/to/iso] of=/dev/sd[x] status=progress` (check partitions with `sudo fdisk -l`)
 
 - Use that to boot.
 
@@ -14,7 +14,7 @@ These folders contain scripts to basically auto install my stuff, however some t
 
 Recommendations:
 
-- Set the virtual console keymap to `br-abnt2` if you're Brazilian like me.
+- Set the virtual console key map to `br-abnt2` if you're Brazilian like me.
 
 When the architect is done, chroot into the system and install `networkmanager`. Enable it with `systemctl enable NetworkManager` then reboot into the bare CLI system.
 
@@ -74,7 +74,7 @@ CoC : Code completion:
 
 Run this command inside neovim (after CoC is installed) to install all my code completion extensions:
 
-`CocInstall coc-css coc-emmet coc-html coc-json coc-python coc-sh coc-tsserver`
+`CocInstall coc-css coc-emmet coc-html coc-json coc-python coc-sh coc-tsserver coc-pairs`
 
 ### Arch User Repository (AUR)
 
@@ -100,19 +100,19 @@ Run this command inside neovim (after CoC is installed) to install all my code c
 
 ### A script run via cron fails to send notifications via notify-send.
 
-[Solution: cron has no access to the DBUS adress and the DISPLAY variable, they have to be set inside your script or before the notify-send call.](https://wiki.archlinux.org/index.php/Cron#Running_X.org_server-based_applications)
+[Solution: cron has no access to the DBUS address and the DISPLAY variable, they have to be set inside your script or before the notify-send call.](https://wiki.archlinux.org/index.php/Cron#Running_X.org_server-based_applications)
 
 ### The system clock is wrong.
 
 [Solution](https://wiki.archlinux.org/index.php/System_time#Read_clock) (run `timedatectl` to check, can also be used to set time)
 
-Run this to enable clock syncronization:
+Run this to enable clock synchronization:
 
 - `timedatectl set-ntp true`
 
 ### Laptop only boots or runs when charging, as soon as it gets unplugged the laptop freezes half a second later.
 
-Solution: Disabling tlp in `/etc/tlp.conf` by editing the line TLP_ENABLE=1 to TLP_ENABLE=0. Afterwards, edit `/etc/default/cpupower` and set `governor` to "performance". This fixes the problem but leaves the laptop without any powersaving capability. I will update this with more info as I investigate the issue.
+Solution: Disabling tlp in `/etc/tlp.conf` by editing the line TLP_ENABLE=1 to TLP_ENABLE=0. Afterwards, edit `/etc/default/cpupower` and set `governor` to "performance". This fixes the problem but leaves the laptop without any power saving capability. I will update this with more info as I investigate the issue.
 
 [TLP debugging](https://linrunner.de/tlp/support/troubleshooting.html#step-3-disable-tlp-temporarily)
 
