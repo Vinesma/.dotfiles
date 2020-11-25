@@ -57,7 +57,7 @@ font-4 = Noto Color Emoji:style=Regular:scale=10;0
 
 modules-left = workspaces xwindow
 modules-center = mpd
-modules-right = wireless-network wired-network battery updates-pacman rss date redshift sep
+modules-right = wireless-network wired-network battery email rss date sep
 
 tray-position = right
 tray-padding = 1
@@ -215,6 +215,16 @@ format = <label>
 format-underline = ${{colors.thirdary}}
 
 label = %{{F{color2}}}%{{F-}} #%output%
+
+[module/email]
+type = custom/script
+exec = ~/.dotfiles/scripts/poly-mail.sh
+interval = 10
+
+format = <label>
+format-underline = ${{colors.thirdary}}
+
+label = %{{F{color2}}}%{{F-}} #%output%
 
 [module/weather]
 type = custom/script
