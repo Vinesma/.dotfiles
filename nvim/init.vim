@@ -1,3 +1,6 @@
+" set leader
+let mapleader = ","
+
 " enable syntax highlighting
 syntax on
 
@@ -19,23 +22,26 @@ set shiftwidth=4
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
 
-" Alias replace inline: S
-nnoremap S :s///g<Left><Left><Left>
-
 " Autocomplete
 set wildmode=longest,list,full
 
 " Fix splits
 set splitbelow splitright
 
-" Remove trailing whitespace on save
-autocmd BufWritePre * %s/\s\+$//e
-
 " Use clipboard as unnamed buffer
 set clipboard=unnamedplus
 
-" airline powerline symbols
+" Preview substitution command
+set inccommand=nosplit
+
+" Airline
+" Powerline symbols
 let g:airline_powerline_fonts = 1
+" Tabline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_min_count = 2
+let g:airline#extensions#tabline#tab_min_count = 2
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 if !exists('g:vscode')
     " Plugin start
@@ -45,6 +51,7 @@ if !exists('g:vscode')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'tpope/vim-fugitive'
     Plug 'vim-airline/vim-airline'
+    Plug 'mkitt/tabline.vim'
     Plug 'ap/vim-css-color'
 
     " List ends here. Plugins become visible to Vim after this call.
@@ -62,8 +69,58 @@ if !exists('g:vscode')
    " augroup END
 endif
 
-" Functions
+" Custom mappings
+"
+" Edit this file in a split
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>/Custom mappings<cr>:nohlsearch<cr>
+" Source this file
+nnoremap <leader>sv :source $MYVIMRC<cr>
+" Run a substitute command on this line
+nnoremap S :s///g<Left><Left><Left>
+" Run a substitute command over the entire file
+nnoremap <leader>s :%s///g<Left><Left><Left>
+" Uppercase the entire word over the cursor.
+nnoremap <leader>u viwU
+inoremap <leader>u <esc>viwUi
+" Flip current line with the next line.
+nnoremap <leader>f ddp
+inoremap <leader>f <esc>ddpi
+" Surround a word in double-quote
+nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+" Surround the visual selection in double-quotes
+vnoremap <leader>" <esc>`<<esc>i"<esc>`>la"<esc>
+" Surround a word in single-quote
+nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
+" Surround the visual selection in single-quotes
+vnoremap <leader>' <esc>`<<esc>i'<esc>`>la'<esc>
+" Comment lines with leader+c depending on what language they are.
+augroup AutoComment
+    autocmd!
+    autocmd FileType javascript nnoremap <buffer> <leader>c I// <esc>
+    autocmd FileType python     nnoremap <buffer> <leader>c I# <esc>
+    autocmd FileType sh         nnoremap <buffer> <leader>c I# <esc>
+    autocmd FileType vim        nnoremap <buffer> <leader>c I" <esc>
+augroup END
+" Close current buffer
+nnoremap <c-w> :bd<cr>
+" Alternate between buffers
+nnoremap <c-I> :bn<cr>
 
+" Autocmds
+"
+" Remove trailing whitespace on save
+augroup RemWhitespace
+    autocmd BufWritePre * %s/\s\+$//e
+augroup END
+
+" Toggle spellcheck for some filetypes
+augroup SpellCheck
+    autocmd!
+    autocmd FileType markdown setlocal spell spelllang=en_us
+augroup END
+
+" Functions
+"
 " Used for groff documents
 " Calls compile
 " Open the PDF from /tmp/
