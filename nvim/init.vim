@@ -62,7 +62,7 @@ if !exists('g:vscode')
     let g:netrw_liststyle = 3
     let g:netrw_browse_split = 4
     let g:netrw_altv = 1
-    let g:netrw_winsize = 20
+    let g:netrw_winsize = 25
    " augroup ProjectDrawer
    "   autocmd!
    "   autocmd VimEnter * :Vexplore
@@ -85,6 +85,8 @@ inoremap <leader>u <esc>viwUi
 " Flip current line with the next line.
 nnoremap <leader>f ddp
 inoremap <leader>f <esc>ddpi
+" Duplicate current line
+nnoremap <leader>d yyp
 " Surround a word in double-quote
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
 " Surround the visual selection in double-quotes
@@ -93,7 +95,7 @@ vnoremap <leader>" <esc>`<<esc>i"<esc>`>la"<esc>
 nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 " Surround the visual selection in single-quotes
 vnoremap <leader>' <esc>`<<esc>i'<esc>`>la'<esc>
-" Comment lines with leader+c depending on what language they are.
+" Comment lines with leader+c depending on what language is detected.
 augroup AutoComment
     autocmd!
     autocmd FileType javascript nnoremap <buffer> <leader>c I// <esc>
@@ -101,10 +103,10 @@ augroup AutoComment
     autocmd FileType sh         nnoremap <buffer> <leader>c I# <esc>
     autocmd FileType vim        nnoremap <buffer> <leader>c I" <esc>
 augroup END
-" Close current buffer
-nnoremap <c-w> :bd<cr>
+" Open file browser
+nnoremap <c-b> :Vexplore<cr>
 " Alternate between buffers
-nnoremap <c-I> :bn<cr>
+nnoremap <Tab> :bn<cr>
 
 " Autocmds
 "
