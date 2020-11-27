@@ -89,10 +89,11 @@ set query_command = "/usr/bin/lbdbq"
 
 ###############
 # Key Bindings
+#
 bind pager <Up> previous-page
 bind pager <Down> next-page
-bind pager p previous-undeleted
-bind pager n next-undeleted
+bind pager p previous-unread
+bind pager n next-unread
 bind pager g top
 bind pager G bottom
 
