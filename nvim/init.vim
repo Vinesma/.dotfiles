@@ -22,6 +22,9 @@ set shiftwidth=4
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
 
+" Fix colors for showing character pairs
+highlight MatchParen ctermbg=3
+
 " Autocomplete
 set wildmode=longest,list,full
 
@@ -79,6 +82,8 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap S :s///g<Left><Left><Left>
 " Run a substitute command over the entire file
 nnoremap <leader>s :%s///g<Left><Left><Left>
+" Run a substitute command on all buffers
+nnoremap <leader>sg :bufdo %s///gce<Left><Left><Left><Left><Left>
 " Uppercase the entire word over the cursor.
 nnoremap <leader>u viwU
 inoremap <leader>u <esc>viwUi
@@ -103,7 +108,7 @@ augroup AutoComment
     autocmd FileType sh         nnoremap <buffer> <leader>c I# <esc>
     autocmd FileType vim        nnoremap <buffer> <leader>c I" <esc>
 augroup END
-" Open file browser
+" Open file explorer
 nnoremap <c-b> :Vexplore<cr>
 " Alternate between buffers
 nnoremap <Tab> :bn<cr>
