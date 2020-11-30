@@ -112,7 +112,7 @@ augroup END
 " Open file explorer
 nnoremap <c-b> :Vexplore<cr>
 " Alternate between buffers
-nnoremap <Tab> :bn<cr>
+nnoremap <Tab> :bn!<cr>
 
 " Autocmds
 "

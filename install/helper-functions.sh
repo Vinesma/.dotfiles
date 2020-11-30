@@ -120,3 +120,19 @@ install-package() {
          debug-msg "[Install]" "$@" "package(s)"
     fi
 }
+
+install-aur-file() {
+    if [[ -z "$debug" ]]; then
+        sudo yay --no-confirm -S - < "$1"
+    else
+         debug-msg "[Install][AUR]" "$@" "package(s)"
+    fi
+}
+
+install-aur() {
+    if [[ -z "$debug" ]]; then
+        sudo yay --no-confirm -S "$@"
+    else
+         debug-msg "[Install][AUR]" "$@" "package(s)"
+    fi
+}

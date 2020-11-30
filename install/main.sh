@@ -151,4 +151,7 @@ if [[ -z "$debug" ]]; then
         # NUMPAD
         . "$main_folder/optional/numpad.sh"
     fi
+
+    # AUR
+    . "$main_folder/optional/aur.sh"
 fi
