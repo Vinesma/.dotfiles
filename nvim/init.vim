@@ -105,6 +105,7 @@ augroup AutoComment
     autocmd!
     autocmd FileType javascript nnoremap <buffer> <leader>c I// <esc>
     autocmd FileType python     nnoremap <buffer> <leader>c I# <esc>
+    autocmd FileType python     nnoremap <buffer> <leader>ac I"""  """<Left><Left><Left><Left>
     autocmd FileType sh         nnoremap <buffer> <leader>c I# <esc>
     autocmd FileType vim        nnoremap <buffer> <leader>c I" <esc>
 augroup END
