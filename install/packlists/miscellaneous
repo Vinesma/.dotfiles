@@ -1,7 +1,5 @@
 polybar
-polybar,.dotfiles/polybar/config,.config/polybar,create
-polybar,.dotfiles/polybar/launch.sh,.config/polybar
->>,. $HOME/.config/polybar/launch.sh &
+>>,. $HOME/.dotfiles/polybar/launch.sh &
 htop
 scrot
 neofetch

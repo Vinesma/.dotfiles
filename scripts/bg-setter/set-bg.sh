@@ -12,6 +12,7 @@ send-error() {
 }
 
 if wal -n -e -i "$@"; then
+    . ~/.dotfiles/polybar/launch.sh &
     feh --bg-scale "$(< "${HOME}/.cache/wal/wal")"
     qtile-cmd -o cmd -f restart >/dev/null 2>&1
     kill $(pgrep dunst)

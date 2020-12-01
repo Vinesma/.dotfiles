@@ -16,13 +16,7 @@
 ;
 ;==========================================================
 
-[colors]
-background = #E5{background.strip}
-foreground = {foreground}
-primary = {color4}
-secondary = {color6}
-thirdary = {color2}
-alert = #888888
+include-file = ~/.cache/wal/colors-polybar
 
 [bar/main]
 ;monitor = ${{env:MONITOR:HDMI-1}}
@@ -196,15 +190,6 @@ format-full = <label-full>
 format-full-underline = ${{colors.thirdary}}
 label-full = %{{F{color2}}}%{{F-}} %percentage%%
 
-[module/updates-pacman]
-type = custom/script
-exec = ~/.dotfiles/scripts/pacman-updates.sh
-interval = 1800
-
-format = <label>
-format-underline = ${{colors.thirdary}}
-
-label = %{{F{color2}}}%{{F-}} #%output%
 
 [module/rss]
 type = custom/script
@@ -226,15 +211,6 @@ format-underline = ${{colors.thirdary}}
 
 label = %{{F{color2}}}%{{F-}} #%output%
 
-[module/weather]
-type = custom/script
-exec = ~/.dotfiles/scripts/curl-weather.sh
-interval = 3600
-
-format = <label>
-format-underline = ${{colors.thirdary}}
-
-label = %output%
 
 [module/date]
 type = internal/date
@@ -251,16 +227,6 @@ label = %{{F{color2}}} %{{F-}}%date% %{{F{color2}}} %{{F-}}%time%
 label-font = 1
 label-foreground = ${{colors.foreground}}
 
-[module/redshift]
-type = custom/script
-exec = ~/.dotfiles/scripts/tempsetter-check.sh
-interval = 10
-
-format = <label>
-format-underline = ${{colors.thirdary}}
-format-margin = 0
-
-label = %output%
 
 [module/sep]
 type = custom/text
@@ -270,13 +236,42 @@ content-background = ${{colors.background}}
 content-foreground = ${{colors.foreground}}
 content-padding = 0
 
+;[module/updates-pacman]
+;type = custom/script
+;exec = ~/.dotfiles/scripts/pacman-updates.sh
+;interval = 1800
+;
+;format = <label>
+;format-underline = ${{colors.thirdary}}
+;
+;label = %{{F{color2}}}%{{F-}} #%output%
+
+;[module/weather]
+;type = custom/script
+;exec = ~/.dotfiles/scripts/curl-weather.sh
+;interval = 3600
+;
+;format = <label>
+;format-underline = ${{colors.thirdary}}
+;
+;label = %output%
+
+;[module/redshift]
+;type = custom/script
+;exec = ~/.dotfiles/scripts/tempsetter-check.sh
+;interval = 10
+;
+;format = <label>
+;format-underline = ${{colors.thirdary}}
+;format-margin = 0
+
 [settings]
 screenchange-reload = true
+pseudo-transparency = true
 ;compositing-background = xor
 ;compositing-background = screen
 ;compositing-foreground = source
 ;compositing-border = over
-pseudo-transparency = true
 
 [global/wm]
 margin-top = 0

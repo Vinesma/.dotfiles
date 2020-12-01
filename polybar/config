@@ -16,6 +16,8 @@
 ;
 ;==========================================================
 
+# This is a basic module to get you started if polybar's config ever goes tits up
+
 [colors]
 background = #111d5e
 foreground = #FFFFFF
