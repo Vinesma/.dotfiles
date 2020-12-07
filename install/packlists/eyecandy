@@ -3,6 +3,7 @@ picom
 picom,.dotfiles/picom/picom.conf,.config/picom
 >>,picom &
 lxappearance
+qt5ct
 python-pywal
 matcha-gtk-theme
 papirus-icon-theme

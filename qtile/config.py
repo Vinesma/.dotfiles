@@ -31,8 +31,6 @@ from libqtile import layout, bar, widget, hook
 from typing import List  # noqa: F401
 import subprocess
 
-## PYWAL
-from pywal import theme
 from os import getenv, path
 # PATHS
 homepath = getenv("HOME", getenv("USERPROFILE"))
@@ -160,12 +158,40 @@ for i in groups:
         Key([mod, "control"], i.name, lazy.window.togroup(i.name, switch_group=True)),
     ])
 
-## COLORS
-theme = theme.file(path.join(homepath, ".cache", "wal", "colors.json"))
-colors_main = theme.get("special")
-colors = theme.get("colors")
-shadow ='#3F3F44'
-highlight = colors.get("color4")
+## PYWAL
+try:
+    from pywal import theme
+    theme = theme.file(path.join(homepath, ".cache", "wal", "colors.json"))
+except (ImportError, FileNotFoundError):
+    # FALLBACKS
+    colors_main = { "background": "#0d1320", "foreground": "#ddd1e0", "cursor": "#ddd1e0" }
+    colors = {
+        "color0":  "#0d1320",
+        "color1":  "#3283db",
+        "color2":  "#3f72dd",
+        "color3":  "#3abddc",
+        "color4":  "#5d5de2",
+        "color5":  "#b557e1",
+        "color6":  "#9082e8",
+        "color7":  "#ddd1e0",
+        "color8":  "#9a929c",
+        "color9":  "#3283db",
+        "color10": "#3f72dd",
+        "color11": "#3abddc",
+        "color12": "#5d5de2",
+        "color13": "#b557e1",
+        "color14": "#9082e8",
+        "color15": "#ddd1e0"
+    }
+    highlight = colors.get("color4")
+else:
+    # PYWAL COLORS
+    colors_main = theme.get("special")
+    colors = theme.get("colors")
+    highlight = colors.get("color4")
+finally:
+    # CONSTANT COLORS
+    shadow = "#3F3F44"
 
 ## LAYOUTS
 layouts = [
@@ -231,7 +257,7 @@ def init_bar():
 
 screens = [
     Screen()
-    #Screen(top=init_bar())
+    # Screen(top=init_bar())
 ]
 
 # Drag floating layouts.
@@ -260,11 +286,11 @@ floating_layout = layout.Floating(float_rules=[
     {'wmclass': 'splash'},
     {'wmclass': 'toolbar'},
     {'wmclass': 'lxappearance'},
-    {'wmclass': 'confirmreset'},  # gitk
-    {'wmclass': 'makebranch'},  # gitk
-    {'wmclass': 'maketag'},  # gitk
-    {'wname': 'branchdialog'},  # gitk
-    {'wname': 'pinentry'},  # GPG key password entry
+    {'wmclass': 'confirmreset'}, # gitk
+    {'wmclass': 'makebranch'},   # gitk
+    {'wmclass': 'maketag'},      # gitk
+    {'wname': 'branchdialog'},   # gitk
+    {'wname': 'pinentry'},       # GPG key password entry
     {'wmclass': 'ssh-askpass'},  # ssh-askpass
 ], border_focus=highlight, border_normal=colors_main["background"])
 auto_fullscreen = True

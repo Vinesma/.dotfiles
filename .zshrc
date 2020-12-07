@@ -283,6 +283,30 @@ trim-ffmpeg() {
     fi
 }
 
+# GPG helpers
+# generate a key pair
+gpg-keypair-gen() {
+    gpg --full-gen-key
+}
+# encrypt file
+gpg-encrypt() {
+    if [[ "$#" -eq 2 ]]; then
+        gpg --recipient "$1" --encrypt "$2"
+    else
+        echo "gpg-encrypt: Encrypt files asymetrically using gpg, requires a key-pair which can be generated with the gpg-keypair function."
+        echo "Usage: gpg-encrypt [recipient (your email/key identifier)] [target file.ext]"
+    fi
+}
+# decrypt file
+gpg-decrypt() {
+    if [[ "$#" -eq 1 ]]; then
+        gpg -q --decrypt "$1"
+    else
+        echo "gpg-decrypt: Output the contents of a encrypted file to stdout."
+        echo "Usage: gpg-decrypt [target file.ext.gpg]"
+    fi
+}
+
 # SOURCES
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
