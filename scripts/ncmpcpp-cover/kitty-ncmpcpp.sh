@@ -10,7 +10,7 @@ launch-music-player() {
 
 send-options() {
     kitty @ --to unix:/tmp/kitty-ncmpcpp resize-window -a horizontal -i 26
-    # kitty @ --to unix:/tmp/kitty-ncmpcpp resize-window -a vertical -i 2
+    kitty @ --to unix:/tmp/kitty-ncmpcpp resize-window -a vertical -i 2
 }
 
 launch-music-player && sleep 1 && send-options

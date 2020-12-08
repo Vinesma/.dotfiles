@@ -1,6 +1,6 @@
 layout fat
 launch ncmpcpp
-launch ncmpcpp
+launch ncmpcpp --config=~/.dotfiles/scripts/ncmpcpp-cover/playlist-view
 focus
 cd ~/.dotfiles/scripts/ncmpcpp-cover/
 launch bash -c "./cover-listen.sh"

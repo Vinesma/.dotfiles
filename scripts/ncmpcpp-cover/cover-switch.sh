@@ -13,4 +13,5 @@ if [ "$art" = "" ]; then
 fi
 # copy and resize image to destination
 # cp "$art" "$image_cover"
-ffmpeg -loglevel 0 -y -i "$art" -vf "scale=$cover_size:-1" "$image_cover"
+# ffmpeg -loglevel 0 -y -i "$art" -vf "scale=$cover_size:-1" "$image_cover"
+magick "$art" -resize "$cover_size"x"$cover_size" "$image_cover"
