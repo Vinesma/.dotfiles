@@ -32,3 +32,4 @@ zathura-pdf-mupdf
 zathura,.dotfiles/zathura/zathurarc,.config/zathura,create
 youtube-dl,.dotfiles/youtube-dl/config,.config/youtube-dl,create
 code
+inotify-tools
