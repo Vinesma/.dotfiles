@@ -1,0 +1,6 @@
+layout fat
+launch ncmpcpp
+launch ncmpcpp
+focus
+cd ~/.dotfiles/scripts/ncmpcpp-cover/
+launch bash -c "./cover-listen.sh"
