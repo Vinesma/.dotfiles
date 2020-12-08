@@ -4,6 +4,9 @@ let mapleader = ","
 " enable syntax highlighting
 syntax on
 
+" increase col search range for syntax highlighting
+set synmaxcol=6000
+
 " show line numbers (relative)
 set number relativenumber
 
