@@ -96,6 +96,7 @@ bind pager p previous-unread
 bind pager n next-unread
 bind pager g top
 bind pager G bottom
+macro attach 'V' "<pipe-entry>iconv -c --to-code=UTF8 > /tmp/neomutt-mail.html<enter><shell-escape>firefox /tmp/neomutt-mail.html<enter>"
 
 ###############
 # GnuPG
