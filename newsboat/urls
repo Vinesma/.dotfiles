@@ -1,4 +1,5 @@
 "query:Unread News:tags # \"news\" and unread = \"yes\""
+"query:Tech News:tags # \"tech-news\" and unread = \"yes\""
 https://forum.manjaro.org/c/announcements.rss "~Manjaro News"
 "query:Youtube (Favorites):tags # \"youtube-favorite\" and unread = \"yes\""
 "query:Youtube (Others):tags # \"youtube-others\" and unread = \"yes\""
@@ -13,6 +14,7 @@ http://www.bbc.co.uk/portuguese/index.xml "~BBC" news
 https://feeds.folha.uol.com.br/poder/rss091.xml "~FOLHA - Poder" news
 https://feeds.folha.uol.com.br/tec/rss091.xml "~FOLHA - Tecnologia" news
 https://feeds.folha.uol.com.br/mundo/rss091.xml "~FOLHA - Mundo" news
+https://news.ycombinator.com/rss "~Hacker News" tech-news
 https://www.youtube.com/feeds/videos.xml?channel_id=UCE1jXbVAGJQEORz9nZqb5bQ "~Ahoy" youtube-favorite
 https://www.youtube.com/feeds/videos.xml?channel_id=UCS0N5baNlQWJCUrhCEo8WlA "~Ben Eater" youtube-others tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UCEOXxzW2vU0P-0THehuIIeg "~Captain Disillusion" youtube-favorite
@@ -58,10 +60,10 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCoSrY_IQQVpmIRZ9Xf-y93g "~G
 https://www.youtube.com/feeds/videos.xml?channel_id=UCHsx4Hqa-1ORjQTh9TYDhww "~Takanashi Kiara - Hololive EN" livestream
 https://www.youtube.com/feeds/videos.xml?channel_id=UC_a1ZYZ8ZTXpjg9xUY9sj8w "~Suzuhara Lulu - Nijisanji所属" livestream
 https://nitter.net/AIR_News01/rss "~@A.I.R - Anime News" twitter-news
-https://nitter.net/fosspost/rss "~Linux & Open Source" twitter-news
-https://nitter.net/fullstackpython/rss "~@Full Stack Python" twitter-news
-https://nitter.net/css/rss "~CSS-Tricks" twitter-news
-https://nitter.net/freeCodeCamp/rss "~@freeCodeCamp" twitter-news
+https://nitter.net/fosspost/rss "~Linux & Open Source" tech-news
+https://nitter.net/fullstackpython/rss "~@Full Stack Python" tech-news
+https://nitter.net/css/rss "~CSS-Tricks" tech-news
+https://nitter.net/freeCodeCamp/rss "~@freeCodeCamp" tech-news
 https://nitter.net/Anime/rss "~@Anime News Network" twitter-news
 https://nitter.net/TechRaptr/rss "~@TechRaptor" twitter-news
 https://nitter.net/factoriogame/rss "~Factorio" twitter-news

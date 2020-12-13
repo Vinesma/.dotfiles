@@ -39,6 +39,10 @@ scripts_path = path.join(homepath, ".dotfiles", "scripts")
 mod = "mod4"
 ## APPS
 terminal = "kitty"
+terminal_reduced_opacity = "kitty -o background_opacity=0.9"
+terminal_increased_opacity = "kitty -o background_opacity=0.7"
+browser = "firefox"
+file_browser = "thunar"
 
 keys = [
     # Switch between windows in current stack pane
@@ -84,17 +88,17 @@ keys = [
 
     # Custom commands
     # emulate win ctrl+alt+del (spawn task manager)
-    Key(["mod1", "control"], "Delete", lazy.spawn("kitty htop")),
+    Key(["mod1", "control"], "Delete", lazy.spawn(f"{terminal} htop")),
     # rofi
     Key([mod], "r", lazy.spawn("rofi -show run")),
     Key([mod], "e", lazy.spawn("rofi -show window")),
     # spawn apps
-    Key([mod, "mod1"], "e", lazy.spawn("thunar")),
-    Key([mod, "mod1"], "b", lazy.spawn("firefox")),
-    Key([mod, "mod1"], "n", lazy.spawn("kitty -T \"newsboat\" {}{}".format(scripts_path, "/newsboat/open-newsboat.sh"))),
-    Key([mod, "mod1"], "m", lazy.spawn("kitty -o background_opacity=0.7 -T \"MPD\" ncmpcpp -q")),
+    Key([mod, "mod1"], "e", lazy.spawn(file_browser)),
+    Key([mod, "mod1"], "b", lazy.spawn(browser)),
+    Key([mod, "mod1"], "n", lazy.spawn(f"{terminal_reduced_opacity} -T \"newsboat\" {scripts_path}/newsboat/open-newsboat.sh")),
+    Key([mod, "mod1"], "m", lazy.spawn(f"{terminal_increased_opacity} -T \"MPD\" ncmpcpp -q")),
     Key([mod, "shift"], "m", lazy.spawn(path.join(scripts_path, "ncmpcpp-cover", "kitty-ncmpcpp.sh"))),
-    Key([mod, "mod1"], "l", lazy.spawn("kitty -o background_opacity=0.9 neomutt")),
+    Key([mod, "mod1"], "l", lazy.spawn(f"{terminal_reduced_opacity} neomutt")),
     Key([mod, "mod1"], "i", lazy.spawn(path.join(scripts_path, "wifi-finder.sh"))),
     Key([mod, "control"], "m", lazy.spawn(path.join(scripts_path, "song-browser.sh"))),
     # take screenshot, either fullscreen or a selection

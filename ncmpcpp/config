@@ -82,7 +82,8 @@ visualizer_sync_interval = 30
 ##
 visualizer_type = wave_filled
 #
-visualizer_look = ●▮
+#visualizer_look = ●▮
+visualizer_look = ●▋
 #
 #visualizer_color = blue, cyan, green, yellow, magenta, red
 visualizer_color = blue, cyan, green
@@ -292,15 +293,15 @@ execute_on_song_change = "~/.dotfiles/scripts/ncmpcpp-cover/cover-switch.sh"
 ##
 ## Note: Possible display modes: classic, columns.
 ##
-#playlist_display_mode = columns
+playlist_display_mode = columns
 #
-#browser_display_mode = classic
+browser_display_mode = columns
 #
-#search_engine_display_mode = classic
+search_engine_display_mode = columns
 #
-#playlist_editor_display_mode = classic
+playlist_editor_display_mode = columns
 #
-#discard_colors_if_item_is_selected = yes
+discard_colors_if_item_is_selected = yes
 #
 #show_duplicate_tags = yes
 #
@@ -319,7 +320,23 @@ volume_change_step = 10
 ## part of progressbar.
 ##
 progressbar_look = "━━━"
+#progressbar_look = "▪▪▫"
 #progressbar_look = =>
+#progressbar_look = "░█ "
+#progressbar_look = "=>"
+#progressbar_look = "─- "
+#progressbar_look = "▒▒░"
+#progressbar_look = "┅┅┄"
+#progressbar_look = "─⊙┄"
+#progressbar_look = "─➞─"
+#progressbar_look = "─┅─"
+#progressbar_look = "▪▪▪"
+#progressbar_look = "───"
+#progressbar_look = "▁▁▁"
+#progressbar_look = "‒‒‒"
+#progressbar_look = "■◣ "
+#progressbar_look = "◈◆◇"
+#progressbar_look = "→→"
 #
 ## Available values: database, playlist.
 ##
