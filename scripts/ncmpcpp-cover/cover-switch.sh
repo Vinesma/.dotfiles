@@ -2,7 +2,7 @@
 
 image_cover="/tmp/album_cover.png"
 music_dir="$HOME/Music"
-cover_size="400"
+cover_size="300"
 
 file="$music_dir/$(mpc --format %file% current)"
 album="${file%/*}"

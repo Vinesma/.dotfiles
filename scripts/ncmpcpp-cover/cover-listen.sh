@@ -5,7 +5,7 @@ seconds=1
 
 # Draw cover to screen using kitty's icat
 add_cover() {
-    kitty +kitten icat --clear --silent
+    clear
     kitty +kitten icat --silent "$image_cover"
 }
 
