@@ -15,6 +15,7 @@ https://feeds.folha.uol.com.br/poder/rss091.xml "~FOLHA - Poder" news
 https://feeds.folha.uol.com.br/tec/rss091.xml "~FOLHA - Tecnologia" news
 https://feeds.folha.uol.com.br/mundo/rss091.xml "~FOLHA - Mundo" news
 https://news.ycombinator.com/rss "~Hacker News" tech-news
+https://css-tricks.com/feed/ "~CSS-Tricks" tech-news
 https://www.youtube.com/feeds/videos.xml?channel_id=UCE1jXbVAGJQEORz9nZqb5bQ "~Ahoy" youtube-favorite
 https://www.youtube.com/feeds/videos.xml?channel_id=UCS0N5baNlQWJCUrhCEo8WlA "~Ben Eater" youtube-others tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UCEOXxzW2vU0P-0THehuIIeg "~Captain Disillusion" youtube-favorite
@@ -51,6 +52,7 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCMZxtiWIdrXUUbWMAe6D-Iw "~m
 https://www.youtube.com/feeds/videos.xml?channel_id=UCg6gPGh8HU2U01vaFCAsvmQ "~Chris Titus Tech" youtube-others tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UCUmLRMERmJrmUtgnbFfknAg "~Randall (Gamedev Diary)" youtube-favorite tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UCy0tKL1T7wFoYcxCe0xjN6Q "~Technology Connections" youtube-favorite tech
+https://www.youtube.com/feeds/videos.xml?channel_id=UCADyUOnhyEoQqrw_RrsGleA "~CSS-Tricks" youtube-others tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UCLuymDHiOySsAQ9Nc-4NoEQ "~Onomappu オノマップ" japanese
 https://www.youtube.com/feeds/videos.xml?channel_id=UCEw0sdrCOjcsjtXGJibItJA "~Easy Peasy Japanesey" japanese
 https://www.youtube.com/feeds/videos.xml?channel_id=UCNepEAWZH0TBu7dkxIbluDw "~Dad, how do I?" youtube-others
@@ -62,7 +64,6 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UC_a1ZYZ8ZTXpjg9xUY9sj8w "~S
 https://nitter.net/AIR_News01/rss "~@A.I.R - Anime News" twitter-news
 https://nitter.net/fosspost/rss "~Linux & Open Source" tech-news
 https://nitter.net/fullstackpython/rss "~@Full Stack Python" tech-news
-https://nitter.net/css/rss "~CSS-Tricks" tech-news
 https://nitter.net/freeCodeCamp/rss "~@freeCodeCamp" tech-news
 https://nitter.net/Anime/rss "~@Anime News Network" twitter-news
 https://nitter.net/TechRaptr/rss "~@TechRaptor" twitter-news
