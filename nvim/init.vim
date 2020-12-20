@@ -40,6 +40,13 @@ set clipboard=unnamedplus
 " Preview substitution command
 set inccommand=nosplit
 
+" Ask confirmation on :w/:q and others instead of making the user retype
+set confirm
+
+" Change backup and swapfile directories (mkdir is necessary)
+set backupdir=~/.config/nvim/backups/
+set directory=~/.config/nvim/swapfiles//
+
 " Airline
 " Powerline symbols
 let g:airline_powerline_fonts = 1
