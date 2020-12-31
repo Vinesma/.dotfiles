@@ -5,11 +5,15 @@
 script_folder="$HOME/.dotfiles/scripts/ncmpcpp-cover/"
 
 launch-music-player() {
-    kitty -o allow_remote_control=yes --session "$script_folder/ncmpcpp.session" --listen-on unix:/tmp/kitty-ncmpcpp &
+    kitty \
+        -T "ncmpcpp" \
+        -o allow_remote_control=yes \
+        --session "$script_folder/ncmpcpp.session" \
+        --listen-on unix:/tmp/kitty-ncmpcpp &
 }
 
 send-options() {
     kitty @ --to unix:/tmp/kitty-ncmpcpp resize-window -a horizontal -i 34
 }
 
-launch-music-player && sleep 1 && send-options
+launch-music-player && sleep 0.4 && send-options
