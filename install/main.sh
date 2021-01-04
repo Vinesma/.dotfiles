@@ -120,7 +120,7 @@ if [[ -z "$debug" ]]; then
     . "$main_folder/optional/email.sh"
 
     # PRINTER
-    if [[ "$answer_printer" == @(y|Y) ]]; then
+    if [[ "$answer_printer" == [yY] ]]; then
         . "$main_folder/optional/printers.sh"
     fi
 
@@ -134,7 +134,7 @@ if [[ -z "$debug" ]]; then
     fi
 
     # PLATFORM SPECIFIC
-    if [[ "$answer" == @(y|Y) ]]; then
+    if [[ "$answer" == [yY] ]]; then
         arrow-msg "Installing laptop packages"
 
         # TOUCHPAD
