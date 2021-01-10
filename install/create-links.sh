@@ -33,6 +33,7 @@ create-link-to-config-diff() {
 
 create-link-to-home "BASHRC" ".bashrc"
 create-link-to-home "ZSH" ".zshrc"
+create-link-to-home "ZSHENV" ".zshenv"
 create-link-to-config "NANO" "nano/nanorc"
 create-link-to-config "KITTY" "kitty/kitty.conf"
 create-link-to-config-diff "REDSHIFT" "redshift/redshift.conf" "redshift.conf"
