@@ -103,12 +103,6 @@ ex ()
 # Colorscheme import from wal
 (cat ~/.cache/wal/sequences &)
 
-### EXPORTS ###
-export EDITOR="/usr/bin/nvim"
-export VISUAL="/usr/bin/nvim"
-export PATH="$PATH:$HOME/Documents/flutter/bin"
-export PATH="$PATH:$HOME/.local/bin"
-
 ### PERSONAL ALIASES ###
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
