@@ -1,0 +1,167 @@
+{
+    "category_name": "essential",
+    "packages": [
+        {
+            "name": "xterm",
+            "install_name": "xterm",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null, 
+            "comments": []
+        },
+        {
+            "name": "Kitty",
+            "install_name": "kitty",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null, 
+            "comments": []
+        },
+        {
+            "name": "Thunar",
+            "install_name": "thunar",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null, 
+            "comments": []
+        },
+        {
+            "name": "thumbler",
+            "install_name": "thumbler",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null, 
+            "comments": []
+        },
+        {
+            "name": "ffmpegthumbnailer",
+            "install_name": "ffmpegthumbnailer",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null, 
+            "comments": []
+        },
+        {
+            "name": "udiskie",
+            "install_name": "udiskie",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": "udiskie &",
+            "comments": []
+        },
+        {
+            "name": "Firefox",
+            "install_name": "firefox",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
+            "name": "nano",
+            "install_name": "nano",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
+            "name": "NeoVim",
+            "install_name": "neovim",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
+            "name": "Alsa utils",
+            "install_name": "alsa-utils",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
+            "name": "Alsa plugins",
+            "install_name": "alsa-plugins",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
+            "name": "Pulseaudio",
+            "install_name": "pulseaudio",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
+            "name": "Pulseaudio Alsa",
+            "install_name": "pulseaudio-alsa",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
+            "name": "Pulsemixer",
+            "install_name": "pulsemixer",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
+            "name": "Dunst",
+            "install_name": "dunst",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": "dunst &",
+            "comments": []
+        },
+        {
+            "name": "yay",
+            "install_name": "yay",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        }
+    ],
+    "files": [
+        {
+            "name": "kitty.conf",
+            "residence": "~/.config/kitty",
+            "source": "~/.dotfiles/kitty",
+            "text": "",
+            "create_link": true,
+            "comments": []
+        },
+        {
+            "name": "nanorc",
+            "residence": "~/.config/nano",
+            "source": "~/.dotfiles/nano",
+            "text": "",
+            "create_link": true,
+            "comments": []
+        },
+        {
+            "name": "init.vim",
+            "residence": "~/.config/nvim",
+            "source": "~/.dotfiles/nvim",
+            "text": "",
+            "create_link": true,
+            "comments": []
+        },
+        {
+            "name": "dunstrc",
+            "residence": "~/.config/dunst",
+            "source": "~/.dotfiles/dunst",
+            "text": "",
+            "create_link": true,
+            "comments": []
+        }
+    ]
+}
