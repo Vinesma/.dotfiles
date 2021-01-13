@@ -41,7 +41,7 @@ class File:
         if self.source is not None:
             if self.sudo:
                 messages.arrow(f"Copied [sudo]: '{self.source}' ==> '{self.residence}'")
-                spawn.process("cp", ["-v", self.source, self.residence])
+                spawn.process("cp", ["-v", "--", f"\"{self.source}\"", f"\"{self.residence}\""])
             else:
                 messages.arrow(f"Copied: '{self.source}' ==> '{self.residence}'")
                 copy(self.source, self.residence)

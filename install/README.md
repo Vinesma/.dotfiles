@@ -38,7 +38,7 @@ Install `git` so you can clone this repo. Once you have git and are connected th
 
 ## Anything missing?
 
-Try looking in the `optional/` folder. Some things may not have been installed, either by user mistake or program error. But the modular scripts allow their packages to be installed in any order.
+Try running the included python script `main.py` and selecting the "individual install" option.
 
 - [cron won't be running by default, it needs to be enabled.](https://wiki.archlinux.org/index.php/Cron#Activation_and_autostart)
 
@@ -47,8 +47,6 @@ Try looking in the `optional/` folder. Some things may not have been installed, 
 If installing on a laptop a few more things require attention, such as [ACPI Events](https://wiki.archlinux.org/index.php/Power_management#Power_management_with_systemd) and [the touchpad.](https://wiki.archlinux.org/index.php/Libinput#Installation)
 
 [Power saving](https://wiki.archlinux.org/index.php/Power_management#Power_saving) is also a thing I've yet to dive deep into.
-
-Current lifetime on my ASUS laptop after a full 100% charge is about 3 hours.
 
 ## Dev stuff
 

@@ -6,7 +6,7 @@
             "install_name": "manjaro-printer",
             "installer": "pacman",
             "run_commands": [
-                "sudo gpasswd -a $USER sys",
+                "sudo gpasswd -a \"$USER\" sys",
                 "sudo systemctl enable --now org.cups.cupsd.service"
             ],
             "autostart": null,
