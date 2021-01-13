@@ -4,53 +4,83 @@ Installs and configures an entire linux system from scratch.
 
 from subprocess import run
 from os import path
-from utils import messages, spawn, install_util
+from utils import messages, spawn, install_util, menu
 from installers import pacman
 from classes.Category import Category
 import json
 
+options = [
+    "Full install",
+    "Individual install",
+    "Create/Edit install files"
+]
+
 def main():
-    messages.header("Collecting system information...")
-    isManjaro = install_util.check_distro()
-    install_laptop = messages.question_bool("Are you installing on a laptop?")
-    install_printer = messages.question_bool("Install printer support?")
+    choice = menu.show(options, header="Welcome to the best installer. Pick your poison:")
 
-    # Initial sync to make sure all packages are up to date.
-    messages.header("Syncing repositories and updating system packages.")
-    pacman.sync()
+    if choice == 0:
+        # Full install
+        messages.header("Collecting system information...")
+        isManjaro = install_util.check_distro()
+        install_laptop = messages.question_bool("Are you installing on a laptop?")
+        install_printer = messages.question_bool("Install printer support?")
 
-    messages.header("All good, go grab a coffee, we gon' be here a while.")
+        # Initial sync to make sure all packages are up to date.
+        messages.header("Syncing repositories and updating system packages.")
+        pacman.sync()
 
-    messages.arrow("Initial configuration...")
-    install_util.init_category("initial").install_group()
-    install_util.init_category("essential").install_group()
-    
-    messages.header("Setting keymap")
-    spawn.process("localectl", ["--no-convert", "set-x11-keymap", "br"])
+        messages.header("All good, go grab a coffee, we gon' be here a while.")
 
-    if install_laptop:
-        messages.header("Installing laptop packages.")
-        install_util.init_category("touchpad").install_group()
-        install_util.init_category("backlight").install_group()
-        install_util.init_category("bluetooth").install_group()
+        messages.arrow("Initial configuration...")
+        install_util.init_category("initial").install_group()
+        install_util.init_category("essential").install_group()
+        
+        messages.header("Setting keymap")
+        spawn.process("localectl", ["--no-convert", "set-x11-keymap", "br"])
+
+        if install_laptop:
+            messages.header("Installing laptop packages.")
+            install_util.init_many_install(["touchpad", "backlight", "bluetooth"])
+        else:
+            # Non laptop packages
+            messages.header("Installing desktop packages.")
+            install_util.init_category("numpad").install_group()
+
+        # Main software
+        install_util.init_many_install([
+            "apps", "eyecandy", "applets", "input_methods", "email"
+        ])
+
+        if isManjaro:
+            messages.header("Installing Manjaro specific packages.")
+            install_util.init_category("manjaro").install_group()
+
+            if install_printer:
+                messages.header("Installing Manjaro printer.")
+                install_util.init_category("printer").install_group()
+    elif choice == 1:
+        # Individual install
+        packages = install_util.list_packages()
+        package_index = 0
+
+        while package_index is not None:
+            package_index = menu.show(packages, header="Choose a group of packages to install.")
+
+            if package_index is not None:
+                install_util.init_category(packages[package_index]).install_group()
+    elif choice == 2:
+        # Create/Edit install files
+        install_files_choice = menu.show([
+            "Create install file",
+            "Edit install file"
+        ], header="What to do?")
+        #@TODO
+        if install_files_choice == 0:
+            pass
+        elif install_files_choice == 1:
+            pass
+
     else:
-        # Non laptop packages
-        messages.header("Installing desktop packages.")
-        install_util.init_category("numpad").install_group()
-
-    # Main software
-    install_util.init_category("apps").install_group()
-    install_util.init_category("eyecandy").install_group()
-    install_util.init_category("applets").install_group()
-    install_util.init_category("input_methods").install_group()
-    install_util.init_category("email").install_group()
-
-    if isManjaro:
-        messages.header("Installing Manjaro specific packages.")
-        install_util.init_category("manjaro").install_group()
-
-        if install_printer:
-            messages.header("Installing Manjaro printer.")
-            install_util.init_category("printer").install_group()
+        messages.info("Exiting...")
 
 main()

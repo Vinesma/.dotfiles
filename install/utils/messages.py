@@ -25,6 +25,14 @@ def info(message):
     """
     print(f"  [i]: {message}")
 
+def option(message, number):
+    """
+    Print a numbered message
+        args = A message string to display
+        number = The number to display
+    """
+    print(f"  {number}. {message}")
+
 def error(message):
     """ 
     Prints an error message with 2 spacings to the left
@@ -42,6 +50,17 @@ def question_str(message):
     response = stdin.readline().rstrip()
 
     return response
+
+def question_int(message):
+    """
+    Prints a question that the user must answer
+        args = A question string to display
+        return -> An integer typed by the user
+    """
+    print(message)
+    response = stdin.readline().rstrip()
+
+    return int(response)
 
 def question_bool(message):
     """

@@ -1,5 +1,5 @@
 from classes.Category import Category
-from os import path
+from os import path, listdir
 from utils import spawn, messages
 import json
 
@@ -24,6 +24,13 @@ def init_category(filename):
 
     return initializedObject
 
+def init_many_install(filenames):
+    """
+    Initialize many categories and install them
+    """
+    for filename in filenames:
+        init_category(filename).install_group()
+
 def check_distro():
     """
     Check if the distro is Manjaro Linux
@@ -36,3 +43,15 @@ def check_distro():
 
     messages.arrow("It appears you are not using Manjaro Linux, some distro specific packages will be skipped.")
     return False
+
+def list_packages():
+    """
+    List the names of package groups in the PACKAGE_LISTS dir
+    """
+    packages = listdir(PACKAGE_LISTS)
+    packagesList = []
+    for package in packages:
+        package = package.replace(".json", "")
+        packagesList.append(package)
+    
+    return packagesList
