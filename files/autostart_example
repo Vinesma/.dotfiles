@@ -1,0 +1,24 @@
+#!/bin/bash
+
+feh --bg-scale "$(< "${HOME}/.cache/wal/wal")" &
+. ~/.dotfiles/polybar/launch.sh &
+picom &
+dunst &
+udiskie &
+redshift &
+numlockx &
+fcitx &
+syncthing --no-browser &
+
+if [[ ! -s ~/.config/mpd/pid ]]; then
+    mpd
+    mpc random on
+    mpc repeat on
+    mpc crossfade 3
+fi
+
+if ping -c 3 google.com; then
+    firefox about:newtab https://en.wikipedia.org/wiki/Main_Page &
+    qbittorrent &
+    sleep 10 && bash ~/.dotfiles/scripts/newsboat/newsboat-reloader.sh &
+fi
