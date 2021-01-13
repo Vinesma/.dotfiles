@@ -1,0 +1,14 @@
+{
+    "category_name": "Numpad",
+    "packages": [
+        {
+            "name": "numlockx",
+            "install_name": "numlockx",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": "numlockx &",
+            "comments": []
+        }
+    ],
+    "files": []
+}

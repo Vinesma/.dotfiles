@@ -1,0 +1,24 @@
+{
+    "category_name": "Applets",
+    "packages": [
+        {
+            "name": "Redshift",
+            "install_name": "redshift",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": "redshift-gtk &",
+            "comments": []
+        }
+    ],
+    "files": [
+        {
+            "name": "redshift.conf",
+            "residence": "~/.config",
+            "source": "~/.dotfiles/redshift",
+            "text": "",
+            "create_link": true,
+            "sudo": false,
+            "comments": []
+        }
+    ]
+}

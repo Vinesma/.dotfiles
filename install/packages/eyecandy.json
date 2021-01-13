@@ -1,0 +1,136 @@
+{
+    "category_name": "Eyecandy",
+    "packages": [
+        {
+            "name": "feh",
+            "install_name": "feh",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": "feh --bg-scale \"$(< \"${HOME}/.cache/wal/wal\")\" &",
+            "comments": []
+        },
+        {
+            "name": "Picom",
+            "install_name": "picom-git",
+            "installer": "aur",
+            "run_commands": [],
+            "autostart": "picom &",
+            "comments": []
+        },
+        {
+            "name": "lxappearance",
+            "install_name": "lxappearance",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
+            "name": "qt5ct",
+            "install_name": "qt5ct",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
+            "name": "Pywal",
+            "install_name": "python-pywal",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
+            "name": "Matcha theme",
+            "install_name": "matcha-gtk-theme",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
+            "name": "Papirus icon theme",
+            "install_name": "papirus-icon-theme",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
+            "name": "BitStream Vera Font",
+            "install_name": "ttf-bitstream-vera",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
+            "name": "Anonymous Pro Font",
+            "install_name": "ttf-anonymous-pro",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
+            "name": "OTF Ipa Font",
+            "install_name": "otf-ipafont",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
+            "name": "Noto Emoji Font",
+            "install_name": "noto-fonts-emoji",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
+            "name": "Nerd Font",
+            "install_name": "ttf-nerd-fonts-symbols",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
+            "name": "Powerline Font",
+            "install_name": "powerline-fonts",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
+            "name": "Zsh powerlevel10k theme",
+            "install_name": "zsh-theme-powerlevel10k-git",
+            "installer": "aur",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
+            "name": "Meslo Nerd Font for powerlevel10k",
+            "install_name": "ttf-meslo-nerd-font-powerlevel10k",
+            "installer": "aur",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        }
+    ],
+    "files": [
+        {
+            "name": "picom.conf",
+            "residence": "~/.config/picom",
+            "source": "~/.dotfiles/picom",
+            "text": "",
+            "create_link": true,
+            "sudo": false,
+            "comments": []
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "category_name": "Manjaro printer",
+    "packages": [
+        {
+            "name": "Manjaro printer",
+            "install_name": "manjaro-printer",
+            "installer": "pacman",
+            "run_commands": [
+                "sudo gpasswd -a $USER sys",
+                "sudo systemctl enable --now org.cups.cupsd.service"
+            ],
+            "autostart": null,
+            "comments": [
+                "All done, you can now go to http://localhost:631/",
+                "In the Administration tab you can add and manage local or networked printers and jobs."
+            ]
+        }
+    ],
+    "files": []
+}

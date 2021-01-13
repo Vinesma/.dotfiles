@@ -1,0 +1,91 @@
+{
+    "category_name": "Email",
+    "packages": [
+        {
+            "name": "NeoMutt",
+            "install_name": "neomutt",
+            "installer": "pacman",
+            "run_commands": [
+                "mkdir -p $HOME/mail/gmail"
+            ],
+            "autostart": null,
+            "comments": [
+                "A script for cron is provided in `$HOME/.dotfiles/scripts/cron-jobs`, it's suggested to run it in 10 minute intervals.",
+                "Setting up a gpg keypair is necessary for keeping your password secure and, by extension, be able to use neomutt.",
+                "You can run `$ gpg-keypair-gen` if you are using zsh to quickly generate a new keypair.",
+                "Save your password inside `$HOME/.neomutt/account.gpg`"
+            ]
+        },
+        {
+            "name": "Isync",
+            "install_name": "isync",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
+            "name": "msmtp",
+            "install_name": "msmtp",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
+            "name": "w3m",
+            "install_name": "w3m",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        }
+    ],
+    "files": [
+        {
+            "name": "neomuttrc",
+            "residence": "~/.config/neomutt",
+            "source": "~/.dotfiles/neomutt",
+            "text": "",
+            "create_link": true,
+            "sudo": false,
+            "comments": []
+        },
+        {
+            "name": "colors.muttrc",
+            "residence": "~/.config/neomutt",
+            "source": "~/.dotfiles/neomutt",
+            "text": "",
+            "create_link": true,
+            "sudo": false,
+            "comments": []
+        },
+        {
+            "name": "mbsyncrc",
+            "residence": "~/.config",
+            "source": "~/.dotfiles",
+            "text": "",
+            "create_link": true,
+            "sudo": false,
+            "comments": []
+        },
+        {
+            "name": "config",
+            "residence": "~/.config/msmtp",
+            "source": "~/.dotfiles/msmtp",
+            "text": "",
+            "create_link": true,
+            "sudo": false,
+            "comments": []
+        },
+        {
+            "name": ".mailcap",
+            "residence": "~",
+            "source": "~/.dotfiles",
+            "text": "",
+            "create_link": false,
+            "sudo": false,
+            "comments": []
+        }
+    ]
+}

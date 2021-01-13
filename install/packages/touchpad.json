@@ -1,0 +1,19 @@
+{
+    "category_name": "Touchpad",
+    "packages": [
+        {
+            "name": "xorg-xinput",
+            "install_name": "xorg-xinput",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": [
+                "$ xinput list -> Grab the device id you want to change",
+                "$ xinput list-props [id] -> List what can be changed",
+                "$ xinput set-prop [id] [prop-id] [1/0] -> non-persistent",
+                "You can add the command to .autostart to make it persistent, beware if the device changes id after kernel changes."
+            ]
+        }
+    ],
+    "files": []
+}

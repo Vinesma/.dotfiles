@@ -4,26 +4,14 @@ Installs and configures an entire linux system from scratch.
 
 from subprocess import run
 from os import path
-from utils import messages, spawn
+from utils import messages, spawn, install_util
 from installers import pacman
 from classes.Category import Category
 import json
 
 def main():
-    # FOLDERS
-    MAIN_FOLDER = path.expanduser("~/.dotfiles/install")
-    PACKAGE_LISTS = path.join(MAIN_FOLDER, "packages")
-
     messages.header("Collecting system information...")
-    distro = spawn.process_stdout("uname", ["-r"])
-
-    if "manjaro" in distro.lower():
-        messages.arrow("Manjaro Linux detected. Specific packages will be installed.")
-        distro = "MANJARO"
-    else:
-        messages.arrow("It appears you are not using Manjaro Linux, some distro specific packages will be skipped.")
-        distro = "OTHER"
-
+    isManjaro = install_util.check_distro()
     install_laptop = messages.question_bool("Are you installing on a laptop?")
     install_printer = messages.question_bool("Install printer support?")
 
@@ -32,29 +20,37 @@ def main():
     pacman.sync()
 
     messages.header("All good, go grab a coffee, we gon' be here a while.")
-    messages.arrow("Initializing install...")
 
-    # Initial configuration
-    category_path = path.join(PACKAGE_LISTS, "initial.json")
-    with open(category_path, "r") as readFile:
-        category = json.load(readFile)
+    messages.arrow("Initial configuration...")
+    install_util.init_category("initial").install_group()
+    install_util.init_category("essential").install_group()
+    
+    messages.header("Setting keymap")
+    spawn.process("localectl", ["--no-convert", "set-x11-keymap", "br"])
 
-    categoryConfiguration = Category(
-        category_name=category["category_name"],
-        packages=category["packages"],
-        files=category["files"]
-    )
-    categoryConfiguration.install_group()
+    if install_laptop:
+        messages.header("Installing laptop packages.")
+        install_util.init_category("touchpad").install_group()
+        install_util.init_category("backlight").install_group()
+        install_util.init_category("bluetooth").install_group()
+    else:
+        # Non laptop packages
+        messages.header("Installing desktop packages.")
+        install_util.init_category("numpad").install_group()
 
-    category_path = path.join(PACKAGE_LISTS, "essential.json")
-    with open(category_path, "r") as readFile:
-        category = json.load(readFile)
+    # Main software
+    install_util.init_category("apps").install_group()
+    install_util.init_category("eyecandy").install_group()
+    install_util.init_category("applets").install_group()
+    install_util.init_category("input_methods").install_group()
+    install_util.init_category("email").install_group()
 
-    categoryConfiguration = Category(
-        category_name=category["category_name"],
-        packages=category["packages"],
-        files=category["files"]
-    )
-    categoryConfiguration.install_group()
+    if isManjaro:
+        messages.header("Installing Manjaro specific packages.")
+        install_util.init_category("manjaro").install_group()
+
+        if install_printer:
+            messages.header("Installing Manjaro printer.")
+            install_util.init_category("printer").install_group()
 
 main()

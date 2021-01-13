@@ -9,7 +9,7 @@ def header(message):
     Prints a big arrow with no spacing
         args = A message string to display after the arrow
     """
-    print(f"==> {message}")
+    print(f"==> {message}\n")
 
 def arrow(message):
     """

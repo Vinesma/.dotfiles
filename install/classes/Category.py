@@ -1,7 +1,7 @@
 from classes.File import File 
 from classes.Package import Package
 from utils import messages
-from installers import pacman
+from installers import pacman, aur, pip
 
 class Category:
 
@@ -31,6 +31,7 @@ class Category:
                 source=file["source"],
                 text=file["text"],
                 create_link=file["create_link"],
+                sudo=file["sudo"],
                 comments=file["comments"]
             )
             filelist.append(newFile)
@@ -41,11 +42,24 @@ class Category:
         """
         Install all the packages and configure them by running the set commands
         """
-        package_names = []
+        packages_pacman = []
+        packages_aur = []
+        packages_pip = []
         for package in self.packages:
-            package_names.append(package.install_name)
+            if package.installer == "pacman":
+                packages_pacman.append(package.install_name)
+            elif package.installer == "aur":
+                packages_aur.append(package.install_name)
+            elif package.installer == "pip":
+                packages_pip.append(package.install_name)
+            elif package.installer == "custom":
+                pass
+            else:
+                packages_pacman.append(package.install_name)
 
-        pacman.install(package_names)
+        pacman.install(packages_pacman)
+        aur.install(packages_aur)
+        pip.install(packages_pip)
 
         for package in self.packages:
             package.configure()
@@ -54,18 +68,10 @@ class Category:
 
     def configure_files(self):
         """
-        Copy, create and link config files
+        Copy, create, link and make directories to hold config files
         """
         for file in self.files:
-            if file.source is not None:
-                file.copy()
-            else:
-                file.create()
-            
-            if file.create_link:
-                file.link()
-        
-        file.show_comments()
+            file.configure()
                 
     def install_group(self):
         """
@@ -74,3 +80,14 @@ class Category:
         messages.header(f"Installing {self.category_name} group.")
         self.install_packages()
         self.configure_files()
+    
+    def install_group_ask(self):
+        """
+        Install and configure the entire category, but ask if the user wishes to install it first
+        """
+        doInstall = messages.question_bool(f"Do you wish to install the {self.category_name} group?")
+
+        if doInstall:
+            self.install_group()
+        else:
+            messages.arrow(f"Skipped: {self.category_name}.")

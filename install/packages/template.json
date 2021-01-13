@@ -1,0 +1,50 @@
+{
+    "category_name": "CHANGE_ME",
+    "packages": [
+        {
+            "name": "NAME OF PACKAGE",
+            "install_name": "NAME OF PACKAGE IN REPOS",
+            "installer": "INSTALLER USED FOR PACKAGE (pacman, aur, pip)",
+            "run_commands": [
+                "LIST OF COMMANDS TO RUN AFTER THE FILE IS INSTALLED",
+                "IT CAN CONTAIN ENVIRONMENT VARIABLES SUCH AS $USER and $HOME"
+            ],
+            "autostart": "EITHER null OR A STRING WHICH WILL BE ADDED TO THE AUTOSTART FILE",
+            "comments": [
+                "MISC COMMENTS THAT WILL BE SHOWN TO THE USER AFTER THE PACKAGE IS INSTALLED",
+                "THOSE WILL CONTAIN THE INFO '[i]' HEADING"
+            ]
+        },
+        {
+            "name": "",
+            "install_name": "",
+            "installer": "",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        }
+    ],
+    "files": [
+        {
+            "name": "FILENAME",
+            "residence": "WHERE TO PUT THE FILE",
+            "source": "WHERE TO COPY/LINK/SOURCE THE FILE FROM, IF null FILE WILL BE CREATED WITH text AS ITS CONTENTS",
+            "text": "TEXT TO PUT INSIDE THE FILE",
+            "create_link": true,
+            "sudo": false,
+            "comments": [
+                "MISC COMMENTS THAT WILL BE SHOWN TO THE USER AFTER THE FILE IS CONFIGURED",
+                "THOSE WILL CONTAIN THE INFO '[i]' HEADING"
+            ]
+        },
+        {
+            "name": "",
+            "residence": "",
+            "source": "",
+            "text": "",
+            "create_link": true,
+            "sudo": false,
+            "comments": []
+        }
+    ]
+}

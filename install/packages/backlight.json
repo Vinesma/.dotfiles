@@ -1,0 +1,16 @@
+{
+    "category_name": "Backlight",
+    "packages": [
+        {
+            "name": "xorg-xbacklight",
+            "install_name": "xorg-xbacklight",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": [
+                "$ xbacklight -set 12 -> Set the backlight level"
+            ]
+        }
+    ],
+    "files": []
+}

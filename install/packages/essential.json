@@ -6,7 +6,7 @@
             "install_name": "xterm",
             "installer": "pacman",
             "run_commands": [],
-            "autostart": null, 
+            "autostart": null,
             "comments": []
         },
         {
@@ -14,7 +14,7 @@
             "install_name": "kitty",
             "installer": "pacman",
             "run_commands": [],
-            "autostart": null, 
+            "autostart": null,
             "comments": []
         },
         {
@@ -22,7 +22,7 @@
             "install_name": "thunar",
             "installer": "pacman",
             "run_commands": [],
-            "autostart": null, 
+            "autostart": null,
             "comments": []
         },
         {
@@ -30,7 +30,7 @@
             "install_name": "thumbler",
             "installer": "pacman",
             "run_commands": [],
-            "autostart": null, 
+            "autostart": null,
             "comments": []
         },
         {
@@ -38,7 +38,7 @@
             "install_name": "ffmpegthumbnailer",
             "installer": "pacman",
             "run_commands": [],
-            "autostart": null, 
+            "autostart": null,
             "comments": []
         },
         {
@@ -77,9 +77,15 @@
             "name": "Alsa utils",
             "install_name": "alsa-utils",
             "installer": "pacman",
-            "run_commands": [],
+            "run_commands": [
+                "amixer sset Master unmute",
+                "amixer sset Speaker unmute",
+                "amixer sset Headphone unmute"
+            ],
             "autostart": null,
-            "comments": []
+            "comments": [
+                "You can use alsamixer or pulsemixer to adjust volume levels."
+            ]
         },
         {
             "name": "Alsa plugins",
@@ -128,6 +134,33 @@
             "run_commands": [],
             "autostart": null,
             "comments": []
+        },
+        {
+            "name": "Qtile",
+            "install_name": "qtile",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
+            "name": "lightdm",
+            "install_name": "lightdm",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
+            "name": "lightdm gtk greeter",
+            "install_name": "lightdm-gtk-greeter",
+            "installer": "pacman",
+            "run_commands": ["sudo systemctl enable lightdm.service"],
+            "autostart": null,
+            "comments": [
+                "You can use the files in '$HOME/.dotfiles/lightdm' to quickly configure lightdm",
+                "The default config path is /etc/lightdm"
+            ]
         }
     ],
     "files": [
@@ -137,6 +170,7 @@
             "source": "~/.dotfiles/kitty",
             "text": "",
             "create_link": true,
+            "sudo": false,
             "comments": []
         },
         {
@@ -145,6 +179,7 @@
             "source": "~/.dotfiles/nano",
             "text": "",
             "create_link": true,
+            "sudo": false,
             "comments": []
         },
         {
@@ -153,6 +188,7 @@
             "source": "~/.dotfiles/nvim",
             "text": "",
             "create_link": true,
+            "sudo": false,
             "comments": []
         },
         {
@@ -161,7 +197,26 @@
             "source": "~/.dotfiles/dunst",
             "text": "",
             "create_link": true,
+            "sudo": false,
             "comments": []
+        },
+        {
+            "name": "config.py",
+            "residence": "~/.config/qtile",
+            "source": "~/.dotfiles/qtile",
+            "text": "",
+            "create_link": true,
+            "sudo": false,
+            "comments": []
+        },
+        {
+            "name": "org.freedesktop.Notifications.service",
+            "residence": "/usr/share/dbus-1/services/",
+            "source": "~/.dotfiles/files",
+            "text": "",
+            "create_link": false,
+            "sudo": true,
+            "comments": ["Configuring DBUS notifications."]
         }
     ]
 }
