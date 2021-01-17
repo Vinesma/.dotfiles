@@ -24,6 +24,17 @@ video-info() {
     thumbnail=$(echo "$video" | sed -e '1d' -e '3d')
     duration=$(echo "$video" | tail -n 1)
 
+    # Deal with .webp
+    if [[ "${thumbnail##*.}" == "webp" ]]; then
+        temp_file="/tmp/newsboat-thumbs.tmp.webp"
+        jpg_file="/tmp/newsboat-thumbs.jpg"
+        thumbnail="$jpg_file"
+
+        curl -s "$thumbnail" > "$temp_file"
+        convert "$temp_file" "$jpg_file"
+        rm "$temp_file"
+    fi
+
     feh "$thumbnail" -F --title "$title" --info "echo \"LENGTH: $duration\""
 }
 
