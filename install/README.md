@@ -124,6 +124,10 @@ Solution: For pywal to work with dunst, copy the template file in `dunst/colors-
 
 This also applies to anything else unsupported by pywal.
 
+### The Kernel can't be loaded
+
+Solution: I once fixed this by booting with a pen drive on liveCD, opening a terminal, running `manjaro-chroot -a` and then running `grub-mkconfig`.
+
 ## Links/Resources
 
 Things that had their own section and were moved or removed, along with other resources that don't fit anywhere else:
