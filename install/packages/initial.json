@@ -48,24 +48,6 @@
             "comments": []
         },
         {
-            "name": ".zshrc",
-            "residence": "~",
-            "source": "~/.dotfiles",
-            "text": "",
-            "create_link": true,
-            "sudo": false,
-            "comments": []
-        },
-        {
-            "name": ".zshenv",
-            "residence": "~",
-            "source": "~/.dotfiles",
-            "text": "",
-            "create_link": true,
-            "sudo": false,
-            "comments": []
-        },
-        {
             "name": ".autostart",
             "residence": "~",
             "source": null,

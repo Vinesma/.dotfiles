@@ -106,14 +106,6 @@
             "comments": []
         },
         {
-            "name": "Zsh powerlevel10k theme",
-            "install_name": "zsh-theme-powerlevel10k-git",
-            "installer": "aur",
-            "run_commands": [],
-            "autostart": null,
-            "comments": []
-        },
-        {
             "name": "Meslo Nerd Font for powerlevel10k",
             "install_name": "ttf-meslo-nerd-font-powerlevel10k",
             "installer": "aur",
