@@ -6,6 +6,8 @@ from utils import messages
 def show(options, header=None):
     """
     Display menu on screen and question the user
+    Optionally, a header can be shown
+    Returns the index of the choice [0 index], or None if the user decided to exit.
     """
     if header is not None: messages.header(header)
     if options[-1] != "Exit": options.append("Exit")

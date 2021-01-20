@@ -74,10 +74,10 @@ def main():
             "Create install file",
             "Edit install file"
         ], header="What to do?")
-        #@TODO
         if install_files_choice == 0:
-            pass
+            install_util.create_install_file()
         elif install_files_choice == 1:
+            #@TODO
             pass
 
     else:
