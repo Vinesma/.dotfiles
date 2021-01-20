@@ -34,7 +34,7 @@ Find a connection:
 
 [More examples here](https://wiki.archlinux.org/index.php/NetworkManager#nmcli_examples)
 
-Install `git` so you can clone this repo. Once you have git and are connected the scripts can do most of the heavy lifting for you. Go ahead and run `main.sh` to install all the things provided.
+Install `git` so you can clone this repo, you may also need to install python. Once you have both and are connected the scripts can do most of the heavy lifting for you. Go ahead and run `python main.py` to install all the things provided.
 
 ## Anything missing?
 
