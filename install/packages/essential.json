@@ -210,6 +210,78 @@
             "comments": []
         },
         {
+            "name": "__init__.py",
+            "residence": "~/.config/qtile/modules",
+            "source": "~/.dotfiles/qtile/modules",
+            "text": "",
+            "create_link": false,
+            "sudo": false,
+            "comments": []
+        },
+        {
+            "name": "constants.py",
+            "residence": "~/.config/qtile/modules",
+            "source": "~/.dotfiles/qtile/modules",
+            "text": "",
+            "create_link": true,
+            "sudo": false,
+            "comments": []
+        },
+        {
+            "name": "groups.py",
+            "residence": "~/.config/qtile/modules",
+            "source": "~/.dotfiles/qtile/modules",
+            "text": "",
+            "create_link": true,
+            "sudo": false,
+            "comments": []
+        },
+        {
+            "name": "keybinds.py",
+            "residence": "~/.config/qtile/modules",
+            "source": "~/.dotfiles/qtile/modules",
+            "text": "",
+            "create_link": true,
+            "sudo": false,
+            "comments": []
+        },
+        {
+            "name": "layouts.py",
+            "residence": "~/.config/qtile/modules",
+            "source": "~/.dotfiles/qtile/modules",
+            "text": "",
+            "create_link": true,
+            "sudo": false,
+            "comments": []
+        },
+        {
+            "name": "screens.py",
+            "residence": "~/.config/qtile/modules",
+            "source": "~/.dotfiles/qtile/modules",
+            "text": "",
+            "create_link": true,
+            "sudo": false,
+            "comments": []
+        },
+        {
+            "name": "taskbar.py",
+            "residence": "~/.config/qtile/modules",
+            "source": "~/.dotfiles/qtile/modules",
+            "text": "",
+            "create_link": true,
+            "sudo": false,
+            "comments": []
+        },
+        {
+            "name": "theme.py",
+            "residence": "~/.config/qtile/modules",
+            "source": "~/.dotfiles/qtile/modules",
+            "text": "",
+            "create_link": true,
+            "sudo": false,
+            "comments": []
+        },
+        {
             "name": "org.freedesktop.Notifications.service",
             "residence": "/usr/share/dbus-1/services/",
             "source": "~/.dotfiles/files",
