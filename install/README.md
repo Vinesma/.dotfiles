@@ -76,19 +76,23 @@ Run this command inside neovim (after CoC is installed) to install all my code c
 
 ### Arch User Repository (AUR)
 
+I use `yay` as an AUR helper. It should be installed after running my scripts.
+
 [How to use the AUR.](https://wiki.archlinux.org/index.php/Arch_User_Repository#Getting_started)
+
+### Setting up VirtualBox
+
+- [Guide](https://wiki.manjaro.org/index.php/VirtualBox)
 
 ### Setting up Android Studio
 
-- [Install Android Studio from the AUR](https://aur.archlinux.org/packages/android-studio)
+- Install Android Studio from the AUR
 
-- For device emulation, [enable virtualization in the BIOS](https://support.bluestacks.com/hc/en-us/articles/115003174386-How-can-I-enable-virtualization-VT-on-my-PC-) and check [this KVM article.](https://wiki.archlinux.org/index.php/KVM)
+- [Guide](https://wiki.archlinux.org/index.php/Android#Android_Studio)
 
 ### Setting up Flutter
 
-- Clone the flutter repo somewhere appropriate: `git clone https://github.com/flutter/flutter.git`
-
-- Add the line `export PATH="$PATH:[PATH_TO_FLUTTER_GIT_DIRECTORY]/flutter/bin"` to `.bashrc`
+- Install flutter from the AUR
 
 - Run `flutter doctor` to verify missing dependencies
 
