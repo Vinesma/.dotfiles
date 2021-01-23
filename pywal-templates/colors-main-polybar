@@ -66,7 +66,7 @@ cursor-scroll = ns-resize
 type = internal/xworkspaces
 
 pin-workspaces = false
-enable-click = false
+enable-click = true
 enable-scroll = false
 
 icon-0 = a;1
@@ -88,9 +88,11 @@ label-active-underline = ${{colors.primary}}
 
 label-occupied = " %icon% "
 label-occupied-font = 2
+label-occupied-foreground = ${{colors.secondary}}
 
 label-urgent = " %icon% "
 label-urgent-font = 2
+label-urgent-foreground = ${{colors.primary}}
 
 label-empty = " %icon% "
 label-empty-font = 2
@@ -189,7 +191,6 @@ ramp-capacity-4 = 
 format-full = <label-full>
 format-full-underline = ${{colors.thirdary}}
 label-full = %{{F{color2}}}%{{F-}} %percentage%%
-
 
 [module/rss]
 type = custom/script
