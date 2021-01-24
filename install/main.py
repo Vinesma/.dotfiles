@@ -12,7 +12,8 @@ import json
 options = [
     "Full install",
     "Individual install",
-    "Create/Edit install files"
+    "Create/Edit install files",
+    "Link files"
 ]
 
 def main():
@@ -80,6 +81,16 @@ def main():
             #@TODO
             pass
 
+    elif choice == 3:
+        # Link files
+        packages = install_util.list_packages()
+        package_index = 0
+
+        while package_index is not None:
+            package_index = menu.show(packages, header="Choose a group of packages to link files from.")
+
+            if package_index is not None:
+                install_util.init_category(packages[package_index]).link_files()
     else:
         messages.info("Exiting...")
 

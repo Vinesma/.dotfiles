@@ -57,6 +57,20 @@ class File:
             symlink(self.source, self.full_path)
         else:
             messages.error(f"{self.name} has no source from which to copy from.")
+
+    def link_ask(self):
+        """ 
+        Create a link from source to its residence, but ask the user beforehand
+        """
+        if self.source is not None:
+            question = f"Do you want to link these files:\nFrom: {self.source}\nTo: {self.full_path}\n"
+
+            if messages.question_bool(question):
+                try:
+                    symlink(self.source, self.full_path)
+                    messages.arrow(f"Linked: '{self.source}' --> '{self.full_path}'")
+                except FileExistsError:
+                    messages.error(f"File {self.name} already exists at {self.residence}. Aborting.")
     
     def show_comments(self):
         """

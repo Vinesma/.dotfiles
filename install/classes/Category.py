@@ -72,6 +72,14 @@ class Category:
         """
         for file in self.files:
             file.configure()
+    
+    def link_files(self):
+        """
+        Loop through files and link them if the user wishes to
+        """
+        for file in self.files:
+            if file.create_link:
+                file.link_ask()
                 
     def install_group(self):
         """

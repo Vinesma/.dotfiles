@@ -82,6 +82,10 @@ I use `yay` as an AUR helper. It should be installed after running my scripts.
 
 ### Setting up VirtualBox
 
+- Run the command: `$ LC_ALL=C lscpu | grep Virtualization` to check if Virtualization is supported. If nothing is shown then Virtualization is **not** supported
+
+- [Enable virtualization in the BIOS](https://support.bluestacks.com/hc/en-us/articles/115003174386-How-can-I-enable-virtualization-VT-on-my-PC-)
+
 - [Guide](https://wiki.manjaro.org/index.php/VirtualBox)
 
 ### Setting up Android Studio

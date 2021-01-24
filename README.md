@@ -2,7 +2,7 @@
 
 dotfiles are the config files used by applications, some of them are hidden files in folders that start with a '.', thus the name. You can upload them to a repo to manage and backup them for future installs, just like I've done here.
 
-Use `create-links.sh` to link the config files to this repo. This will ensure the files in your system are updated along with the repo and vice versa.
+Use the python script in `install/` and select the "link files" option to link these files to the system outside of a normal install process.
 
 ## Install
 
