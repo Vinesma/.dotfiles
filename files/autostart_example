@@ -1,4 +1,5 @@
 #!/bin/bash
+# USE chmod +x $FILE to make this file an executable!
 
 feh --bg-scale "$(< "${HOME}/.cache/wal/wal")" &
 . ~/.dotfiles/polybar/launch.sh &
