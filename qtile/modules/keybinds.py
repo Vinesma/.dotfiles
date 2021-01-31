@@ -91,7 +91,7 @@ def create_keybinds():
 
         # Custom commands
         # emulate win ctrl+alt+del (spawn task manager)
-        Key(["mod1", "control"], "Delete", lazy.spawn(f"{terminal} htop")),
+        Key(["mod1", "control"], "Delete", lazy.spawn(f"{terminal_reduced_opacity} htop")),
         # rofi
         Key([mod], "r", lazy.spawn("rofi -show run")),
         Key([mod], "e", lazy.spawn("rofi -show window")),

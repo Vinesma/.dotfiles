@@ -8,7 +8,7 @@ def config():
     scripts_path = path.join(homepath, ".dotfiles", "scripts")
     mod = "mod4"
     terminal = "kitty",
-    terminal_reduced_opacity =  "kitty -o background_opacity=0.9"
+    terminal_reduced_opacity = "kitty -o background_opacity=0.9"
     terminal_increased_opacity = "kitty -o background_opacity=0.7"
     browser = "firefox"
     file_browser = "thunar"
