@@ -178,6 +178,14 @@
             "comments": []
         },
         {
+            "name": "github cli",
+            "install_name": "github-cli",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
             "name": "youtube-dl",
             "install_name": "youtube-dl-git",
             "installer": "aur",

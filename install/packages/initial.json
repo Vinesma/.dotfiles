@@ -56,7 +56,8 @@
             "sudo": false,
             "comments": [
                 "The autostart file can be used to start programs on startup.",
-                "An example autostart file is included in '~/.dotfiles/files'"
+                "An example autostart file is included in '~/.dotfiles/files'.",
+                "It may be necessary to run 'chmod +x' with the file as an argument."
             ]
         }
     ]
