@@ -10,6 +10,7 @@ fcitx &
 syncthing --no-browser &
 xinput set-prop 12 301 1
 
+# mpd startup
 if [[ ! -s ~/.config/mpd/pid ]]; then
     mpd
     mpc random on
@@ -17,10 +18,17 @@ if [[ ! -s ~/.config/mpd/pid ]]; then
     mpc crossfade 3
 fi
 
+# Check connection, then run network based apps.
 if ping -c 2 google.com; then
     firefox about:newtab https://en.wikipedia.org/wiki/Main_Page &
     sleep 15 && bash ~/.dotfiles/scripts/newsboat/newsboat-reloader.sh &
 fi
 
+# Remove empty video directories.
 rmdir --ignore-fail-on-non-empty ~/Videos/Others/*
 rmdir --ignore-fail-on-non-empty ~/Videos/Streams/*
+
+# Fetch mail if conditions apply.
+if [[ $(( $(date +%M) % 10 )) -le 6 ]]; then
+    sleep 10 && bash ~/.dotfiles/scripts/cron-jobs/email/fetch-mail.sh &
+fi
