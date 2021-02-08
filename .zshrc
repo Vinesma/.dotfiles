@@ -282,6 +282,26 @@ trim-ffmpeg() {
     fi
 }
 
+# Convert many files
+mass-convert-ffmpeg() {
+    if [[ "$#" -eq 3 ]]; then
+        local directory="$1"
+        local input_ext="$2"
+        local destination_ext="$3"
+
+        echo "$directory"
+        echo "$input_ext"
+        echo "$destination_ext"
+
+        for FILE in "$directory"/*"$input_ext"
+        do ffmpeg -i "$FILE" "${FILE%.*}$destination_ext"
+        done
+    else
+        echo "mass-convert-ffmpeg: convert many files from one format to another."
+        echo "Usage: mass-convert-ffmpeg [input/dir/] [.ext to convert from] [.ext to convert to]"
+    fi
+}
+
 # GPG helpers
 # generate a key pair
 gpg-keypair-gen() {
