@@ -1,4 +1,4 @@
-from os import path, symlink, makedirs
+from os import path, symlink, makedirs, remove
 from utils import messages, spawn
 from shutil import copy
 
@@ -53,8 +53,15 @@ class File:
         Create a link from source to its residence
         """
         if self.source is not None:
-            messages.arrow(f"Linked: '{self.source}' --> '{self.full_path}'")
-            symlink(self.source, self.full_path)
+            try:
+                symlink(self.source, self.full_path)
+            except FileExistsError:
+                messages.error("File exists, attempting to remove it, then link it.")
+                remove(self.full_path)
+                messages.error(f"Removed {self.full_path}.")
+                symlink(self.source, self.full_path)
+            finally:
+                messages.arrow(f"Linked: '{self.source}' --> '{self.full_path}'")
         else:
             messages.error(f"{self.name} has no source from which to copy from.")
 
@@ -68,9 +75,13 @@ class File:
             if messages.question_bool(question):
                 try:
                     symlink(self.source, self.full_path)
-                    messages.arrow(f"Linked: '{self.source}' --> '{self.full_path}'")
                 except FileExistsError:
-                    messages.error(f"File {self.name} already exists at {self.residence}. Aborting.")
+                    messages.error("File exists, attempting to remove it, then link it.")
+                    remove(self.full_path)
+                    messages.error(f"Removed {self.full_path}.")
+                    symlink(self.source, self.full_path)
+                finally:
+                    messages.arrow(f"Linked: '{self.source}' --> '{self.full_path}'")
     
     def show_comments(self):
         """
