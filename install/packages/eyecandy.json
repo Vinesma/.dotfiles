@@ -37,7 +37,9 @@
             "name": "Pywal",
             "install_name": "python-pywal",
             "installer": "pacman",
-            "run_commands": [],
+            "run_commands": [
+                "wal -n -i $HOME/.dotfiles/files/example_wallpaper_drawnby_czy(2894456992).jpg"
+            ],
             "autostart": null,
             "comments": []
         },

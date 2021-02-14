@@ -196,6 +196,15 @@
     ],
     "files": [
         {
+            "name": "mpv.conf",
+            "residence": "~/.config/mpv",
+            "source": "~/.dotfiles/mpv",
+            "text": "",
+            "create_link": true,
+            "sudo": false,
+            "comments": []
+        },
+        {
             "name": "input.conf",
             "residence": "~/.config/mpv",
             "source": "~/.dotfiles/mpv",
