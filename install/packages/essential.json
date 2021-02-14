@@ -26,8 +26,8 @@
             "comments": []
         },
         {
-            "name": "thumbler",
-            "install_name": "thumbler",
+            "name": "tumbler",
+            "install_name": "tumbler",
             "installer": "pacman",
             "run_commands": [],
             "autostart": null,
@@ -125,6 +125,14 @@
             "installer": "pacman",
             "run_commands": [],
             "autostart": "dunst &",
+            "comments": []
+        },
+        {
+            "name": "base-devel",
+            "install_name": "base-devel",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
             "comments": []
         },
         {
