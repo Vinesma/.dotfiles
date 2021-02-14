@@ -27,7 +27,7 @@ class File:
             makedirs(self.residence)
 
     def create(self):
-        """ 
+        """
         Create a file at its residence
         """
         with open(self.full_path, "w") as writeFile:
@@ -35,7 +35,7 @@ class File:
         messages.arrow(f"Created: '{self.name}' at '{self.full_path}'")
 
     def copy(self):
-        """ 
+        """
         Copy a file from source to its residence
         """
         if self.source is not None:
@@ -49,7 +49,7 @@ class File:
             messages.error(f"{self.name} has no source from which to copy from.")
 
     def link(self):
-        """ 
+        """
         Create a link from source to its residence
         """
         if self.source is not None:
@@ -58,7 +58,7 @@ class File:
             except FileExistsError:
                 messages.error("File exists, attempting to remove it, then link it.")
                 remove(self.full_path)
-                messages.error(f"Removed {self.full_path}.")
+                messages.arrow(f"Removed {self.full_path}.")
                 symlink(self.source, self.full_path)
             finally:
                 messages.arrow(f"Linked: '{self.source}' --> '{self.full_path}'")
@@ -66,7 +66,7 @@ class File:
             messages.error(f"{self.name} has no source from which to copy from.")
 
     def link_ask(self):
-        """ 
+        """
         Create a link from source to its residence, but ask the user beforehand
         """
         if self.source is not None:
@@ -78,29 +78,29 @@ class File:
                 except FileExistsError:
                     messages.error("File exists, attempting to remove it, then link it.")
                     remove(self.full_path)
-                    messages.error(f"Removed {self.full_path}.")
+                    messages.arrow(f"Removed {self.full_path}.")
                     symlink(self.source, self.full_path)
                 finally:
                     messages.arrow(f"Linked: '{self.source}' --> '{self.full_path}'")
-    
+
     def show_comments(self):
         """
         Show useful comments to the user, such as how to configure a program further or what to do next.
         """
         for comment in self.comments:
             messages.info(comment)
-    
+
     def configure(self):
         """
         Decides what to do with the file according to the conditions
         """
         self.makedir()
-        
+
         if self.create_link:
             self.link()
         elif self.source is not None:
             self.copy()
         else:
             self.create()
-    
+
         self.show_comments()
