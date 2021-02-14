@@ -63,7 +63,6 @@ if !exists('g:vscode')
     " Declare the list of plugins.
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'tpope/vim-fugitive'
-    Plug 'easymotion/vim-easymotion'
     Plug 'vim-airline/vim-airline'
     Plug 'mkitt/tabline.vim'
     Plug 'ap/vim-css-color'
