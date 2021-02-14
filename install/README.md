@@ -72,7 +72,7 @@ CoC : Code completion:
 
 Run this command inside neovim (after CoC is installed) to install all my code completion extensions:
 
-`CocInstall coc-css coc-emmet coc-html coc-json coc-python coc-sh coc-tsserver coc-pairs`
+`CocInstall coc-css coc-emmet coc-html coc-json coc-pyright coc-sh coc-tsserver coc-pairs`
 
 ### Arch User Repository (AUR)
 
