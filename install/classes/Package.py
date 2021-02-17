@@ -58,7 +58,7 @@ class Package:
             AUTOSTART = path.expanduser("~/.autostart")
             messages.arrow(f"Appending '{self.autostart}' to the autostart file at {AUTOSTART}")
             with open(AUTOSTART, "a") as appendFile:
-                appendFile.write(self.autostart)
+                appendFile.write(f"\n{self.autostart}")
 
     def show_comments(self):
         """
