@@ -22,6 +22,14 @@
             "install_name": "thunar",
             "installer": "pacman",
             "run_commands": [],
+            "autostart": "thunar --daemon &",
+            "comments": []
+        },
+        {
+            "name": "Thunar Media Tags Plugin",
+            "install_name": "thunar-media-tags-plugin",
+            "installer": "pacman",
+            "run_commands": [],
             "autostart": null,
             "comments": []
         },
@@ -42,11 +50,11 @@
             "comments": []
         },
         {
-            "name": "udiskie",
-            "install_name": "udiskie",
+            "name": "Gnome Virtual File System",
+            "install_name": "gvfs",
             "installer": "pacman",
             "run_commands": [],
-            "autostart": "udiskie &",
+            "autostart": null,
             "comments": []
         },
         {
@@ -146,6 +154,14 @@
         {
             "name": "Qtile",
             "install_name": "qtile",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
+            "name": "pip",
+            "install_name": "python-pip",
             "installer": "pacman",
             "run_commands": [],
             "autostart": null,

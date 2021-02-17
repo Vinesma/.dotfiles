@@ -114,6 +114,16 @@
             "run_commands": [],
             "autostart": null,
             "comments": []
+        },
+        {
+            "name": "pywalfox",
+            "install_name": "pywalfox",
+            "installer": "pip",
+            "run_commands": [
+                "pywalfox install"
+            ],
+            "autostart": null,
+            "comments": []
         }
     ],
     "files": [

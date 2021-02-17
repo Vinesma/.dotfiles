@@ -170,6 +170,14 @@
             "comments": []
         },
         {
+            "name": "x11-ssh-askpass",
+            "install_name": "x11-ssh-askpass",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
             "name": "inotify",
             "install_name": "inotify-tools",
             "installer": "pacman",

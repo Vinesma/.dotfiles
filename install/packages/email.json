@@ -6,7 +6,8 @@
             "install_name": "neomutt",
             "installer": "pacman",
             "run_commands": [
-                "mkdir -p \"$HOME/mail/gmail\""
+                "mkdir -p $HOME/.mail/gmail",
+                "mkdir $HOME/.neomutt"
             ],
             "autostart": null,
             "comments": [
