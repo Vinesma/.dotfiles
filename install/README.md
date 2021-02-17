@@ -118,13 +118,13 @@ Run this to enable clock synchronization:
 
 ### Laptop only boots or runs when charging, as soon as it gets unplugged the laptop freezes half a second later.
 
-Solution: Disabling tlp in `/etc/tlp.conf` by editing the line TLP_ENABLE=1 to TLP_ENABLE=0. Afterwards, edit `/etc/default/cpupower` and set `governor` to "performance". This fixes the problem but leaves the laptop without any power saving capability. I will update this with more info as I investigate the issue.
+Solution: Disabling tlp in `/etc/tlp.conf` by editing the line TLP_ENABLE=1 to TLP_ENABLE=0. Afterwards, edit `/etc/default/cpupower` and set `governor` to "performance". This fixes the problem but leaves the laptop without any power saving capability.
 
 [TLP debugging](https://linrunner.de/tlp/support/troubleshooting.html#step-3-disable-tlp-temporarily)
 
 ### Laptop won't shutdown or reboot completely. Screen goes black but external lights stay on and the fan keeps spinning no matter how long I wait.
 
-Solution: None, yet.
+Solution: Never found a solution, but reinstalling the system a few months later kicked the issue to the curb.
 
 ### pywal has no support for dunst
 
@@ -135,6 +135,10 @@ This also applies to anything else unsupported by pywal.
 ### The Kernel can't be loaded
 
 Solution: I once fixed this by booting with a pen drive on liveCD, opening a terminal, running `manjaro-chroot -a` and then running `grub-mkconfig`.
+
+### Wrong resolution upon startup
+
+Solution: Add `xrandr --output OUTPUT --mode WIDTHxHEIGHT` to the line that starts with `greeter-setup-script` in `/etc/lightdm/lightdm.conf`. You can find the values needed by running `xrandr` with no arguments.
 
 ## Links/Resources
 
