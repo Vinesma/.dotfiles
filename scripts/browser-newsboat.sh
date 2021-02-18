@@ -50,7 +50,7 @@ if [[ "$1" == *youtube.com* ]]; then
     esac
 elif [[ "$1" == @(*.jpg|*.jpeg|*.png) ]]; then
     link="$1"
-    if [[ "$1" == *nitter.net/pic/* ]]; then
+    if [[ "$1" == *nitter.nixnet.services/pic/* ]]; then
         twitter_id=${1##*media%2F}
         extension=$(echo "$twitter_id" | cut -d '.' -f 2)
         twitter_id=$(echo "$twitter_id" | cut -d '.' -f 1)
@@ -60,8 +60,8 @@ elif [[ "$1" == @(*.jpg|*.jpeg|*.png) ]]; then
 elif [[ "$1" == @(*.mp4) ]]; then
     mpv --loop "$1"
 else
-    if [[ "$1" == *nitter.net* ]]; then
-        firefox "${1/nitter.net/twitter.com}" &
+    if [[ "$1" == *nitter.nixnet.services* ]]; then
+        firefox "${1/nitter.nixnet.services/twitter.com}" &
     else
         firefox "$1" &
     fi
