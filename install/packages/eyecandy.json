@@ -31,7 +31,9 @@
             "installer": "pacman",
             "run_commands": [],
             "autostart": null,
-            "comments": []
+            "comments": [
+                "Add the line 'QT_QPA_PLATFORMTHEME=qt5ct' to /env/environment to load the theme globally."
+            ]
         },
         {
             "name": "Pywal",
