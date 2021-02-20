@@ -8,7 +8,7 @@
             "run_commands": [],
             "autostart": null,
             "comments": [
-                "Use `$ zsh` to swith to Z shell and `$ p10k` to configure terminal looks.",
+                "Use `$ zsh` to switch to Z shell and `$ p10k` to configure terminal looks.",
                 "To change shell permanently: `$ chsh /usr/bin/zsh`"
             ]
         },

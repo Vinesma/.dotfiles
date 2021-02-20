@@ -8,7 +8,7 @@ picom --experimental-backends &
 redshift-gtk &
 fcitx &
 syncthing --no-browser &
-xinput set-prop 12 301 1
+xinput set-prop 12 "libinput Tapping Enabled" 1
 
 # mpd startup
 if [[ ! -s ~/.config/mpd/pid ]]; then
