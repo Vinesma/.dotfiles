@@ -90,6 +90,15 @@ class File:
         for comment in self.comments:
             messages.info(comment)
 
+    def has_comments(self):
+        """
+        Check if a file has written comments about it
+        """
+        if len(self.comments) > 0: 
+            return True
+
+        return False
+
     def configure(self):
         """
         Decides what to do with the file according to the conditions

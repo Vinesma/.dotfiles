@@ -99,3 +99,19 @@ class Category:
             self.install_group()
         else:
             messages.arrow(f"Skipped: {self.category_name}.")
+    
+    def show_all_comments(self):
+        """
+        Show all comments from all packages and files in this category
+        """
+        for package in self.packages:
+            if package.has_comments():
+                package.show_comments()
+
+                messages.question_str("Done?")
+        
+        for file in self.files:
+            if file.has_comments():
+                file.show_comments()
+
+                messages.question_str("Done?")

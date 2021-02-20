@@ -13,7 +13,8 @@ options = [
     "Full install",
     "Individual install",
     "Create/Edit install files",
-    "Link files"
+    "Link files",
+    "Show instructions/comments"
 ]
 
 def main():
@@ -91,6 +92,17 @@ def main():
 
             if package_index is not None:
                 install_util.init_category(packages[package_index]).link_files()
+    elif choice == 4:
+        # Show instructions/comments
+        packages = install_util.list_packages()
+        package_index = 0
+
+        while package_index is not None:
+            package_index = menu.show(packages, header="Choose a group of packages to show instructions/comments.")
+
+            if package_index is not None:
+                install_util.init_category(packages[package_index]).show_all_comments()
+
     else:
         messages.info("Exiting...")
 

@@ -68,3 +68,12 @@ class Package:
             if index == 0:
                 messages.arrow(f"[{self.name}]")
             messages.info(comment)
+    
+    def has_comments(self):
+        """
+        Check if a package has written comments about it
+        """
+        if len(self.comments) > 0: 
+            return True
+
+        return False
