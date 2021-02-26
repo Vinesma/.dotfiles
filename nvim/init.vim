@@ -62,10 +62,26 @@ if !exists('g:vscode')
 
     " Declare the list of plugins.
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'pangloss/vim-javascript'
+    Plug 'leafgarland/typescript-vim'
+    Plug 'peitalin/vim-jsx-typescript'
+    Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
     Plug 'tpope/vim-fugitive'
     Plug 'vim-airline/vim-airline'
     Plug 'mkitt/tabline.vim'
     Plug 'ap/vim-css-color'
+
+    " CoC extensions
+    let g:coc_global_extensions = [
+                \ 'coc-css',
+                \ 'coc-emmet',
+                \ 'coc-html',
+                \ 'coc-json',
+                \ 'coc-pyright',
+                \ 'coc-sh',
+                \ 'coc-tsserver',
+                \ 'coc-pairs'
+                \ ]
 
     " List ends here. Plugins become visible to Vim after this call.
     call plug#end()
@@ -118,6 +134,8 @@ augroup AutoComment
     autocmd FileType python     nnoremap <buffer> <leader>ac I"""  """<Left><Left><Left><Left>
     autocmd FileType sh         nnoremap <buffer> <leader>c I# <esc>
     autocmd FileType vim        nnoremap <buffer> <leader>c I" <esc>
+    autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+    autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 augroup END
 " Open file explorer
 nnoremap <c-b> :Vexplore<cr>

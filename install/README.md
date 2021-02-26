@@ -68,12 +68,6 @@ Plugins:
 
 - Remove plugins by removing their lines in the config file, restarting nvim and then running `:PlugClean`.
 
-CoC : Code completion:
-
-Run this command inside neovim (after CoC is installed) to install all my code completion extensions:
-
-`CocInstall coc-css coc-emmet coc-html coc-json coc-pyright coc-sh coc-tsserver coc-pairs`
-
 ### Arch User Repository (AUR)
 
 I use `yay` as an AUR helper. It should be installed after running my scripts.
