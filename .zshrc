@@ -108,7 +108,6 @@ alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias du='du -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
-alias np='nano -w PKGBUILD'
 alias more=less
 alias ls='ls --color=auto'
 alias l='ls'                              # fail-proofing
@@ -116,6 +115,7 @@ alias s='ls'                              # fail-proofing
 alias grep='grep --colour=auto'
 alias egrep='egrep --colour=auto'
 alias fgrep='fgrep --colour=auto'
+alias journalctl='journalctl -r'          # always forget this
 # nvim
 alias v='nvim'
 alias sv='sudo nvim'
@@ -150,7 +150,7 @@ alias android-mount='aft-mtp-cli'
 #
 alias sd='shutdown now'
 alias ip='ip -br -c'
-alias update-aliases='. ~/.zshrc'
+alias update-aliases='source ~/.zshrc'
 
 ### PERSONAL FUNCTIONS ###
 # cheat.sh (Display examples of command usage)
