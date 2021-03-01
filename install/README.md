@@ -42,12 +42,6 @@ Try running the included python script `main.py` and selecting the "individual i
 
 - [cron won't be running by default, it needs to be enabled.](https://wiki.archlinux.org/index.php/Cron#Activation_and_autostart)
 
-## Laptop considerations
-
-If installing on a laptop a few more things require attention, such as [ACPI Events](https://wiki.archlinux.org/index.php/Power_management#Power_management_with_systemd) and [the touchpad.](https://wiki.archlinux.org/index.php/Libinput#Installation)
-
-[Power saving](https://wiki.archlinux.org/index.php/Power_management#Power_saving) is also a thing I've yet to dive deep into.
-
 ## Dev stuff
 
 ### NeoVim
@@ -110,6 +104,12 @@ Run this to enable clock synchronization:
 
 - `timedatectl set-ntp true`
 
+### pywal has no support for dunst
+
+Solution: For pywal to work with dunst, copy the template file in `dunst/colors-dunst` to `~/.config/wal/templates/`. Edit the template accordingly and then run `wal-scale` with a path to your desired wallpaper in a terminal. I have provided scripts to help with this.
+
+This also applies to anything else unsupported by pywal.
+
 ### Laptop only boots or runs when charging, as soon as it gets unplugged the laptop freezes half a second later.
 
 Solution: Disabling tlp in `/etc/tlp.conf` by editing the line TLP_ENABLE=1 to TLP_ENABLE=0. Afterwards, edit `/etc/default/cpupower` and set `governor` to "performance". This fixes the problem but leaves the laptop without any power saving capability.
@@ -120,22 +120,21 @@ Solution: Disabling tlp in `/etc/tlp.conf` by editing the line TLP_ENABLE=1 to T
 
 Solution: Never found a solution, but reinstalling the system a few months later kicked the issue to the curb.
 
-### pywal has no support for dunst
-
-Solution: For pywal to work with dunst, copy the template file in `dunst/colors-dunst` to `~/.config/wal/templates/`. Edit the template accordingly and then run `wal-scale` with a path to your desired wallpaper in a terminal. I have provided scripts to help with this.
-
-This also applies to anything else unsupported by pywal.
-
 ### The Kernel can't be loaded
 
-Solution: I once fixed this by booting with a pen drive on liveCD, opening a terminal, running `manjaro-chroot -a` and then running `grub-mkconfig`.
+Solution: I once fixed this by booting with a pen drive on liveCD, opening a terminal, running `manjaro-chroot -a` and then running `grub-mkconfig`. I bet reinstalling grub could fix it too.
 
 ### Wrong resolution upon startup
 
-Solution: Add `xrandr --output OUTPUT --mode WIDTHxHEIGHT` to the line that starts with `greeter-setup-script` in `/etc/lightdm/lightdm.conf`. You can find the values needed by running `xrandr` with no arguments.
+Solution: Add `xrandr --output OUTPUT --mode WIDTHxHEIGHT` to the line that starts with `greeter-setup-script` in `/etc/lightdm/lightdm.conf`. You can find the values needed by running `xrandr` with no arguments. In my experience, the resolution is correct about 30% of the time when I boot.
+
+The only real solution I've found is to immediately shutdown your WM and login again. This works but is quite annoying.
 
 ## Links/Resources
 
 Things that had their own section and were moved or removed, along with other resources that don't fit anywhere else:
 
-- Info on [manjaro-printer.](https://wiki.manjaro.org/index.php?title=Printing#Overview)
+- [manjaro-printer.](https://wiki.manjaro.org/index.php?title=Printing#Overview)
+- [Touchpad.](https://wiki.archlinux.org/index.php/Libinput#Installation)
+- [ACPI Events](https://wiki.archlinux.org/index.php/Power_management#Power_management_with_systemd)
+- [Power saving](https://wiki.archlinux.org/index.php/Power_management#Power_saving)
