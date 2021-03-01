@@ -25,7 +25,7 @@
 # SOFTWARE.
 
 from subprocess import run
-from libqtile.config import Drag, Click
+from libqtile.config import Drag, Click, Match
 from libqtile.lazy import lazy
 from libqtile import layout, hook
 from modules import constants, keybinds, groups, layouts, theme, taskbar, screens
@@ -65,28 +65,29 @@ mouse = [
 # MISC
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: List
-main = None
+main = None # WARNING: Deprecated, will be removed soon.
 follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(float_rules=[
     # Run the utility of `xprop` to see the wm class and name of an X client.
-    {'wmclass': 'confirm'},
-    {'wmclass': 'dialog'},
-    {'wmclass': 'download'},
-    {'wmclass': 'error'},
-    {'wmclass': 'file_progress'},
-    {'wmclass': 'notification'},
-    {'wmclass': 'splash'},
-    {'wmclass': 'toolbar'},
-    {'wmclass': 'lxappearance'},
-    {'wmclass': 'confirmreset'},   # gitk
-    {'wmclass': 'makebranch'},     # gitk
-    {'wmclass': 'maketag'},        # gitk
-    {'wname': 'branchdialog'},     # gitk
-    {'wname': 'pinentry'},         # GPG key password entry
-    {'wmclass': 'pinentry-gtk-2'}, # GPG key password entry
-    {'wmclass': 'ssh-askpass'},    # ssh-askpass
+    *layout.Floating.default_float_rules,
+    Match(wm_class='confirm'),
+    Match(wm_class='dialog'),
+    Match(wm_class='download'),
+    Match(wm_class='error'),
+    Match(wm_class='file_progress'),
+    Match(wm_class='notification'),
+    Match(wm_class='splash'),
+    Match(wm_class='toolbar'),
+    Match(wm_class='lxappearance'),
+    Match(wm_class='confirmreset'),   # gitk
+    Match(wm_class='makebranch'),     # gitk
+    Match(wm_class='maketag'),        # gitk
+    Match(title='branchdialog'),      # gitk
+    Match(title='pinentry'),          # GPG key password entry
+    Match(wm_class='pinentry-gtk-2'), # GPG key password entry
+    Match(wm_class='ssh-askpass'),    # ssh-askpass
 ], border_focus=highlight, border_normal=colors_main["background"])
 auto_fullscreen = True
 focus_on_window_activation = "smart"
