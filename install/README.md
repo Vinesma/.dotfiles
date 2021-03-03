@@ -42,6 +42,14 @@ Try running the included python script `main.py` and selecting the "individual i
 
 - [cron won't be running by default, it needs to be enabled.](https://wiki.archlinux.org/index.php/Cron#Activation_and_autostart)
 
+## TLP
+
+Provides power saving capabilities. More relevant if using a laptop.
+
+To check the status of TLP run: `tlp-stat -s`
+
+[More info](https://linrunner.de/tlp/installation/arch.html)
+
 ## Dev stuff
 
 ### NeoVim

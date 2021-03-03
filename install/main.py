@@ -36,13 +36,13 @@ def main():
         messages.arrow("Initial configuration...")
         install_util.init_category("initial").install_group()
         install_util.init_category("essential").install_group()
-        
+
         messages.header("Setting keymap")
         spawn.process("localectl", ["--no-convert", "set-x11-keymap", "br"])
 
         if install_laptop:
             messages.header("Installing laptop packages.")
-            install_util.init_many_install(["touchpad", "backlight", "bluetooth"])
+            install_util.init_many_install(["touchpad", "backlight", "bluetooth", "power_saving"])
         else:
             # Non laptop packages
             messages.header("Installing desktop packages.")
