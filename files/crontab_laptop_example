@@ -1,5 +1,5 @@
 SHELL=/bin/bash
-youtube_dl_format="$HOME/Podcasts/Phone/%(title)s.%(ext)s"
+youtube_dl_format="%(title)s.%(ext)s"
 
 # MINUTELY
 ## Fetch email from gmail to neomutt
@@ -7,17 +7,17 @@ youtube_dl_format="$HOME/Podcasts/Phone/%(title)s.%(ext)s"
 
 # HOURLY
 ## Reload Newsboat
-0 */2 * * * /usr/bin/ping -c 1 google.com && cd ~/.dotfiles/scripts/newsboat/ && bash newsboat-reloader.sh >/dev/null 2>&1
+0 */2 * * * /usr/bin/ping -c 1 google.com >/dev/null 2>&1 && cd ~/.dotfiles/scripts/newsboat/ && bash newsboat-reloader.sh >/dev/null 2>&1
 
 ## Refill Podcasts
 0 */1 * * * [ $(printf '\%s\n' ~/Podcasts/Phone/* | /usr/bin/wc -l ) -lt 6 ] && ~/.local/bin/rdm-file-selector -q 8 -c ~/Sync/.cache/ -i ~/Podcasts/Triforce\!/ ~/Podcasts/Phone >/dev/null 2>&1
 
 # WEEKLY
 ## Triforce Podcast
-0 16 * * 3 /usr/bin/youtube-dl -q -o "$youtube_dl_format" --download-archive ~/Sync/.youtube-dl_archive --exec 'cp {} /home/vinesma/Podcasts/Triforce!' -x --audio-format mp3 "https://www.youtube.com/playlist?list=PLJwv6sN_mnF0QsOTcKlFDeyzwXMM0MWru" && /usr/bin/env DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /usr/bin/notify-send "[youtube-dl]" "Podcasts downloaded."
+1 16 * * 3 /usr/bin/youtube-dl -q -o "$HOME/Podcasts/Triforce\!/$youtube_dl_format" --download-archive ~/Sync/.youtube-dl_archive --exec 'cp {} /home/vinesma/Podcasts/Phone/' -x --audio-format mp3 "https://www.youtube.com/playlist?list=PLJwv6sN_mnF0QsOTcKlFDeyzwXMM0MWru" && /usr/bin/env DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /usr/bin/notify-send "[youtube-dl]" "Podcasts downloaded."
 
 ## Technical Alpha Podcast
-0 16 * * 5 /usr/bin/youtube-dl -q -o "$youtube_dl_format" --download-archive ~/Sync/.youtube-dl_archive -x --audio-format mp3 "https://www.youtube.com/playlist?list=PLujTwbNDCv6SeZQ5cx3nUNO1OULKtijel" && /usr/bin/env DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /usr/bin/notify-send "[youtube-dl]" "Podcasts downloaded."
+1 16 * * 5 /usr/bin/youtube-dl -q -o "$HOME/Podcasts/$youtube_dl_format" --download-archive ~/Sync/.youtube-dl_archive --exec 'cp {} /home/vinesma/Podcasts/Phone/' -x --audio-format mp3 "https://www.youtube.com/playlist?list=PLujTwbNDCv6SeZQ5cx3nUNO1OULKtijel" && /usr/bin/env DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /usr/bin/notify-send "[youtube-dl]" "Podcasts downloaded."
 
 ## Get the top reddit submissions from these subreddits
 0 17 * * 3 ~/.local/bin/redditmailer -n 200 -e otaviocos14@gmail.com -a mealtimevideos >/dev/null 2>&1
