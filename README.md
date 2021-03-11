@@ -27,7 +27,6 @@ Applications in brackets are installed via my own scripts, so there's no need to
 - (mpd)
 - (mpc)
 - (ncmpcpp)
-- quodlibet
 
 ### Web
 
@@ -67,8 +66,8 @@ Applications in brackets are installed via my own scripts, so there's no need to
 
 ### API testing
 
-- Postman
 - curl
+- Postman
 
 ### Language Engine
 
