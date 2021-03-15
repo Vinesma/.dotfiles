@@ -1,9 +1,8 @@
 "query:Unread News:tags # \"news\" and unread = \"yes\""
 "query:Tech News:tags # \"tech-news\" and unread = \"yes\""
-https://forum.manjaro.org/c/announcements.rss "~Manjaro News"
+https://forum.manjaro.org/c/announcements/stable-updates.rss "~Manjaro Updates"
 "query:Youtube (Favorites):tags # \"youtube-favorite\" and unread = \"yes\""
 "query:Youtube (Others):tags # \"youtube-others\" and unread = \"yes\""
-"query:Youtube (Livestreams):tags # \"livestream\" and age < 20"
 "query:Youtube (Tech):tags # \"tech\" and age < 60"
 "query:Youtube (Japanese):tags # \"japanese\""
 "query:Twitter (News):tags # \"twitter-news\" and unread = \"yes\""
@@ -44,7 +43,6 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCtUbO6rBht0daVIOGML3c8w "~S
 https://www.youtube.com/feeds/videos.xml?channel_id=UCz4ZjuO7HrynjRrRlur1yWg "~Canipa Effect" youtube-favorite
 https://www.youtube.com/feeds/videos.xml?channel_id=UC29ju8bIPH5as8OGnQzwJyA "~Traversy Media" youtube-others tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UCH-_hzb2ILSCo9ftVSnrCIQ "~Yogscast Lewis & Simon" youtube-others
-https://www.youtube.com/feeds/videos.xml?channel_id=UCkkejFv496PdWWk-q9cnx6Q "~Qubec (Vtuber Highlights)" youtube-favorite
 https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA "~Luke Smith" youtube-others tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg "~DistroTube" youtube-others tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UCld68syR8Wi-GY_n4CaoJGA "~Brodie Robertson" youtube-others tech
@@ -54,13 +52,9 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCUmLRMERmJrmUtgnbFfknAg "~R
 https://www.youtube.com/feeds/videos.xml?channel_id=UCy0tKL1T7wFoYcxCe0xjN6Q "~Technology Connections" youtube-favorite tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UCADyUOnhyEoQqrw_RrsGleA "~CSS-Tricks" youtube-others tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UCfp-lNJy4QkIGnaEE6NtDSg "~Learn Linux" youtube-others tech
-https://www.youtube.com/feeds/videos.xml?channel_id=UCZNhwA1B5YqiY1nLzmM0ZRg "~Digital Life" youtube-others tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UCLuymDHiOySsAQ9Nc-4NoEQ "~Onomappu オノマップ" japanese
 https://www.youtube.com/feeds/videos.xml?channel_id=UCEw0sdrCOjcsjtXGJibItJA "~Easy Peasy Japanesey" japanese
 https://www.youtube.com/feeds/videos.xml?channel_id=UCNepEAWZH0TBu7dkxIbluDw "~Dad, how do I?" youtube-others
-https://www.youtube.com/feeds/videos.xml?channel_id=UCMwGHR0BTZuLsmjY_NT5Pwg "~Ninomae Ina'nis - Hololive EN" livestream
-https://www.youtube.com/feeds/videos.xml?channel_id=UCHsx4Hqa-1ORjQTh9TYDhww "~Takanashi Kiara - Hololive EN" livestream
-https://www.youtube.com/feeds/videos.xml?channel_id=UC_a1ZYZ8ZTXpjg9xUY9sj8w "~Suzuhara Lulu - Nijisanji所属" livestream
 https://nitter.nixnet.services/AIR_News01/rss "~@A.I.R - Anime News" twitter-news
 https://nitter.nixnet.services/fosspost/rss "~Linux & Open Source" tech-news
 https://nitter.nixnet.services/fullstackpython/rss "~@Full Stack Python" tech-news
@@ -68,6 +62,8 @@ https://nitter.nixnet.services/freeCodeCamp/rss "~@freeCodeCamp" tech-news
 https://nitter.nixnet.services/Anime/rss "~@Anime News Network" twitter-news
 https://nitter.nixnet.services/TechRaptr/rss "~@TechRaptor" twitter-news
 https://nitter.nixnet.services/factoriogame/rss "~Factorio" twitter-news
+https://nitter.nixnet.services/engadget/rss "~Engadget" twitter-news
+https://nitter.nixnet.services/arstechnica/rss "~Ars Technica" twitter-news
 https://nitter.nixnet.services/click_burgundy/rss "~@click_burgundy" twitter-artist
 https://nitter.nixnet.services/Kukie_nyan/rss "~@Kukie_nyan" twitter-artist
 https://nitter.nixnet.services/taninao1988/rss "~@taninao1988" twitter-artist
@@ -99,12 +95,9 @@ https://nitter.nixnet.services/_tatsuyaendo_/rss "~@_tatsuyaendo_" twitter-artis
 https://nitter.nixnet.services/NEBU_KURO/rss "~@NEBU_KURO" twitter-artist
 https://nitter.nixnet.services/kayahachi/rss "~kaya8" twitter-artist
 https://nitter.nixnet.services/Dishwasher1910/rss "~Bach Do" twitter-artist
-https://nitter.nixnet.services/chocojax/rss "~@chocojax" twitter-artist
 https://nitter.nixnet.services/mery__S2_/rss "~mery" twitter-artist
-https://nitter.nixnet.services/WasabiYam/rss "~@WasabiYam" twitter-artist
 https://nitter.nixnet.services/Miv4t_/rss "~@Miv4t" twitter-artist
 https://nitter.nixnet.services/umaiyo_puyoman/rss "~がおう" twitter-artist
-https://nitter.nixnet.services/Kaejunni/rss "~Kaejunni" twitter-artist
 https://nitter.nixnet.services/pailand/rss "~@pailand" twitter-artist
 https://nitter.nixnet.services/zunbayasi/rss "~@zunbayasi" twitter-artist
 https://nitter.nixnet.services/asatani_tomoyo/rss "~@asatani_tomoyo" twitter-artist
@@ -115,7 +108,6 @@ https://nitter.nixnet.services/mayo_moyo/rss "~まよ" twitter-artist
 https://nitter.nixnet.services/lleftt/rss "~左" twitter-artist
 https://nitter.nixnet.services/katuwo___/rss "~カツヲ" twitter-artist
 https://nitter.nixnet.services/cuboon/rss "~@cuboon" twitter-artist
-https://nitter.nixnet.services/gobbbgo/rss "~bbb" twitter-artist
 https://nitter.nixnet.services/kitazzinger/rss "~キタズィンガー" twitter-artist
 https://nitter.nixnet.services/_Satchely/rss "~Satchel" twitter-artist
 https://nitter.nixnet.services/t_ippers/rss "~ippers" twitter-artist
@@ -126,34 +118,30 @@ https://nitter.nixnet.services/tabakko/rss "~HYDE" twitter-artist
 https://nitter.nixnet.services/vanripperart/rss "~Łukasz Piskorz" twitter-artist
 https://nitter.nixnet.services/cutesexyrobutts/rss "~Cutesexyrobutts" twitter-artist
 https://nitter.nixnet.services/MrSnakesnake628/rss "~Mr.Lime" twitter-artist
+https://nitter.nixnet.services/fusuke208/rss "~ふうすけ" twitter-artist
+https://nitter.nixnet.services/tsuki_nonono/rss "~月野" twitter-artist
+https://nitter.nixnet.services/yohan1754/rss "~Free Style" twitter-artist
+https://nitter.nixnet.services/Guchico77/rss "~Guchico" twitter-artist
+https://nitter.nixnet.services/Itumade3/rss "~ヨハネ" twitter-artist
+https://nitter.nixnet.services/timbougami/rss "~hks" twitter-artist
+https://nitter.nixnet.services/imo_akiminoriko/rss "~RiCOUSA" twitter-artist
 https://nitter.nixnet.services/TynanSylvester/rss "~Tynan Sylvester" twitter-people
 https://nitter.nixnet.services/LAGTVNovaWar/rss "~Adam (Novawar)" twitter-people
-https://nitter.nixnet.services/ConcernedApe/rss "~ConcernedApe" twitter-people
-https://nitter.nixnet.services/ObsidianWasp/rss "~ObsidianWasp" twitter-people
-https://nitter.nixnet.services/PAWORKS_eng/rss "~P.A.WORKS" twitter-people
 https://nitter.nixnet.services/gamemakerstk/rss "~Game Maker's Toolkit" twitter-people
 https://nitter.nixnet.services/NyaaV2/rss "~Nyaa Torrents" twitter-people
-https://nitter.nixnet.services/CDisillusion/rss "~Captain Disillusion" twitter-people
-https://nitter.nixnet.services/garupan/rss "~Girls Und Panzer" twitter-people
-https://nitter.nixnet.services/kevinpenkin/rss "~Kevin Penkin" twitter-people
 https://nitter.nixnet.services/composerandreas/rss "~Andreas Waldetoft" twitter-people
 https://nitter.nixnet.services/CanipaShow/rss "~Canipa Effect" twitter-people
 https://nitter.nixnet.services/Demolition_d/rss "~Demolition D" twitter-people
-https://nitter.nixnet.services/Yuyucow/rss "~kViN" twitter-people
 https://nitter.nixnet.services/jasonschreier/rss "~Jason Schreier" twitter-people
-https://nitter.nixnet.services/garoadmusic/rss "~Garoad" twitter-people
 https://nitter.nixnet.services/PlebeusOciosos/rss "~Plebeus Ociosos" twitter-people
 https://nitter.nixnet.services/DanFloydPlus/rss "~Daniel Floyd" twitter-people
 https://nitter.nixnet.services/SukebanGames/rss "~Sukeban Games" twitter-people
 https://nitter.nixnet.services/NetHistorian/rss "~Internet Historian" twitter-people
 https://nitter.nixnet.services/FredInTheKnud/rss "~FredInTheKnud" twitter-people
 https://nitter.nixnet.services/traversymedia/rss "~traversymedia" twitter-people
-https://nitter.nixnet.services/tsuki_akari/rss "~Tsutomu Mizushima" twitter-people
 https://nitter.nixnet.services/SsethTzeentach/rss "~SsethTzeentach" twitter-people
-https://nitter.nixnet.services/CG_Orange_eng/rss "~Orange Animation Studio" twitter-people
 https://nitter.nixnet.services/summoningsalt/rss "~Summoningsalt" twitter-people
 https://nitter.nixnet.services/MrMarshall/rss "~Marshall McGee" twitter-people
 https://nitter.nixnet.services/haveibeenpwned/rss "~haveibeenpwned" twitter-people
 https://nitter.nixnet.services/oatila/rss "~Atila Iamarino" twitter-people
-https://nitter.nixnet.services/thomasjrandall/rss "~randall game" twitter-people
 https://nitter.nixnet.services/hololive_En/rss "~Hololive" twitter-people
