@@ -102,6 +102,8 @@ def create_keybinds():
         Key([mod, "mod1"], "l", lazy.spawn(f"{terminal_reduced_opacity} neomutt")),
         Key([mod, "mod1"], "i", lazy.spawn(path.join(scripts_path, "wifi-finder.sh"))),
         Key([mod, "control"], "m", lazy.spawn(path.join(scripts_path, "song-browser.sh"))),
+        Key([mod, "mod1"], "s", lazy.spawn(path.join(scripts_path, "rosearch.sh"))),
+        Key([mod, "mod1"], "v", lazy.spawn(path.join(scripts_path, "roconfig.sh"))),
         # take screenshot, either fullscreen or a selection
         Key([mod], "Print", lazy.spawn(path.join(scripts_path, "take-screenshot.sh"))),
         Key([mod, "mod1"], "Print", lazy.spawn(path.join(scripts_path, "take-screenshot.sh select"))),
