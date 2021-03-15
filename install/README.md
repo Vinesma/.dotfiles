@@ -138,6 +138,10 @@ Solution: Add `xrandr --output OUTPUT --mode WIDTHxHEIGHT` to the line that star
 
 The only real solution I've found is to immediately shutdown your WM and login again. This works but is quite annoying.
 
+### Something else went *kaput*
+
+Solution: I hope you had timeshift configured because it'll be the thing to save you. Find a pen drive with a liveCD to boot with, install timeshift on the live environment and let it restore from your timeshift snapshot directory (usually `/run/timeshift/backup/timeshift/snapshots/`).
+
 ## Links/Resources
 
 Things that had their own section and were moved or removed, along with other resources that don't fit anywhere else:

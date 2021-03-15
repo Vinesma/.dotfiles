@@ -185,6 +185,16 @@
                 "You can use the files in '$HOME/.dotfiles/lightdm' to quickly configure lightdm",
                 "The default config path is /etc/lightdm"
             ]
+        },
+        {
+            "name": "Timeshift",
+            "install_name": "timeshift",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": [
+                "Run '$ sudo timeshift-gtk' to configure timeshift"
+            ]
         }
     ],
     "files": [
