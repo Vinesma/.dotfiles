@@ -44,8 +44,3 @@ highlight article ":.*\\(embedded flash\\)$" magenta default
 # KILLFILE
 # ignore retweets in twitter feeds
 ignore-article "*" "link =~ \"nitter.nixnet\" and title =~ \"RT by\""
-# ignore updates to testing branch in Manjaro
-ignore-article "https://forum.manjaro.org/c/announcements.rss" "title =~ \"Testing Update\""
-ignore-article "https://forum.manjaro.org/c/announcements.rss" "title =~ \"Unstable Update\""
-# ignore any Gmod from the yogs
-ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCH-_hzb2ILSCo9ftVSnrCIQ" "title =~ \"Gmod \""
