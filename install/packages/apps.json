@@ -195,9 +195,12 @@
         },
         {
             "name": "youtube-dl",
-            "install_name": "youtube-dl-git",
-            "installer": "aur",
-            "run_commands": [],
+            "install_name": "youtube-dl",
+            "installer": "custom",
+            "run_commands": [
+                "sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl",
+                "sudo chmod a+rx /usr/local/bin/youtube-dl"
+            ],
             "autostart": null,
             "comments": []
         }
