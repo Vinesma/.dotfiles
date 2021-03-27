@@ -10,7 +10,7 @@ youtube_dl_format="%(title)s.%(ext)s"
 0 */2 * * * /usr/bin/ping -c 1 google.com >/dev/null 2>&1 && cd ~/.dotfiles/scripts/newsboat/ && bash newsboat-reloader.sh >/dev/null 2>&1
 
 ## Refill Podcasts
-0 */1 * * * [ $(printf '\%s\n' ~/Podcasts/Phone/* | /usr/bin/wc -l ) -lt 6 ] && ~/.local/bin/rdm-file-selector -q 8 -c ~/Sync/.cache/ -i ~/Podcasts/Triforce\!/ ~/Podcasts/Phone >/dev/null 2>&1
+0 */1 * * * ~/.local/bin/rdm-file-selector -q 8 -o 6 -c ~/Sync/.cache/ -i ~/Podcasts/Triforce\!/ ~/Podcasts/Phone >/dev/null 2>&1
 
 # WEEKLY
 ## Triforce Podcast
