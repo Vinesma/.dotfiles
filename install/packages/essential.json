@@ -87,7 +87,6 @@
             "installer": "pacman",
             "run_commands": [
                 "amixer sset Master unmute",
-                "amixer sset Speaker unmute",
                 "amixer sset Headphone unmute"
             ],
             "autostart": null,
