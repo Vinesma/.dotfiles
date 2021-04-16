@@ -34,7 +34,7 @@ Find a connection:
 
 [More examples here](https://wiki.archlinux.org/index.php/NetworkManager#nmcli_examples)
 
-Install `git` so you can clone this repo, you may also need to install python. Once you have both and are connected the scripts can do most of the heavy lifting for you. Go ahead and run `python main.py` to install all the things provided.
+Install `git` so you can clone this repo, you may also need to install `python`. Once you have both and are connected the scripts can do most of the heavy lifting for you. Go ahead and run `python main.py` to install all the things provided.
 
 ## Anything missing?
 
@@ -86,9 +86,11 @@ I use `yay` as an AUR helper. It should be installed after running my scripts.
 
 ### Setting up Android Studio
 
-- Install Android Studio from the AUR
+- Android Studio can be installed via the AUR
 
 - [Guide](https://wiki.archlinux.org/index.php/Android#Android_Studio)
+
+- [React Native Guide](https://reactnative.dev/docs/environment-setup)
 
 ### Setting up Flutter
 
@@ -97,6 +99,8 @@ I use `yay` as an AUR helper. It should be installed after running my scripts.
 - Run `flutter doctor` to verify missing dependencies
 
 - Install the VSCode Flutter extension
+
+- [Guide](https://flutter.dev/docs/get-started/install)
 
 ## Problems encountered:
 
@@ -114,7 +118,7 @@ Run this to enable clock synchronization:
 
 ### pywal has no support for dunst
 
-Solution: For pywal to work with dunst, copy the template file in `dunst/colors-dunst` to `~/.config/wal/templates/`. Edit the template accordingly and then run `wal-scale` with a path to your desired wallpaper in a terminal. I have provided scripts to help with this.
+Solution: For pywal to work with dunst, copy the template file in `~/.dotfiles/pywal-templates/colors-dunst` to `~/.config/wal/templates/`. Edit the template accordingly and then run `wal` with a path to your desired wallpaper in a terminal. The template will be parsed and spit out at `~/.cache/wal/colors-dunst` which can then be linked to `~/.config/dunst/dunstrc`. You will only need to do this if something goes horribly wrong, since my install scripts should be able to take care of it.
 
 This also applies to anything else unsupported by pywal.
 

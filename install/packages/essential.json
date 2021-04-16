@@ -229,6 +229,15 @@
             "residence": "~/.config/dunst",
             "source": "~/.dotfiles/dunst",
             "text": "",
+            "create_link": false,
+            "sudo": false,
+            "comments": []
+        },
+        {
+            "name": "colors-dunst",
+            "residence": "~/.config/wal/templates",
+            "source": "~/.dotfiles/pywal-templates",
+            "text": "",
             "create_link": true,
             "sudo": false,
             "comments": []

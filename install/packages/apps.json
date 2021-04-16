@@ -261,6 +261,15 @@
             "comments": []
         },
         {
+            "name": "pid",
+            "residence": "~/.mpd",
+            "source": null,
+            "text": "",
+            "create_link": false,
+            "sudo": false,
+            "comments": []
+        },
+        {
             "name": "config",
             "residence": "~/.config/ncmpcpp",
             "source": "~/.dotfiles/ncmpcpp",
@@ -300,6 +309,24 @@
             "name": "config",
             "residence": "~/.config/youtube-dl",
             "source": "~/.dotfiles/youtube-dl",
+            "text": "",
+            "create_link": true,
+            "sudo": false,
+            "comments": []
+        },
+        {
+            "name": "colors-polybar",
+            "residence": "~/.config/wal/templates",
+            "source": "~/.dotfiles/pywal-templates",
+            "text": "",
+            "create_link": true,
+            "sudo": false,
+            "comments": []
+        },
+        {
+            "name": "colors-main-polybar",
+            "residence": "~/.config/wal/templates",
+            "source": "~/.dotfiles/pywal-templates",
             "text": "",
             "create_link": true,
             "sudo": false,
