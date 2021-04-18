@@ -106,6 +106,32 @@ I use `yay` as an AUR helper. It should be installed after running my scripts.
 
 - [Guide](https://flutter.dev/docs/get-started/install)
 
+### Setting up SSH
+
+For ssh, we have to indentify what machine you want to use as a `client` and which you want to use as a `server`. Most configuration will be done in the `server`.
+
+`server`:
+
+- Install `openssh` (It's probably already installed).
+
+- Enable the server: `systemctl enable sshd.service`.
+
+`client`:
+
+- Create a key pair using `ssh-keygen`.
+
+- Copy the newly generated pair to the server using `ssh-copy-id -i ~/.ssh/id_rsa.pub $USER@IP_ADDR`
+
+- Connect to the server using `ssh $USER@$ADDR`. $USER = The username to log in at the server, $ADDR = The server ip which can be found by running `ip a` at the server.
+
+`server`:
+
+- Configure `/etc/ssh/sshd_config`, important settings to change are `Port` `HostKey` and adding `PasswordAuthentication no` to force key based authentication. This can be done remotely.
+
+`client`:
+
+- Configure `~/.ssh/config` using the examples located at `~/.dotfiles/files/ssh_config`. This enables faster connection to the server by simply typing `ssh $HOST` instead of `ssh -p $PORT $USER@IP_ADDR`.
+
 ## Problems encountered:
 
 ### A script run via cron fails to send notifications via notify-send.

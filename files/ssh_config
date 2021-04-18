@@ -1,0 +1,5 @@
+# Replace those with your data
+Host $myserver
+    Hostname $ip_address
+    Port $PORT
+    User $username
