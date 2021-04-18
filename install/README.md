@@ -112,25 +112,29 @@ For ssh, we have to identify what machine you want to use as a `client` and whic
 
 `server`:
 
-- Install `openssh` (It's probably already installed).
+- Install `openssh` (It's probably already installed)
 
-- Enable the server: `systemctl enable sshd.service`.
+- Enable the server: `systemctl enable --now sshd.service`
 
 `client`:
 
-- Create a key pair using `ssh-keygen`.
+- Create a key pair using `ssh-keygen`
 
-- Copy the newly generated pair to the server using `ssh-copy-id -i ~/.ssh/id_rsa.pub $USER@$IP_ADDR`. $USER = The username to log in at the server, $ADDR = The server ip which can be found by running `ip a` at the server.
+- Copy the newly generated pair to the server using `ssh-copy-id -i ~/.ssh/id_rsa.pub $USER@$IP_ADDR`. $USER = The username to log in at the server, $ADDR = The server ip which can be found by running `ip a` at the server
 
-- Connect to the server using `ssh $USER@$ADDR`.
+- Connect to the server using `ssh $USER@$ADDR`
 
 `server`:
 
-- Configure `/etc/ssh/sshd_config`, important settings to change are `Port` `HostKey` and adding `PasswordAuthentication no` to force key based authentication. This can be done remotely.
+- Configure `/etc/ssh/sshd_config`, important settings to change are `Port`, changing `PermitRootLogin` to `no` and adding `PasswordAuthentication no` to force key based authentication. This can be done remotely. Don't forget to restart the server afterwards using `systemctl restart sshd.service`
 
 `client`:
 
-- Configure `~/.ssh/config` using the examples located at `~/.dotfiles/files/ssh_config`. This enables faster connection to the server by simply typing `ssh $HOST` instead of `ssh -p $PORT $USER@IP_ADDR`.
+- Configure `~/.ssh/config` using the examples located at `~/.dotfiles/files/ssh_config`. This enables faster connection to the server by simply typing `ssh $HOST` instead of `ssh -p $PORT $USER@IP_ADDR`
+
+Tips:
+
+The keys can be named however you want for ease of identification. You can also pass the `-t` flag to the `ssh-keygen` command to use different cryptographic algorithms, such as 'ed25519'
 
 ## Problems encountered:
 
