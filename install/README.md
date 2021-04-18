@@ -108,7 +108,7 @@ I use `yay` as an AUR helper. It should be installed after running my scripts.
 
 ### Setting up SSH
 
-For ssh, we have to indentify what machine you want to use as a `client` and which you want to use as a `server`. Most configuration will be done in the `server`.
+For ssh, we have to identify what machine you want to use as a `client` and which you want to use as a `server`. Most configuration will be done in the `server`.
 
 `server`:
 
@@ -120,9 +120,9 @@ For ssh, we have to indentify what machine you want to use as a `client` and whi
 
 - Create a key pair using `ssh-keygen`.
 
-- Copy the newly generated pair to the server using `ssh-copy-id -i ~/.ssh/id_rsa.pub $USER@IP_ADDR`
+- Copy the newly generated pair to the server using `ssh-copy-id -i ~/.ssh/id_rsa.pub $USER@$IP_ADDR`. $USER = The username to log in at the server, $ADDR = The server ip which can be found by running `ip a` at the server.
 
-- Connect to the server using `ssh $USER@$ADDR`. $USER = The username to log in at the server, $ADDR = The server ip which can be found by running `ip a` at the server.
+- Connect to the server using `ssh $USER@$ADDR`.
 
 `server`:
 
