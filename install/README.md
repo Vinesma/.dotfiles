@@ -38,6 +38,8 @@ Find a connection:
 
 Install `git` so you can clone this repo, you may also need to install `python`. Once you have both and are connected the scripts can do most of the heavy lifting for you. Go ahead and run `python main.py` to install all the things provided.
 
+After everything is done, make sure to run `chmod +x ~/.autostart` so that qtile can run the autostart file. Then reboot the system.
+
 ## Anything missing?
 
 Try running the included python script `main.py` and selecting the "individual install" option.
