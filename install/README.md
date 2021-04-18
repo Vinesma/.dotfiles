@@ -16,6 +16,8 @@ Recommendations:
 
 - Set the virtual console key map to `br-abnt2` if you're Brazilian like me.
 
+- For partitioning, I usually go with 80 gigs for `/`, whatever my RAM is for `[SWAP]` and then give the rest over to `/home`.
+
 When the architect is done, chroot into the system and install `networkmanager`. Enable it with `systemctl enable NetworkManager` then reboot into the bare CLI system.
 
 ## Bare CLI

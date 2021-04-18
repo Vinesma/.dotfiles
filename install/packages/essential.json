@@ -34,6 +34,14 @@
             "comments": []
         },
         {
+            "name": "Thunar Volume Management Plugin",
+            "install_name": "thunar-volman",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
             "name": "tumbler",
             "install_name": "tumbler",
             "installer": "pacman",
@@ -52,6 +60,14 @@
         {
             "name": "Gnome Virtual File System",
             "install_name": "gvfs",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
+            "name": "Gnome Virtual File System - mtp module",
+            "install_name": "gvfs-mtp",
             "installer": "pacman",
             "run_commands": [],
             "autostart": null,
