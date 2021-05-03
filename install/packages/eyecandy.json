@@ -32,7 +32,7 @@
             "run_commands": [],
             "autostart": null,
             "comments": [
-                "Add the line 'QT_QPA_PLATFORMTHEME=qt5ct' to /env/environment to load the theme globally."
+                "Add the line 'QT_QPA_PLATFORMTHEME=qt5ct' to /etc/environment to load the theme globally."
             ]
         },
         {
