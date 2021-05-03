@@ -1,14 +1,12 @@
 #!/bin/bash
-# USE chmod +x $FILE to make this file an executable!
-
-feh --bg-scale "$(< "${HOME}/.cache/wal/wal")" &
-. ~/.dotfiles/polybar/launch.sh &
-picom &
+. $HOME/.dotfiles/polybar/launch.sh &
+thunar --daemon &
 dunst &
-udiskie &
-redshift &
 numlockx &
+redshift-gtk &
 fcitx &
+feh --bg-scale "$(< "${HOME}/.cache/wal/wal")" &
+picom --experimental-backends &
 syncthing --no-browser &
 
 if [[ ! -s ~/.config/mpd/pid ]]; then
@@ -18,8 +16,6 @@ if [[ ! -s ~/.config/mpd/pid ]]; then
     mpc crossfade 3
 fi
 
-if ping -c 3 google.com; then
-    firefox about:newtab https://en.wikipedia.org/wiki/Main_Page &
-    qbittorrent &
-    sleep 10 && bash ~/.dotfiles/scripts/newsboat/newsboat-reloader.sh &
-fi
+firefox about:newtab https://en.wikipedia.org/wiki/Main_Page &
+qbittorrent --no-splash &
+sleep 20 && bash ~/.dotfiles/scripts/newsboat/newsboat-reloader.sh &

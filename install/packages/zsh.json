@@ -30,8 +30,8 @@
         },
         {
             "name": "Zsh powerlevel10k theme",
-            "install_name": "zsh-theme-powerlevel10k-git",
-            "installer": "aur",
+            "install_name": "zsh-theme-powerlevel10k",
+            "installer": "pacman",
             "run_commands": [],
             "autostart": null,
             "comments": []

@@ -40,7 +40,8 @@
             "install_name": "python-pywal",
             "installer": "pacman",
             "run_commands": [
-                "wal -n -i $HOME/.dotfiles/files/example_wallpaper_drawnby_czy(2894456992).jpg"
+                "wal -n -i $HOME/.dotfiles/files/example_wallpaper_drawnby_czy(2894456992).jpg",
+                "ln -sfv $HOME/.config/wal/templates/colors-dunst $HOME/.config/dunst/dunstrc"
             ],
             "autostart": null,
             "comments": []
@@ -122,7 +123,7 @@
             "install_name": "pywalfox",
             "installer": "pip",
             "run_commands": [
-                "pywalfox install"
+                "sudo pywalfox install"
             ],
             "autostart": null,
             "comments": []

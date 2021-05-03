@@ -16,6 +16,8 @@ Recommendations:
 
 - Set the virtual console key map to `br-abnt2` if you're Brazilian like me.
 
+- For partitioning, I usually go with 80 gigs for `/`, whatever my RAM is for `[SWAP]` and then give the rest over to `/home`.
+
 When the architect is done, chroot into the system and install `networkmanager`. Enable it with `systemctl enable NetworkManager` then reboot into the bare CLI system.
 
 ## Bare CLI
@@ -34,7 +36,9 @@ Find a connection:
 
 [More examples here](https://wiki.archlinux.org/index.php/NetworkManager#nmcli_examples)
 
-Install `git` so you can clone this repo, you may also need to install python. Once you have both and are connected the scripts can do most of the heavy lifting for you. Go ahead and run `python main.py` to install all the things provided.
+Install `git` so you can clone this repo, you may also need to install `python`. Once you have both and are connected the scripts can do most of the heavy lifting for you. Go ahead and run `python main.py` to install all the things provided.
+
+After everything is done, make sure to run `chmod +x ~/.autostart` so that qtile can run the autostart file. Then reboot the system.
 
 ## Anything missing?
 
@@ -86,9 +90,11 @@ I use `yay` as an AUR helper. It should be installed after running my scripts.
 
 ### Setting up Android Studio
 
-- Install Android Studio from the AUR
+- Android Studio can be installed via the AUR
 
 - [Guide](https://wiki.archlinux.org/index.php/Android#Android_Studio)
+
+- [React Native Guide](https://reactnative.dev/docs/environment-setup)
 
 ### Setting up Flutter
 
@@ -97,6 +103,38 @@ I use `yay` as an AUR helper. It should be installed after running my scripts.
 - Run `flutter doctor` to verify missing dependencies
 
 - Install the VSCode Flutter extension
+
+- [Guide](https://flutter.dev/docs/get-started/install)
+
+### Setting up SSH
+
+For ssh, we have to identify what machine you want to use as a `client` and which you want to use as a `server`. Most configuration will be done in the `server`.
+
+`server`:
+
+- Install `openssh` (It's probably already installed)
+
+- Enable the server: `systemctl enable --now sshd.service`
+
+`client`:
+
+- Create a key pair using `ssh-keygen`
+
+- Copy the newly generated pair to the server using `ssh-copy-id -i ~/.ssh/id_rsa.pub $USER@$IP_ADDR`. $USER = The username to log in at the server, $ADDR = The server ip which can be found by running `ip a` at the server
+
+- Connect to the server using `ssh $USER@$ADDR`
+
+`server`:
+
+- Configure `/etc/ssh/sshd_config`, important settings to change are `Port`, changing `PermitRootLogin` to `no` and adding `PasswordAuthentication no` to force key based authentication. This can be done remotely. Don't forget to restart the server afterwards using `systemctl restart sshd.service`
+
+`client`:
+
+- Configure `~/.ssh/config` using the examples located at `~/.dotfiles/files/ssh_config`. This enables faster connection to the server by simply typing `ssh $HOST` instead of `ssh -p $PORT $USER@IP_ADDR`
+
+Tips:
+
+The keys can be named however you want for ease of identification. You can also pass the `-t` flag to the `ssh-keygen` command to use different cryptographic algorithms, such as 'ed25519'
 
 ## Problems encountered:
 
@@ -114,7 +152,7 @@ Run this to enable clock synchronization:
 
 ### pywal has no support for dunst
 
-Solution: For pywal to work with dunst, copy the template file in `dunst/colors-dunst` to `~/.config/wal/templates/`. Edit the template accordingly and then run `wal-scale` with a path to your desired wallpaper in a terminal. I have provided scripts to help with this.
+Solution: For pywal to work with dunst, copy the template file in `~/.dotfiles/pywal-templates/colors-dunst` to `~/.config/wal/templates/`. Edit the template accordingly and then run `wal` with a path to your desired wallpaper in a terminal. The template will be parsed and spit out at `~/.cache/wal/colors-dunst` which can then be linked to `~/.config/dunst/dunstrc`. You will only need to do this if something goes horribly wrong, since my install scripts should be able to take care of it.
 
 This also applies to anything else unsupported by pywal.
 
