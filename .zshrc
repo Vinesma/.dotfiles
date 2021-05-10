@@ -177,7 +177,7 @@ update-packages() {
     echo -e ":: Update mirrorlist with the fastest mirrors? (y/n)"
     read -r answer
 
-    [[ "$answer" == [yY] ]] && sudo pacman-mirrors --continent
+    [[ "$answer" == [yY] ]] && sudo pacman-mirrors -f
 
     sudo pacman -Syyu && \
     notify-send -i "$icon_success" 'PACMAN' 'Update complete!' || \
