@@ -163,6 +163,14 @@ weather() {
     curl wttr.in/"$1"
 }
 
+# Ask user to update mirrors
+update-pacman-mirrors() {
+    echo -e ":: Update mirrorlist with the fastest mirrors? (y/n)"
+    read -r answer
+
+    [[ "$answer" == [yY] ]] && sudo pacman-mirrors -f
+}
+
 # Update mirrors and then all packages in the system.
 update-packages() {
     local icon_success
@@ -171,10 +179,7 @@ update-packages() {
     icon_success="/usr/share/icons/Papirus/32x32/apps/system-software-update.svg"
     icon_fail="/usr/share/icons/Papirus/32x32/apps/system-error.svg"
 
-    echo -e ":: Update mirrorlist with the fastest mirrors? (y/n)"
-    read -r answer
-
-    [[ "$answer" == [yY] ]] && sudo pacman-mirrors --continent
+    update-pacman-mirrors
 
     sudo pacman -Syyu && \
     notify-send -i "$icon_success" 'PACMAN' 'Update complete!' || \
@@ -183,6 +188,21 @@ update-packages() {
     yay -Sua && \
     notify-send -i "$icon_success" 'YAY' 'Update complete!' || \
     notify-send -i "$icon_fail" 'YAY' 'Update FAILURE!'
+}
+
+# Update mirrors and then download packages for later install.
+update-packages-no-download() {
+    local icon_success
+    local icon_fail
+    local answer
+    icon_success="/usr/share/icons/Papirus/32x32/apps/system-software-update.svg"
+    icon_fail="/usr/share/icons/Papirus/32x32/apps/system-error.svg"
+
+    update-pacman-mirrors
+
+    sudo pacman -Syyuw && \
+    notify-send -i "$icon_success" 'PACMAN' 'Update complete!' || \
+    notify-send -i "$icon_fail" 'PACMAN' 'Update FAILURE!'
 }
 
 # for easy saving of video without syncing to other devices
