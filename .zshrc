@@ -116,6 +116,8 @@ alias grep='grep --colour=auto'
 alias egrep='egrep --colour=auto'
 alias fgrep='fgrep --colour=auto'
 alias journalctl='journalctl -r'          # always forget this
+alias email='neomutt'
+alias music='ncmpcpp'
 # nvim
 alias v='nvim'
 alias sv='sudo nvim'
