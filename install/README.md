@@ -58,7 +58,7 @@ To check the status of TLP run: `tlp-stat -s`
 
 ### NeoVim
 
-[neovim's](https://neovim.io/) huge ecosystem of settings and plugins is a lot to deal with.
+[neovim](https://neovim.io/) is my editor of choice. Here's how to get the best from it.
 
 - Run `:checkhealth` for a overview of what is supported, like python support and others.
 
@@ -73,6 +73,12 @@ Plugins:
 - To upgrade plugins, run `:PlugUpdate`.
 
 - Remove plugins by removing their lines in the config file, restarting nvim and then running `:PlugClean`.
+
+VSCode integration:
+
+- For using neovim inside vscode, you need to install a vscode extension.
+
+- After it is installed, you will need neovim 0.5.0+ which is not in the repos. The easiest way to acquire it is by [downloading the appimage](https://github.com/neovim/neovim/releases) running: `chmod u+x` on it, then adding the path to it in the extension config.
 
 ### Arch User Repository (AUR)
 
