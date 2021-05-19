@@ -166,6 +166,11 @@ weather() {
     curl wttr.in/"$1"
 }
 
+# Terminal calculator
+calc() {
+    node -p "$@"
+}
+
 # Ask user to update mirrors
 update-pacman-mirrors() {
     echo -e ":: Update mirrorlist with the fastest mirrors? (y/n)"
