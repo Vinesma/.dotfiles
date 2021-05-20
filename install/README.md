@@ -142,6 +142,8 @@ Tips:
 
 The keys can be named however you want for ease of identification. You can also pass the `-t` flag to the `ssh-keygen` command to use different cryptographic algorithms, such as 'ed25519'
 
+A `ssh-agent` user file is included in the install, this will cache ssh passwords so that no massive amounts of password typing is needed. To use it, enable the service with `systemctl enable --user --now ssh-agent.service` and add your private keys with `ssh-add ~/.ssh/KEY_NAME`. To make all ssh clients store keys in the agent on first use, add the configuration setting `AddKeysToAgent yes` to `~/.ssh/config`.
+
 ## Problems encountered:
 
 ### A script run via cron fails to send notifications via notify-send.

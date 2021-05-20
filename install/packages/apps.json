@@ -331,6 +331,15 @@
             "create_link": true,
             "sudo": false,
             "comments": []
+        },
+        {
+            "name": "ssh-agent.service",
+            "residence": "~/.config/systemd/user",
+            "source": "~/.dotfiles/systemd/user",
+            "text": "",
+            "create_link": true,
+            "sudo": false,
+            "comments": []
         }
     ]
 }

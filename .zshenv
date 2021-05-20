@@ -17,3 +17,5 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+# ssh-agent
+SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
