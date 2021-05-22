@@ -150,7 +150,7 @@ label-disconnected-underline = ${{colors.alert}}
 
 [module/wireless-network]
 type = internal/network
-interface = wlp2s0
+interface = wlp2s0u1
 
 interval = 3
 
