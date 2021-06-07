@@ -140,17 +140,17 @@ For ssh, we have to identify what machine you want to use as a `client` and whic
 
 Tips:
 
-The keys can be named however you want for ease of identification. You can also pass the `-t` flag to the `ssh-keygen` command to use different cryptographic algorithms, such as 'ed25519'
+* The keys can be named however you want for ease of identification. You can also pass the `-t` flag to the `ssh-keygen` command to use different cryptographic algorithms, such as 'ed25519' which is more secure and has a smaller string to pass around.
 
-A `ssh-agent` user file is included in the install, this will cache ssh passwords so that no massive amounts of password typing is needed. To use it, enable the service with `systemctl enable --user --now ssh-agent.service` and add your private keys with `ssh-add ~/.ssh/KEY_NAME`. To make all ssh clients store keys in the agent on first use, add the configuration setting `AddKeysToAgent yes` to `~/.ssh/config`.
+* A `ssh-agent` user file is included in the install, this will cache ssh passwords so that they only have to be typed once every user session. To use it, enable the service with `systemctl enable --user --now ssh-agent.service` and add your private keys with `ssh-add ~/.ssh/KEY_NAME`. To make all ssh clients store keys in the agent on first use, add the configuration setting `AddKeysToAgent yes` to `~/.ssh/config`.
 
 ## Problems encountered:
 
-### A script run via cron fails to send notifications via notify-send.
+### A script run via cron fails to send notifications via notify-send
 
 [Solution: cron has no access to the DBUS address and the DISPLAY variable, they have to be set inside your script or before the notify-send call.](https://wiki.archlinux.org/index.php/Cron#Running_X.org_server-based_applications)
 
-### The system clock is wrong.
+### The clock is wrong
 
 [Solution](https://wiki.archlinux.org/index.php/System_time#Read_clock) (run `timedatectl` to check, can also be used to set time)
 
@@ -158,21 +158,29 @@ Run this to enable clock synchronization:
 
 - `timedatectl set-ntp true`
 
+### I dual boot and Windows' clock is wrong
+
+Windows uses localtime by default. To make it use UTC a registry fix is required. Open `regedit` and add a DWORD value with hexadecimal value `1` to the registry:
+
+`HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation\RealTimeIsUniversal`
+
+[UTC in Windows](https://wiki.archlinux.org/title/System_time#UTC_in_Microsoft_Windows)
+
 ### pywal has no support for dunst
 
 Solution: For pywal to work with dunst, copy the template file in `~/.dotfiles/pywal-templates/colors-dunst` to `~/.config/wal/templates/`. Edit the template accordingly and then run `wal` with a path to your desired wallpaper in a terminal. The template will be parsed and spit out at `~/.cache/wal/colors-dunst` which can then be linked to `~/.config/dunst/dunstrc`. You will only need to do this if something goes horribly wrong, since my install scripts should be able to take care of it.
 
 This also applies to anything else unsupported by pywal.
 
-### Laptop only boots or runs when charging, as soon as it gets unplugged the laptop freezes half a second later.
+### Laptop only boots or runs when charging, as soon as it gets unplugged the laptop freezes half a second later
 
 Solution: Disabling tlp in `/etc/tlp.conf` by editing the line TLP_ENABLE=1 to TLP_ENABLE=0. Afterwards, edit `/etc/default/cpupower` and set `governor` to "performance". This fixes the problem but leaves the laptop without any power saving capability.
 
 [TLP debugging](https://linrunner.de/tlp/support/troubleshooting.html#step-3-disable-tlp-temporarily)
 
-### Laptop won't shutdown or reboot completely. Screen goes black but external lights stay on and the fan keeps spinning no matter how long I wait.
+### Laptop won't shutdown or reboot completely. Screen goes black but external lights stay on and the fan keeps spinning no matter how long I wait
 
-Solution: Never found a solution, but reinstalling the system a few months later kicked the issue to the curb.
+Solution: Never found a solution, but reinstalling the system a few months later resolved the issue.
 
 ### The Kernel can't be loaded
 
@@ -184,6 +192,10 @@ Solution: Add `xrandr --output OUTPUT --mode WIDTHxHEIGHT` to the line that star
 
 The only real solution I've found is to immediately shutdown your WM and login again. This works but is quite annoying.
 
+### Autostart is not working
+
+Solution: Run `chmod +x ~/.autostart`.
+
 ### Something else went *kaput*
 
 Solution: I hope you had timeshift configured because it'll be the thing to save you. Find a pen drive with a liveCD to boot with, install timeshift on the live environment and let it restore from your timeshift snapshot directory (usually `/run/timeshift/backup/timeshift/snapshots/`).
@@ -192,7 +204,7 @@ Solution: I hope you had timeshift configured because it'll be the thing to save
 
 Things that had their own section and were moved or removed, along with other resources that don't fit anywhere else:
 
-- [manjaro-printer.](https://wiki.manjaro.org/index.php?title=Printing#Overview)
-- [Touchpad.](https://wiki.archlinux.org/index.php/Libinput#Installation)
+- [manjaro-printer](https://wiki.manjaro.org/index.php?title=Printing#Overview)
+- [Touchpad](https://wiki.archlinux.org/index.php/Libinput#Installation)
 - [ACPI Events](https://wiki.archlinux.org/index.php/Power_management#Power_management_with_systemd)
 - [Power saving](https://wiki.archlinux.org/index.php/Power_management#Power_saving)

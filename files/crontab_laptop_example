@@ -6,15 +6,15 @@ youtube_dl_format="%(title)s.%(ext)s"
 */10 * * * * cd ~/.dotfiles/scripts/cron-jobs/email/ && bash fetch-mail.sh >/dev/null 2>&1
 
 # HOURLY
-## Reload Newsboat
-0 */2 * * * /usr/bin/ping -c 1 google.com >/dev/null 2>&1 && cd ~/.dotfiles/scripts/newsboat/ && bash newsboat-reloader.sh >/dev/null 2>&1
+## Reload Newsboat (slight delay for proper syncing)
+3 */2 * * * /usr/bin/ping -c 1 google.com >/dev/null 2>&1 && cd ~/.dotfiles/scripts/newsboat/ && bash newsboat-reloader.sh >/dev/null 2>&1
 
 ## Refill Podcasts
-0 */1 * * * ~/.local/bin/rdm-file-selector -q 8 -o 6 -c ~/Sync/.cache/ -i ~/Podcasts/Triforce\!/ ~/Podcasts/Phone >/dev/null 2>&1
+0 */1 * * * ~/.local/bin/rdm-file-selector -q 8 -o 7 -c ~/Sync/.cache/ -i ~/Podcasts/Triforce\!/ ~/Podcasts/Phone >/dev/null 2>&1
 
 # WEEKLY
 ## Triforce Podcast
-1 16 * * 3 /usr/local/bin/youtube-dl -q -o "$HOME/Podcasts/Triforce\!/$youtube_dl_format" --download-archive ~/Sync/.youtube-dl_archive --exec 'cp {} /home/vinesma/Podcasts/Phone/' -x --audio-format mp3 "https://www.youtube.com/playlist?list=PLJwv6sN_mnF0QsOTcKlFDeyzwXMM0MWru" && /usr/bin/env DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /usr/bin/notify-send "[youtube-dl]" "Podcasts downloaded."
+1 16 * * 3 /usr/local/bin/youtube-dl -q -o "$HOME/Podcasts/Triforce!/$youtube_dl_format" --download-archive ~/Sync/.youtube-dl_archive --exec 'cp {} /home/vinesma/Podcasts/Phone/' -x --audio-format mp3 "https://www.youtube.com/playlist?list=PLJwv6sN_mnF0QsOTcKlFDeyzwXMM0MWru" && /usr/bin/env DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /usr/bin/notify-send "[youtube-dl]" "Podcasts downloaded."
 
 ## Technical Alpha Podcast
 1 16 * * 5 /usr/local/bin/youtube-dl -q -o "$HOME/Podcasts/$youtube_dl_format" --download-archive ~/Sync/.youtube-dl_archive --exec 'mv {} /home/vinesma/Podcasts/Phone/' -x --audio-format mp3 "https://www.youtube.com/playlist?list=PLujTwbNDCv6SeZQ5cx3nUNO1OULKtijel" && /usr/bin/env DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus' /usr/bin/notify-send "[youtube-dl]" "Podcasts downloaded."

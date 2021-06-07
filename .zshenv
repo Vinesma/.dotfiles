@@ -17,5 +17,7 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+# IME support in Kitty
+export GLFW_IM_MODULE=ibus
 # ssh-agent
 export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
