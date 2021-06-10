@@ -16,6 +16,7 @@ https://feeds.folha.uol.com.br/mundo/rss091.xml "~FOLHA - Mundo" news
 https://news.ycombinator.com/rss "~Hacker News" tech-news
 https://css-tricks.com/feed/ "~CSS-Tricks" tech-news
 https://www.joshwcomeau.com/rss.xml "~Josh Comeau" tech-news
+https://kentcdodds.com/blog/rss.xml "~Kent C. Dodds" tech-news
 https://www.youtube.com/feeds/videos.xml?channel_id=UCE1jXbVAGJQEORz9nZqb5bQ "~Ahoy" youtube-favorite
 https://www.youtube.com/feeds/videos.xml?channel_id=UCS0N5baNlQWJCUrhCEo8WlA "~Ben Eater" youtube-others tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UCEOXxzW2vU0P-0THehuIIeg "~Captain Disillusion" youtube-favorite
