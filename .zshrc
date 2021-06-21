@@ -179,7 +179,7 @@ update-pacman-mirrors() {
     [[ "$answer" == [yY] ]] && sudo pacman-mirrors -f
 }
 
-# Update mirrors and then all packages in the system.
+# Update mirrors and then download and update all packages in the system.
 update-packages() {
     local icon_success
     local icon_fail
@@ -198,8 +198,8 @@ update-packages() {
     notify-send -i "$icon_fail" 'YAY' 'Update FAILURE!'
 }
 
-# Update mirrors and then download packages for later install.
-update-packages-no-download() {
+# Update mirrors and then download packages without actually installing.
+update-packages-only-download() {
     local icon_success
     local icon_fail
     local answer
