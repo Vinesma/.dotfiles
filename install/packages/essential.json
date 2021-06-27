@@ -347,6 +347,15 @@
             "create_link": false,
             "sudo": true,
             "comments": ["Configuring DBUS notifications."]
+        },
+        {
+            "name": ".gitconfig",
+            "residence": "~",
+            "source": "~/.dotfiles/git",
+            "text": "",
+            "create_link": true,
+            "sudo": false,
+            "comments": []
         }
     ]
 }
