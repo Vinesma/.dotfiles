@@ -12,3 +12,20 @@
     conflictStyle = diff3 ; add a ||||||| marker and the original text before the ======= marker in conflicts
 [url "git@github.com:"]
     insteadOf = "gh:" ; allows cloning with "gh:Vinesma/repo" instead of the full url
+[alias]
+	s = status
+	a = add
+	aa = add .
+	r = restore
+	c = commit
+	ca = commit -a
+	cam = commit --amend
+	cp = cherry-pick
+	ch = checkout
+	b = branch
+	m = merge
+	re = rebase
+	d = diff
+	l = log --graph --abbrev-commit --decorate
+	ps = push
+	pl = pull
