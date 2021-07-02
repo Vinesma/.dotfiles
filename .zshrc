@@ -146,6 +146,7 @@ alias gre='git rebase'
 alias gd='git diff'
 alias gl='git log --graph --abbrev-commit --decorate'
 alias gps='git push'
+alias gpsnu='git push --set-upstream origin'
 alias gpl='git pull'
 alias git-aliases="grep --color=never \"='git \" ~/.zshrc"
 # android device CLI mounting

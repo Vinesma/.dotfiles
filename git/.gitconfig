@@ -28,4 +28,5 @@
 	d = diff
 	l = log --graph --abbrev-commit --decorate
 	ps = push
+    psnu = push --set-upstream origin ; push a new upstream branch
 	pl = pull
