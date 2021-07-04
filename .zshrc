@@ -13,7 +13,10 @@ compinit
 # End of lines added by compinstall
 
 zstyle ':completion:*' menu select
+zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
+zstyle ':completion:*:warnings' format '%BNo matches for: %d%b'
 setopt COMPLETE_ALIASES
+setopt hist_ignore_all_dups
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
