@@ -140,9 +140,21 @@ For ssh, we have to identify what machine you want to use as a `client` and whic
 
 Tips:
 
-* The keys can be named however you want for ease of identification. You can also pass the `-t` flag to the `ssh-keygen` command to use different cryptographic algorithms, such as 'ed25519' which is more secure and has a smaller string to pass around.
+- The keys can be named however you want for ease of identification. You can also pass the `-t` flag to the `ssh-keygen` command to use different cryptographic algorithms, such as 'ed25519' which is more secure and has a smaller string to pass around.
 
-* A `ssh-agent` user file is included in the install, this will cache ssh passwords so that they only have to be typed once every user session. To use it, enable the service with `systemctl enable --user --now ssh-agent.service` and add your private keys with `ssh-add ~/.ssh/KEY_NAME`. To make all ssh clients store keys in the agent on first use, add the configuration setting `AddKeysToAgent yes` to `~/.ssh/config`.
+- A `ssh-agent` user file is included in the install, this will cache ssh passwords so that they only have to be typed once every user session. To use it, enable the service with `systemctl enable --user --now ssh-agent.service` and add your private keys with `ssh-add ~/.ssh/KEY_NAME`. To make all ssh clients store keys in the agent on first use, add the configuration setting `AddKeysToAgent yes` to `~/.ssh/config`.
+
+### Setting up multiple monitors
+
+- Run `xrandr --listmonitors` and grab the identifier for each monitor you wish to set up:
+
+- Example output:
+
+    Monitors: 2
+    0: +\*eDP1 1366/310x768/170+1920+0 eDP1
+    1: +HDMI1 1920/520x1080/290+0+0 HDMI1
+
+- Edit the example file: `X11/10-monitor.conf` accordingly for each monitor you have.
 
 ## Problems encountered:
 
@@ -196,7 +208,7 @@ The only real solution I've found is to immediately shutdown your WM and login a
 
 Solution: Run `chmod +x ~/.autostart`.
 
-### Something else went *kaput*
+### Something else went _kaput_
 
 Solution: I hope you had timeshift configured because it'll be the thing to save you. Find a pen drive with a liveCD to boot with, install timeshift on the live environment and let it restore from your timeshift snapshot directory (usually `/run/timeshift/backup/timeshift/snapshots/`).
 
