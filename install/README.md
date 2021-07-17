@@ -150,11 +150,13 @@ Tips:
 
 - Example output:
 
+    ```
     Monitors: 2
     0: +\*eDP1 1366/310x768/170+1920+0 eDP1
     1: +HDMI1 1920/520x1080/290+0+0 HDMI1
+    ```
 
-- Edit the example file: `X11/10-monitor.conf` accordingly for each monitor you have.
+- Edit the example file: `X11/10-monitor.conf` accordingly for each monitor you have, then copy the file to `/etc/X11/xorg.conf.d`.
 
 ## Problems encountered:
 
