@@ -12,9 +12,9 @@ send-error() {
 }
 
 if wal -n -e -i "$@"; then
-    . ~/.dotfiles/polybar/launch.sh &
+    #. ~/.dotfiles/polybar/launch.sh &
     feh --bg-scale "$(< "${HOME}/.cache/wal/wal")"
-    qtile-cmd -o cmd -f restart >/dev/null 2>&1
+    qtile cmd-obj -o cmd -f restart >/dev/null 2>&1
     pkill dunst
 
     notify-send -i "$icon_image" "set-bg" "New background set"

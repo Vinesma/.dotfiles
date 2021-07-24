@@ -6,6 +6,8 @@ def config():
     """
     homepath = path.expanduser("~")
     scripts_path = path.join(homepath, ".dotfiles", "scripts")
+    mail_path = path.join(homepath, ".mail", "gmail", "Inbox", "new")
+    newsboat_path = path.join(scripts_path, "newsboat")
     mod = "mod4"
     terminal = "kitty",
     terminal_reduced_opacity = "kitty -o background_opacity=0.9"
@@ -16,6 +18,8 @@ def config():
     return {
         "homepath": homepath,
         "scripts_path": scripts_path,
+        "mail_path": mail_path,
+        "newsboat_path": newsboat_path,
         "mod": mod,
         "terminal": terminal,
         "terminal_reduced_opacity": terminal_reduced_opacity,
