@@ -28,11 +28,16 @@
 User defined bar for qtile
 """
 
-from os import path
-from libqtile import widget, bar
-from modules import theme
+from os import path, listdir
+from subprocess import run
 
+from libqtile import widget, bar
+from modules import theme, constants
+
+config = constants.config()
 pallete = theme.create_pallete()
+font_size=12
+font_size_med=font_size+1
 
 # PYWAL COLORS
 colors_main = pallete["colors_main"]
@@ -40,53 +45,104 @@ colors = pallete["colors"]
 highlight = pallete["highlight"]
 shadow = pallete["shadow"]
 
+def check_mail():
+    mail_count = len(listdir(config.get("mail_path")))
+
+    if mail_count > 0:
+        return f" {mail_count}"
+    else:
+        return ""
+
+def check_rss():
+    upper_limit = 500
+    lower_limit = 50
+    file_path = path.join(config.get("newsboat_path"), "unread_count.tmp")
+    
+    try:
+        with open(file_path, "r") as _file:
+            unread_count = int(_file.readline().rstrip())
+
+        if unread_count > upper_limit:
+            return f" {unread_count}+"
+        elif unread_count < lower_limit:
+            return ""
+        else:
+            return f" {unread_count}"
+    except OSError:
+        return ""
+
 def create_widgets():
     """
     Creates widgets to show on a bar
     """
     widgets = [
         widget.GroupBox(
-            this_current_screen_border=highlight,
-            urgent_border=colors_main["background"],
-            highlight_method='block',
-            rounded=False,
+            highlight_method="block",
+            urgent_alert_method="block",
+            highlight_color=[colors_main.get("background"), "282828"],
+            this_current_screen_border=colors.get("color3"),
+            this_screen_border=colors.get("color3"),
+            urgent_border="FF4847",
+            urgent_text="FFFFFF",
             fontshadow=shadow,
-        ),
+            disable_drag=True,
+            rounded=False,
+            ),
         widget.Spacer(
-            length=2,
-        ),
-        widget.Prompt(),
-        widget.WindowName(),
-        widget.Cmus(
-            play_color=highlight,
-            max_chars=45,
-        ),
+            length=4
+            ),
+        widget.TaskList(
+            foreground='FFFFFF',
+            max_title_width=200,
+            highlight_method="block",
+            urgent_border="FF4847",
+            border=highlight,
+            fontshadow=shadow,
+            ),
         widget.Spacer(
-            length=8,
+            length=bar.STRETCH
+            ),
+        widget.Mpd2(
+            foreground=highlight,
+            status_format='{play_status} {title}',
+            idle_message='',
+            idle_format='',
+            no_connection='',
+            fontsize=font_size_med,
+            play_states={'pause': '', 'play': '', 'stop': ''}
+        ),
+        widget.GenPollText(
+            func=check_mail,
+            update_interval=10,
+            max_chars=10,
+            fontsize=font_size_med,
+            fontshadow=shadow,
+            background=colors.get("color3"),
+        ),
+        widget.GenPollText(
+            func=check_rss,
+            update_interval=6,
+            max_chars=10,
+            foreground='FFFFFF',
+            fontsize=font_size_med,
+            fontshadow=shadow,
+            background=colors.get("color1"),
         ),
         widget.Clock(
-            format='%d/%m/%y %a %I:%M %p',
-        ),
+            format=r"%d/%m - %I:%M %p",
+            foreground='FFFFFF',
+            fontshadow=shadow,
+            ),
         widget.Systray(),
     ]
-    if path.isdir("/sys/class/power_supply/BAT1/"):
-        widgets.insert(-3, widget.Battery(
-            format="{char}{percent:2.0%}",
-            update_interval=30,
-            charge_char="🔹",
-            discharge_char="🔸",
-            full_char="🔹",
-            unknown_char="🔹",
-            empty_char="⚠️ ",
-            ))
-        widgets.insert(-4, widget.Spacer(length=8))
+    return widgets
 
 def create_bar(useBar=False):
     """
     Initialize a bar
     """
     if useBar:
-        return bar.Bar(widgets=create_widgets(), size=23, background=colors_main["background"], opacity=0.9)
+        return bar.Bar(widgets=create_widgets(), size=25, background=colors_main.get("background"), opacity=0.9)
     else:
         return None
 
@@ -96,7 +152,7 @@ def generate_defaults():
     """
     return {
         "font": "Source Code Pro Bold",
-        "fontsize": 12,
-        "padding": 4,
+        "fontsize": font_size,
+        "padding": 6,
         "foreground": colors_main["foreground"],
     }
