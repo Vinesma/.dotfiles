@@ -1,8 +1,8 @@
 #!/bin/bash
 # USE chmod +x $FILE to make this file an executable
 
+#. ~/.dotfiles/polybar/launch.sh &
 thunar --daemon &
-. ~/.dotfiles/polybar/launch.sh &
 feh --bg-scale "$(< "${HOME}/.cache/wal/wal")" &
 picom --experimental-backends &
 redshift-gtk &
