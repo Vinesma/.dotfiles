@@ -31,13 +31,14 @@ User defined bar for qtile
 from os import path, listdir
 from subprocess import run
 
-from libqtile import widget, bar
+from libqtile import widget, bar, qtile
 from modules import theme, constants
 
 config = constants.config()
 pallete = theme.create_pallete()
 font_size=12
 font_size_med=font_size+1
+font_size_big=font_size_med + 2
 
 # PYWAL COLORS
 colors_main = pallete["colors_main"]
@@ -71,6 +72,15 @@ def check_rss():
     except OSError:
         return ""
 
+def check_wifi():
+    cmd = ["nmcli", "-t", "-f", "STATE", "general"]
+    output = run(cmd, text=True, capture_output=True)
+
+    if "connected" in output.stdout:
+        return '直'
+    else:
+        return "睊"
+
 def create_widgets():
     """
     Creates widgets to show on a bar
@@ -98,6 +108,8 @@ def create_widgets():
             urgent_border="FF4847",
             border=highlight,
             fontshadow=shadow,
+            txt_minimized='絛 ',
+            txt_floating='缾 ',
             ),
         widget.Spacer(
             length=bar.STRETCH
@@ -114,19 +126,29 @@ def create_widgets():
         widget.GenPollText(
             func=check_mail,
             update_interval=10,
-            max_chars=10,
+            max_chars=5,
             fontsize=font_size_med,
             fontshadow=shadow,
             background=colors.get("color3"),
+            mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("kitty neomutt")}
         ),
         widget.GenPollText(
             func=check_rss,
             update_interval=6,
-            max_chars=10,
+            max_chars=6,
             foreground='FFFFFF',
             fontsize=font_size_med,
             fontshadow=shadow,
             background=colors.get("color1"),
+        ),
+        widget.GenPollText(
+            func=check_wifi,
+            update_interval=5,
+            max_chars=3,
+            foreground='FFFFFF',
+            fontsize=font_size_big,
+            fontshadow=shadow,
+            background=colors.get("color2"),
         ),
         widget.Clock(
             format=r"%d/%m - %I:%M %p",
