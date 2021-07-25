@@ -64,7 +64,7 @@ def check_rss():
             unread_count = int(_file.readline().rstrip())
 
         if unread_count > upper_limit:
-            return f" {unread_count}+"
+            return f" {upper_limit}+"
         elif unread_count < lower_limit:
             return ""
         else:
@@ -129,7 +129,7 @@ def create_widgets():
             max_chars=5,
             fontsize=font_size_med,
             fontshadow=shadow,
-            background=colors.get("color3"),
+            background=colors.get("color2"),
             mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("kitty neomutt")}
         ),
         widget.GenPollText(
@@ -155,8 +155,28 @@ def create_widgets():
             foreground='FFFFFF',
             fontshadow=shadow,
             ),
+        widget.Sep(),
         widget.Systray(),
     ]
+    
+    # Add battery widget if on a laptop
+    if len(listdir(path.join('/', 'sys', 'class', 'power_supply'))) > 0:
+        widgets.insert(-3, 
+            widget.Battery(
+                format='<span size="small">{char}</span> {percent:2.0%}',
+                full_char="",
+                charge_char="",
+                discharge_char="",
+                empty_char="",
+                unknown_char="",
+                foreground='FFFFFF',
+                low_foreground='FF4847',
+                fontsize=font_size_med,
+                fontshadow=shadow,
+                background=colors.get("color1"),
+            ),
+        )
+
     return widgets
 
 def create_bar(useBar=False):
