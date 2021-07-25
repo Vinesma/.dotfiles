@@ -39,6 +39,7 @@ pallete = theme.create_pallete()
 font_size=12
 font_size_med=font_size+1
 font_size_big=font_size_med + 2
+font_size_gigantic=font_size_med + 10
 
 # PYWAL COLORS
 colors_main = pallete["colors_main"]
@@ -106,7 +107,7 @@ def create_widgets():
             max_title_width=200,
             highlight_method="block",
             urgent_border="FF4847",
-            border=highlight,
+            border=colors.get("color1"),
             fontshadow=shadow,
             txt_minimized='絛 ',
             txt_floating='缾 ',
@@ -123,14 +124,12 @@ def create_widgets():
             fontsize=font_size_med,
             play_states={'pause': '', 'play': '', 'stop': ''}
         ),
-        widget.GenPollText(
-            func=check_mail,
-            update_interval=10,
-            max_chars=5,
-            fontsize=font_size_med,
-            fontshadow=shadow,
-            background=colors.get("color2"),
-            mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("kitty neomutt")}
+        # Left piece /|
+        widget.TextBox(
+            text="",
+            fontsize=font_size_gigantic,
+            foreground=colors.get("color1"),
+            padding=0,
         ),
         widget.GenPollText(
             func=check_rss,
@@ -141,6 +140,31 @@ def create_widgets():
             fontshadow=shadow,
             background=colors.get("color1"),
         ),
+        # Connecting piece |/|
+        widget.TextBox(
+            text="",
+            fontsize=font_size_gigantic,
+            foreground=colors.get("color1"),
+            background=colors.get("color2"),
+            padding=0,
+        ),
+        widget.GenPollText(
+            func=check_mail,
+            update_interval=10,
+            max_chars=5,
+            fontsize=font_size_med,
+            fontshadow=shadow,
+            background=colors.get("color2"),
+            mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("kitty neomutt")}
+        ),
+        # Connecting piece |/|
+        widget.TextBox(
+            text="",
+            fontsize=font_size_gigantic,
+            foreground=colors.get("color2"),
+            background=colors.get("color3"),
+            padding=0,
+        ),
         widget.GenPollText(
             func=check_wifi,
             update_interval=5,
@@ -148,7 +172,14 @@ def create_widgets():
             foreground='FFFFFF',
             fontsize=font_size_big,
             fontshadow=shadow,
-            background=colors.get("color1"),
+            background=colors.get("color3"),
+        ),
+        # Right piece /|
+        widget.TextBox(
+            text="",
+            fontsize=font_size_gigantic,
+            foreground=colors.get("color3"),
+            padding=0,
         ),
         widget.Clock(
             format=r"%d/%m - %I:%M %p",

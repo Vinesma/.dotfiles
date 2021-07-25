@@ -1,5 +1,5 @@
 #!/bin/bash
-. $HOME/.dotfiles/polybar/launch.sh &
+#. $HOME/.dotfiles/polybar/launch.sh &
 thunar --daemon &
 dunst &
 numlockx &
