@@ -175,6 +175,14 @@
             "comments": []
         },
         {
+            "name": "python-mpd2",
+            "install_name": "python-mpd2",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
             "name": "pip",
             "install_name": "python-pip",
             "installer": "pacman",
