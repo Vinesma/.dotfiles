@@ -53,7 +53,7 @@ def check_mail():
     if mail_count > 0:
         return f" {mail_count}"
     else:
-        return ""
+        return ""
 
 def check_rss():
     upper_limit = 500
@@ -65,13 +65,13 @@ def check_rss():
             unread_count = int(_file.readline().rstrip())
 
         if unread_count > upper_limit:
-            return f" {upper_limit}+"
+            return f"參 {upper_limit}+"
         elif unread_count < lower_limit:
-            return ""
+            return "索"
         else:
-            return f" {unread_count}"
+            return f"參 {unread_count}"
     except OSError:
-        return ""
+        return "索"
 
 def check_wifi():
     cmd = ["nmcli", "-t", "-f", "STATE", "general"]
@@ -111,12 +111,20 @@ def create_widgets():
             fontshadow=shadow,
             txt_minimized='絛 ',
             txt_floating='缾 ',
-            ),
+        ),
         widget.Spacer(
             length=bar.STRETCH
-            ),
+        ),
+        # Left piece /|
+        widget.TextBox(
+            text="",
+            fontsize=font_size_gigantic,
+            foreground="F9F9F9",
+            padding=0,
+        ),
         widget.Mpd2(
-            foreground=highlight,
+            foreground=colors.get("color3"),
+            background="F9F9F9",
             status_format='{play_status} {title}',
             idle_message='',
             idle_format='',
@@ -124,33 +132,35 @@ def create_widgets():
             fontsize=font_size_med,
             play_states={'pause': '', 'play': '', 'stop': ''}
         ),
-        # Left piece /|
+        # Connecting piece |/|
         widget.TextBox(
-            text="",
+            text="",
             fontsize=font_size_gigantic,
-            foreground=colors.get("color2"),
+            foreground="F9F9F9",
+            background=colors.get("color3"),
             padding=0,
         ),
         widget.GenPollText(
             func=check_mail,
-            update_interval=10,
+            update_interval=8,
             max_chars=5,
             fontsize=font_size_med,
             fontshadow=shadow,
-            background=colors.get("color2"),
+            foreground='FFFFFF',
+            background=colors.get("color3"),
             mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("kitty neomutt")}
         ),
         # Connecting piece |/|
         widget.TextBox(
             text="",
             fontsize=font_size_gigantic,
-            foreground=colors.get("color2"),
+            foreground=colors.get("color3"),
             background=colors.get("color1"),
             padding=0,
         ),
         widget.GenPollText(
             func=check_rss,
-            update_interval=10,
+            update_interval=8,
             max_chars=6,
             foreground='FFFFFF',
             fontsize=font_size_med,
@@ -174,20 +184,23 @@ def create_widgets():
             fontshadow=shadow,
             background=colors.get("color3"),
         ),
-        # Right piece /|
+        # Connecting piece |/|
         widget.TextBox(
             text="",
             fontsize=font_size_gigantic,
             foreground=colors.get("color3"),
+            background=colors.get("color1"),
             padding=0,
         ),
         widget.Clock(
             format=r"%d/%m - %I:%M %p",
             foreground='FFFFFF',
+            background=colors.get("color1"),
             fontshadow=shadow,
             ),
-        widget.Sep(),
-        widget.Systray(),
+        widget.Systray(
+            background=colors.get("color1"),
+        ),
     ]
     
     # Add battery widget if on a laptop
