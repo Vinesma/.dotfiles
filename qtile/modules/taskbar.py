@@ -98,10 +98,10 @@ def create_widgets():
             fontshadow=shadow,
             disable_drag=True,
             rounded=False,
-            ),
+        ),
         widget.Spacer(
             length=4
-            ),
+        ),
         widget.TaskList(
             foreground='FFFFFF',
             max_title_width=200,
@@ -197,7 +197,7 @@ def create_widgets():
             foreground='FFFFFF',
             background=colors.get("color1"),
             fontshadow=shadow,
-            ),
+        ),
         widget.Systray(
             background=colors.get("color1"),
         ),
@@ -205,7 +205,7 @@ def create_widgets():
     
     # Add battery widget if on a laptop
     if len(listdir(path.join('/', 'sys', 'class', 'power_supply'))) > 0:
-        widgets.insert(-4, 
+        widgets.insert(-1, 
             widget.Battery(
                 format='<span size="small">{char}</span> {percent:2.0%}',
                 full_char="",
@@ -217,7 +217,7 @@ def create_widgets():
                 low_foreground='FF4847',
                 fontsize=font_size_med,
                 fontshadow=shadow,
-                background=colors.get("color2"),
+                background=colors.get("color3"),
             ),
         )
 
