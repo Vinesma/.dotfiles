@@ -107,7 +107,7 @@ def create_widgets():
             max_title_width=200,
             highlight_method="block",
             urgent_border="FF4847",
-            border=colors.get("color1"),
+            border=highlight,
             fontshadow=shadow,
             txt_minimized='絛 ',
             txt_floating='缾 ',
