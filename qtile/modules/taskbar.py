@@ -189,9 +189,9 @@ def create_widgets():
 
     # Add battery widget if on a laptop
     if len(listdir(path.join('/', 'sys', 'class', 'power_supply'))) > 0:
-        widgets.insert(-1,
+        widgets.insert(-3,
             widget.Battery(
-                format='<span size="small">{char}</span> {percent:2.0%}',
+                format='| <span size="small">{char}</span> {percent:2.0%}',
                 full_char="",
                 charge_char="",
                 discharge_char="",
