@@ -143,7 +143,6 @@ def create_widgets():
         widget.GenPollText(
             func=check_mail,
             update_interval=8,
-            max_chars=5,
             fontsize=font_size_med,
             fontshadow=shadow,
             foreground='FFFFFF',
@@ -153,7 +152,6 @@ def create_widgets():
         widget.GenPollText(
             func=check_rss,
             update_interval=8,
-            max_chars=6,
             foreground='FFFFFF',
             fontsize=font_size_med,
             fontshadow=shadow,
