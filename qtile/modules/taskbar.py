@@ -51,27 +51,27 @@ def check_mail():
     mail_count = len(listdir(config.get("mail_path")))
 
     if mail_count > 0:
-        return f" {mail_count}"
+        return f" {mail_count} |"
     else:
-        return ""
+        return ""
 
 def check_rss():
     upper_limit = 500
     lower_limit = 50
     file_path = path.join(config.get("newsboat_path"), "unread_count.tmp")
-    
+
     try:
         with open(file_path, "r") as _file:
             unread_count = int(_file.readline().rstrip())
 
         if unread_count > upper_limit:
-            return f"參 {upper_limit}+"
+            return f"索 {upper_limit}+ |"
         elif unread_count < lower_limit:
-            return "索"
+            return ""
         else:
-            return f"參 {unread_count}"
+            return f"索 {unread_count} |"
     except OSError:
-        return "索"
+        return ""
 
 def check_wifi():
     cmd = ["nmcli", "-t", "-f", "STATE", "general"]
@@ -125,12 +125,12 @@ def create_widgets():
         widget.Mpd2(
             foreground=colors.get("color3"),
             background="F9F9F9",
-            status_format='{play_status} {title}',
+            status_format='<span size="large">{play_status}</span> {title}',
             idle_message='',
             idle_format='',
             no_connection='',
             fontsize=font_size_med,
-            play_states={'pause': '', 'play': '', 'stop': ''}
+            play_states={'pause': '', 'play': '', 'stop': ''}
         ),
         # Connecting piece |/|
         widget.TextBox(
@@ -150,14 +150,6 @@ def create_widgets():
             background=colors.get("color3"),
             mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("kitty neomutt")}
         ),
-        # Connecting piece |/|
-        widget.TextBox(
-            text="",
-            fontsize=font_size_gigantic,
-            foreground=colors.get("color3"),
-            background=colors.get("color1"),
-            padding=0,
-        ),
         widget.GenPollText(
             func=check_rss,
             update_interval=8,
@@ -165,15 +157,7 @@ def create_widgets():
             foreground='FFFFFF',
             fontsize=font_size_med,
             fontshadow=shadow,
-            background=colors.get("color1"),
-        ),
-        # Connecting piece |/|
-        widget.TextBox(
-            text="",
-            fontsize=font_size_gigantic,
-            foreground=colors.get("color1"),
             background=colors.get("color3"),
-            padding=0,
         ),
         widget.GenPollText(
             func=check_wifi,
@@ -202,10 +186,10 @@ def create_widgets():
             background=colors.get("color1"),
         ),
     ]
-    
+
     # Add battery widget if on a laptop
     if len(listdir(path.join('/', 'sys', 'class', 'power_supply'))) > 0:
-        widgets.insert(-1, 
+        widgets.insert(-1,
             widget.Battery(
                 format='<span size="small">{char}</span> {percent:2.0%}',
                 full_char="",
