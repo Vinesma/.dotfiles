@@ -199,6 +199,7 @@ def create_widgets():
                 unknown_char="",
                 foreground='FFFFFF',
                 low_foreground='FF4847',
+                hide_threshold=0.98,
                 fontsize=font_size_med,
                 fontshadow=shadow,
                 background=colors.get("color3"),
