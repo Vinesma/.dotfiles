@@ -88,19 +88,19 @@ def create_widgets():
     """
     widgets = [
         widget.GroupBox(
+            fontshadow=shadow,
             highlight_method="block",
-            urgent_alert_method="block",
-            highlight_color=[colors_main.get("background"), "282828"],
             this_current_screen_border=highlight,
             this_screen_border=highlight,
+            urgent_alert_method="block",
             urgent_border="FF4847",
             urgent_text="FFFFFF",
-            fontshadow=shadow,
             disable_drag=True,
             rounded=False,
+            use_mouse_wheel=False,
         ),
         widget.Spacer(
-            length=4
+            length=4,
         ),
         widget.TaskList(
             foreground='FFFFFF',
@@ -176,9 +176,13 @@ def create_widgets():
         ),
         widget.Clock(
             format=r"%d/%m - %I:%M %p",
-            foreground='FFFFFF',
+            foreground="FFFFFF",
             background=colors.get("color1"),
             fontshadow=shadow,
+        ),
+        widget.Sep(
+            foreground="FFFFFF",
+            background=colors.get("color1"),
         ),
         widget.Systray(
             background=colors.get("color1"),
