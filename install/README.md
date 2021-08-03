@@ -202,9 +202,9 @@ Solution: I once fixed this by booting with a pen drive on liveCD, opening a ter
 
 ### Wrong resolution upon startup
 
-Solution: Add `xrandr --output OUTPUT --mode WIDTHxHEIGHT` to the line that starts with `greeter-setup-script` in `/etc/lightdm/lightdm.conf`. You can find the values needed by running `xrandr` with no arguments. In my experience, the resolution is correct about 30% of the time when I boot.
+Solution 1: Do the instructions in "Setting up multiple monitors", they can maybe fix the problem, even if you have only one monitor.
 
-The only real solution I've found is to immediately shutdown your WM and login again. This works but is quite annoying.
+Solution 2: Add `xrandr --output OUTPUT --mode WIDTHxHEIGHT` to the line that starts with `greeter-setup-script` in `/etc/lightdm/lightdm.conf`. You can find the values needed by running `xrandr` with no arguments. In my experience, the resolution is correct about 30% of the time when I boot. The only real solution I've found is to immediately shutdown your WM and login again. This works but is quite annoying.
 
 ### Autostart is not working
 
