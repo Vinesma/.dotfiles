@@ -5,14 +5,17 @@ Helpers for spawning processes and getting their output
 from subprocess import run, CalledProcessError
 from time import sleep
 
-def process(process_name, args=[]):
+def process(process_name, args=None):
     """
     Run a process, this will display its output to the screen 
         process_name = string with the process to run
         args = list with the arguments to pass to the process
         return -> The process' output as a CompletedProcess instance
     Errors are reported, then ignored after 30 seconds.
-    """ 
+    """
+    if args is None:
+        args = []
+
     process = [process_name] + args
     try:
         output = run(process, check=True, text=True)
@@ -25,7 +28,7 @@ def process(process_name, args=[]):
 
     return output
 
-def process_silent(process_name, args=[]):
+def process_silent(process_name, args=None):
     """
     Run a process, this will NOT display its output to the screen 
         process_name = string with the process to run
@@ -33,6 +36,9 @@ def process_silent(process_name, args=[]):
         return -> The process' output as a CompletedProcess instance
     Errors are reported, then ignored after 30 seconds.
     """ 
+    if args is None:
+        args = []
+
     process = [process_name] + args
     try:
         output = run(process, check=True, capture_output=True, text=True)
@@ -45,18 +51,21 @@ def process_silent(process_name, args=[]):
 
     return output
 
-def process_stdout(process_name, args=[]):
+def process_stdout(process_name, args=None):
     """
     Run a process, this will NOT display its output to the screen 
         process_name = string with the process to run
         args = list with the arguments to pass to the process
         return -> The output of the process as a string
-    """ 
+    """
+    if args is None:
+        args = []
+
     output = process_silent(process_name, args)
 
     return str(output.stdout)
 
-def sudo_process(process_name, args=[]):
+def sudo_process(process_name, args=None):
     """
     Run a process with root privileges
         process_name = string with the process to run
@@ -64,6 +73,9 @@ def sudo_process(process_name, args=[]):
         return -> The process' output as a CompletedProcess instance
     Errors will crash the script
     """
+    if args is None:
+        args = []
+
     process = ["sudo", process_name] + args
     output = run(process, check=True, text=True)
 

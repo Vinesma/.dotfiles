@@ -4,7 +4,11 @@ from shutil import copy
 
 class File:
 
-    def __init__(self, name, residence, source=None, text="", create_link=False, sudo=False, comments=[]):
+    def __init__(self, name, residence, source=None, text="", create_link=False, sudo=False, comments=None):
+
+        if comments is None:
+            comments = []
+
         self.name = name
         self.residence = path.expanduser(residence)
         self.text = text

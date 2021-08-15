@@ -5,7 +5,13 @@ import re
 
 class Package:
 
-    def __init__(self, name, install_name, installer, run_commands=[], autostart=None, comments=[]):
+    def __init__(self, name, install_name, installer, run_commands=None, autostart=None, comments=None):
+
+        if comments is None:
+            comments = []
+        if run_commands is None:
+            run_commands = []
+
         self.name = name
         self.install_name = install_name
         self.installer = installer

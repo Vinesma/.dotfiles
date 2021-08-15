@@ -5,8 +5,13 @@ from installers import pacman, aur, pip
 
 class Category:
 
-    def __init__(self, category_name, packages=[], files=[]):
+    def __init__(self, category_name, packages=None, files=None):
         self.category_name = category_name
+
+        if packages is None:
+            packages = []
+        if files is None:
+            files = []
 
         packlist = []
         filelist = []
