@@ -39,7 +39,7 @@ def check_distro():
     """
     distro = spawn.process_stdout("uname", ["-r"])
 
-    if "manjaro" in distro.lower():
+    if "MANJARO" in distro:
         messages.arrow("Manjaro Linux detected. Specific packages will be installed.")
         return True
 
