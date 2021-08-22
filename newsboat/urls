@@ -6,8 +6,8 @@ https://forum.manjaro.org/c/announcements/stable-updates.rss "~Manjaro Updates"
 "query:Youtube (Tech):tags # \"tech\" and age < 60"
 "query:Youtube (Japanese):tags # \"japanese\""
 "query:Twitter (News):tags # \"twitter-news\" and unread = \"yes\""
-"query:Twitter (People):tags # \"twitter-people\" and unread = \"yes\""
 "query:Twitter (Artists):tags # \"twitter-artist\" and age < 2"
+"query:Twitter (Artists)(All):tags # \"twitter-artist\"
 https://g1.globo.com/rss/g1/sp/sao-paulo/ "~G1 - São Paulo" news
 http://www.bbc.co.uk/portuguese/index.xml "~BBC" news
 https://feeds.folha.uol.com.br/poder/rss091.xml "~FOLHA - Poder" news
@@ -20,12 +20,11 @@ https://kentcdodds.com/blog/rss.xml "~Kent C. Dodds" tech-news
 https://www.youtube.com/feeds/videos.xml?channel_id=UCE1jXbVAGJQEORz9nZqb5bQ "~Ahoy" youtube-favorite
 https://www.youtube.com/feeds/videos.xml?channel_id=UCS0N5baNlQWJCUrhCEo8WlA "~Ben Eater" youtube-others tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UCEOXxzW2vU0P-0THehuIIeg "~Captain Disillusion" youtube-favorite
-https://www.youtube.com/feeds/videos.xml?channel_id=UCKOvOaJv4GK-oDqx-sj7VVg "~Chubbyemu" youtube-others
 https://www.youtube.com/feeds/videos.xml?channel_id=UCYZtp0YIxYOipX15v_h_jnA "~Crowbcat" youtube-others
+https://www.youtube.com/feeds/videos.xml?channel_id=UCcAvljdM2NMdMYq_pvT9pBw "~DemoD" youtube-favorite
 https://www.youtube.com/feeds/videos.xml?channel_id=UCyhvJR_nYEeSuv_9XlWLRYw "~DemoD 2" youtube-others
 https://www.youtube.com/feeds/videos.xml?channel_id=UCwRXb5dUK4cvsHbx-rGzSgw "~Derek Banas" youtube-others tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UCVyRiMvfUNMA1UPlDPzG5Ow "~DesignCourse" youtube-others
-https://www.youtube.com/feeds/videos.xml?channel_id=UCcAvljdM2NMdMYq_pvT9pBw "~DemoD" youtube-favorite
 https://www.youtube.com/feeds/videos.xml?channel_id=UCsBjURrPoezykLs9EqgamOA "~Fireship" youtube-favorite tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UCbWcXB0PoqOsAvAdfzWMf0w "~Down The Rabbit Hole" youtube-favorite
 https://www.youtube.com/feeds/videos.xml?channel_id=UCqJ-Xo29CKyLTjn6z2XwYAw "~Game Maker's Toolkit" youtube-favorite
@@ -47,7 +46,6 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UC29ju8bIPH5as8OGnQzwJyA "~T
 https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA "~Luke Smith" youtube-others tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg "~DistroTube" youtube-others tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UCld68syR8Wi-GY_n4CaoJGA "~Brodie Robertson" youtube-others tech
-https://www.youtube.com/feeds/videos.xml?channel_id=UCMZxtiWIdrXUUbWMAe6D-Iw "~msjche" youtube-others tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UCg6gPGh8HU2U01vaFCAsvmQ "~Chris Titus Tech" youtube-others tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UCUmLRMERmJrmUtgnbFfknAg "~Randall (Gamedev Diary)" youtube-favorite tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UCy0tKL1T7wFoYcxCe0xjN6Q "~Technology Connections" youtube-favorite tech
@@ -139,23 +137,12 @@ https://nitter.nixnet.services/kitokoruta/rss "~kitokoruta" twitter-artist
 https://nitter.nixnet.services/a999895/rss "~a999895" twitter-artist
 https://nitter.nixnet.services/_himehajime/rss "~_himehajime" twitter-artist
 https://nitter.nixnet.services/rswxx/rss "~rswxx" twitter-artist
-https://nitter.nixnet.services/TynanSylvester/rss "~Tynan Sylvester" twitter-people
-https://nitter.nixnet.services/LAGTVNovaWar/rss "~Adam (Novawar)" twitter-people
-https://nitter.nixnet.services/gamemakerstk/rss "~Game Maker's Toolkit" twitter-people
-https://nitter.nixnet.services/NyaaV2/rss "~Nyaa Torrents" twitter-people
-https://nitter.nixnet.services/composerandreas/rss "~Andreas Waldetoft" twitter-people
-https://nitter.nixnet.services/CanipaShow/rss "~Canipa Effect" twitter-people
-https://nitter.nixnet.services/Demolition_d/rss "~Demolition D" twitter-people
-https://nitter.nixnet.services/jasonschreier/rss "~Jason Schreier" twitter-people
-https://nitter.nixnet.services/PlebeusOciosos/rss "~Plebeus Ociosos" twitter-people
-https://nitter.nixnet.services/DanFloydPlus/rss "~Daniel Floyd" twitter-people
-https://nitter.nixnet.services/SukebanGames/rss "~Sukeban Games" twitter-people
-https://nitter.nixnet.services/NetHistorian/rss "~Internet Historian" twitter-people
-https://nitter.nixnet.services/FredInTheKnud/rss "~FredInTheKnud" twitter-people
-https://nitter.nixnet.services/traversymedia/rss "~traversymedia" twitter-people
-https://nitter.nixnet.services/SsethTzeentach/rss "~SsethTzeentach" twitter-people
-https://nitter.nixnet.services/summoningsalt/rss "~Summoningsalt" twitter-people
-https://nitter.nixnet.services/MrMarshall/rss "~Marshall McGee" twitter-people
-https://nitter.nixnet.services/haveibeenpwned/rss "~haveibeenpwned" twitter-people
-https://nitter.nixnet.services/oatila/rss "~Atila Iamarino" twitter-people
-https://nitter.nixnet.services/hololive_En/rss "~Hololive" twitter-people
+https://nitter.nixnet.services/pi_man_nikuzume/rss "~kekemotsu" twitter-artist
+https://nitter.nixnet.services/MHKchen/rss "~Mechamania" twitter-artist
+https://nitter.nixnet.services/uonome1988/rss "~talunilu_b" twitter-artist
+https://nitter.nixnet.services/sy4may0/rss "~SY4" twitter-artist
+https://nitter.nixnet.services/kakult2017/rss "~kakult" twitter-artist
+https://nitter.nixnet.services/askziye/rss "~ASK" twitter-artist
+https://nitter.nixnet.services/pomesaurus/rss "~pome" twitter-artist
+https://nitter.nixnet.services/Dishwasher1911/rss "~Dishwasher1910+1" twitter-artist
+https://nitter.nixnet.services/youcapriccio/rss "~youcapriccio" twitter-artist
