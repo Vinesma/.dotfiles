@@ -26,6 +26,8 @@ def process(process_name, args=None):
             print(f"Program will continue in {i * 10} seconds...")
             sleep(10)
 
+        output = run(['echo'], text=True)
+
     return output
 
 def process_silent(process_name, args=None):
@@ -48,6 +50,8 @@ def process_silent(process_name, args=None):
         for i in range(3, 0, -1):
             print(f"Program will continue in {i * 10} seconds...")
             sleep(10)
+
+        output = run(['echo'], text=True)
 
     return output
 
