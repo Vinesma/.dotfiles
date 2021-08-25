@@ -66,9 +66,7 @@ Plugins:
 
 - Install [vim-plug](https://github.com/junegunn/vim-plug/wiki/tutorial#setting-up)
 
-- [Declare the plugins to be used inside the init.vim file.](https://github.com/junegunn/vim-plug/wiki/tutorial#installing-plugins)
-
-- Restart nvim. Now run `:PlugInstall` to install the plugins.
+- Run `:PlugInstall` in nvim to install the plugins already declared inside `init.vim`.
 
 - To upgrade plugins, run `:PlugUpdate`.
 
@@ -78,7 +76,9 @@ VSCode integration:
 
 - For using neovim inside vscode, you need to install a vscode extension.
 
-- After it is installed, you will need neovim 0.5.0+ which is not in the repos. The easiest way to acquire it is by [downloading the appimage](https://github.com/neovim/neovim/releases) running: `chmod u+x` on it, then adding the path to it in the extension config.
+- After installing the extension run `nvim -v` and check if your version is higher than 0.5.0. If it is ignore the next step and just add the path to your nvim to the extension config. You can run `which nvim` to find the path.
+
+- If you don't have access to nvim 0.5.0+, the easiest way to get it is by [downloading the appimage](https://github.com/neovim/neovim/releases) running: `chmod u+x` on it, then adding the path to it in the extension config.
 
 ### Arch User Repository (AUR)
 
