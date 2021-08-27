@@ -36,7 +36,7 @@ from modules import theme, constants
 
 config = constants.config()
 pallete = theme.create_pallete()
-font_size=12
+font_size=14
 font_size_med=font_size+1
 font_size_big=font_size_med + 2
 font_size_gigantic=font_size_med + 10
@@ -215,7 +215,7 @@ def create_bar(useBar=False):
     Initialize a bar
     """
     if useBar:
-        return bar.Bar(widgets=create_widgets(), size=25, background=colors_main.get("background"), opacity=0.9)
+        return bar.Bar(widgets=create_widgets(), size=27, background=colors_main.get("background"), opacity=0.9)
     else:
         return None
 
