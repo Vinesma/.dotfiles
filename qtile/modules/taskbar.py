@@ -82,7 +82,61 @@ def check_wifi():
     else:
         return "睊"
 
-def create_widgets():
+def minimal_widgets():
+    widgets = [
+        widget.GroupBox(
+            fontshadow=shadow,
+            highlight_method="block",
+            this_current_screen_border=highlight,
+            this_screen_border=highlight,
+            urgent_alert_method="block",
+            urgent_border="FF4847",
+            urgent_text="FFFFFF",
+            disable_drag=True,
+            rounded=False,
+            use_mouse_wheel=False,
+        ),
+        widget.Spacer(
+            length=4,
+        ),
+        widget.TaskList(
+            foreground='FFFFFF',
+            max_title_width=200,
+            highlight_method="block",
+            urgent_border="FF4847",
+            border=highlight,
+            fontshadow=shadow,
+            txt_minimized='絛 ',
+            txt_floating='缾 ',
+        ),
+        widget.Spacer(
+            length=bar.STRETCH
+        ),
+        # Left piece /|
+        widget.TextBox(
+            text="",
+            fontsize=font_size_gigantic,
+            foreground=colors.get("color1"),
+            padding=0,
+        ),
+        widget.Clock(
+            format=r"%d/%m - %I:%M %p",
+            foreground="FFFFFF",
+            background=colors.get("color1"),
+            fontshadow=shadow,
+        ),
+        widget.Sep(
+            foreground="FFFFFF",
+            background=colors.get("color1"),
+        ),
+        widget.Systray(
+            background=colors.get("color1"),
+        ),
+    ]
+    
+    return widgets
+
+def main_widgets():
     """
     Creates widgets to show on a bar
     """
@@ -210,14 +264,14 @@ def create_widgets():
 
     return widgets
 
-def create_bar(useBar=False):
+def create_bar(minimal=False):
     """
     Initialize a bar
     """
-    if useBar:
-        return bar.Bar(widgets=create_widgets(), size=28, background=colors_main.get("background"), opacity=0.9)
+    if minimal:
+        return bar.Bar(widgets=minimal_widgets(), size=28, background=colors_main.get("background"), opacity=0.9)
     else:
-        return None
+        return bar.Bar(widgets=main_widgets(), size=28, background=colors_main.get("background"), opacity=0.9)
 
 def generate_defaults():
     """

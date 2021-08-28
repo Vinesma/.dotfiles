@@ -36,5 +36,6 @@ def create_screens():
     Initialize screens for qtile
     """
     return [
-        Screen(top=taskbar.create_bar(useBar=True))
+        Screen(top=taskbar.create_bar()),
+        Screen(top=taskbar.create_bar(minimal=True)),
     ]
