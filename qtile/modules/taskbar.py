@@ -125,13 +125,6 @@ def minimal_widgets():
             background=colors.get("color1"),
             fontshadow=shadow,
         ),
-        widget.Sep(
-            foreground="FFFFFF",
-            background=colors.get("color1"),
-        ),
-        widget.Systray(
-            background=colors.get("color1"),
-        ),
     ]
     
     return widgets
