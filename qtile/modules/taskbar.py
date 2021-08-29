@@ -77,7 +77,7 @@ def check_wifi():
     cmd = ["nmcli", "-t", "-f", "STATE", "general"]
     output = run(cmd, text=True, capture_output=True)
 
-    if "connected" in output.stdout:
+    if "connected" == output.stdout.strip():
         return '直'
     else:
         return "睊"
