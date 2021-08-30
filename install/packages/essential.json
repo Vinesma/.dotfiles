@@ -10,6 +10,14 @@
             "comments": []
         },
         {
+            "name": "xclip",
+            "install_name": "xclip",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
             "name": "Kitty",
             "install_name": "kitty",
             "installer": "pacman",
