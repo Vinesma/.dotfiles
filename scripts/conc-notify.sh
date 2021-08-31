@@ -5,7 +5,7 @@ notify_time="3000"
 
 state=$(nmcli n connectivity check)
 
-if ping_status=$(ping -c 10 google.com); then
+if ping_status=$(ping -c 10 archlinux.org); then
     packets=$(echo "$ping_status" | grep "packet loss" | cut -d',' -f3)
     icon="/usr/share/icons/Papirus/32x32/status/online.svg"
     message="STATE: $state\nPACKETS:$packets"
