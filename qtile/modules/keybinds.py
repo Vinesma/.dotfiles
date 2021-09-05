@@ -110,8 +110,8 @@ def create_keybinds():
         # wallpaper setter
         Key([mod, "mod1"], "w", lazy.spawn(path.join(scripts_path, "bg-setter", "choose-bg.sh"))),
         # mpc (mpd controller)
-        Key([], "Pause", lazy.spawn("mpc toggle")),
-        Key([mod], "p", lazy.spawn("mpc toggle")),
+        Key([], "Pause", lazy.spawn(path.join(scripts_path, "media-toggle.sh"))),
+        Key([mod], "p", lazy.spawn(path.join(scripts_path, "media-toggle.sh"))),
         Key([mod, "mod1"], "Pause", lazy.spawn("mpc seek 0%")),
         Key([mod], "Page_Up",
             lazy.spawn(path.join(scripts_path, "query-vol.sh +10")),
