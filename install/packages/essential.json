@@ -191,6 +191,14 @@
             "comments": []
         },
         {
+            "name": "socat",
+            "install_name": "socat",
+            "installer": "pacman",
+            "run_commands": [],
+            "autostart": null,
+            "comments": []
+        },
+        {
             "name": "pip",
             "install_name": "python-pip",
             "installer": "pacman",
