@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 icon="/usr/share/icons/Papirus/32x32/apps/mpd.svg"
 

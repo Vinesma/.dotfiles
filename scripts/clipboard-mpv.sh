@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Script meant to be run by a qtile keybind, opens a rofi menu for watching videos in mpv.
 # Features:

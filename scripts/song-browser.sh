@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Creates a popup window for the user to select an album, then immediately starts playing.
 # Dependencies:

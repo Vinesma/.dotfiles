@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Launch a kitty window with 2 ncmpcpp instances and free window that can be used for album art.
 

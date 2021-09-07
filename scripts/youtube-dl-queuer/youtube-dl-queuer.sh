@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Script meant to be run by a qtile keybind or called by another, opens a rofi menu for downloading many videos.
 # Features:

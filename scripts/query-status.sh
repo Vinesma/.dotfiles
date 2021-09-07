@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Queries music status if steam is running in the background (presumably a game is playing in fullscreen)
 #

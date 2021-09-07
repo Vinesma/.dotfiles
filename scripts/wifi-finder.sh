@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Shows available wifi connections and allows the user to connect to them.
 # - Dependencies:

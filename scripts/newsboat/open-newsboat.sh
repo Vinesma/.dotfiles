@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Opens newsboat and updates unread counts after exiting out so that other scripts can use the info, syncing is also supported.
 # Dependencies

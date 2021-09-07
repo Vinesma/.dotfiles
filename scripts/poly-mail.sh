@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 main_folder="$HOME/.mail/gmail/Inbox/new"
 new_mail=$(find "$main_folder" -type f | wc -l)

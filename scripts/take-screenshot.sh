@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Script meant to run via hotkey, takes a screenshot of the whole screen and sends a notification
 # Dependencies:

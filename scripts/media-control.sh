@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Control mpv + mpd playback. If commands would apply to both, mpv gets priority.
 #

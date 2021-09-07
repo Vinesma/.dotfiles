@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 image_cover="/tmp/album_cover.png"
 sleep_timer=0.5

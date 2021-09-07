@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Script meant to be run by a polybar module, returns number of open windows.
 #

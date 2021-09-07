@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 notify_send_dir="/usr/bin/notify-send"
 notify_time="3000"

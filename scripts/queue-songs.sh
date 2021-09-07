@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 icon="/usr/share/icons/Papirus/32x32/apps/mpd.svg"
 icon_error="/usr/share/icons/Papirus/32x32/status/dialog-error.svg"

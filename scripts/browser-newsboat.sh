@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Script meant to be used by newsboat for handling links from youtube, images and other videos.
 # Features:

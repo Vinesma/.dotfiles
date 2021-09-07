@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 folder="$HOME/.dotfiles/scripts/newsboat"
 upper_limit=500

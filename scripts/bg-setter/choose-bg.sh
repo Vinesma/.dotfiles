@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Choose several options for wallpaper setting.
 # Dependencies:

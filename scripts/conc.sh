@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 state=$(nmcli n connectivity check)
 

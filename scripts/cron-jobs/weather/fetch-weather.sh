@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Shows a notification with information about weather conditions in the specified location.
 # Features:

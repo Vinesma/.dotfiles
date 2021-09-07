@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Queues videos instantly without opening a menu. Runs via keybind.
 # Dependecies:
