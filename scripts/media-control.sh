@@ -7,14 +7,23 @@ mpv_socket="/tmp/mpvsocket"
 audio_icon="/usr/share/icons/Papirus/32x32/devices/audio-speakers.svg"
 notify_time="800"
 
+mpv-command() {
+    if [[ -e "$mpv_socket" ]]; then
+        echo "$1" | socat - "$mpv_socket"
+        return
+    else
+        return 1
+    fi
+}
+
 toggle_media() {
-    if ! echo 'cycle pause' | socat - "$mpv_socket"; then
+    if ! mpv-command 'cycle pause'; then
         mpc toggle
     fi
 }
 
 set-volume() {
-    if ! echo "add volume $1" | socat - "$mpv_socket"; then
+    if ! mpv-command "add volume $1"; then
         mpc volume "$1"
 
         message=$(mpc volume)
@@ -24,7 +33,7 @@ set-volume() {
 }
 
 seek-by-value() {
-    if ! echo "seek $1" | socat - "$mpv_socket"; then
+    if ! mpv-command "seek $1"; then
         mpc seek "$1"
     fi
 }
