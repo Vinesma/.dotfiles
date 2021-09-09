@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Use this script to setup monitors on startup if X11 refuses to cooperate
+# Use this script to setup monitors if X11 refuses to cooperate
 #
 
 default_monitors="2"
@@ -11,10 +11,16 @@ has-all-monitors() {
     return
 }
 
-setup-monitors() {
+preferred-monitors() {
     xrandr --output HDMI2 --auto --primary --output eDP1 --auto --left-of HDMI2
 }
 
+fallback-monitors() {
+    xrandr --output eDP1 --auto --primary
+}
+
 if has-all-monitors "$default_monitors"; then
-    setup-monitors
+    preferred-monitors
+else
+    fallback-monitors
 fi
