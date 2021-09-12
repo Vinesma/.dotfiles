@@ -5,7 +5,6 @@ export DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus'
 newsboat_path="/usr/bin/newsboat"
 notify_send_path="/usr/bin/notify-send"
 cut_path="/usr/bin/cut"
-cat_path="/usr/bin/cat"
 stat_path="/usr/bin/stat"
 icon="/usr/share/icons/Papirus/32x32/apps/akregator.svg"
 icon_sync="/usr/share/icons/Papirus/32x32/apps/syncthing-gtk.svg"
@@ -18,7 +17,7 @@ if [[ ! -e "/tmp/run-newsboat.tmp" ]]; then
 
     "$newsboat_path" -x reload
 
-    last_read_saved=$("$cat_path" "$folder/archive_last_read.tmp")
+    last_read_saved=$(< "$folder/archive_last_read.tmp")
     last_read_time=$("$stat_path" -c %Y "$sync_folder/.newsboat_archive")
 
     if [[ -e "$sync_folder/.newsboat_archive" ]] && [[ "$last_read_saved" != "$last_read_time" ]]; then

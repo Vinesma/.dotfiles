@@ -6,7 +6,7 @@
 
 folder="$HOME/.dotfiles/scripts/newsboat"
 sync_folder="$HOME/Sync"
-last_read_saved=$(cat "$folder/archive_last_read.tmp")
+last_read_saved=$(< "$folder/archive_last_read.tmp")
 last_read_time=$(stat -c %Y "$sync_folder/.newsboat_archive")
 icon_error="/usr/share/icons/Papirus/32x32/status/dialog-error.svg"
 

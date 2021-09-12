@@ -11,7 +11,6 @@ export DISPLAY=:0
 export DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus'
 
 # PATHS
-cat_path="/usr/bin/cat"
 youtube_dl_path="/usr/local/bin/youtube-dl"
 notify_send_path="/usr/bin/notify-send"
 
@@ -32,7 +31,7 @@ fi
 
 # Check if the playlists need to be started at a certain point
 if [[ -e startat ]]; then
-    start_at=$("$cat_path" startat)
+    start_at=$(< startat)
 else
     start_at=1
 fi

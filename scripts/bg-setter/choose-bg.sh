@@ -20,19 +20,19 @@ send-error() {
 
 load-config() {
     if [[ -e "$files_folder/saturation" ]]; then
-        saturation_amount=$(cat "$files_folder/saturation")
+        saturation_amount=$(< "$files_folder/saturation")
     else
         saturation_amount=1
     fi
 
     if [[ -e "$files_folder/backend" ]]; then
-        backend=$(cat "$files_folder/backend")
+        backend=$(< "$files_folder/backend")
     else
         backend=wal
     fi
 
 #    if [[ -e "$files_folder/transparency" ]]; then
-#        transparency_amount=$(cat "$files_folder/transparency")
+#        transparency_amount=$(< "$files_folder/transparency")
 #    else
 #        transparency_amount=1
 #    fi

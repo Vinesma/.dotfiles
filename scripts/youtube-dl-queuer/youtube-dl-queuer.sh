@@ -30,7 +30,7 @@ load-config() {
 
     # Check if user has a defined format
     if [[ -e "$files_folder/format" ]]; then
-        video_format=$(cat "$files_folder/format")
+        video_format=$(< "$files_folder/format")
     else
         video_format="22/18"
     fi

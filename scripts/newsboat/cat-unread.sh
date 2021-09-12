@@ -5,7 +5,7 @@ upper_limit=500
 lower_limit=50
 
 if [[ -e "$folder/unread_count.tmp" ]]; then
-    unread_count=$(cat "$folder/unread_count.tmp")
+    unread_count=$(< "$folder/unread_count.tmp")
 
     if [[ "$unread_count" -gt "$upper_limit" ]]; then
         echo "$upper_limit+"
