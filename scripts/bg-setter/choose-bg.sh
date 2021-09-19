@@ -6,7 +6,7 @@
 
 wallpaper_dir="$HOME/Pictures/Wallpapers"
 files_folder="$HOME/.dotfiles/scripts/bg-setter"
-resolution=$(xrandr | grep '*' | awk '{printf $1}')
+resolution=$(xrandr | grep '*' | head -n 1 | awk '{printf $1}')
 width=$(echo "$resolution" | cut -d 'x' -f 1)
 height=$(echo "$resolution" | cut -d 'x' -f 2)
 
