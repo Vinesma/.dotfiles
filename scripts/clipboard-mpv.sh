@@ -4,7 +4,7 @@
 # Features:
 # - VIDEO: Choose video format and watch straight from the rofi menu after a single keypress
 # Dependencies:
-# mpv, xclip, youtube-dl, rofi
+# mpv, xclip, yt-dlp, rofi
 
 notify_time=2000
 
@@ -57,9 +57,9 @@ parse-video-info() {
     local choice
 
     choice=$(echo "$1" | \
-    awk '{print $1 "  " $3 " - " $4}' | \
+    awk '{print $1 "  " $2 " - " $3}' | \
     sed '/\[.*\]/d' | \
-    sed '1d' | \
+    sed '1,2d' | \
     sort -n)
 
     show-format-menu "$choice"
@@ -70,7 +70,7 @@ get-video-info() {
 
     notify-send -i "$icon_youtube_dl" -t "$notify_time" "MPV" "[youtube-dl] Loading video information..."
 
-    if video_info="$(youtube-dl -F --no-playlist "$link")"; then
+    if video_info="$(yt-dlp -F --no-playlist "$link")"; then
         parse-video-info "$video_info"
     else
         send-error '[youtube-dl] Error while fetching video info' && exit 1

@@ -7,7 +7,7 @@
 # - VIDEOS: Other than youtube, open in mpv in a loop. (Mainly, to emulate twitter video functionality)
 # - OTHERS: Open in the browser.
 # Dependencies:
-# - feh, mpv, youtube-dl, firefox, rofi, clipboard-mpv.sh
+# - feh, mpv, yt-dlp, firefox, rofi, clipboard-mpv.sh
 #
 
 clipboard_mpv_dir="$HOME/.dotfiles/scripts/clipboard-mpv.sh"
@@ -19,7 +19,7 @@ video-info() {
     local thumbnail
     local duration
 
-    video=$(youtube-dl --get-title --get-duration --get-thumbnail "$1")
+    video=$(yt-dlp --get-title --get-duration --get-thumbnail "$1")
     title=$(echo "$video" | head -n 1)
     thumbnail=$(echo "$video" | sed -e '1d' -e '3d')
     duration=$(echo "$video" | tail -n 1)

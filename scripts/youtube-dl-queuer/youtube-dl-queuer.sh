@@ -5,7 +5,7 @@
 # - QUEUE: Queue videos to be downloaded at any time.
 # - WATCH: Watch the whole queue in sucession, you can even save your position and watch later
 # Dependencies:
-# xclip, youtube-dl, rofi
+# xclip, yt-dlp, rofi
 
 notify_time=2200
 files_folder="$HOME/.dotfiles/scripts/youtube-dl-queuer"
@@ -71,9 +71,9 @@ start-download() {
         notify-send -i "$icon_youtube_dl" -t "$notify_time" "[youtube-dl]" "Starting download..."
 
         if [[ -e "$files_folder/writesub" ]]; then
-            output=$(youtube-dl --write-sub -f "$video_format" --no-playlist -a "$files_folder/queue")
+            output=$(yt-dlp --write-sub -f "$video_format" --no-playlist -a "$files_folder/queue")
         else
-            output=$(youtube-dl -f "$video_format" --no-playlist -a "$files_folder/queue")
+            output=$(yt-dlp -f "$video_format" --no-playlist -a "$files_folder/queue")
         fi
 
         echo "$output" > "$files_folder/output"

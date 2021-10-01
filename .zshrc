@@ -217,33 +217,9 @@ update-packages-only-download() {
     notify-send -i "$icon_fail" 'PACMAN' 'Update FAILURE!'
 }
 
-# for easy saving of video without syncing to other devices
-youtube-dl-save() {
-    local download_icon
-    local error_icon
-    download_icon="/usr/share/icons/Papirus/32x32/apps/youtube-dl.svg"
-    error_icon="/usr/share/icons/Papirus/32x32/status/dialog-error.svg"
-
-    youtube-dl -o "$HOME/Videos/Saved/%(uploader)s/%(title)s.%(ext)s" "$@" \
-        && notify-send -i "$download_icon" "[youtube-dl-save]" "Download complete!" \
-        || notify-send -i "$error_icon" "[youtube-dl-save]" "Download failed!"
-}
-
 # for easy downloading of music
 youtube-dl-audio() {
-    youtube-dl -x --audio-format mp3 -o "$HOME/Downloads/Audio/%(title)s.%(ext)s" "$@"
-}
-
-# for easy downloading of streams
-youtube-dl-stream() {
-    local download_icon
-    local error_icon
-    download_icon="/usr/share/icons/Papirus/32x32/apps/youtube-dl.svg"
-    error_icon="/usr/share/icons/Papirus/32x32/status/dialog-error.svg"
-
-    youtube-dl -o "$HOME/Videos/Streams/%(uploader)s/%(title)s.%(ext)s" "$@" \
-        && notify-send -i "$download_icon" "[youtube-dl-stream]" "Download complete!" \
-        || notify-send -i "$error_icon" "[youtube-dl-stream]" "Download failed!"
+    yt-dlp -x --audio-format mp3 -o "$HOME/Downloads/Audio/%(title)s.%(ext)s" "$@"
 }
 
 # creates pieces of a file
