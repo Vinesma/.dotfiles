@@ -34,9 +34,6 @@ def create_groups():
     """
     Initialize groups for qtile
     """
-    return [
-        Group("a", layout="max", label="1"),
-        Group("s", label="2"),
-        Group("d", layout="max", label="3"),
-        Group("f", layout="max", label="4"),
-    ]
+    access_keys = ["a", "s", "d", "f"]
+
+    return [Group(key, layout="max", label=f"{index+1}") for index, key in enumerate(access_keys)]
