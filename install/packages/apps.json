@@ -351,6 +351,24 @@
             "create_link": true,
             "sudo": false,
             "comments": []
+        },
+        {
+            "name": "settings.json",
+            "residence": "~/.config/Code - OSS/User",
+            "source": "~/.dotfiles/Code - OSS/User",
+            "text": "",
+            "create_link": true,
+            "sudo": false,
+            "comments": []
+        },
+        {
+            "name": "typescriptreact.json",
+            "residence": "~/.config/Code - OSS/User/snippets",
+            "source": "~/.dotfiles/Code - OSS/User/snippets",
+            "text": "",
+            "create_link": true,
+            "sudo": false,
+            "comments": []
         }
     ]
 }

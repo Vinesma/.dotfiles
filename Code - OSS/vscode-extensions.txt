@@ -1,0 +1,8 @@
+asvetliakov.vscode-neovim
+dbaeumer.vscode-eslint
+dlasagno.wal-theme
+esbenp.prettier-vscode
+humao.rest-client
+jpoissonnier.vscode-styled-components
+ms-python.python
+vscode-icons-team.vscode-icons
