@@ -29,7 +29,7 @@ User defined bar for qtile
 """
 
 from os import path, listdir
-from subprocess import run
+from subprocess import run, CalledProcessError
 
 from libqtile import widget, bar, qtile
 from modules import theme, constants
@@ -74,13 +74,25 @@ def check_rss():
         return ""
 
 def check_wifi():
-    cmd = ["nmcli", "-t", "-f", "STATE", "general"]
-    output = run(cmd, text=True, capture_output=True)
+    cmd = "nmcli -t -f STATE general"
+    output = run([arg for arg in cmd.split()], text=True, capture_output=True)
 
     if "connected" == output.stdout.strip():
         return '直'
     else:
         return "睊"
+
+def check_bluetooth():
+    cmd = "bluetoothctl show"
+    try:
+        output = run([arg for arg in cmd.split()], text=True, capture_output=True, check=True)
+    except (CalledProcessError, FileNotFoundError):
+        return ""
+
+    if "Powered: yes" in output.stdout:
+        return ""
+    else:
+        return ""
 
 def minimal_widgets():
     widgets = [
@@ -201,6 +213,15 @@ def main_widgets():
             update_interval=8,
             foreground='FFFFFF',
             fontsize=font_size_med,
+            fontshadow=shadow,
+            background=colors.get("color3"),
+        ),
+        widget.GenPollText(
+            func=check_bluetooth,
+            update_interval=10,
+            max_chars=3,
+            foreground='FFFFFF',
+            fontsize=font_size,
             fontshadow=shadow,
             background=colors.get("color3"),
         ),
