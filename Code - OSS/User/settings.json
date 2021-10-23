@@ -29,5 +29,6 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "editor.suggest.preview": true,
-    "editor.suggest.localityBonus": true
+    "editor.suggest.localityBonus": true,
+    "editor.guides.bracketPairs": true
 }
