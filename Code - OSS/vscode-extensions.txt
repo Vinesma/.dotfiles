@@ -4,5 +4,6 @@ dlasagno.wal-theme
 esbenp.prettier-vscode
 humao.rest-client
 jpoissonnier.vscode-styled-components
+ms-azuretools.vscode-docker
 ms-python.python
 vscode-icons-team.vscode-icons
