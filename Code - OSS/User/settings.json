@@ -1,36 +1,45 @@
 {
-    "window.zoomLevel": 1.2,
-    "workbench.iconTheme": "vscode-icons",
-    "window.menuBarVisibility": "toggle",
-    "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
-    "editor.fontFamily": "'Source Code Pro', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-    "workbench.colorTheme": "Wal",
-    "terminal.integrated.fontFamily": "'MesloLGS NF'",
-    "git.confirmSync": false,
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "git.enableSmartCommit": true,
-    "[html]": {
-        "editor.defaultFormatter": "vscode.html-language-features"
-    },
-    "editor.fontSize": 16,
-    "editor.bracketPairColorization.enabled": true,
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[jsonc]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "editor.suggest.preview": true,
-    "editor.suggest.localityBonus": true,
-    "editor.guides.bracketPairs": true,
-    "terminal.external.linuxExec": "kitty",
-    "terminal.integrated.copyOnSelection": true
+  "window.zoomLevel": 1.2,
+  "workbench.iconTheme": "vscode-icons",
+  "window.menuBarVisibility": "toggle",
+  "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
+  "editor.fontFamily": "'Source Code Pro', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "workbench.colorTheme": "Wal",
+  "terminal.integrated.fontFamily": "'MesloLGS NF'",
+  "git.confirmSync": false,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features",
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.formatOnSave": true
+  },
+  "python.linting.pylintEnabled": true,
+  "python.formatting.provider": "black",
+  "git.enableSmartCommit": true,
+  "editor.fontSize": 16,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.suggest.preview": true,
+  "editor.suggest.localityBonus": true,
+  "editor.guides.bracketPairs": true,
+  "terminal.external.linuxExec": "kitty",
+  "terminal.integrated.copyOnSelection": true
 }
