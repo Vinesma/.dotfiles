@@ -22,6 +22,7 @@
 	cam = commit --amend
 	cp = cherry-pick
 	ch = checkout
+	sw = switch
 	b = branch
 	m = merge
 	re = rebase
