@@ -41,5 +41,7 @@
   "editor.suggest.localityBonus": true,
   "editor.guides.bracketPairs": true,
   "terminal.external.linuxExec": "kitty",
-  "terminal.integrated.copyOnSelection": true
+  "terminal.integrated.copyOnSelection": true,
+  "prettier.tabWidth": 4,
+  "prettier.arrowParens": "avoid"
 }
