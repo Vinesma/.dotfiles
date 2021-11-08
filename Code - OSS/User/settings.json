@@ -37,6 +37,7 @@
   "git.enableSmartCommit": true,
   "editor.fontSize": 16,
   "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairsHorizontal": false,
   "editor.suggest.preview": true,
   "editor.suggest.localityBonus": true,
   "editor.guides.bracketPairs": true,
