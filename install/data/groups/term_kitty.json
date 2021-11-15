@@ -1,0 +1,25 @@
+{
+    "name": "term_kitty",
+    "packages": [
+        {
+            "display_name": "Kitty",
+            "name": "kitty",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": [
+                {
+                    "name": "kitty.conf",
+                    "path_destination": "$HOME/.config/kitty",
+                    "path_source": "$HOME/.dotfiles/kitty",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                }
+            ]
+        }
+    ],
+    "files": []
+}

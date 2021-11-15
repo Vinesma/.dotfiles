@@ -1,0 +1,98 @@
+{
+    "name": "email",
+    "packages": [
+        {
+            "display_name": "Neomutt",
+            "name": "neomutt",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [
+                "mkdir -p $HOME/.mail/gmail",
+                "mkdir $HOME/.neomutt"
+            ],
+            "comments": [
+                "A script for cron is provided in '$HOME/.dotfiles/scripts/cron-jobs', it's suggested to run it in 10 minute intervals.",
+                "Setting up a gpg keypair is necessary for keeping your password secure and, by extension, be able to use neomutt.",
+                "You can run '$ gpg-keypair-gen' if you are using zsh to quickly generate a new keypair.",
+                "Save your password inside '$HOME/.neomutt/account.gpg'"
+            ],
+            "files": [
+                {
+                    "name": "neomuttrc",
+                    "path_destination": "$HOME/.config/neomutt",
+                    "path_source": "$HOME/.dotfiles/neomutt",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                },
+                {
+                    "name": "colors.muttrc",
+                    "path_destination": "$HOME/.config/neomutt",
+                    "path_source": "$HOME/.dotfiles/neomutt",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                },
+                {
+                    "name": "mbsyncrc",
+                    "path_destination": "$HOME/.config",
+                    "path_source": "$HOME/.dotfiles",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                }
+            ]
+        },
+        {
+            "display_name": "isync - IMAP & MailDir Mailbox synchronizer",
+            "name": "isync",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "msmtp - SMTP client",
+            "name": "msmtp",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": [
+                {
+                    "name": "config",
+                    "path_destination": "$HOME/.config/msmtp",
+                    "path_source": "$HOME/.dotfiles/msmtp",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                }
+            ]
+        },
+        {
+            "display_name": "w3m - Terminal Web Browser",
+            "name": "w3m",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        }
+    ],
+    "files": [
+        {
+            "name": ".mailcap",
+            "path_destination": "$HOME",
+            "path_source": "$HOME/.dotfiles",
+            "text": "",
+            "create_link": false,
+            "sudo": false,
+            "comments": []
+        }
+    ]
+}

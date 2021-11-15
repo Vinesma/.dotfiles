@@ -1,0 +1,41 @@
+{
+    "name": "bluetooth",
+    "packages": [
+        {
+            "display_name": "Bluez - Bluetooth",
+            "name": "bluez",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [
+                "sudo systemctl enable --now bluetooth",
+                "sudo sed -i -e '$a\\load-module module-bluetooth-policy\\nload-module module-bluetooth-discover' /etc/pulse/system.pa"
+            ],
+            "comments": [
+                "Use '$ bluetoothctl' to pair and connect to a device.",
+                "You should add 'load-module module-bluetooth-policy' and 'load-module module-bluetooth-discover' to /etc/pulse/system.pa",
+                "To automatically power on bluetooth at boot add 'AutoEnable=true' to the last line in '/etc/bluetooth/main.conf'",
+                "If there are errors when trying to connect to a device, try installing 'pulseaudio-bluetooth-a2dp-gdm-fix' or checking the wiki."
+            ],
+            "files": []
+        },
+        {
+            "display_name": "Bluez utils",
+            "name": "bluez-utils",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Pulseaudio Bluetooth module",
+            "name": "pulseaudio-bluetooth",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        }
+    ],
+    "files": []
+}

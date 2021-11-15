@@ -1,86 +1,62 @@
-"""
-Helpers for spawning processes and getting their output
-"""
+""" Helpers for spawning processes """
 
+import sys
 from subprocess import run, CalledProcessError
 from time import sleep
+from utils import message
+from config.shared import Config
 
-def process(process_name, args=None):
-    """
-    Run a process, this will display its output to the screen 
-        process_name = string with the process to run
-        args = list with the arguments to pass to the process
-        return -> The process' output as a CompletedProcess instance
-    Errors are reported, then ignored after 30 seconds.
-    """
-    if args is None:
-        args = []
+config = Config()
 
-    process = [process_name] + args
+
+def process(process_string, silent=False, capture=False, sudo=False):
+    """Run a process.
+
+    If silent = False, displays process output to the screen,
+    otherwise only this program's output is shown.
+
+    If capture = True, return the process' stdout instead of a CompletedProcess instance.
+
+    If sudo = True, run the process as super user
+    (may require user intervention for collecting password).
+
+    On error, stops execution for 30 seconds for evaluation, alternatively, crashes the program.
+    """
+
+    if sudo:
+        process_string = f"{config.admin_command} {process_string}"
+
+    [process_name, *args] = process_string.split()
+
     try:
-        output = run(process, check=True, text=True)
+        output = run(
+            [process_name, *args],
+            check=True,
+            text=True,
+            capture_output=(capture or silent),
+        )
     except CalledProcessError as error:
-        print(f"\n[Process error (code {error.returncode})]: {error.output}")
+        message.error(
+            f"'{process_name}' failed with code {error.returncode} :: {error.output}"
+        )
+        if config.verbose:
+            message.alert(f"ARGS: {args}")
 
-        for i in range(3, 0, -1):
-            print(f"Program will continue in {i * 10} seconds...")
-            sleep(10)
+        if config.fail_fast:
+            message.alert(
+                f"Halting execution because of fail_fast = {config.fail_fast}"
+            )
+            sys.exit(1)
+        else:
+            message.info("Stopping execution temporarily for your evaluation.")
 
-        output = run(['echo'], text=True)
+            for i in range(3, 0, -1):
+                message.info(f"Program will continue in {i * 10} seconds...")
+                sleep(config.seconds_to_wait_on_fail)
 
-    return output
+            output = run(["echo"], check=True, text=True)
 
-def process_silent(process_name, args=None):
-    """
-    Run a process, this will NOT display its output to the screen 
-        process_name = string with the process to run
-        args = list with the arguments to pass to the process
-        return -> The process' output as a CompletedProcess instance
-    Errors are reported, then ignored after 30 seconds.
-    """ 
-    if args is None:
-        args = []
-
-    process = [process_name] + args
-    try:
-        output = run(process, check=True, capture_output=True, text=True)
-    except CalledProcessError as error:
-        print(f"\n[Process error (code {error.returncode})]: {error.output}")
-
-        for i in range(3, 0, -1):
-            print(f"Program will continue in {i * 10} seconds...")
-            sleep(10)
-
-        output = run(['echo'], text=True)
-
-    return output
-
-def process_stdout(process_name, args=None):
-    """
-    Run a process, this will NOT display its output to the screen 
-        process_name = string with the process to run
-        args = list with the arguments to pass to the process
-        return -> The output of the process as a string
-    """
-    if args is None:
-        args = []
-
-    output = process_silent(process_name, args)
-
-    return str(output.stdout)
-
-def sudo_process(process_name, args=None):
-    """
-    Run a process with root privileges
-        process_name = string with the process to run
-        args = list with the arguments to pass to the process
-        return -> The process' output as a CompletedProcess instance
-    Errors will crash the script
-    """
-    if args is None:
-        args = []
-
-    process = ["sudo", process_name] + args
-    output = run(process, check=True, text=True)
+    if capture:
+        return output.stdout
 
     return output

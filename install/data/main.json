@@ -1,0 +1,23 @@
+[
+    "initial",
+    "wm_qtile",
+    "fonts",
+    "term_kitty",
+    "display_manager",
+    "audio",
+    "applets",
+    "misc",
+    "numpad",
+    "backlight",
+    "touchpad",
+    "bluetooth",
+    "power_saving",
+    "themes",
+    "eyecandy",
+    "polybar",
+    "email",
+    "input_methods",
+    "manjaro_printer",
+    "manjaro_only",
+    "zsh"
+]

@@ -1,0 +1,69 @@
+{
+    "name": "fonts",
+    "packages": [
+        {
+            "display_name": "Bitstream Vera Font",
+            "name": "ttf-bitstream-vera",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Anonymous Pro Font",
+            "name": "ttf-anonymous-pro",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "OTF Ipa Font",
+            "name": "otf-ipafont",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Noto Emoji Font",
+            "name": "noto-fonts-emoji",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Nerd Font",
+            "name": "ttf-nerd-fonts-symbols",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Powerline Font",
+            "name": "powerline-fonts",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Meslo Nerd Font for powerlevel10k",
+            "name": "ttf-meslo-nerd-font-powerlevel10k",
+            "installer": "aur",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        }
+    ],
+    "files": []
+}

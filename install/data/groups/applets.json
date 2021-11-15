@@ -1,0 +1,27 @@
+{
+    "name": "applets",
+    "packages": [
+        {
+            "display_name": "Redshift",
+            "name": "redshift",
+            "installer": "pacman",
+            "auto_start": [
+                "redshift-gtk &"
+            ],
+            "post_install_commands": [],
+            "comments": [],
+            "files": [
+                {
+                    "name": "redshift.conf",
+                    "path_destination": "$HOME/.config",
+                    "path_source": "$HOME/.dotfiles/redshift",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                }
+            ]
+        }
+    ],
+    "files": []
+}

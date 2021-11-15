@@ -1,0 +1,40 @@
+{
+    "name": "input_methods",
+    "packages": [
+        {
+            "display_name": "Fcitx",
+            "name": "fcitx",
+            "installer": "pacman",
+            "auto_start": [
+                "fcitx &"
+            ],
+            "post_install_commands": [],
+            "comments": [
+                "Run these commands to configure the language engine:",
+                "$ fcitx",
+                "$ fcitx-configtool",
+                "Then restart the program (right click on systray icon) to solidify changes."
+            ],
+            "files": []
+        },
+        {
+            "display_name": "Mozc",
+            "name": "fcitx-mozc",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Fcitx config tool",
+            "name": "fcitx-configtool",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        }
+    ],
+    "files": []
+}

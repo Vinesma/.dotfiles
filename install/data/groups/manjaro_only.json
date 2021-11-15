@@ -1,0 +1,24 @@
+{
+    "name": "manjaro_only",
+    "packages": [
+        {
+            "display_name": "Manjaro Settings manager",
+            "name": "manjaro-settings-manager",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Steam",
+            "name": "steam-manjaro",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        }
+    ],
+    "files": []
+}

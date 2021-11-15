@@ -1,0 +1,108 @@
+{
+    "name": "wm_qtile",
+    "packages": [
+        {
+            "display_name": "Qtile",
+            "name": "qtile",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [
+                "sed -i -e '$a\\exec qtile start' $HOME/.xinitrc"
+            ],
+            "comments": [],
+            "files": [
+                {
+                    "name": "config.py",
+                    "path_destination": "$HOME/.config/qtile",
+                    "path_source": "$HOME/.dotfiles/qtile",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                },
+                {
+                    "name": "__init__.py",
+                    "path_destination": "$HOME/.config/qtile/modules",
+                    "path_source": "$HOME/.dotfiles/qtile/modules",
+                    "text": "",
+                    "create_link": false,
+                    "sudo": false,
+                    "comments": []
+                },
+                {
+                    "name": "constants.py",
+                    "path_destination": "$HOME/.config/qtile/modules",
+                    "path_source": "$HOME/.dotfiles/qtile/modules",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                },
+                {
+                    "name": "groups.py",
+                    "path_destination": "$HOME/.config/qtile/modules",
+                    "path_source": "$HOME/.dotfiles/qtile/modules",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                },
+                {
+                    "name": "keybinds.py",
+                    "path_destination": "$HOME/.config/qtile/modules",
+                    "path_source": "$HOME/.dotfiles/qtile/modules",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                },
+                {
+                    "name": "layouts.py",
+                    "path_destination": "$HOME/.config/qtile/modules",
+                    "path_source": "$HOME/.dotfiles/qtile/modules",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                },
+                {
+                    "name": "screens.py",
+                    "path_destination": "$HOME/.config/qtile/modules",
+                    "path_source": "$HOME/.dotfiles/qtile/modules",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                },
+                {
+                    "name": "taskbar.py",
+                    "path_destination": "$HOME/.config/qtile/modules",
+                    "path_source": "$HOME/.dotfiles/qtile/modules",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                },
+                {
+                    "name": "theme.py",
+                    "path_destination": "$HOME/.config/qtile/modules",
+                    "path_source": "$HOME/.dotfiles/qtile/modules",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                }
+            ]
+        },
+        {
+            "display_name": "python-mp2",
+            "name": "python-mp2",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        }
+    ],
+    "files": []
+}

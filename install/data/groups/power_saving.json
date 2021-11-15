@@ -1,0 +1,26 @@
+{
+    "name": "power_saving",
+    "packages": [
+        {
+            "display_name": "Powertop (CLI)",
+            "name": "powertop",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "TLP",
+            "name": "tlpui",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [
+                "sudo systemctl enable --now tlp"
+            ],
+            "comments": [],
+            "files": []
+        }
+    ],
+    "files": []
+}

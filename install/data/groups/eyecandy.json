@@ -1,0 +1,83 @@
+{
+    "name": "eyecandy",
+    "packages": [
+        {
+            "display_name": "Feh",
+            "name": "feh",
+            "installer": "pacman",
+            "auto_start": [
+                "feh --bg-scale \"$(< \"${HOME}/.cache/wal/wal\")\" &"
+            ],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Picom (git)",
+            "name": "picom-git",
+            "installer": "aur",
+            "auto_start": [
+                "picom --experimental-backends &"
+            ],
+            "post_install_commands": [],
+            "comments": [],
+            "files": [
+                {
+                    "name": "picom.conf",
+                    "path_destination": "$HOME/.config/picom",
+                    "path_source": "$HOME/.dotfiles/picom",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                }
+            ]
+        },
+        {
+            "display_name": "lxappearance",
+            "name": "lxappearance",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "qt5ct",
+            "name": "qt5ct",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [
+                "sudo sed -i -e '$a\\QT_QPA_PLATFORMTHEME=qt5ct' /etc/environment"
+            ],
+            "comments": [
+                "Add the line 'QT_QPA_PLATFORMTHEME=qt5ct' to /etc/environment to load the theme globally."
+            ],
+            "files": []
+        },
+        {
+            "display_name": "Pywal",
+            "name": "python-pywal",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [
+                "wal -n -i $HOME/.dotfiles/files/example_wallpaper_drawnby_czy(2894456992).jpg",
+                "ln -sfv $HOME/.config/wal/templates/colors-dunst $HOME/.config/dunst/dunstrc"
+            ],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Pywalfox",
+            "name": "pywalfox",
+            "installer": "pip",
+            "auto_start": [],
+            "post_install_commands": [
+                "sudo pywalfox install"
+            ],
+            "comments": [],
+            "files": []
+        }
+    ],
+    "files": []
+}

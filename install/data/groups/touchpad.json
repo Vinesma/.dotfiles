@@ -1,0 +1,20 @@
+{
+    "name": "touchpad",
+    "packages": [
+        {
+            "display_name": "xorg-xinput - configure X input devices",
+            "name": "xorg-xinput",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [
+                "'$ xinput list' -> Grab the device id you want to change",
+                "'$ xinput list-props [id]' -> List what can be changed",
+                "'$ xinput set-prop [id] [prop-id] [1/0]' -> non-persistent",
+                "You can add the command to '.autostart' to make it persistent, beware as the device id may change."
+            ],
+            "files": []
+        }
+    ],
+    "files": []
+}

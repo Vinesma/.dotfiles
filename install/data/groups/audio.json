@@ -1,0 +1,56 @@
+{
+    "name": "audio",
+    "packages": [
+        {
+            "display_name": "Alsa utils",
+            "name": "alsa-utils",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [
+                "amixer sset Master unmute",
+                "amixer sset Headphone unmute"
+            ],
+            "comments": [
+                "Use alsamixer or pulsemixer to adjust volume levels"
+            ],
+            "files": []
+        },
+        {
+            "display_name": "Alsa plugins",
+            "name": "alsa-plugins",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Pulseaudio",
+            "name": "pulseaudio",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Pulseaudio (Alsa integration)",
+            "name": "pulseaudio-alsa",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Pulsemixer",
+            "name": "pulsemixer",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        }
+    ],
+    "files": []
+}

@@ -1,14 +1,12 @@
+""" Wrappers for pip
 """
-Wrappers for pip
-"""
-from utils import messages, spawn
 
-def install(args=None):
-    """
-    Install packages 
-    """
-    if args is None:
-        args = []
+from utils import spawn, log
+
+
+def install(args):
+    """Install packages"""
 
     if len(args) > 0:
-        spawn.sudo_process("pip", ["install"] + args)
+        spawn.process(f"pip install {args}")
+        log.write("(PIP) Installed: ", *args)

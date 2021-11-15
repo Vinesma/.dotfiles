@@ -1,0 +1,29 @@
+{
+    "name": "display_manager",
+    "packages": [
+        {
+            "display_name": "LightDM",
+            "name": "lightdm",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "LightDM GTK greeter",
+            "name": "lightdm-gtk-greeter",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [
+                "sudo systemctl enable lightdm"
+            ],
+            "comments": [
+                "You can use the files in '$HOME/.dotfiles/lightdm' to quickly configure lightdm",
+                "The default config path is /etc/lightdm"
+            ],
+            "files": []
+        }
+    ],
+    "files": []
+}

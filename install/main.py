@@ -1,109 +1,94 @@
-"""
-Installs and configures an entire linux system from scratch.
+""" Manage an entire system's installation
 """
 
-from subprocess import run
-from os import path
-from utils import messages, spawn, install_util, menu
-from installers import pacman
-from classes.Category import Category
+import os
 import json
+from config.shared import Config
+from classes.group import Group
+from utils import message, test, log
 
-options = [
-    "Full install",
-    "Individual install",
-    "Create/Edit install files",
-    "Link files",
-    "Show instructions/comments"
-]
+config = Config()
+
 
 def main():
-    choice = menu.show(options, header="Welcome to the best installer. Pick your poison:")
+    """Start here."""
 
-    if choice == 0:
-        # Full install
-        messages.header("Collecting system information...")
-        isManjaro = install_util.check_distro()
-        install_laptop = messages.question_bool("Are you installing on a laptop?")
-        install_printer = messages.question_bool("Install printer support?")
+    if config.dev_mode:
+        print("DEV MODE: ON")
+        test.run()
 
-        # Initial sync to make sure all packages are up to date.
-        messages.header("Syncing repositories and updating system packages.")
-        pacman.sync()
+    while True:
+        message.heading("Welcome! Pick your poison:")
 
-        messages.header("All good, go grab a coffee, we gon' be here a while.")
+        choice = message.choose(
+            [
+                "Full install",
+                "Select group",
+                "Create links",
+                "Create new package group",
+                "Populate main.json with all group .json files",
+            ],
+            allow_exit=True,
+        )
 
-        messages.arrow("Initial configuration...")
-        install_util.init_category("initial").install_group()
-        install_util.init_category("essential").install_group()
+        if choice == "Full install":
+            log.write("--LOG START--")
+            groups = Group.load_all()
 
-        messages.header("Setting keymap")
-        spawn.process("localectl", ["--no-convert", "set-x11-keymap", "br"])
+            for index, group in enumerate(groups, start=1):
+                if index == 1:
+                    group.install(sync=True)
+                else:
+                    group.install()
 
-        if install_laptop:
-            messages.header("Installing laptop packages.")
-            install_util.init_many_install(["touchpad", "backlight", "bluetooth", "power_saving"])
+            log.write("--LOG END--")
+        elif choice == "Select group":
+            groups = Group.load_all()
+
+            group_choice = message.choose(
+                [group.name for group in groups], allow_exit=True
+            )
+
+            if group_choice != "EXIT":
+                Group.load(group_choice).install()
+            else:
+                os.system("clear")
+        elif choice == "Create links":
+            groups = Group.load_all()
+
+            group_choice = message.choose(
+                [group.name for group in groups], allow_exit=True
+            )
+
+            if group_choice != "EXIT":
+                Group.load(group_choice).link_files()
+            else:
+                os.system("clear")
+        elif choice == "Create new package group":
+            Group.interactive_insert().save()
+            message.info(
+                "Don't forget to add this group to the 'main.json' file. This decides the order in which it is installed."
+            )
+        elif choice == "Populate main.json with all group .json files":
+            group_names = [
+                group.replace(".json", "")
+                for group in os.listdir(config.group_files_path)
+                if group.endswith(".json") and group != "initial.json"
+            ]
+
+            group_names.insert(0, "initial")
+
+            with open(
+                os.path.join(config.program_path, "data", "main.json"),
+                "w",
+                encoding="utf-8",
+            ) as _file:
+                json.dump(group_names, fp=_file, indent=4)
+            os.system("clear")
+            message.info("Populated main.json with all groups found.")
         else:
-            # Non laptop packages
-            messages.header("Installing desktop packages.")
-            install_util.init_category("numpad").install_group()
+            message.normal("See ya!")
+            break
 
-        # Main software
-        install_util.init_many_install([
-            "apps", "eyecandy", "applets", "input_methods", "email"
-        ])
-
-        if isManjaro:
-            messages.header("Installing Manjaro specific packages.")
-            install_util.init_category("manjaro").install_group()
-
-            if install_printer:
-                messages.header("Installing Manjaro printer.")
-                install_util.init_category("printer").install_group()
-    elif choice == 1:
-        # Individual install
-        packages = install_util.list_packages()
-        package_index = 0
-
-        while package_index is not None:
-            package_index = menu.show(packages, header="Choose a group of packages to install.")
-
-            if package_index is not None:
-                install_util.init_category(packages[package_index]).install_group()
-    elif choice == 2:
-        # Create/Edit install files
-        install_files_choice = menu.show([
-            "Create install file",
-            "Edit install file"
-        ], header="What to do?")
-        if install_files_choice == 0:
-            install_util.create_install_file()
-        elif install_files_choice == 1:
-            #@TODO
-            pass
-
-    elif choice == 3:
-        # Link files
-        packages = install_util.list_packages()
-        package_index = 0
-
-        while package_index is not None:
-            package_index = menu.show(packages, header="Choose a group of packages to link files from.")
-
-            if package_index is not None:
-                install_util.init_category(packages[package_index]).link_files()
-    elif choice == 4:
-        # Show instructions/comments
-        packages = install_util.list_packages()
-        package_index = 0
-
-        while package_index is not None:
-            package_index = menu.show(packages, header="Choose a group of packages to show instructions/comments.")
-
-            if package_index is not None:
-                install_util.init_category(packages[package_index]).show_all_comments()
-
-    else:
-        messages.info("Exiting...")
 
 main()

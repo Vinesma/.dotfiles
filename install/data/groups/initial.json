@@ -1,0 +1,97 @@
+{
+    "name": "initial",
+    "packages": [
+        {
+            "display_name": "Xorg Server",
+            "name": "xorg-server",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [
+                "localectl --no-convert set-x11-keymap br"
+            ],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Xorg xinit",
+            "name": "xorg-xinit",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": [
+                {
+                    "name": ".xinitrc",
+                    "path_destination": "$HOME",
+                    "path_source": "$HOME/.dotfiles",
+                    "text": "",
+                    "create_link": false,
+                    "sudo": false,
+                    "comments": []
+                }
+            ]
+        },
+        {
+            "display_name": "xterm",
+            "name": "xterm",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "xdg-user-dirs",
+            "name": "xdg-user-dirs",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [
+                "xdg-user-dirs-update"
+            ],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "yay",
+            "name": "yay",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "pip",
+            "name": "python-pip",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        }
+    ],
+    "files": [
+        {
+            "name": ".bashrc",
+            "path_destination": "$HOME",
+            "path_source": "$HOME/.dotfiles",
+            "text": "",
+            "create_link": true,
+            "sudo": false,
+            "comments": []
+        },
+        {
+            "name": ".autostart",
+            "path_destination": "$HOME",
+            "path_source": null,
+            "text": "",
+            "create_link": false,
+            "sudo": false,
+            "comments": [
+                "The autostart file can be used to start programs on startup.",
+                "An example autostart file is included in '$HOME/.dotfiles/files'.",
+                "It may be necessary to run '$ chmod +x' with the file as an argument."
+            ]
+        }
+    ]
+}

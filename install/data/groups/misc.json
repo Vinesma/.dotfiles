@@ -1,0 +1,544 @@
+{
+    "name": "misc",
+    "packages": [
+        {
+            "display_name": "Thunar",
+            "name": "thunar",
+            "installer": "pacman",
+            "auto_start": [
+                "thunar --daemon &"
+            ],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Thunar Media Tags Plugin",
+            "name": "thunar-media-tags-plugin",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Thunar Volume Management Plugin",
+            "name": "thunar-volman",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "tumbler - DBUS service for thumbnails",
+            "name": "tumbler",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "ffmpegthumbnailer - Video thumbnailer for file managers",
+            "name": "ffmpegthumbnailer",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Gnome Virtual File System",
+            "name": "gvfs",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Gnome Virtual File System - mtp module",
+            "name": "gvfs-mtp",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Firefox",
+            "name": "firefox",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Neovim",
+            "name": "neovim",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [
+                "curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+            ],
+            "comments": [],
+            "files": [
+                {
+                    "name": "init.vim",
+                    "path_destination": "$HOME/.config/nvim",
+                    "path_source": "$HOME/.dotfiles/nvim",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                }
+            ]
+        },
+        {
+            "display_name": "VScode",
+            "name": "code",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [
+                "bash $HOME/.dotfiles/Code - OSS/install-extensions.sh"
+            ],
+            "comments": [],
+            "files": [
+                {
+                    "name": "settings.json",
+                    "path_destination": "$HOME/.config/Code - OSS/User",
+                    "path_source": "$HOME/.dotfiles/Code - OSS/User",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                },
+                {
+                    "name": "typescriptreact.json",
+                    "path_destination": "$HOME/.config/Code - OSS/User/snippets",
+                    "path_source": "$HOME/.dotfiles/Code - OSS/User/snippets",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                }
+            ]
+        },
+        {
+            "display_name": "Timeshift",
+            "name": "timeshift",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [
+                "Run '$ sudo timeshift-gtk' to configure timeshift"
+            ],
+            "files": []
+        },
+        {
+            "display_name": "Dunst",
+            "name": "dunst",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": [
+                {
+                    "name": "dunstrc",
+                    "path_destination": "$HOME/.config/dunst",
+                    "path_source": "$HOME/.dotfiles/dunst",
+                    "text": "",
+                    "create_link": false,
+                    "sudo": false,
+                    "comments": []
+                },
+                {
+                    "name": "colors-dunst",
+                    "path_destination": "$HOME/.config/wal/templates",
+                    "path_source": "$HOME/.dotfiles/pywal-templates",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                },
+                {
+                    "name": "org.freedesktop.Notifications.service",
+                    "path_destination": "/usr/share/dbus-1/services/",
+                    "path_source": "$HOME/.dotfiles/files",
+                    "text": "",
+                    "create_link": false,
+                    "sudo": false,
+                    "comments": ["Configuring DBUS notifications."]
+                }
+            ]
+        },
+        {
+            "display_name": "xclip - clipboard tool",
+            "name": "xclip",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "socat - Relay socket utility",
+            "name": "socat",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "htop - System monitoring tool",
+            "name": "htop",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "scrot - Screenshot tool",
+            "name": "scrot",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "neofetch - System information script",
+            "name": "neofetch",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "mpv - Media player",
+            "name": "mpv",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": [
+                {
+                    "name": "mpv.conf",
+                    "path_destination": "$HOME/.config/mpv",
+                    "path_source": "$HOME/.dotfiles/mpv",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                },
+                {
+                    "name": "input.conf",
+                    "path_destination": "$HOME/.config/mpv",
+                    "path_source": "$HOME/.dotfiles/mpv",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                }
+            ]
+        },
+        {
+            "display_name": "Gimp",
+            "name": "gimp",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Inkscape",
+            "name": "inkscape",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Newsboat",
+            "name": "newsboat",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": [
+                {
+                    "name": "config",
+                    "path_destination": "$HOME/.config/newsboat",
+                    "path_source": "$HOME/.dotfiles/newsboat",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                },
+                {
+                    "name": "urls",
+                    "path_destination": "$HOME/.config/newsboat",
+                    "path_source": "$HOME/.dotfiles/newsboat",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                }
+            ]
+        },
+        {
+            "display_name": "Wine",
+            "name": "wine",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Syncthing",
+            "name": "syncthing",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [
+                "Add 'syncthing --no-browser &' to the autostart file to use Syncthing"
+            ],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Anki",
+            "name": "anki",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Node.js",
+            "name": "nodejs",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "npm",
+            "name": "npm",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "mpd - Music Player Daemon",
+            "name": "mpd",
+            "installer": "pacman",
+            "auto_start": [
+                "if [[ ! -s ~/.config/mpd/pid ]]; then",
+                "    mpd",
+                "    mpc random on",
+                "    mpc repeat on",
+                "    mpc crossfade 3",
+                "fi"
+            ],
+            "post_install_commands": [],
+            "comments": [],
+            "files": [
+                {
+                    "name": "mpd.conf",
+                    "path_destination": "$HOME/.config/mpd",
+                    "path_source": "$HOME/.dotfiles/mpd",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                },
+                {
+                    "name": "pid",
+                    "path_destination": "$HOME/.mpd",
+                    "path_source": null,
+                    "text": "",
+                    "create_link": false,
+                    "sudo": false,
+                    "comments": []
+                }
+            ]
+        },
+        {
+            "display_name": "ncmpcpp - mpd client",
+            "name": "ncmpcpp",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": [
+                {
+                    "name": "config",
+                    "path_destination": "$HOME/.config/ncmpcpp",
+                    "path_source": "$HOME/.dotfiles/ncmpcpp",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                },
+                {
+                    "name": "bindings",
+                    "path_destination": "$HOME/.config/ncmpcpp",
+                    "path_source": "$HOME/.dotfiles/ncmpcpp",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                }
+            ]
+        },
+        {
+            "display_name": "inotify - filesystem events monitoring",
+            "name": "inotify-tools",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Rofi - pop-up command runner, window switcher etc.",
+            "name": "rofi",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": [
+                {
+                    "name": "config.rasi",
+                    "path_destination": "$HOME/.config/rofi",
+                    "path_source": "$HOME/.dotfiles/rofi",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                }
+            ]
+        },
+        {
+            "display_name": "p7zip - archive utility",
+            "name": "p7zip",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Github CLI",
+            "name": "github-cli",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Zathura",
+            "name": "zathura",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": [
+                {
+                    "name": "zathurarc",
+                    "path_destination": "$HOME/.config/zathura",
+                    "path_source": "$HOME/.dotfiles/zathura",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                }
+            ]
+        },
+        {
+            "display_name": "Zathura - PDF Module",
+            "name": "zathura-pdf-mupdf",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "x11-ssh-askpass - passphrase dialog for openSSH",
+            "name": "x11-ssh-askpass",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "youtube-dl",
+            "name": "youtube-dl",
+            "installer": "custom",
+            "auto_start": [],
+            "post_install_commands": [
+                "sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl",
+                "sudo chmod a+rx /usr/local/bin/youtube-dl"
+            ],
+            "comments": [],
+            "files": [
+                {
+                    "name": "config",
+                    "path_destination": "$HOME/.config/youtube-dl",
+                    "path_source": "$HOME/.dotfiles/youtube-dl",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                }
+            ]
+        },
+        {
+            "display_name": "yt-dlp",
+            "name": "yt-dlp",
+            "installer": "custom",
+            "auto_start": [],
+            "post_install_commands": [
+                "sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp",
+                "sudo chmod a+rx /usr/local/bin/yt-dlp"
+            ],
+            "comments": [],
+            "files": []
+        }
+    ],
+    "files": [
+        {
+            "name": ".gitconfig",
+            "path_destination": "$HOME",
+            "path_source": "$HOME/.dotfiles/git",
+            "text": "",
+            "create_link": true,
+            "sudo": false,
+            "comments": []
+        },
+        {
+            "name": "ssh-agent.service",
+            "path_destination": "$HOME/.config/systemd/user",
+            "path_source": "$HOME/.dotfiles/systemd/user",
+            "text": "",
+            "create_link": true,
+            "sudo": false,
+            "comments": []
+        }
+    ]
+}

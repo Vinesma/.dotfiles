@@ -1,28 +1,22 @@
+""" Wrappers for installing AUR packages
 """
-Wrappers for aur helper
-"""
-from utils import messages, spawn
 
-aur_helper="yay"
+from utils import spawn, log
+from config.shared import Config
 
-def sync(args=None):
-    """
-    Sync repos and install packages
-    """
-    if args is None:
-        args = []
+config = Config()
+
+
+def sync(args=""):
+    """Sync repos and install packages"""
+
+    spawn.process(f"{config.aur_helper} --noconfirm -Sua {args}", sudo=True)
+    log.write("Synced AUR packages")
+
+
+def install(args):
+    """Install packages, no sync"""
 
     if len(args) > 0:
-        spawn.process(aur_helper, ["--noconfirm", "-Sua"] + args)
-    else:
-        spawn.process(aur_helper, ["--noconfirm", "-Sua"])
-
-def install(args=None):
-    """
-    Install packages, no sync
-    """
-    if args is None:
-        args = []
-
-    if len(args) > 0:
-        spawn.process(aur_helper, ["--noconfirm", "-S"] + args)
+        spawn.process(f"{config.aur_helper} --noconfirm -S {args}")
+        log.write("(AUR) Installed: ", *args)

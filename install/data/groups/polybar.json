@@ -1,0 +1,36 @@
+{
+    "name": "polybar",
+    "packages": [
+        {
+            "display_name": "Polybar",
+            "name": "polybar",
+            "installer": "pacman",
+            "auto_start": [
+                ". $HOME/.dotfiles/polybar/launch.sh &"
+            ],
+            "post_install_commands": [],
+            "comments": [],
+            "files": [
+                {
+                    "name": "colors-polybar",
+                    "path_destination": "$HOME/.config/wal/templates",
+                    "path_source": "$HOME/.dotfiles/pywal-templates",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                },
+                {
+                    "name": "colors-main-polybar",
+                    "path_destination": "$HOME/.config/wal/templates",
+                    "path_source": "$HOME/.dotfiles/pywal-templates",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                }
+            ]
+        }
+    ],
+    "files": []
+}

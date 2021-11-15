@@ -1,0 +1,24 @@
+{
+    "name": "themes",
+    "packages": [
+        {
+            "display_name": "Matcha GTK",
+            "name": "matcha-gtk-theme",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Papirus Icons",
+            "name": "papirus-icon-theme",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        }
+    ],
+    "files": []
+}
