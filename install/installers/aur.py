@@ -18,5 +18,5 @@ def install(args):
     """Install packages, no sync"""
 
     if len(args) > 0:
-        spawn.process(f"{config.aur_helper} --noconfirm -S {args}")
-        log.write("(AUR) Installed: ", *args)
+        spawn.process(f"{config.aur_helper} --noconfirm -S {args}", sudo=True)
+        log.write(f"(AUR) Installed: {args}")

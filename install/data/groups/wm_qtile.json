@@ -6,9 +6,7 @@
             "name": "qtile",
             "installer": "pacman",
             "auto_start": [],
-            "post_install_commands": [
-                "sed -i -e '$a\\exec qtile start' $HOME/.xinitrc"
-            ],
+            "post_install_commands": [],
             "comments": [],
             "files": [
                 {

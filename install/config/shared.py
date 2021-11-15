@@ -50,7 +50,7 @@ class Config:
         """
         Command to run for privilege escalation.
         """
-        cls.program_path = os.path.expanduser("~/Documents/install_manager")
+        cls.program_path = os.path.expandvars("$HOME/.dotfiles/install")
         """
         Where to find this program's main.py file
         """

@@ -9,4 +9,4 @@ def install(args):
 
     if len(args) > 0:
         spawn.process(f"pip install {args}")
-        log.write("(PIP) Installed: ", *args)
+        log.write(f"(PIP) Installed: {args}")

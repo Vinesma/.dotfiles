@@ -7,7 +7,7 @@ from config.shared import Config
 config = Config()
 
 
-def write(text):
+def write(text, refresh=False):
     """Write text to the logfile"""
     localtime = time.localtime()
     hour = localtime.tm_hour
@@ -17,7 +17,7 @@ def write(text):
     if config.install_log:
         with open(
             config.log_path,
-            "a",
+            "w" if refresh else "a",
             encoding="utf-8",
         ) as logfile:
             logfile.write(f"\nLOG [{hour}:{minute}:{second}]: {text}")

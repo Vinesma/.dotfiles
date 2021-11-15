@@ -102,7 +102,7 @@
             "installer": "pacman",
             "auto_start": [],
             "post_install_commands": [
-                "bash $HOME/.dotfiles/Code - OSS/install-extensions.sh"
+                "bash $HOME/.dotfiles/Code{SPACE}-{SPACE}OSS/install-extensions.sh"
             ],
             "comments": [],
             "files": [
@@ -307,10 +307,10 @@
             "name": "syncthing",
             "installer": "pacman",
             "auto_start": [],
-            "post_install_commands": [
+            "post_install_commands": [],
+            "comments": [
                 "Add 'syncthing --no-browser &' to the autostart file to use Syncthing"
             ],
-            "comments": [],
             "files": []
         },
         {

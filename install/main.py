@@ -32,7 +32,7 @@ def main():
         )
 
         if choice == "Full install":
-            log.write("--LOG START--")
+            log.write("--LOG START--", refresh=True)
             groups = Group.load_all()
 
             for index, group in enumerate(groups, start=1):

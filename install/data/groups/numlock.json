@@ -1,0 +1,17 @@
+{
+    "name": "numlock",
+    "packages": [
+        {
+            "display_name": "Numlock",
+            "name": "numlockx",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [
+                "sudo sed -i -Ee s/#?greeter-setup-script=.*/greeter-setup-script=\\/usr\\/bin\\/numlockx{SPACE}on/ /etc/lightdm/lightdm.conf"
+            ],
+            "comments": [],
+            "files": []
+        }
+    ],
+    "files": []
+}

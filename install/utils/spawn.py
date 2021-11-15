@@ -28,6 +28,11 @@ def process(process_string, silent=False, capture=False, sudo=False):
 
     [process_name, *args] = process_string.split()
 
+    # Remove special {SPACE} character, which denotes a space that doesn't mean a new argument
+    for index, arg in enumerate(args):
+        if "{SPACE}" in arg:
+            args[index] = arg.replace("{SPACE}", " ")
+
     try:
         output = run(
             [process_name, *args],
@@ -39,8 +44,7 @@ def process(process_string, silent=False, capture=False, sudo=False):
         message.error(
             f"'{process_name}' failed with code {error.returncode} :: {error.output}"
         )
-        if config.verbose:
-            message.alert(f"ARGS: {args}")
+        message.alert(f"ARGS: {args}")
 
         if config.fail_fast:
             message.alert(

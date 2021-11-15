@@ -15,5 +15,5 @@ def install(args):
     """Install packages, no sync"""
 
     if len(args) > 0:
-        spawn.process(f"pacman --noconfirm --needed -S {args}")
-        log.write("(PACMAN) Installed: ", *args)
+        spawn.process(f"pacman --noconfirm --needed -S {args}", sudo=True)
+        log.write(f"(PACMAN) Installed: {args}")
