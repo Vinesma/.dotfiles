@@ -13,25 +13,6 @@
             "files": []
         },
         {
-            "display_name": "Xorg xinit",
-            "name": "xorg-xinit",
-            "installer": "pacman",
-            "auto_start": [],
-            "post_install_commands": [],
-            "comments": [],
-            "files": [
-                {
-                    "name": ".xinitrc",
-                    "path_destination": "$HOME",
-                    "path_source": "$HOME/.dotfiles",
-                    "text": "",
-                    "create_link": false,
-                    "sudo": false,
-                    "comments": []
-                }
-            ]
-        },
-        {
             "display_name": "xterm",
             "name": "xterm",
             "installer": "pacman",
