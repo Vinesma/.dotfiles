@@ -88,7 +88,7 @@ class Package:
         """Append lines to auto_start file"""
 
         if len(self.auto_start) > 0:
-            auto_start_file = os.path.expanduser(config.auto_start_path)
+            auto_start_file = config.auto_start_path
 
             with open(auto_start_file, "a", encoding="utf-8") as _file:
                 for line in self.auto_start:
@@ -140,6 +140,12 @@ class Package:
                 f"PACKAGE [{self.display_name}]: Type mismatch, some attributes are not 'list'"
             )
             errors_found += 1
+
+        for command in self.post_install_commands:
+            if "~" in command:
+                message.alert(
+                    "The '~' special variable won't be expanded in commands. Please use '$HOME' instead."
+                )
 
         return errors_found
 

@@ -36,7 +36,7 @@ class Config:
         """
         What AUR helper to use, currently will break if helper doesn't use yay's args.
         """
-        cls.auto_start_path = "~/.autostart"
+        cls.auto_start_path = os.path.expandvars("$HOME/.autostart")
         """
         Where to put commands the WM will run on startup.
         """

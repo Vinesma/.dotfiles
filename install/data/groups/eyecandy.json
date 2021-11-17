@@ -48,7 +48,7 @@
             "installer": "pacman",
             "auto_start": [],
             "post_install_commands": [
-                "sudo sed -i -e $a\\QT_QPA_PLATFORMTHEME=qt5ct /etc/environment"
+                "sudo sed -i -e \\$a\\QT_QPA_PLATFORMTHEME=qt5ct /etc/environment"
             ],
             "comments": [
                 "Add the line 'QT_QPA_PLATFORMTHEME=qt5ct' to /etc/environment to load the theme globally."
