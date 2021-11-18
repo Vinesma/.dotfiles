@@ -5,7 +5,7 @@ from config.shared import Config
 
 config = Config()
 
-_PADDING = "    "
+_PADDING = "  "
 _BIG_ARROW = "==>"
 _SHORT_ARROW = "->"
 _INFO = "[i]"
