@@ -6,7 +6,9 @@
             "name": "qtile",
             "installer": "pacman",
             "auto_start": [],
-            "post_install_commands": [],
+            "post_install_commands": [
+                "chmod +x $HOME/.autostart"
+            ],
             "comments": [],
             "files": [
                 {
@@ -21,7 +23,7 @@
                 {
                     "name": "__init__.py",
                     "path_destination": "$HOME/.config/qtile/modules",
-                    "path_source": "$HOME/.dotfiles/qtile/modules",
+                    "path_source": null,
                     "text": "",
                     "create_link": false,
                     "sudo": false,
