@@ -38,21 +38,13 @@ Find a connection:
 
 Install `git` so you can clone this repo, you may also need to install `python`. Once you have both and are connected the scripts can do most of the heavy lifting for you. Go ahead and run `python main.py` to install all the things provided.
 
-After everything is done, make sure to run `chmod +x ~/.autostart` so that qtile can run the autostart file. Then reboot the system.
+After everything is done, reboot the system.
 
 ## Anything missing?
 
-Try running the included python script `main.py` and selecting the "individual install" option.
+Try running the included python script `main.py` and selecting the "Select group" option.
 
 - [cron won't be running by default, it needs to be enabled.](https://wiki.archlinux.org/index.php/Cron#Activation_and_autostart)
-
-## TLP
-
-Provides power saving capabilities. More relevant if using a laptop.
-
-To check the status of TLP run: `tlp-stat -s`
-
-[More info](https://linrunner.de/tlp/installation/arch.html)
 
 ## Dev stuff
 
@@ -76,9 +68,9 @@ VSCode integration:
 
 - For using neovim inside vscode, you need to install a vscode extension.
 
-- After installing the extension run `nvim -v` and check if your version is higher than 0.5.0. If it is ignore the next step and just add the path to your nvim to the extension config. You can run `which nvim` to find the path.
+- After installing the extension run `nvim -v` and check if your version is higher than 0.5.0. If it is ignore the next step and just add the path to your nvim to the extension config. You can run `command -v nvim` to find the path.
 
-- If you don't have access to nvim 0.5.0+, the easiest way to get it is by [downloading the appimage](https://github.com/neovim/neovim/releases) running: `chmod u+x` on it, then adding the path to it in the extension config.
+- If the repositories don't package nvim 0.5.0+, the easiest way to get it is by [downloading the appimage](https://github.com/neovim/neovim/releases) running: `chmod u+x` on it, then adding the path to it in the extension config.
 
 ### Arch User Repository (AUR)
 
@@ -157,6 +149,14 @@ Tips:
     ```
 
 - Edit the example file: `X11/10-monitor.conf` accordingly for each monitor you have, then copy the file to `/etc/X11/xorg.conf.d`.
+
+## TLP
+
+Provides power saving capabilities. More relevant if using a laptop.
+
+To check the status of TLP run: `tlp-stat -s`
+
+[More info](https://linrunner.de/tlp/installation/arch.html)
 
 ## Problems encountered:
 
