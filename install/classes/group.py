@@ -6,7 +6,7 @@ import json
 from classes.package import Package
 from classes.file import File
 from installers import pacman, pip, aur
-from utils import message
+from utils import message, log
 from config.shared import Config
 
 config = Config()
@@ -64,7 +64,9 @@ class Group:
         if sync:
             pacman.sync()
 
-        message.heading(f"Installing '{self.name}' package group.")
+        install_text = f"Installing '{self.name}' package group."
+        message.heading(install_text)
+        log.write(install_text)
 
         pacman_packages = " ".join(
             [package.name for package in self.packages if package.installer == "pacman"]
