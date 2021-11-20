@@ -36,6 +36,8 @@ Find a connection:
 
 [More examples here](https://wiki.archlinux.org/index.php/NetworkManager#nmcli_examples)
 
+Before doing the steps below, I recommend to run `sudo visudo` and add `Defaults timestamp_timeout=60` to the end of the file so that the install proceeds without having to prompt the user for passwords constantly. This setting should be removed afterwards.
+
 Install `git` so you can clone this repo, you may also need to install `python`. Once you have both and are connected the scripts can do most of the heavy lifting for you. Go ahead and run `python main.py` to install all the things provided.
 
 After everything is done, reboot the system.
