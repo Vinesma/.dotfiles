@@ -6,6 +6,7 @@
 
 wallpaper_dir="$HOME/Pictures/Wallpapers"
 files_folder="$HOME/.dotfiles/scripts/bg-setter"
+# shellcheck disable=SC2063
 resolution=$(xrandr | grep '*' | head -n 1 | awk '{printf $1}')
 width=$(echo "$resolution" | cut -d 'x' -f 1)
 height=$(echo "$resolution" | cut -d 'x' -f 2)
@@ -100,8 +101,10 @@ resize-image() {
     done
 
     if [[ "$accepted" -eq 0 ]]; then
-        create-filename $1
+        create-filename "$1"
         mv -f "/tmp/bg-setter-img-final$1" "$filename"
+        magick "$filename" -blur 10x5 -brightness-contrast -10 "$wallpaper_dir/display-manager-bg$1"
+        # shellcheck source=/dev/null
         . "$files_folder/set-bg.sh" "$filename" --saturate "$saturation_amount" --backend "$backend" > "$files_folder/setbg-log"
     fi
 }
@@ -136,6 +139,7 @@ show-chooser() {
     wallpaper=$(echo "$wallpaper" | tail -n 1)
 
     if [[ -n "$wallpaper" ]]; then
+        # shellcheck source=/dev/null
         . "$files_folder/set-bg.sh" "$wallpaper" --saturate "$saturation_amount" --backend "$backend" > "$files_folder/setbg-log"
     fi
 }
