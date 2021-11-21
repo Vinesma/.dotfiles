@@ -1,0 +1,17 @@
+{
+    "name": "zsh_theme_powerline10k",
+    "packages": [
+        {
+            "display_name": "zsh-theme-powerlevel10k-git",
+            "name": "zsh-theme-powerlevel10k-git",
+            "installer": "aur",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [
+                "Run p10k configure to configure the powerline zsh theme."
+            ],
+            "files": []
+        }
+    ],
+    "files": []
+}

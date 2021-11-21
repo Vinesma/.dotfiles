@@ -8,7 +8,7 @@
             "auto_start": [],
             "post_install_commands": [],
             "comments": [
-                "Use '$ zsh' to switch to Z shell and '$ p10k' to configure terminal looks.",
+                "Use '$ zsh' to switch to Z shell.",
                 "To change shell permanently: '$ chsh /usr/bin/zsh'"
             ],
             "files": [
@@ -44,15 +44,6 @@
         {
             "display_name": "Zsh syntax highlighting",
             "name": "zsh-syntax-highlighting",
-            "installer": "pacman",
-            "auto_start": [],
-            "post_install_commands": [],
-            "comments": [],
-            "files": []
-        },
-        {
-            "display_name": "Zsh powerlevel10k theme",
-            "name": "zsh-theme-powerlevel10k",
             "installer": "pacman",
             "auto_start": [],
             "post_install_commands": [],
