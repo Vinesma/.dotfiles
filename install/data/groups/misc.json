@@ -147,30 +147,12 @@
             "comments": [],
             "files": [
                 {
-                    "name": "dunstrc",
-                    "path_destination": "$HOME/.config/dunst",
-                    "path_source": "$HOME/.dotfiles/dunst",
-                    "text": "",
-                    "create_link": false,
-                    "sudo": false,
-                    "comments": []
-                },
-                {
-                    "name": "colors-dunst",
-                    "path_destination": "$HOME/.config/wal/templates",
-                    "path_source": "$HOME/.dotfiles/pywal-templates",
-                    "text": "",
-                    "create_link": true,
-                    "sudo": false,
-                    "comments": []
-                },
-                {
                     "name": "org.freedesktop.Notifications.service",
                     "path_destination": "/usr/share/dbus-1/services/",
                     "path_source": "$HOME/.dotfiles/files",
                     "text": "",
                     "create_link": false,
-                    "sudo": false,
+                    "sudo": true,
                     "comments": ["Configuring DBUS notifications."]
                 }
             ]
