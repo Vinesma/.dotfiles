@@ -36,10 +36,10 @@ from modules import theme, constants
 
 config = constants.config()
 pallete = theme.create_pallete()
-font_size=15
-font_size_med=font_size+1
-font_size_big=font_size_med + 2
-font_size_gigantic=font_size_med + 10
+FONT_SIZE = 15
+FONT_SIZE_MED = FONT_SIZE + 1
+FONT_SIZE_BIG = FONT_SIZE_MED + 2
+FONT_SIZE_GIGANTIC = FONT_SIZE_MED + 10
 
 # PYWAL COLORS
 colors_main = pallete["colors_main"]
@@ -47,13 +47,15 @@ colors = pallete["colors"]
 highlight = pallete["highlight"]
 shadow = pallete["shadow"]
 
+
 def check_mail():
     mail_count = len(listdir(config.get("mail_path")))
 
     if mail_count > 0:
-        return f" {mail_count} |"
-    else:
-        return ""
+        return f" {mail_count}"
+
+    return ""
+
 
 def check_rss():
     upper_limit = 500
@@ -61,38 +63,42 @@ def check_rss():
     file_path = path.join(config.get("newsboat_path"), "unread_count.tmp")
 
     try:
-        with open(file_path, "r") as _file:
+        with open(file_path, "r", encoding="utf-8") as _file:
             unread_count = int(_file.readline().rstrip())
 
         if unread_count > upper_limit:
-            return f"索 {upper_limit}+ |"
-        elif unread_count < lower_limit:
+            return f"索 {upper_limit}+"
+
+        if unread_count < lower_limit:
             return ""
-        else:
-            return f"索 {unread_count} |"
+
+        return f"索 {unread_count}"
     except OSError:
         return ""
 
+
 def check_wifi():
     cmd = "nmcli -t -f STATE general"
-    output = run([arg for arg in cmd.split()], text=True, capture_output=True)
+    output = run(list(cmd.split()), text=True, capture_output=True)
 
-    if "connected" == output.stdout.strip():
-        return '直'
-    else:
-        return "睊"
+    if output.stdout.strip() == "connected":
+        return "直"
+
+    return "睊"
+
 
 def check_bluetooth():
     cmd = "bluetoothctl show"
     try:
-        output = run([arg for arg in cmd.split()], text=True, capture_output=True, check=True)
+        output = run(list(cmd.split()), text=True, capture_output=True, check=True)
     except (CalledProcessError, FileNotFoundError):
         return ""
 
     if "Powered: yes" in output.stdout:
         return ""
-    else:
-        return ""
+
+    return ""
+
 
 def minimal_widgets():
     widgets = [
@@ -111,35 +117,24 @@ def minimal_widgets():
         widget.Spacer(
             length=4,
         ),
-        widget.TaskList(
-            foreground='FFFFFF',
-            max_title_width=200,
-            highlight_method="block",
-            urgent_border="FF4847",
-            border=highlight,
+        widget.WindowCount(font_size=FONT_SIZE_MED, fmt="类 {}"),
+        widget.WindowTabs(
+            foreground="FFFFFF",
             fontshadow=shadow,
-            txt_minimized='絛 ',
-            txt_floating='缾 ',
+            font_size=FONT_SIZE_MED,
+            max_chars=200,
+            separator="  ",
         ),
-        widget.Spacer(
-            length=bar.STRETCH
-        ),
-        # Left piece /|
-        widget.TextBox(
-            text="",
-            fontsize=font_size_gigantic,
-            foreground=colors.get("color1"),
-            padding=0,
-        ),
+        widget.Spacer(length=bar.STRETCH),
         widget.Clock(
             format=r"%d/%m - %I:%M %p",
-            foreground="FFFFFF",
-            background=colors.get("color1"),
+            foreground=colors.get("color1"),
             fontshadow=shadow,
         ),
     ]
-    
+
     return widgets
+
 
 def main_widgets():
     """
@@ -161,131 +156,108 @@ def main_widgets():
         widget.Spacer(
             length=4,
         ),
-        widget.TaskList(
-            foreground='FFFFFF',
-            max_title_width=200,
-            highlight_method="block",
-            urgent_border="FF4847",
-            border=highlight,
+        widget.WindowCount(font_size=FONT_SIZE_MED, fmt="类 {}"),
+        widget.WindowTabs(
+            foreground="FFFFFF",
             fontshadow=shadow,
-            txt_minimized='絛 ',
-            txt_floating='缾 ',
+            font_size=FONT_SIZE_MED,
+            max_chars=200,
+            separator="  ",
         ),
-        widget.Spacer(
-            length=bar.STRETCH
-        ),
-        # Left piece /|
-        widget.TextBox(
-            text="",
-            fontsize=font_size_gigantic,
-            foreground="F9F9F9",
-            padding=0,
-        ),
+        widget.Spacer(length=bar.STRETCH),
         widget.Mpd2(
             foreground=colors.get("color3"),
-            background="F9F9F9",
             status_format='<span size="large">{play_status}</span> {title}',
-            idle_message='',
-            idle_format='',
-            no_connection='',
-            fontsize=font_size_med,
-            play_states={'pause': '', 'play': '', 'stop': ''}
-        ),
-        # Connecting piece |/|
-        widget.TextBox(
-            text="",
-            fontsize=font_size_gigantic,
-            foreground="F9F9F9",
-            background=colors.get("color3"),
-            padding=0,
+            idle_message="",
+            idle_format="",
+            no_connection="",
+            fontsize=FONT_SIZE_MED,
+            play_states={"pause": "", "play": "", "stop": ""},
         ),
         widget.GenPollText(
             func=check_mail,
             update_interval=8,
-            fontsize=font_size_med,
+            fontsize=FONT_SIZE_MED,
             fontshadow=shadow,
-            foreground='FFFFFF',
-            background=colors.get("color3"),
-            mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("kitty neomutt")}
+            foreground=colors.get("color3"),
+            mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("kitty neomutt")},
+            padding=FONT_SIZE,
         ),
         widget.GenPollText(
             func=check_rss,
             update_interval=8,
-            foreground='FFFFFF',
-            fontsize=font_size_med,
+            fontsize=FONT_SIZE_MED,
             fontshadow=shadow,
-            background=colors.get("color3"),
+            foreground=colors.get("color3"),
+            padding=FONT_SIZE,
         ),
         widget.GenPollText(
             func=check_bluetooth,
             update_interval=10,
             max_chars=3,
-            foreground='FFFFFF',
-            fontsize=font_size,
+            fontsize=FONT_SIZE,
             fontshadow=shadow,
-            background=colors.get("color3"),
+            foreground=colors.get("color3"),
+            padding=FONT_SIZE,
         ),
         widget.GenPollText(
             func=check_wifi,
             update_interval=5,
             max_chars=3,
-            foreground='FFFFFF',
-            fontsize=font_size_big,
+            fontsize=FONT_SIZE_BIG,
             fontshadow=shadow,
-            background=colors.get("color3"),
-        ),
-        # Connecting piece |/|
-        widget.TextBox(
-            text="",
-            fontsize=font_size_gigantic,
             foreground=colors.get("color3"),
-            background=colors.get("color1"),
-            padding=0,
+            padding=FONT_SIZE,
         ),
         widget.Clock(
             format=r"%d/%m - %I:%M %p",
-            foreground="FFFFFF",
-            background=colors.get("color1"),
+            foreground=colors.get("color1"),
             fontshadow=shadow,
         ),
-        widget.Sep(
-            foreground="FFFFFF",
-            background=colors.get("color1"),
-        ),
-        widget.Systray(
-            background=colors.get("color1"),
-        ),
+        widget.Systray(),
     ]
 
     # Add battery widget if on a laptop
-    if len(listdir(path.join('/', 'sys', 'class', 'power_supply'))) > 0:
-        widgets.insert(-4,
+    if len(listdir(path.join("/", "sys", "class", "power_supply"))) > 0:
+        widgets.insert(
+            -3,
             widget.Battery(
-                format='| <span size="small">{char}</span> {percent:2.0%}',
-                full_char="",
-                charge_char="",
-                discharge_char="",
-                empty_char="",
-                unknown_char="",
-                foreground='FFFFFF',
-                low_foreground='FF4847',
+                format='<span size="small">{char}</span>{percent:2.0%}',
+                full_char=" ",
+                charge_char=" ",
+                discharge_char=" ",
+                empty_char=" ",
+                unknown_char=" ",
+                low_foreground="FF4847",
                 hide_threshold=0.98,
-                fontsize=font_size_med,
+                fontsize=FONT_SIZE_MED,
                 fontshadow=shadow,
-                background=colors.get("color3"),
+                foreground=colors.get("color3"),
             ),
         )
 
     return widgets
+
 
 def create_bar(minimal=False):
     """
     Initialize a bar
     """
     if minimal:
-        return bar.Bar(widgets=minimal_widgets(), size=28, background=colors_main.get("background"), opacity=0.9)
+        return bar.Bar(
+            widgets=minimal_widgets(),
+            size=30,
+            background=colors_main.get("background"),
+            opacity=0.9,
+        )
     else:
-        return bar.Bar(widgets=main_widgets(), size=28, background=colors_main.get("background"), opacity=0.9)
+        return bar.Bar(
+            widgets=main_widgets(),
+            size=30,
+            background=colors_main.get("background"),
+            opacity=0.9,
+        )
+
 
 def generate_defaults():
     """
@@ -293,7 +265,7 @@ def generate_defaults():
     """
     return {
         "font": "Source Code Pro Bold",
-        "fontsize": font_size,
+        "fontsize": FONT_SIZE,
         "padding": 6,
         "foreground": colors_main["foreground"],
     }
