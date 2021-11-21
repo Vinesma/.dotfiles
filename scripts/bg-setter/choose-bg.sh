@@ -65,34 +65,50 @@ clear-cache() {
 }
 
 create-filename() {
+    local extension
+    extension=$1
     if [[ -n $img_id ]]; then
-        filename="$wallpaper_dir/wallpaper-pixiv_id-$img_id$1"
+        filename="$wallpaper_dir/wallpaper-pixiv_id-$img_id$extension"
     else
-        filename="$wallpaper_dir/wallpaper-$RANDOM-$RANDOM-IMG$1"
+        filename="$wallpaper_dir/wallpaper-$RANDOM-$RANDOM-IMG$extension"
     fi
+}
+
+create-display-manager-image() {
+    local filename
+    local extension
+    local final_name
+    filename=$1
+    extension=$2
+    final_name="$wallpaper_dir/display-manager-bg$extension"
+
+    magick "$filename" -blur 10x5 -brightness-contrast -12 "$final_name" && \
+    mv -f "$final_name" "${final_name%.*}"
 }
 
 resize-image() {
     local accepted
     local gravity
+    local extension
     accepted=1
+    extension=$1
 
     while [[ "$accepted" -eq 1 ]]; do
         gravity=$(echo -e "NorthWest\nNorth\nNorthEast\nWest\nCenter\nEast\nSouthWest\nSouth\nSouthEast" \
             | rofi -dmenu -only-match -p 'Center image at' -lines 9 -select 'Center')
 
-        if magick "/tmp/bg-setter-img$1" \
+        if magick "/tmp/bg-setter-img$extension" \
             -resize "$width"x"$height"^ \
             -gravity "$gravity" \
             -extent "$width"x"$height" \
-            "/tmp/bg-setter-img-final$1"; \
+            "/tmp/bg-setter-img-final$extension"; \
         then
             accepted=$(feh -G \
                 --action ';[Accept this image]echo 0' \
                 --action1 ';[Reject and try again]echo 1' \
                 --action2 ';[Exit]echo 3' \
                 -F \
-                "/tmp/bg-setter-img-final$1")
+                "/tmp/bg-setter-img-final$extension")
             accepted=$(echo "$accepted" | tail -n 1)
         else
             send-error "Download failed or image conversion failed..."
@@ -101,9 +117,9 @@ resize-image() {
     done
 
     if [[ "$accepted" -eq 0 ]]; then
-        create-filename "$1"
-        mv -f "/tmp/bg-setter-img-final$1" "$filename"
-        magick "$filename" -blur 10x5 -brightness-contrast -10 "$wallpaper_dir/display-manager-bg$1"
+        create-filename "$extension"
+        mv -f "/tmp/bg-setter-img-final$extension" "$filename"
+        create-display-manager-image "$filename" "$extension"
         # shellcheck source=/dev/null
         . "$files_folder/set-bg.sh" "$filename" --saturate "$saturation_amount" --backend "$backend" > "$files_folder/setbg-log"
     fi
@@ -141,6 +157,7 @@ show-chooser() {
     if [[ -n "$wallpaper" ]]; then
         # shellcheck source=/dev/null
         . "$files_folder/set-bg.sh" "$wallpaper" --saturate "$saturation_amount" --backend "$backend" > "$files_folder/setbg-log"
+        create-display-manager-image "$wallpaper" ".${wallpaper##*.}"
     fi
 }
 

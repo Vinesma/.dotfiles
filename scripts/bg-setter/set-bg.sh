@@ -6,6 +6,7 @@
 
 icon_error="/usr/share/icons/Papirus/32x32/status/dialog-error.svg"
 icon_image="/usr/share/icons/Papirus/32x32/apps/multimedia-photo-viewer.svg"
+notify_time=2000
 
 send-error() {
     notify-send -i "$icon_error"  -t "$notify_time" "set-bg" "$1"
