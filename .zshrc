@@ -18,9 +18,6 @@ zstyle ':completion:*:warnings' format '%BNo matches for: %d%b'
 setopt COMPLETE_ALIASES
 setopt hist_ignore_all_dups
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # Change the window title of X terminals
 autoload -Uz add-zsh-hook
 
@@ -84,5 +81,5 @@ bindkey "^S" history-incremental-search-forward
 # SOURCES
 source ~/.dotfiles/scripts/global-functions.sh
 source ~/.dotfiles/scripts/global-alias.sh
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+eval "$(starship init zsh)"
