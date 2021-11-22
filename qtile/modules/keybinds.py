@@ -222,6 +222,8 @@ def create_keybinds():
         Key(["control"], "space", lazy.spawn("dunstctl close")),
         Key(["control", "shift"], "space", lazy.spawn("dunstctl close-all")),
         Key([mod], "h", lazy.spawn("dunstctl history-pop")),
+        # lock screen
+        Key([mod, "control"], "F12", lazy.spawn("light-locker-command -l")),
     ]
 
     # Create keybinds for switching groups

@@ -40,6 +40,7 @@ FONT_SIZE = 15
 FONT_SIZE_MED = FONT_SIZE + 1
 FONT_SIZE_BIG = FONT_SIZE_MED + 2
 FONT_SIZE_GIGANTIC = FONT_SIZE_MED + 10
+PADDING = FONT_SIZE - 3
 
 # PYWAL COLORS
 colors_main = pallete["colors_main"]
@@ -117,7 +118,7 @@ def minimal_widgets():
         widget.Spacer(
             length=4,
         ),
-        widget.WindowCount(font_size=FONT_SIZE_MED, fmt="类 {}"),
+        widget.WindowCount(font_size=FONT_SIZE_MED, fmt="({})"),
         widget.WindowTabs(
             foreground="FFFFFF",
             fontshadow=shadow,
@@ -156,7 +157,7 @@ def main_widgets():
         widget.Spacer(
             length=4,
         ),
-        widget.WindowCount(font_size=FONT_SIZE_MED, fmt="类 {}"),
+        widget.WindowCount(font_size=FONT_SIZE_MED, fmt="({})"),
         widget.WindowTabs(
             foreground="FFFFFF",
             fontshadow=shadow,
@@ -173,6 +174,7 @@ def main_widgets():
             no_connection="",
             fontsize=FONT_SIZE_MED,
             play_states={"pause": "", "play": "", "stop": ""},
+            padding=PADDING,
         ),
         widget.GenPollText(
             func=check_mail,
@@ -181,7 +183,7 @@ def main_widgets():
             fontshadow=shadow,
             foreground=colors.get("color3"),
             mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("kitty neomutt")},
-            padding=FONT_SIZE,
+            padding=PADDING,
         ),
         widget.GenPollText(
             func=check_rss,
@@ -189,7 +191,7 @@ def main_widgets():
             fontsize=FONT_SIZE_MED,
             fontshadow=shadow,
             foreground=colors.get("color3"),
-            padding=FONT_SIZE,
+            padding=PADDING,
         ),
         widget.GenPollText(
             func=check_bluetooth,
@@ -198,7 +200,7 @@ def main_widgets():
             fontsize=FONT_SIZE,
             fontshadow=shadow,
             foreground=colors.get("color3"),
-            padding=FONT_SIZE,
+            padding=PADDING,
         ),
         widget.GenPollText(
             func=check_wifi,
@@ -207,7 +209,7 @@ def main_widgets():
             fontsize=FONT_SIZE_BIG,
             fontshadow=shadow,
             foreground=colors.get("color3"),
-            padding=FONT_SIZE,
+            padding=PADDING,
         ),
         widget.Clock(
             format=r"%d/%m - %I:%M %p",
@@ -233,6 +235,7 @@ def main_widgets():
                 fontsize=FONT_SIZE_MED,
                 fontshadow=shadow,
                 foreground=colors.get("color3"),
+                padding=PADDING,
             ),
         )
 
@@ -250,13 +253,13 @@ def create_bar(minimal=False):
             background=colors_main.get("background"),
             opacity=0.9,
         )
-    else:
-        return bar.Bar(
-            widgets=main_widgets(),
-            size=30,
-            background=colors_main.get("background"),
-            opacity=0.9,
-        )
+
+    return bar.Bar(
+        widgets=main_widgets(),
+        size=30,
+        background=colors_main.get("background"),
+        opacity=0.9,
+    )
 
 
 def generate_defaults():
