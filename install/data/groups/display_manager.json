@@ -23,6 +23,15 @@
                 "The default config path is /etc/lightdm"
             ],
             "files": []
+        },
+        {
+            "display_name": "light-locker",
+            "name": "light-locker",
+            "installer": "pacman",
+            "auto_start": ["light-locker --lock-on-lid --lock-on-suspend &"],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
         }
     ],
     "files": []
