@@ -12,11 +12,11 @@ has-all-monitors() {
 }
 
 preferred-monitors() {
-    xrandr --output HDMI2 --auto --primary --output eDP1 --auto --left-of HDMI2
+    xrandr --output HDMI-2 --auto --primary --output eDP-1 --auto --left-of HDMI-2
 }
 
 fallback-monitors() {
-    xrandr --output eDP1 --auto --primary
+    xrandr --output eDP-1 --auto --primary
 }
 
 if has-all-monitors "$default_monitors"; then
