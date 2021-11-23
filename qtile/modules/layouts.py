@@ -36,6 +36,7 @@ pallete = theme.create_pallete()
 highlight = pallete["highlight"]
 colors_main = pallete["colors_main"]
 
+
 def create_layouts():
     """
     Initialize layouts for qtile

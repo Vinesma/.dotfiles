@@ -124,13 +124,14 @@ def minimal_widgets():
             fontshadow=shadow,
             font_size=FONT_SIZE_MED,
             max_chars=200,
-            separator="  ",
+            separator=" ⏽ ",
         ),
         widget.Spacer(length=bar.STRETCH),
         widget.Clock(
             format=r"%d/%m - %I:%M %p",
             foreground=colors.get("color1"),
             fontshadow=shadow,
+            padding=PADDING,
         ),
     ]
 
@@ -163,7 +164,7 @@ def main_widgets():
             fontshadow=shadow,
             font_size=FONT_SIZE_MED,
             max_chars=200,
-            separator="  ",
+            separator=" ⏽ ",
         ),
         widget.Spacer(length=bar.STRETCH),
         widget.Mpd2(
@@ -215,6 +216,7 @@ def main_widgets():
             format=r"%d/%m - %I:%M %p",
             foreground=colors.get("color1"),
             fontshadow=shadow,
+            padding=PADDING,
         ),
         widget.Systray(),
     ]

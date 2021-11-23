@@ -30,10 +30,14 @@ User defined groups for qtile
 
 from libqtile.config import Group
 
+
 def create_groups():
     """
     Initialize groups for qtile
     """
     access_keys = ["a", "s", "d", "f"]
 
-    return [Group(key, layout="max", label=f"{index+1}") for index, key in enumerate(access_keys)]
+    return [
+        Group(key, layout="max", label=f"{index+1}")
+        for index, key in enumerate(access_keys)
+    ]

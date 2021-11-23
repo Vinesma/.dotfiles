@@ -31,6 +31,7 @@ User defined screens for qtile
 from libqtile.config import Screen
 from modules import taskbar
 
+
 def create_screens():
     """
     Initialize screens for qtile
