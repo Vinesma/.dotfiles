@@ -82,7 +82,7 @@ create-display-manager-image() {
     extension=$2
     final_name="$wallpaper_dir/display-manager-bg$extension"
 
-    magick "$filename" -blur 10x5 -brightness-contrast -12 "$final_name" && \
+    magick "$filename" -blur 10x5 -brightness-contrast -15 "$final_name" && \
     mv -f "$final_name" "${final_name%.*}"
 }
 
