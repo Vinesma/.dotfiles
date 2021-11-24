@@ -29,6 +29,7 @@ User defined groups for qtile
 """
 
 from libqtile.config import Group
+from modules import constants
 
 
 def create_groups():
@@ -36,8 +37,14 @@ def create_groups():
     Initialize groups for qtile
     """
     access_keys = ["a", "s", "d", "f"]
+    config = constants.config()
 
     return [
-        Group(key, layout="max", label=f"{index+1}")
+        Group(
+            key,
+            layout="max",
+            label=f"{index+1}",
+            spawn="" if index != 1 else config.get("terminal", "xterm"),
+        )
         for index, key in enumerate(access_keys)
     ]
