@@ -19,7 +19,7 @@ default_formats="webm[height=480]+bestaudio/webm[height=720]+bestaudio/22/18/480
 # Check if script is passed and argument or not.
 # If yes, use the argument
 # If no, use the clipboard.
-[[ "$#" -gt 0 ]] && link="$1" || link="$(xclip -selection clipboard -o)"
+[ "$#" -gt 0 ] && link="$1" || link="$(xclip -selection clipboard -o)"
 
 send-error() {
     notify-send -i "$icon_error"  -t "$notify_time" "MPV" "$1"
@@ -85,7 +85,7 @@ show-resume-menu() {
 
     if [[ "$choice" != " Exit" ]]; then
         if [[ "$choice" != @(*youtube.com/watch*|*youtu.be*|*twitch.tv/videos*) ]]; then
-            cd "$folder_videos"
+            cd "$folder_videos" || exit
             link="$choice"
 
             if ! mpv --no-terminal "$link"; then
@@ -110,10 +110,10 @@ show-menu() {
         lines=2
 
         if [[ -n "$resume" ]]; then
-            lines="$(( $lines + 2 ))"
+            lines="$(( lines + 2 ))"
             option=$(echo -e "$option菱 Resume watching\n Exit" | rofi -dmenu -only-match -p 'Option' -lines "$lines")
         else
-            lines="$(( $lines + 1 ))"
+            lines="$(( lines + 1 ))"
             option=$(echo -e "$option Exit" | rofi -dmenu -only-match -p 'Option' -lines "$lines")
         fi
     else
@@ -121,7 +121,7 @@ show-menu() {
         lines=0
 
         if [[ -n "$resume" ]]; then
-            lines="$(( $lines + 2 ))"
+            lines="$(( lines + 2 ))"
             option=$(echo -e "$option菱 Resume watching\n Exit" | rofi -dmenu -only-match -p 'Option' -lines "$lines")
         else
             send-error "Nothing to play or resume."

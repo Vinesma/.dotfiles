@@ -14,8 +14,8 @@ if [[ ! -e "$temp_file" ]]; then
 
     new_mail=$(find "$inbox_dir/new" -type f | wc -l)
 
-    if [[ "$new_mail" -ne 0 ]]; then
-        [[ "$new_mail" -eq 1 ]] && /usr/bin/notify-send -i "$icon_mail" "[NeoMutt]" "You have (1) new mail!" || \
+    if [ "$new_mail" -ne 0 ]; then
+        [ "$new_mail" -eq 1 ] && /usr/bin/notify-send -i "$icon_mail" "[NeoMutt]" "You have (1) new mail!" || \
             /usr/bin/notify-send -i "$icon_mail" "[NeoMutt]" "You have ($new_mail) new emails!"
     fi
 

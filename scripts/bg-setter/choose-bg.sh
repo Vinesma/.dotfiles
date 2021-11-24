@@ -93,7 +93,7 @@ resize-image() {
     accepted=1
     extension=$1
 
-    while [[ "$accepted" -eq 1 ]]; do
+    while [ "$accepted" -eq 1 ]; do
         gravity=$(echo -e "NorthWest\nNorth\nNorthEast\nWest\nCenter\nEast\nSouthWest\nSouth\nSouthEast" \
             | rofi -dmenu -only-match -p 'Center image at' -lines 9 -select 'Center')
 
@@ -116,7 +116,7 @@ resize-image() {
         fi
     done
 
-    if [[ "$accepted" -eq 0 ]]; then
+    if [ "$accepted" -eq 0 ]; then
         create-filename "$extension"
         mv -f "/tmp/bg-setter-img-final$extension" "$filename"
         create-display-manager-image "$filename" "$extension"

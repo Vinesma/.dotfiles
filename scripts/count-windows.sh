@@ -9,4 +9,4 @@ window_count="$($qtilecmd_dir -o cmd -f windows | grep -c name)"
 # no. of windows minus polybar
 true_count="$(( window_count - 1 ))"
 
-[[ "$true_count" -gt 1 ]] && echo "$true_count" || echo ""
+[ "$true_count" -gt 1 ] && echo "$true_count" || echo ""

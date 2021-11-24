@@ -18,7 +18,7 @@ icon_mpv="/usr/share/icons/Papirus/32x32/apps/mpv.svg"
 # Check if script is passed and argument or not.
 # If yes, use the argument
 # If no, use the clipboard.
-[[ "$#" -gt 0 ]] && link="$1" || link="$(xclip -selection clipboard -o)"
+[ "$#" -gt 0 ] && link="$1" || link="$(xclip -selection clipboard -o)"
 
 load-config() {
     # Check if user wants to download subtitles
@@ -76,14 +76,14 @@ start-download() {
             output=$(yt-dlp -f "$video_format" --no-playlist -a "$files_folder/queue")
         fi
 
-        echo "$output" > "$files_folder/output"
-
-        if [[ "$?" -eq 0 ]]; then
+        if [ "$?" -eq 0 ]; then
             notify-send -i "$icon_youtube_dl" "[youtube-dl]" "$queue_count item(s) successfully downloaded!"
             clear-queue
         else
             send-error "An error ocurred while downloading one or more items. The queue was preserved.\nOutput saved to file."
         fi
+
+        echo "$output" > "$files_folder/output"
 
         rm "/tmp/ytqueuer-running.tmp"
     else
@@ -148,7 +148,7 @@ mpv-watch() {
         option=$(echo -e "陼 Preserve queue\n裸 Clear queue" | \
         rofi -dmenu -only-match -p 'Option' -lines 2 -format 'd' -mesg "Queue finished, what to do?")
 
-        if [[ "$option" -eq 2 ]]; then
+        if [ "$option" -eq 2 ]; then
             clear-queue
         fi
     else

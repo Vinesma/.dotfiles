@@ -8,7 +8,7 @@ resolution=$(xrandr | grep '*' | awk '{printf $1}')
 date_string=$(date +%0Y_%0m_%0d-%0l_%0M)
 output_name="$date_string screen_record.mp4"
 output_dir="$HOME/Videos/"
-[[ $# -gt 0 ]] && frames="$1" || frames="25"
+[ $# -gt 0 ] && frames="$1" || frames="25"
 
 move-file() {
     mv "$output_name" "$output_dir"

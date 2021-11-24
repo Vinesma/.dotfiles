@@ -3,7 +3,7 @@
 icon="/usr/share/icons/Papirus/32x32/apps/mpd.svg"
 icon_error="/usr/share/icons/Papirus/32x32/status/dialog-error.svg"
 
-if [[ "$#" -gt 0 ]]; then
+if [ "$#" -gt 0 ]; then
     mpc crop
     mpc search genre "$1" | mpc add
     mpc shuffle

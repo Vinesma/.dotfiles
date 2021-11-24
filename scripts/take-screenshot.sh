@@ -12,7 +12,7 @@ run_command="$mv_command; $notify_command"
 # Check arguments
 # If any, take screenshot out of a selection of the screen
 # If none, take screenshot of the entire screen
-if [[ "$#" -gt 0 ]]; then
+if [ "$#" -gt 0 ]; then
     scrot -z -s -l style=dash,width=1 "$filename_format" -e "$run_command"
 else
     scrot -z "$filename_format" -e "$run_command"
