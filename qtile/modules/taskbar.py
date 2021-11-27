@@ -32,20 +32,20 @@ from os import path, listdir
 from subprocess import run, CalledProcessError
 
 from libqtile import widget, bar, qtile
-from modules import theme, constants
+from modules import constants
 
 config = constants.Config()
-pallete = theme.create_pallete()
+theme = constants.Theme()
 FONT_SIZE = 15
 FONT_SIZE_MED = FONT_SIZE + 1
 FONT_SIZE_BIG = FONT_SIZE_MED + 2
 PADDING = FONT_SIZE - 3
 
 # PYWAL COLORS
-colors_main = pallete["colors_main"]
-colors = pallete["colors"]
-highlight = pallete["highlight"]
-SHADOW = pallete["shadow"]
+colors_main = theme.colors_main
+colors = theme.colors
+highlight = theme.highlight
+SHADOW = theme.shadow
 
 # DISABLED BECAUSE MY EMAIL SCRIPT STOPPED WORKING, RIP
 # def check_mail():
@@ -231,5 +231,5 @@ def generate_defaults():
         "font": "Source Code Pro Bold",
         "fontsize": FONT_SIZE,
         "padding": 6,
-        "foreground": colors_main["foreground"],
+        "foreground": colors_main.get("foreground"),
     }

@@ -29,15 +29,15 @@ User defined layouts for qtile
 """
 
 from libqtile import layout
-from modules import theme
+from modules import constants
 
-pallete = theme.create_pallete()
+theme = constants.Theme()
 
-highlight = pallete["highlight"]
-colors_main = pallete["colors_main"]
+highlight = theme.highlight
+colors_main = theme.colors_main
 
 
-def create_layouts():
+def create():
     """
     Initialize layouts for qtile
     """

@@ -82,15 +82,6 @@
                     "create_link": true,
                     "sudo": false,
                     "comments": []
-                },
-                {
-                    "name": "theme.py",
-                    "path_destination": "$HOME/.config/qtile/modules",
-                    "path_source": "$HOME/.dotfiles/qtile/modules",
-                    "text": "",
-                    "create_link": true,
-                    "sudo": false,
-                    "comments": []
                 }
             ]
         },

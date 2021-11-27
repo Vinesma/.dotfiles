@@ -33,31 +33,29 @@ from typing import List  # noqa: F401
 from libqtile.config import Drag, Click, Match
 from libqtile.lazy import lazy
 from libqtile import layout, hook
-from modules import constants, keybinds, groups, layouts, theme, taskbar, screens
+from modules import constants, keybinds, groups, layouts, taskbar, screens
 
 # CONFIG
 config = constants.Config()
+theme = constants.Theme()
 # COLORS
-pallete = theme.create_pallete()
-colors_main = pallete["colors_main"]
-colors = pallete["colors"]
-highlight = pallete["highlight"]
-shadow = pallete["shadow"]
+colors_main = theme.colors_main
+highlight = theme.highlight
 # PATHS
 home_path = config.home_path
 # MOD
 mod = config.mod_key
 # KEYS
-keys = keybinds.create_keybinds()
+keys = keybinds.create()
 # GROUPS
-groups = groups.create_groups()
+groups = groups.create()
 # LAYOUTS
-layouts = layouts.create_layouts()
+layouts = layouts.create()
 # WIDGET DEFAULTS
 widget_defaults = taskbar.generate_defaults()
 extension_defaults = taskbar.generate_defaults()
 # SCREENS & BARS
-screens = screens.create_screens()
+screens = screens.create()
 # MOUSE
 mouse = [
     Drag(
@@ -99,7 +97,7 @@ floating_layout = layout.Floating(
         Match(wm_class="ssh-askpass"),  # ssh-askpass
     ],
     border_focus=highlight,
-    border_normal=colors_main["background"],
+    border_normal=colors_main.get("background"),
 )
 auto_fullscreen = True
 focus_on_window_activation = "smart"

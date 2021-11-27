@@ -32,7 +32,7 @@ from libqtile.config import Group
 from modules import constants
 
 
-def create_groups():
+def create():
     """
     Initialize groups for qtile
     """

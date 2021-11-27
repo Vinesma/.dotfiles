@@ -1,11 +1,12 @@
 """ Define values used throught the modules
 """
 
+# pylint: disable=pointless-string-statement
 import os
 
 
 class Config:
-    """Singleton with constants necessary for using qtile"""
+    """Singleton with constants necessary for using qtile."""
 
     _instance = None
 
@@ -33,5 +34,58 @@ class Config:
         """Default web browser."""
         cls.file_browser = "thunar"
         """Default file browser."""
+
+        return cls._instance
+
+
+class Theme:
+    """Singleton with theme variables."""
+
+    _instance = None
+    _theme_path = os.path.join(Config().home_path, ".cache", "wal", "colors.json")
+
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super(Theme, cls).__new__(cls)
+
+        try:
+            # pylint: disable=import-outside-toplevel
+            from pywal import theme
+
+            theme = theme.file(cls._theme_path)
+        except (ImportError, FileNotFoundError):
+            theme = {}
+
+        cls.colors_main = theme.get(
+            "special",
+            {
+                "background": "#0d1320",
+                "foreground": "#ddd1e0",
+                "cursor": "#ddd1e0",
+            },
+        )
+        cls.colors = theme.get(
+            "colors",
+            {
+                "color0": "#0d1320",
+                "color1": "#3283db",
+                "color2": "#3f72dd",
+                "color3": "#3abddc",
+                "color4": "#5d5de2",
+                "color5": "#b557e1",
+                "color6": "#9082e8",
+                "color7": "#ddd1e0",
+                "color8": "#9a929c",
+                "color9": "#3283db",
+                "color10": "#3f72dd",
+                "color11": "#3abddc",
+                "color12": "#5d5de2",
+                "color13": "#b557e1",
+                "color14": "#9082e8",
+                "color15": "#ddd1e0",
+            },
+        )
+        cls.highlight = cls.colors.get("color4")
+        cls.shadow = "#3F3F44"
 
         return cls._instance

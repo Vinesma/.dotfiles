@@ -32,7 +32,7 @@ from libqtile.config import Screen
 from modules import taskbar
 
 
-def create_screens():
+def create():
     """
     Initialize screens for qtile
     """

@@ -44,7 +44,7 @@ BROWSER = config.browser
 scripts_path = config.scripts_path
 
 
-def create_keybinds():
+def create():
     """
     Initialize keybinds for qtile
     """
@@ -227,7 +227,7 @@ def create_keybinds():
     ]
 
     # Create keybinds for switching groups
-    for group in groups.create_groups():
+    for group in groups.create():
         keys.extend(
             [
                 # mod1 + letter of group = switch to group
