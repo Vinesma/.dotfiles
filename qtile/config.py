@@ -1,3 +1,5 @@
+""" Main configuration file.
+"""
 # Copyright (c) 2010 Aldo Cortesi
 # Copyright (c) 2010, 2014 dequis
 # Copyright (c) 2012 Randall Ma
@@ -24,12 +26,14 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+# pylint: disable=invalid-name
+
 from subprocess import run
+from typing import List  # noqa: F401
 from libqtile.config import Drag, Click, Match
 from libqtile.lazy import lazy
 from libqtile import layout, hook
 from modules import constants, keybinds, groups, layouts, theme, taskbar, screens
-from typing import List  # noqa: F401
 
 # CONFIG
 config = constants.config()
@@ -114,4 +118,6 @@ wmname = "LG3D"
 ## HOOKS
 @hook.subscribe.startup_once
 def autostart():
+    """Hook, runs on initializiation"""
+    # pylint: disable=subprocess-run-check
     run([f"{home_path}/.autostart"])

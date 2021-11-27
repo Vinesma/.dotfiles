@@ -35,12 +35,12 @@ from modules import groups, constants
 
 config = constants.config()
 
-mod = config["mod"]
-terminal = config["terminal"]
+MOD = config["mod"]
+TERMINAL = config["terminal"]
 terminal_reduced_opacity = config["terminal_reduced_opacity"]
 terminal_increased_opacity = config["terminal_increased_opacity"]
-file_browser = config["file_browser"]
-browser = config["browser"]
+FILE_BROWSER = config["file_browser"]
+BROWSER = config["browser"]
 scripts_path = config["scripts_path"]
 
 
@@ -50,36 +50,36 @@ def create_keybinds():
     """
     keys = [
         # Switch between windows in current stack pane
-        Key([mod], "Down", lazy.layout.down()),
-        Key([mod], "Up", lazy.layout.up()),
-        Key([mod], "Left", lazy.layout.left()),
-        Key([mod], "Right", lazy.layout.right()),
+        Key([MOD], "Down", lazy.layout.down()),
+        Key([MOD], "Up", lazy.layout.up()),
+        Key([MOD], "Left", lazy.layout.left()),
+        Key([MOD], "Right", lazy.layout.right()),
         Key(["mod1"], "Tab", lazy.layout.next()),
         # Move windows up or down in current stack
-        Key([mod, "shift"], "Down", lazy.layout.shuffle_down()),
-        Key([mod, "shift"], "Up", lazy.layout.shuffle_up()),
-        Key([mod, "shift"], "Left", lazy.layout.shuffle_left()),
-        Key([mod, "shift"], "Right", lazy.layout.shuffle_right()),
+        Key([MOD, "shift"], "Down", lazy.layout.shuffle_down()),
+        Key([MOD, "shift"], "Up", lazy.layout.shuffle_up()),
+        Key([MOD, "shift"], "Left", lazy.layout.shuffle_left()),
+        Key([MOD, "shift"], "Right", lazy.layout.shuffle_right()),
         # Grow windows in current stack
-        Key([mod, "control"], "Down", lazy.layout.grow_down()),
-        Key([mod, "control"], "Up", lazy.layout.grow_up()),
-        Key([mod, "control"], "Left", lazy.layout.grow_left()),
-        Key([mod, "control"], "Right", lazy.layout.grow_right()),
+        Key([MOD, "control"], "Down", lazy.layout.grow_down()),
+        Key([MOD, "control"], "Up", lazy.layout.grow_up()),
+        Key([MOD, "control"], "Left", lazy.layout.grow_left()),
+        Key([MOD, "control"], "Right", lazy.layout.grow_right()),
         # Swap panes of split stack
-        Key([mod, "shift"], "space", lazy.layout.rotate()),
+        Key([MOD, "shift"], "space", lazy.layout.rotate()),
         # Toggle between split and unsplit sides of stack.
         # Split = all windows displayed
         # Unsplit = 1 window displayed, like Max layout, but still with
         # multiple stack panes
-        Key([mod, "shift"], "Return", lazy.layout.toggle_split()),
-        Key([mod], "Return", lazy.spawn(terminal)),
+        Key([MOD, "shift"], "Return", lazy.layout.toggle_split()),
+        Key([MOD], "Return", lazy.spawn(TERMINAL)),
         # Toggle between different layouts as defined below
-        Key([mod], "Tab", lazy.next_layout()),
-        Key([mod], "w", lazy.window.kill()),
-        Key([mod, "control"], "r", lazy.restart()),
-        Key([mod, "control"], "q", lazy.shutdown()),
+        Key([MOD], "Tab", lazy.next_layout()),
+        Key([MOD], "w", lazy.window.kill()),
+        Key([MOD, "control"], "r", lazy.restart()),
+        Key([MOD, "control"], "q", lazy.shutdown()),
         # Toggle between floating window on/off
-        Key([mod], "t", lazy.window.toggle_floating()),
+        Key([MOD], "t", lazy.window.toggle_floating()),
         # Custom commands
         # emulate win ctrl+alt+del (spawn task manager)
         Key(
@@ -88,47 +88,47 @@ def create_keybinds():
             lazy.spawn(f"{terminal_reduced_opacity} htop"),
         ),
         # rofi
-        Key([mod], "r", lazy.spawn("rofi -show run")),
-        Key([mod], "e", lazy.spawn("rofi -show window")),
+        Key([MOD], "r", lazy.spawn("rofi -show run")),
+        Key([MOD], "e", lazy.spawn("rofi -show window")),
         # spawn apps
-        Key([mod, "mod1"], "e", lazy.spawn(file_browser)),
-        Key([mod, "mod1"], "b", lazy.spawn(browser)),
+        Key([MOD, "mod1"], "e", lazy.spawn(FILE_BROWSER)),
+        Key([MOD, "mod1"], "b", lazy.spawn(BROWSER)),
         Key(
-            [mod, "mod1"],
+            [MOD, "mod1"],
             "n",
             lazy.spawn(
                 f'{terminal_reduced_opacity} -T "newsboat" {scripts_path}/newsboat/open-newsboat.sh'
             ),
         ),
         Key(
-            [mod, "mod1"],
+            [MOD, "mod1"],
             "m",
             lazy.spawn(f'{terminal_increased_opacity} -T "MPD" ncmpcpp -q'),
         ),
         Key(
-            [mod, "shift"],
+            [MOD, "shift"],
             "m",
             lazy.spawn(path.join(scripts_path, "ncmpcpp-cover", "kitty-ncmpcpp.sh")),
         ),
-        Key([mod, "mod1"], "l", lazy.spawn(f"{terminal_reduced_opacity} neomutt")),
-        Key([mod, "mod1"], "i", lazy.spawn(path.join(scripts_path, "wifi-finder.sh"))),
+        Key([MOD, "mod1"], "l", lazy.spawn(f"{terminal_reduced_opacity} neomutt")),
+        Key([MOD, "mod1"], "i", lazy.spawn(path.join(scripts_path, "wifi-finder.sh"))),
         Key(
-            [mod, "control"],
+            [MOD, "control"],
             "m",
             lazy.spawn(path.join(scripts_path, "song-browser.sh")),
         ),
-        Key([mod, "mod1"], "s", lazy.spawn(path.join(scripts_path, "rosearch.sh"))),
-        Key([mod, "mod1"], "v", lazy.spawn(path.join(scripts_path, "roconfig.sh"))),
+        Key([MOD, "mod1"], "s", lazy.spawn(path.join(scripts_path, "rosearch.sh"))),
+        Key([MOD, "mod1"], "v", lazy.spawn(path.join(scripts_path, "roconfig.sh"))),
         # take screenshot, either fullscreen or a selection
-        Key([mod], "Print", lazy.spawn(path.join(scripts_path, "take-screenshot.sh"))),
+        Key([MOD], "Print", lazy.spawn(path.join(scripts_path, "take-screenshot.sh"))),
         Key(
-            [mod, "mod1"],
+            [MOD, "mod1"],
             "Print",
             lazy.spawn(path.join(scripts_path, "take-screenshot.sh select")),
         ),
         # wallpaper setter
         Key(
-            [mod, "mod1"],
+            [MOD, "mod1"],
             "w",
             lazy.spawn(path.join(scripts_path, "bg-setter", "choose-bg.sh")),
         ),
@@ -136,94 +136,94 @@ def create_keybinds():
         Key(
             [], "Pause", lazy.spawn(path.join(scripts_path, "media-control.sh toggle"))
         ),
-        Key([mod], "p", lazy.spawn(path.join(scripts_path, "media-control.sh toggle"))),
-        Key([mod, "mod1"], "Pause", lazy.spawn("mpc seek 0%")),
+        Key([MOD], "p", lazy.spawn(path.join(scripts_path, "media-control.sh toggle"))),
+        Key([MOD, "mod1"], "Pause", lazy.spawn("mpc seek 0%")),
         Key(
-            [mod],
+            [MOD],
             "Page_Up",
             lazy.spawn(path.join(scripts_path, "media-control.sh +10")),
         ),
         Key(
-            [mod],
+            [MOD],
             "Page_Down",
             lazy.spawn(path.join(scripts_path, "media-control.sh -10")),
         ),
         Key(
-            [mod],
+            [MOD],
             "equal",
             lazy.spawn(path.join(scripts_path, "media-control.sh +10")),
         ),
         Key(
-            [mod],
+            [MOD],
             "minus",
             lazy.spawn(path.join(scripts_path, "media-control.sh -10")),
         ),
         Key(
-            [mod, "mod1"],
+            [MOD, "mod1"],
             "Page_Up",
             lazy.spawn(path.join(scripts_path, "media-control.sh +20")),
         ),
         Key(
-            [mod, "mod1"],
+            [MOD, "mod1"],
             "Page_Down",
             lazy.spawn(path.join(scripts_path, "media-control.sh -20")),
         ),
         Key(
-            [mod],
+            [MOD],
             "Home",
             lazy.spawn(path.join(scripts_path, "media-control.sh seek +10")),
         ),
         Key(
-            [mod],
+            [MOD],
             "End",
             lazy.spawn(path.join(scripts_path, "media-control.sh seek -10")),
         ),
-        Key([mod], "Insert", lazy.spawn("mpc stop")),
-        Key([mod], "period", lazy.spawn("mpc next")),
-        Key([mod], "comma", lazy.spawn("mpc prev")),
+        Key([MOD], "Insert", lazy.spawn("mpc stop")),
+        Key([MOD], "period", lazy.spawn("mpc next")),
+        Key([MOD], "comma", lazy.spawn("mpc prev")),
         Key(
-            [mod],
+            [MOD],
             "F9",
             lazy.spawn(path.join(scripts_path, "queue-clear.sh")),
         ),
         Key(
-            [mod],
+            [MOD],
             "F10",
             lazy.spawn(path.join(scripts_path, "queue-songs.sh Calm")),
         ),
         Key(
-            [mod],
+            [MOD],
             "F11",
             lazy.spawn(path.join(scripts_path, "queue-songs.sh Fast")),
         ),
         Key(
-            [mod],
+            [MOD],
             "F12",
             lazy.spawn(path.join(scripts_path, "queue-songs.sh Epic")),
         ),
         # mpv (video player)
         Key(
-            [mod, "mod1"], "p", lazy.spawn(path.join(scripts_path, "clipboard-mpv.sh"))
+            [MOD, "mod1"], "p", lazy.spawn(path.join(scripts_path, "clipboard-mpv.sh"))
         ),
         # youtube-dl mass downloading
         Key(
-            [mod, "mod1"],
+            [MOD, "mod1"],
             "y",
             lazy.spawn(
                 path.join(scripts_path, "youtube-dl-queuer", "youtube-dl-queuer.sh")
             ),
         ),
         Key(
-            [mod, "control"],
+            [MOD, "control"],
             "y",
             lazy.spawn(path.join(scripts_path, "youtube-dl-queuer", "hot-queue.sh")),
         ),
         # dunst
         Key(["control"], "space", lazy.spawn("dunstctl close")),
         Key(["control", "shift"], "space", lazy.spawn("dunstctl close-all")),
-        Key([mod], "h", lazy.spawn("dunstctl history-pop")),
+        Key([MOD], "h", lazy.spawn("dunstctl history-pop")),
         # lock screen
-        Key([mod, "control"], "F12", lazy.spawn("light-locker-command -l")),
+        Key([MOD, "control"], "F12", lazy.spawn("light-locker-command -l")),
     ]
 
     # Create keybinds for switching groups
@@ -231,16 +231,16 @@ def create_keybinds():
         keys.extend(
             [
                 # mod1 + letter of group = switch to group
-                Key([mod], group.name, lazy.group[group.name].toscreen()),
+                Key([MOD], group.name, lazy.group[group.name].toscreen()),
                 # mod1 + shift + letter of group = send to group
                 Key(
-                    [mod, "shift"],
+                    [MOD, "shift"],
                     group.name,
                     lazy.window.togroup(group.name, switch_group=False),
                 ),
                 # mod1 + control + letter of group = send to group & switch screens
                 Key(
-                    [mod, "control"],
+                    [MOD, "control"],
                     group.name,
                     lazy.window.togroup(group.name, switch_group=True),
                 ),

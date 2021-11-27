@@ -39,26 +39,27 @@ pallete = theme.create_pallete()
 FONT_SIZE = 15
 FONT_SIZE_MED = FONT_SIZE + 1
 FONT_SIZE_BIG = FONT_SIZE_MED + 2
-FONT_SIZE_GIGANTIC = FONT_SIZE_MED + 10
 PADDING = FONT_SIZE - 3
 
 # PYWAL COLORS
 colors_main = pallete["colors_main"]
 colors = pallete["colors"]
 highlight = pallete["highlight"]
-shadow = pallete["shadow"]
+SHADOW = pallete["shadow"]
 
+# DISABLED BECAUSE MY EMAIL SCRIPT STOPPED WORKING, RIP
+# def check_mail():
+#     """Lists files in user's inbox to determine if there are unread emails."""
+#     mail_count = len(listdir(config.get("mail_path")))
 
-def check_mail():
-    mail_count = len(listdir(config.get("mail_path")))
+#     if mail_count > 0:
+#         return f" {mail_count}"
 
-    if mail_count > 0:
-        return f" {mail_count}"
-
-    return ""
+#     return ""
 
 
 def check_rss():
+    """Reads my newsboat's output file to show in the bar."""
     upper_limit = 500
     lower_limit = 50
     file_path = path.join(config.get("newsboat_path"), "unread_count.tmp")
@@ -79,7 +80,9 @@ def check_rss():
 
 
 def check_wifi():
+    """Checks connection by asking NetworkManager."""
     cmd = "nmcli -t -f STATE general"
+    # pylint: disable=subprocess-run-check
     output = run(list(cmd.split()), text=True, capture_output=True)
 
     if output.stdout.strip() == "connected":
@@ -89,6 +92,7 @@ def check_wifi():
 
 
 def check_bluetooth():
+    """Checks if bluetooth is powered on."""
     cmd = "bluetoothctl show"
     try:
         output = run(list(cmd.split()), text=True, capture_output=True, check=True)
@@ -101,129 +105,98 @@ def check_bluetooth():
     return ""
 
 
-def minimal_widgets():
-    widgets = [
-        widget.GroupBox(
-            fontshadow=shadow,
-            highlight_method="block",
-            this_current_screen_border=highlight,
-            this_screen_border=highlight,
-            urgent_alert_method="block",
-            urgent_border="FF4847",
-            urgent_text="FFFFFF",
-            disable_drag=True,
-            rounded=False,
-            use_mouse_wheel=False,
-        ),
-        widget.Spacer(
-            length=4,
-        ),
-        widget.WindowCount(font_size=FONT_SIZE_MED, fmt="({})"),
-        widget.WindowTabs(
-            foreground="FFFFFF",
-            fontshadow=shadow,
-            font_size=FONT_SIZE_MED,
-            max_chars=200,
-            separator=" ⏽ ",
-        ),
-        widget.Spacer(length=bar.STRETCH),
-        widget.Clock(
-            format=r"%d/%m - %I:%M %p",
-            foreground=colors.get("color1"),
-            fontshadow=shadow,
-            padding=PADDING,
-        ),
-    ]
+# Common widgets
+group_box = widget.GroupBox(
+    fontshadow=SHADOW,
+    highlight_method="block",
+    this_current_screen_border=highlight,
+    this_screen_border=highlight,
+    urgent_alert_method="block",
+    urgent_border="FF4847",
+    urgent_text="FFFFFF",
+    disable_drag=True,
+    rounded=False,
+    use_mouse_wheel=False,
+)
+window_count = widget.WindowCount(font_size=FONT_SIZE_MED, fmt="({})")
+window_tabs = widget.WindowTabs(
+    foreground="FFFFFF",
+    fontshadow=SHADOW,
+    font_size=FONT_SIZE_MED,
+    max_chars=200,
+    separator=" ⏽ ",
+)
+clock = widget.Clock(
+    format=r"%d/%m %I:%M %p",
+    foreground=colors.get("color1"),
+    fontshadow=SHADOW,
+    padding=PADDING,
+)
+# pylint: disable=unnecessary-lambda
+spacer = lambda length: widget.Spacer(length)
 
-    return widgets
+main_screen_widgets = [
+    group_box,
+    spacer(4),
+    window_count,
+    window_tabs,
+    spacer(bar.STRETCH),
+    widget.Mpd2(
+        foreground=colors.get("color3"),
+        status_format='<span size="large">{play_status}</span> {title}',
+        idle_message="",
+        idle_format="",
+        no_connection="",
+        fontsize=FONT_SIZE_MED,
+        play_states={"pause": "", "play": "", "stop": ""},
+        padding=PADDING,
+    ),
+    widget.GenPollText(
+        func=check_rss,
+        update_interval=8,
+        fontsize=FONT_SIZE_MED,
+        fontshadow=SHADOW,
+        foreground=colors.get("color3"),
+        padding=PADDING,
+    ),
+    widget.GenPollText(
+        func=check_bluetooth,
+        update_interval=10,
+        max_chars=3,
+        fontsize=FONT_SIZE,
+        fontshadow=SHADOW,
+        foreground=colors.get("color3"),
+        padding=PADDING,
+    ),
+    widget.GenPollText(
+        func=check_wifi,
+        update_interval=5,
+        max_chars=3,
+        fontsize=FONT_SIZE_BIG,
+        fontshadow=SHADOW,
+        foreground=colors.get("color3"),
+        padding=PADDING,
+    ),
+    clock,
+    widget.Systray(),
+]
+minimal_widgets = [
+    group_box,
+    spacer(4),
+    window_count,
+    window_tabs,
+    spacer(bar.STRETCH),
+    clock,
+]
 
 
-def main_widgets():
+def create_bar(minimal=False):
     """
-    Creates widgets to show on a bar
+    Initialize a bar
     """
-    widgets = [
-        widget.GroupBox(
-            fontshadow=shadow,
-            highlight_method="block",
-            this_current_screen_border=highlight,
-            this_screen_border=highlight,
-            urgent_alert_method="block",
-            urgent_border="FF4847",
-            urgent_text="FFFFFF",
-            disable_drag=True,
-            rounded=False,
-            use_mouse_wheel=False,
-        ),
-        widget.Spacer(
-            length=4,
-        ),
-        widget.WindowCount(font_size=FONT_SIZE_MED, fmt="({})"),
-        widget.WindowTabs(
-            foreground="FFFFFF",
-            fontshadow=shadow,
-            font_size=FONT_SIZE_MED,
-            max_chars=200,
-            separator=" ⏽ ",
-        ),
-        widget.Spacer(length=bar.STRETCH),
-        widget.Mpd2(
-            foreground=colors.get("color3"),
-            status_format='<span size="large">{play_status}</span> {title}',
-            idle_message="",
-            idle_format="",
-            no_connection="",
-            fontsize=FONT_SIZE_MED,
-            play_states={"pause": "", "play": "", "stop": ""},
-            padding=PADDING,
-        ),
-        widget.GenPollText(
-            func=check_mail,
-            update_interval=8,
-            fontsize=FONT_SIZE_MED,
-            fontshadow=shadow,
-            foreground=colors.get("color3"),
-            mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("kitty neomutt")},
-            padding=PADDING,
-        ),
-        widget.GenPollText(
-            func=check_rss,
-            update_interval=8,
-            fontsize=FONT_SIZE_MED,
-            fontshadow=shadow,
-            foreground=colors.get("color3"),
-            padding=PADDING,
-        ),
-        widget.GenPollText(
-            func=check_bluetooth,
-            update_interval=10,
-            max_chars=3,
-            fontsize=FONT_SIZE,
-            fontshadow=shadow,
-            foreground=colors.get("color3"),
-            padding=PADDING,
-        ),
-        widget.GenPollText(
-            func=check_wifi,
-            update_interval=5,
-            max_chars=3,
-            fontsize=FONT_SIZE_BIG,
-            fontshadow=shadow,
-            foreground=colors.get("color3"),
-            padding=PADDING,
-        ),
-        widget.Clock(
-            format=r"%d/%m - %I:%M %p",
-            foreground=colors.get("color1"),
-            fontshadow=shadow,
-            padding=PADDING,
-        ),
-        widget.Systray(),
-    ]
-
-    # Add battery widget if on a laptop
-    if len(listdir(path.join("/", "sys", "class", "power_supply"))) > 0:
-        widgets.insert(
+    has_battery = len(listdir(path.join("/", "sys", "class", "power_supply"))) > 0
+    if has_battery:
+        main_screen_widgets.insert(
             -3,
             widget.Battery(
                 format='<span size="small">{char}</span>{percent:2.0%}',
@@ -235,29 +208,14 @@ def main_widgets():
                 low_foreground="FF4847",
                 hide_threshold=0.98,
                 fontsize=FONT_SIZE_MED,
-                fontshadow=shadow,
+                fontshadow=SHADOW,
                 foreground=colors.get("color3"),
                 padding=PADDING,
             ),
         )
 
-    return widgets
-
-
-def create_bar(minimal=False):
-    """
-    Initialize a bar
-    """
-    if minimal:
-        return bar.Bar(
-            widgets=minimal_widgets(),
-            size=30,
-            background=colors_main.get("background"),
-            opacity=0.9,
-        )
-
     return bar.Bar(
-        widgets=main_widgets(),
+        widgets=main_screen_widgets if not minimal else minimal_widgets,
         size=30,
         background=colors_main.get("background"),
         opacity=0.9,

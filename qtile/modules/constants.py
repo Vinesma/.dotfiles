@@ -1,3 +1,6 @@
+""" Define values used throught the modules
+"""
+
 from os import path
 
 

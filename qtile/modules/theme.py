@@ -1,3 +1,7 @@
+""" Get color information from pywal
+    if pywal can't be imported, return default values
+"""
+
 from os import path
 from modules import constants
 
@@ -9,6 +13,7 @@ def create_pallete():
     Return usable colors
     """
     try:
+        # pylint: disable=import-outside-toplevel
         from pywal import theme
 
         theme = theme.file(
@@ -39,15 +44,13 @@ def create_pallete():
             "color14": "#9082e8",
             "color15": "#ddd1e0",
         }
-
-        highlight = colors.get("color4")
     else:
         # PYWAL COLORS
         colors_main = theme.get("special")
         colors = theme.get("colors")
         highlight = colors.get("color4")
     finally:
-        # CONSTANT COLORS
+        highlight = colors.get("color4")
         shadow = "#3F3F44"
 
     return {
