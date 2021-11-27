@@ -5,7 +5,6 @@ https://forum.manjaro.org/c/announcements/stable-updates.rss "~Manjaro Updates"
 "query:Youtube (Others):tags # \"youtube-others\" and unread = \"yes\""
 "query:Youtube (Tech):tags # \"tech\" and age < 60"
 "query:Youtube (Japanese):tags # \"japanese\""
-"query:Twitter (News):tags # \"twitter-news\" and unread = \"yes\""
 "query:Twitter (Artists):tags # \"twitter-artist\" and age < 2"
 "query:Twitter (Artists)(All):tags # \"twitter-artist\"
 https://g1.globo.com/rss/g1/sp/sao-paulo/ "~G1 - São Paulo" news
@@ -54,15 +53,9 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCfp-lNJy4QkIGnaEE6NtDSg "~L
 https://www.youtube.com/feeds/videos.xml?channel_id=UCLuymDHiOySsAQ9Nc-4NoEQ "~Onomappu オノマップ" japanese
 https://www.youtube.com/feeds/videos.xml?channel_id=UCEw0sdrCOjcsjtXGJibItJA "~Easy Peasy Japanesey" japanese
 https://www.youtube.com/feeds/videos.xml?channel_id=UCNepEAWZH0TBu7dkxIbluDw "~Dad, how do I?" youtube-others
-https://nitter.nixnet.services/AIR_News01/rss "~@A.I.R - Anime News" twitter-news
 https://nitter.nixnet.services/fosspost/rss "~Linux & Open Source" tech-news
 https://nitter.nixnet.services/fullstackpython/rss "~@Full Stack Python" tech-news
 https://nitter.nixnet.services/freeCodeCamp/rss "~@freeCodeCamp" tech-news
-https://nitter.nixnet.services/Anime/rss "~@Anime News Network" twitter-news
-https://nitter.nixnet.services/TechRaptr/rss "~@TechRaptor" twitter-news
-https://nitter.nixnet.services/factoriogame/rss "~Factorio" twitter-news
-https://nitter.nixnet.services/engadget/rss "~Engadget" twitter-news
-https://nitter.nixnet.services/arstechnica/rss "~Ars Technica" twitter-news
 https://nitter.nixnet.services/click_burgundy/rss "~@click_burgundy" twitter-artist
 https://nitter.nixnet.services/taninao1988/rss "~@taninao1988" twitter-artist
 https://nitter.nixnet.services/Cheon1986/rss "~HxxG" twitter-artist
