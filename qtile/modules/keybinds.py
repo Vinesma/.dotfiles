@@ -33,15 +33,15 @@ from libqtile.config import Key
 from libqtile.lazy import lazy
 from modules import groups, constants
 
-config = constants.config()
+config = constants.Config()
 
-MOD = config["mod"]
-TERMINAL = config["terminal"]
-terminal_reduced_opacity = config["terminal_reduced_opacity"]
-terminal_increased_opacity = config["terminal_increased_opacity"]
-FILE_BROWSER = config["file_browser"]
-BROWSER = config["browser"]
-scripts_path = config["scripts_path"]
+MOD = config.mod_key
+TERMINAL = config.terminal
+terminal_reduced_opacity = config.terminal_reduced_opacity
+terminal_increased_opacity = config.terminal_increased_opacity
+FILE_BROWSER = config.file_browser
+BROWSER = config.browser
+scripts_path = config.scripts_path
 
 
 def create_keybinds():

@@ -37,14 +37,14 @@ def create_groups():
     Initialize groups for qtile
     """
     access_keys = ["a", "s", "d", "f"]
-    config = constants.config()
+    config = constants.Config()
 
     return [
         Group(
             key,
             layout="max",
             label=f"{index+1}",
-            spawn="" if index != 1 else config.get("terminal", "xterm"),
+            spawn="" if index != 1 else config.terminal,
         )
         for index, key in enumerate(access_keys)
     ]

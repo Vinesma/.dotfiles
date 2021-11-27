@@ -36,7 +36,7 @@ from libqtile import layout, hook
 from modules import constants, keybinds, groups, layouts, theme, taskbar, screens
 
 # CONFIG
-config = constants.config()
+config = constants.Config()
 # COLORS
 pallete = theme.create_pallete()
 colors_main = pallete["colors_main"]
@@ -44,9 +44,9 @@ colors = pallete["colors"]
 highlight = pallete["highlight"]
 shadow = pallete["shadow"]
 # PATHS
-home_path = config["home_path"]
+home_path = config.home_path
 # MOD
-mod = config["mod"]
+mod = config.mod_key
 # KEYS
 keys = keybinds.create_keybinds()
 # GROUPS

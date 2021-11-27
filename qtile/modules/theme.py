@@ -5,7 +5,7 @@
 from os import path
 from modules import constants
 
-config = constants.config()
+config = constants.Config()
 
 
 def create_pallete():
@@ -16,9 +16,7 @@ def create_pallete():
         # pylint: disable=import-outside-toplevel
         from pywal import theme
 
-        theme = theme.file(
-            path.join(config["home_path"], ".cache", "wal", "colors.json")
-        )
+        theme = theme.file(path.join(config.home_path, ".cache", "wal", "colors.json"))
     except (ImportError, FileNotFoundError):
         # FALLBACKS
         colors_main = {

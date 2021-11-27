@@ -34,7 +34,7 @@ from subprocess import run, CalledProcessError
 from libqtile import widget, bar, qtile
 from modules import theme, constants
 
-config = constants.config()
+config = constants.Config()
 pallete = theme.create_pallete()
 FONT_SIZE = 15
 FONT_SIZE_MED = FONT_SIZE + 1
@@ -62,7 +62,7 @@ def check_rss():
     """Reads my newsboat's output file to show in the bar."""
     upper_limit = 500
     lower_limit = 50
-    file_path = path.join(config.get("newsboat_path"), "unread_count.tmp")
+    file_path = path.join(config.newsboat_path, "unread_count.tmp")
 
     try:
         with open(file_path, "r", encoding="utf-8") as _file:
@@ -189,30 +189,31 @@ minimal_widgets = [
     clock,
 ]
 
+has_battery = len(listdir(path.join("/", "sys", "class", "power_supply"))) > 0
+if has_battery:
+    main_screen_widgets.insert(
+        -3,
+        widget.Battery(
+            format='<span size="small">{char}</span>{percent:2.0%}',
+            full_char=" ",
+            charge_char=" ",
+            discharge_char=" ",
+            empty_char=" ",
+            unknown_char=" ",
+            low_foreground="FF4847",
+            hide_threshold=0.98,
+            fontsize=FONT_SIZE_MED,
+            fontshadow=SHADOW,
+            foreground=colors.get("color3"),
+            padding=PADDING,
+        ),
+    )
+
 
 def create_bar(minimal=False):
     """
     Initialize a bar
     """
-    has_battery = len(listdir(path.join("/", "sys", "class", "power_supply"))) > 0
-    if has_battery:
-        main_screen_widgets.insert(
-            -3,
-            widget.Battery(
-                format='<span size="small">{char}</span>{percent:2.0%}',
-                full_char=" ",
-                charge_char=" ",
-                discharge_char=" ",
-                empty_char=" ",
-                unknown_char=" ",
-                low_foreground="FF4847",
-                hide_threshold=0.98,
-                fontsize=FONT_SIZE_MED,
-                fontshadow=SHADOW,
-                foreground=colors.get("color3"),
-                padding=PADDING,
-            ),
-        )
 
     return bar.Bar(
         widgets=main_screen_widgets if not minimal else minimal_widgets,
