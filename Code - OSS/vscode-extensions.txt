@@ -5,7 +5,6 @@ esbenp.prettier-vscode
 humao.rest-client
 jpoissonnier.vscode-styled-components
 mads-hartmann.bash-ide-vscode
-ms-azuretools.vscode-docker
 ms-python.python
 timonwong.shellcheck
 vscode-icons-team.vscode-icons
