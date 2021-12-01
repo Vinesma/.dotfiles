@@ -44,5 +44,6 @@
   "terminal.external.linuxExec": "kitty",
   "terminal.integrated.copyOnSelection": true,
   "prettier.tabWidth": 4,
-  "prettier.arrowParens": "avoid"
+  "prettier.arrowParens": "avoid",
+  "workbench.startupEditor": "none"
 }
