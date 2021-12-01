@@ -4,6 +4,7 @@
 # Dependencies:
 # - ffmpeg
 
+# shellcheck disable=SC2063
 resolution=$(xrandr | grep '*' | awk '{printf $1}')
 date_string=$(date +%0Y_%0m_%0d-%0l_%0M)
 output_name="$date_string screen_record.mp4"

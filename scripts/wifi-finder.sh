@@ -4,7 +4,6 @@
 # - Dependencies:
 # nmcli, rofi
 
-icon_error="/usr/share/icons/Papirus/32x32/status/dialog-error.svg"
 icon_connected="/usr/share/icons/Papirus/32x32/status/online.svg"
 icon_search="/usr/share/icons/Papirus/32x32/devices/network-wireless.svg"
 icon_failed="/usr/share/icons/Papirus/32x32/status/offline.svg"

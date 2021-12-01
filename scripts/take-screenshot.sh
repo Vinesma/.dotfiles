@@ -4,6 +4,7 @@
 # Dependencies:
 # - scrot
 
+# shellcheck disable=SC2016
 filename_format='%Y-%m-%d_$wx$h.png'
 mv_command='mv $f ~/Pictures/'
 notify_command='notify-send -i /usr/share/icons/Papirus-Dark/32x32/devices/camera-photo.svg "SCROT" "Screenshot: $f taken"'

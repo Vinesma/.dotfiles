@@ -40,7 +40,7 @@ seek-by-value() {
 
 case $1 in
     toggle) toggle_media ;;
-    +*|-*) set-volume $1 ;;
-    seek) seek-by-value $2 ;;
+    +*|-*) set-volume "$1" ;;
+    seek) seek-by-value "$2" ;;
     *) printf 'Invalid args' ;;
 esac
