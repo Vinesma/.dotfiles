@@ -12,6 +12,7 @@ http://www.bbc.co.uk/portuguese/index.xml "~BBC" news
 https://feeds.folha.uol.com.br/poder/rss091.xml "~FOLHA - Poder" news
 https://feeds.folha.uol.com.br/tec/rss091.xml "~FOLHA - Tecnologia" news
 https://feeds.folha.uol.com.br/mundo/rss091.xml "~FOLHA - Mundo" news
+https://blog.nubank.com.br/seu-dinheiro/feed/ "~Nubank - Blog" news
 https://news.ycombinator.com/rss "~Hacker News" tech-news
 https://css-tricks.com/feed/ "~CSS-Tricks" tech-news
 https://www.joshwcomeau.com/rss.xml "~Josh Comeau" tech-news
