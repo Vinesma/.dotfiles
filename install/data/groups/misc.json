@@ -509,7 +509,12 @@
                 "sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp",
                 "sudo chmod a+rx /usr/local/bin/yt-dlp"
             ],
-            "comments": [],
+            "comments": [
+                "To install the man page and completions:",
+                "Download and extract: https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.tar.gz",
+                "Man page: Copy ytdl.1 to /usr/share/man/man1",
+                "Zsh auto-complete: Copy _yt-dlp inside completions folder to /usr/share/zsh/functions/Completion/X"
+            ],
             "files": []
         }
     ],
