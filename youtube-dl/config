@@ -1,4 +1,4 @@
 # Default folder
 -o ~/Videos/Others/%(uploader)s/%(title)s.%(ext)s
 # Cookies https://github.com/ytdl-org/youtube-dl/blob/master/README.md#how-do-i-pass-cookies-to-youtube-dl
---cookies ~/Documents/cookies.txt
+--cookies ~/.config/cookies.txt
