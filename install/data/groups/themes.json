@@ -4,7 +4,7 @@
         {
             "display_name": "Matcha GTK",
             "name": "matcha-gtk-theme",
-            "installer": "pacman",
+            "installer": "aur",
             "auto_start": [],
             "post_install_commands": [],
             "comments": [],

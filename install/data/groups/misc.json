@@ -306,7 +306,7 @@
         },
         {
             "display_name": "Anki",
-            "name": "anki",
+            "name": "anki-bin",
             "installer": "aur",
             "auto_start": [],
             "post_install_commands": [],
