@@ -10,7 +10,7 @@ config = Config()
 def sync(args=""):
     """Sync repos and install packages"""
 
-    spawn.process(f"{config.aur_helper} --noconfirm -Sua {args}", sudo=True)
+    spawn.process(f"{config.aur_helper} --noconfirm -Sua {args}")
     log.write("Synced AUR packages")
 
 
@@ -18,5 +18,5 @@ def install(args):
     """Install packages, no sync"""
 
     if len(args) > 0:
-        spawn.process(f"{config.aur_helper} --noconfirm -S {args}", sudo=True)
+        spawn.process(f"{config.aur_helper} --noconfirm -S {args}")
         log.write(f"(AUR) Installed: {args}")
