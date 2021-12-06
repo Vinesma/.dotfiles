@@ -4,12 +4,16 @@
 #
 #
 
+[ $EUID -ne 0 ] && { printf "%s\n" "Please run this script as root."; exit 1; }
+
 config_source="$HOME/Sync/rclone/rclone.conf"
 fallback_config="/run/media/$USER/OTDRIVE/rclone/rclone.conf"
 config_dir="$HOME/.config/rclone/"
+temp_file=$(mktemp)
 
 printf "%s\n" "Installing rclone"
-curl https://rclone.org/install.sh | sudo bash
+curl https://rclone.org/install.sh -o "$temp_file" \
+    && bash "$temp_file"
 
 if [ -e "$config_source" ]; then
     mkdir -p "$config_dir"
@@ -20,3 +24,5 @@ elif [ -e "$fallback_config" ]; then
 else
     printf "%s" "Configuration file not found! Create one using ´rclone config´ or place it manually in '$config_dir'."
 fi
+
+rm "$temp_file"
