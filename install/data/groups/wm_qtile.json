@@ -86,8 +86,8 @@
             ]
         },
         {
-            "display_name": "python-mp2",
-            "name": "python-mp2",
+            "display_name": "python-mpd2",
+            "name": "python-mpd2",
             "installer": "pacman",
             "auto_start": [],
             "post_install_commands": [],
