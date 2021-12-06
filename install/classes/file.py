@@ -55,9 +55,9 @@ class File:
     def mkdir(self):
         """Create inexistent directories"""
 
-        if not os.path.isdir(self.path_destination):
+        if not os.path.isdir(os.path.expandvars(self.path_destination)):
             message.normal(f"Created directory: '{self.path_destination}'")
-            os.makedirs(self.path_destination)
+            os.makedirs(os.path.expandvars(self.path_destination))
 
     def touch(self):
         """Create this file at its destination. Write text to it."""
