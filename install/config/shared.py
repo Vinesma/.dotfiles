@@ -12,7 +12,7 @@ class Config:
         if cls._instance is None:
             cls._instance = super(Config, cls).__new__(cls)
 
-        cls.dev_mode = True
+        cls.dev_mode = False
         """
         Determines if the program should run sanity checks on startup.
         Some of these checks don't make sense if the user is in a fresh install.
@@ -32,7 +32,7 @@ class Config:
         """
         The default package installer
         """
-        cls.aur_helper = "yay"
+        cls.aur_helper = "paru"
         """
         What AUR helper to use, currently will break if helper doesn't use yay's args.
         """

@@ -33,11 +33,13 @@
             "files": []
         },
         {
-            "display_name": "yay",
-            "name": "yay",
-            "installer": "pacman",
+            "display_name": "paru",
+            "name": "paru",
+            "installer": "custom",
             "auto_start": [],
-            "post_install_commands": [],
+            "post_install_commands": [
+                "bash $HOME/.dotfiles/install/scripts/setup-paru.sh"
+            ],
             "comments": [],
             "files": []
         },

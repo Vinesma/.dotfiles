@@ -7,7 +7,7 @@
             "installer": "pacman",
             "auto_start": [],
             "post_install_commands": [
-                "sudo sed -i -Ee s/#?greeter-setup-script=.*/greeter-setup-script=\\/usr\\/bin\\/numlockx{SPACE}on/ /etc/lightdm/lightdm.conf"
+                "bash $HOME/.dotfiles/install/scripts/setup-numlockx.sh"
             ],
             "comments": [],
             "files": []
