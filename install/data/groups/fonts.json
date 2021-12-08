@@ -20,8 +20,8 @@
             "files": []
         },
         {
-            "display_name": "OTF Ipa Font",
-            "name": "otf-ipafont",
+            "display_name": "Noto Fonts CJK (JP/CH/KR Font)",
+            "name": "noto-fonts-cjk",
             "installer": "pacman",
             "auto_start": [],
             "post_install_commands": [],
