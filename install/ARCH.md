@@ -96,7 +96,7 @@ My partition scheme will be as follows:
 
 ```
 /efi - 200 MB (Doesn't need to be created if an EFI partition already exists)
-[SWAP] - HALF OF RAM
+[SWAP] - If hybernation is needed, the size of RAM or double. If not, half of RAM should suffice.
 / - 80 GB
 /home - Remainder of space
 ```
@@ -122,7 +122,18 @@ My partition scheme will be as follows:
   If prompted to remove an existing filesystem signature, say `yes`.
   New signatures will be established for the new partitions.
   If you accidentally create a bad partition, you can always delete the partition using the `d` key.
+- Tag the new partition as `EFI System`:
+  ```
+  t
+  1
+  ```
 - Create a SWAP partition. This never needs to be very big, especially if you never plan on hibernation.
+- Tag the SWAP partition as `Linux swap`:
+  ```
+  t
+  2
+  19
+  ```
 - Create a root `/` partition.
   ```
   n
@@ -142,7 +153,7 @@ My partition scheme will be as follows:
   You will be returned to the virtual terminal prompt, where you will be able to run `fdisk -l` to view your newly created partitions.
 - Change all partition signatures.
   ```
-  mkfs.fat -F32 -n ESP /dev/sda1
+  mkfs.fat -F 32 -n ESP /dev/sda1
   mkswap /dev/sda2
   swapon /dev/sda2
   mkfs.ext4 /dev/sda3
@@ -209,12 +220,12 @@ My partition scheme will be as follows:
 - Edit `/etc/locale.conf` to set the system language:
   ```
   LANG=en_US.UTF-8
-  LC_MESSAGES="en_US.UTF-8"
-  LC_MONETARY="pt_BR.UTF-8"
-  LC_PAPER="pt_BR.UTF-8"
-  LC_MEASUREMENT="pt_BR.UTF-8"
-  LC_ADDRESS="pt_BR.UTF-8"
-  LC_TIME="pt_BR.UTF-8"
+  LC_MESSAGES=en_US.UTF-8
+  LC_MONETARY=pt_BR.UTF-8
+  LC_PAPER=pt_BR.UTF-8
+  LC_MEASUREMENT=pt_BR.UTF-8
+  LC_ADDRESS=pt_BR.UTF-8
+  LC_TIME=pt_BR.UTF-8
   ```
 - Edit `/etc/vconsole.conf` to permanently set the console keyboard layout:
   ```
@@ -294,8 +305,9 @@ At this point, we have completely installed everything needed for a fully functi
   useradd -m -G video,wheel sam
   passwd sam
   ```
-- Configure the sudoers file. Uncomment the wheel group permissions line.
+- Install sudo and configure the sudoers file. Uncomment the wheel group permissions line.
   ```
+  pacman -Syu --needed sudo
   EDITOR=/usr/bin/nvim visudo
   ```
 - Then `logout` and log back in as the newly created user.
