@@ -6,9 +6,7 @@
             "name": "xorg-server",
             "installer": "pacman",
             "auto_start": [],
-            "post_install_commands": [
-                "localectl --no-convert set-x11-keymap br"
-            ],
+            "post_install_commands": [],
             "comments": [],
             "files": []
         },
@@ -29,6 +27,33 @@
             "post_install_commands": [
                 "xdg-user-dirs-update"
             ],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "base-devel",
+            "name": "base-devel",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "man-db",
+            "name": "man-db",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "man-pages",
+            "name": "man-pages",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
             "comments": [],
             "files": []
         },

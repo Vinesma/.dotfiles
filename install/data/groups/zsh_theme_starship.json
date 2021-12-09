@@ -1,20 +1,20 @@
 {
-    "name": "term_kitty",
+    "name": "zsh_theme_starship",
     "packages": [
         {
-            "display_name": "Kitty",
-            "name": "kitty",
-            "installer": "pacman",
+            "display_name": "Starship",
+            "name": "starship",
+            "installer": "custom",
             "auto_start": [],
             "post_install_commands": [
-                "localectl --no-convert set-x11-keymap br"
+                "bash $HOME/.dotfiles/install/scripts/setup-starship.sh"
             ],
             "comments": [],
             "files": [
                 {
-                    "name": "kitty.conf",
-                    "path_destination": "$HOME/.config/kitty",
-                    "path_source": "$HOME/.dotfiles/kitty",
+                    "name": "starship.toml",
+                    "path_destination": "$HOME/.config",
+                    "path_source": "$HOME/.dotfiles/starship",
                     "text": "",
                     "create_link": true,
                     "sudo": false,

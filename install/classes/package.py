@@ -78,11 +78,11 @@ class Package:
         if len(self.post_install_commands) > 0:
             message.normal(f"Running commands to configure {self.display_name}")
 
-        for command in self.post_install_commands:
-            spawn.process(os.path.expandvars(command))
-
         for _file in self.files:
             _file.configure()
+
+        for command in self.post_install_commands:
+            spawn.process(os.path.expandvars(command))
 
     def add_autostart(self):
         """Append lines to auto_start file"""
