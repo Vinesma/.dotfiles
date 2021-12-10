@@ -1,6 +1,7 @@
 "query:Unread News:tags # \"news\" and unread = \"yes\""
 "query:Tech News:tags # \"tech-news\" and unread = \"yes\""
 https://forum.manjaro.org/c/announcements/stable-updates.rss "~Manjaro Updates"
+https://archlinux.org/feeds/news/ "~Arch Linux News"
 "query:Youtube (Favorites):tags # \"youtube-favorite\" and unread = \"yes\""
 "query:Youtube (Others):tags # \"youtube-others\" and unread = \"yes\""
 "query:Youtube (Tech):tags # \"tech\" and age < 60"
@@ -140,3 +141,6 @@ https://nitter.nixnet.services/askziye/rss "~ASK" twitter-artist
 https://nitter.nixnet.services/pomesaurus/rss "~pome" twitter-artist
 https://nitter.nixnet.services/Dishwasher1911/rss "~Dishwasher1910+1" twitter-artist
 https://nitter.nixnet.services/youcapriccio/rss "~youcapriccio" twitter-artist
+https://nitter.nixnet.services/mignon/rss "~mignon" twitter-artist
+https://nitter.nixnet.services/yuu201023/rss "~ゆ宇" twitter-artist
+https://nitter.nixnet.services/_SWAV_/rss "~SWAV" twitter-artist
