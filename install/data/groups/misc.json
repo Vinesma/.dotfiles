@@ -502,6 +502,17 @@
             ],
             "comments": [],
             "files": []
+        },
+        {
+            "display_name": "Cron",
+            "name": "cronie",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [
+                "sudo systemctl enable --now cronie"
+            ],
+            "comments": [],
+            "files": []
         }
     ],
     "files": [

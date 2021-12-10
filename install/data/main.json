@@ -20,6 +20,6 @@
     "eyecandy",
     "polybar",
     "misc",
-    "manjaro_only",
-    "manjaro_printer"
+    "arch_only",
+    "arch_printer"
 ]

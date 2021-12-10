@@ -2,7 +2,7 @@
 
 These folders contain scripts to basically auto install my stuff, however some things do require manual intervention. I will try to outline them in this guide.
 
-## Architect
+## Architect (Manjaro)
 
 - Get the [architect.](https://manjaro.org/download/)
 
@@ -76,7 +76,7 @@ VSCode integration:
 
 ### Arch User Repository (AUR)
 
-I use `yay` as an AUR helper. It should be installed after running my scripts.
+I use `paru` as an AUR helper. It should be installed after running my scripts.
 
 [How to use the AUR.](https://wiki.archlinux.org/index.php/Arch_User_Repository#Getting_started)
 

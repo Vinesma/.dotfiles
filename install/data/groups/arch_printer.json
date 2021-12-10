@@ -1,0 +1,31 @@
+{
+    "name": "arch_printer",
+    "packages": [
+        {
+            "display_name": "Cups",
+            "name": "cups",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [
+                "sudo gpasswd -a $USER sys",
+                "sudo systemctl enable cups.socket"
+            ],
+            "comments": [
+                "All done, you can now go to http://localhost:631/",
+                "In the Administration tab you can add and manage local or networked printers and jobs.",
+                "More info here: https://wiki.archlinux.org/title/CUPS"
+            ],
+            "files": []
+        },
+        {
+            "display_name": "Cups-pdf",
+            "name": "cups-pdf",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        }
+    ],
+    "files": []
+}

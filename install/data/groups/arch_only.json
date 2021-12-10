@@ -1,0 +1,15 @@
+{
+    "name": "arch_only",
+    "packages": [
+        {
+            "display_name": "Steam",
+            "name": "steam",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        }
+    ],
+    "files": []
+}

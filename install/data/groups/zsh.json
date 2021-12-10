@@ -9,7 +9,7 @@
             "post_install_commands": [],
             "comments": [
                 "Use '$ zsh' to switch to Z shell.",
-                "To change shell permanently: '$ chsh /usr/bin/zsh'"
+                "To change shell permanently: '$ chsh -s /usr/bin/zsh $USER'"
             ],
             "files": [
                 {

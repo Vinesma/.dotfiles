@@ -12,12 +12,21 @@
         },
         {
             "display_name": "TLP",
-            "name": "tlpui",
+            "name": "tlp",
             "installer": "pacman",
             "auto_start": [],
             "post_install_commands": [
                 "sudo systemctl enable --now tlp"
             ],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "TLP UI",
+            "name": "tlpui-git",
+            "installer": "aur",
+            "auto_start": [],
+            "post_install_commands": [],
             "comments": [],
             "files": []
         }
