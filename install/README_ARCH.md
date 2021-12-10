@@ -1,5 +1,7 @@
 (08/12/2021) Forked from the excellently written [bossley9's Arch install instructions](https://github.com/bossley9/Dotfiles/tree/arch) with my own modifications and additions.
 
+Meant as a companion guide to the [official Arch guide.](https://wiki.archlinux.org/title/Installation_guide) Some things are only covered there, while this gets you up to speed faster.
+
 ## Install instructions
 
 ## Setup <a name="setup"></a>
@@ -211,7 +213,7 @@ My partition scheme will be as follows:
   ```
   en_US.UTF-8 UTF-8
   pt_BR.UTF-8 UTF-8
-  ja_JA.UTF-8 UTF-8
+  ja_JP.UTF-8 UTF-8
   ```
   Then generate locales.
   ```
