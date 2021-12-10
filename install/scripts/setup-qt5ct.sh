@@ -3,4 +3,4 @@
 # Setup qt5ct
 
 # -- ACT --
-sudo sed -i -e '$a\QT_QPA_PLATFORMTHEME=qt5ct' /etc/environment
+printf '%s' 'QT_QPA_PLATFORMTHEME=qt5ct' | sudo tee -a /etc/environment
