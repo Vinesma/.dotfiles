@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Setup starship, a shell prompt.
+# Setup/update starship, a shell prompt.
 
 WORK_DIR=$HOME/.dotfiles/install/workdir/
 SOURCE=https://starship.rs/install.sh
