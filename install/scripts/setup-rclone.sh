@@ -2,6 +2,7 @@
 
 # Setup/update rclone, a file storage manager.
 
+WORK_DIR=$HOME/.dotfiles/install/workdir/
 USB_NAME=OTDRIVE
 SOURCE=https://rclone.org/install.sh
 RCLONE_CONFIG_DIR="$HOME/.config/rclone/"
