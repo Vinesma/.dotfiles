@@ -155,11 +155,11 @@ My partition scheme will be as follows:
   You will be returned to the virtual terminal prompt, where you will be able to run `fdisk -l` to view your newly created partitions.
 - Change all partition signatures.
   ```
-  mkfs.fat -F 32 -n ESP /dev/sda1
-  mkswap /dev/sda2
+  mkfs.fat -F 32 -n BOOT /dev/sda1
+  mkswap -L SWAP /dev/sda2
   swapon /dev/sda2
-  mkfs.ext4 /dev/sda3
-  mkfs.ext4 /dev/sda4
+  mkfs.ext4 -L ROOT /dev/sda3
+  mkfs.ext4 -L HOME /dev/sda4
   ```
 - Mount the partitions.
   ```
