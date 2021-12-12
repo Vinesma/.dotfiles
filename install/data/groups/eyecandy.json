@@ -73,7 +73,7 @@
             "installer": "pip",
             "auto_start": [],
             "post_install_commands": [
-                "sudo pywalfox install"
+                "sudo /usr/bin/pywalfox install"
             ],
             "comments": [],
             "files": []
