@@ -17,6 +17,8 @@ cd "$WORK_DIR" || exit 1
 if ! command -v yt-dlp; then
     sudo curl -L "$SOURCE" -o /usr/local/bin/yt-dlp
     sudo chmod a+rx /usr/local/bin/yt-dlp
+else
+    sudo yt-dlp -U
 fi
 
 curl -L "$SOURCE_DOCS" -o yt-dlp.tar.gz
