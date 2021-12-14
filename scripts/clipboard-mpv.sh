@@ -28,7 +28,7 @@ send-error() {
 start-playback() {
     local timestamp
 
-    timestamp="$(echo -e '0%\n25%\n50%\n75%\n90%' | rofi -dmenu -p 'Timestamp' -lines 5)"
+    timestamp="$(echo -e '0%\n25%\n50%\n75%\n90%' | rofi -dmenu -p 'Timestamp' -lines 5 2> /dev/null)"
 
     notify-send -i "$icon_mpv" -t "$notify_time" "MPV" "Starting playback..."
     if [[ "$timestamp" = "0%" ]]; then
@@ -46,7 +46,7 @@ show-format-menu() {
     local format
 
     format=$(echo -e "$1\nExit" | \
-    rofi -dmenu -only-match -p 'Video format' -lines 15 | \
+    rofi -dmenu -only-match -p 'Video format' -lines 15 2> /dev/null | \
     cut -d' ' -f 1)
 
     [[ "$format" != "Exit" ]] && start-playback "$format" || \
@@ -81,7 +81,7 @@ show-resume-menu() {
     local choice
 
     choice=$(echo -e "$1\n Exit" | \
-        rofi -dmenu -only-match -p 'Choice' -lines 10)
+        rofi -dmenu -only-match -p 'Choice' -lines 10 2> /dev/null)
 
     if [[ "$choice" != " Exit" ]]; then
         if [[ "$choice" != @(*youtube.com/watch*|*youtu.be*|*twitch.tv/videos*) ]]; then
@@ -111,10 +111,10 @@ show-menu() {
 
         if [[ -n "$resume" ]]; then
             lines="$(( lines + 2 ))"
-            option=$(echo -e "$option菱 Resume watching\n Exit" | rofi -dmenu -only-match -p 'Option' -lines "$lines")
+            option=$(echo -e "$option菱 Resume watching\n Exit" | rofi -dmenu -only-match -p 'Option' -lines "$lines" 2> /dev/null)
         else
             lines="$(( lines + 1 ))"
-            option=$(echo -e "$option Exit" | rofi -dmenu -only-match -p 'Option' -lines "$lines")
+            option=$(echo -e "$option Exit" | rofi -dmenu -only-match -p 'Option' -lines "$lines" 2> /dev/null)
         fi
     else
         option=""
@@ -122,7 +122,7 @@ show-menu() {
 
         if [[ -n "$resume" ]]; then
             lines="$(( lines + 2 ))"
-            option=$(echo -e "$option菱 Resume watching\n Exit" | rofi -dmenu -only-match -p 'Option' -lines "$lines")
+            option=$(echo -e "$option菱 Resume watching\n Exit" | rofi -dmenu -only-match -p 'Option' -lines "$lines" 2> /dev/null)
         else
             send-error "Nothing to play or resume."
         fi
