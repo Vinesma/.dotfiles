@@ -16,6 +16,7 @@ alias journalctl='journalctl -r'          # always forget this
 alias email='neomutt'
 alias music='ncmpcpp'
 alias server-local='python -m http.server 8000 --bind 127.0.0.1'
+alias anacrontab='sudoedit /etc/anacrontab'
 # nvim
 alias v='nvim'
 alias sv='sudo nvim'
