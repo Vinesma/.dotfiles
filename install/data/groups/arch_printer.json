@@ -2,7 +2,7 @@
     "name": "arch_printer",
     "packages": [
         {
-            "display_name": "Cups",
+            "display_name": "CUPS - Open source printing system",
             "name": "cups",
             "installer": "pacman",
             "auto_start": [],
@@ -18,8 +18,26 @@
             "files": []
         },
         {
-            "display_name": "Cups-pdf",
+            "display_name": "cups-pdf",
             "name": "cups-pdf",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "ghostscript - for non-PDF printers",
+            "name": "ghostscript",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "gsfonts - for PostScript printers",
+            "name": "gsfonts",
             "installer": "pacman",
             "auto_start": [],
             "post_install_commands": [],
