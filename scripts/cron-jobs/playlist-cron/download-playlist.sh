@@ -11,7 +11,7 @@ export DISPLAY=:0
 export DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus'
 
 # PATHS
-youtube_dl_path="/usr/local/bin/youtube-dl"
+youtube_dl_path="/usr/local/bin/yt-dlp"
 notify_send_path="/usr/bin/notify-send"
 
 # ICONS

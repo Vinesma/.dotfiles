@@ -83,7 +83,7 @@ update-packages-only-download() {
 }
 
 # for easy downloading of music
-youtube-dl-audio() {
+yt-dlp-audio() {
     yt-dlp -x --audio-format mp3 -o "$HOME/Downloads/Audio/%(title)s.%(ext)s" "$@"
 }
 

@@ -68,12 +68,12 @@ parse-video-info() {
 get-video-info() {
     local video_info
 
-    notify-send -i "$icon_youtube_dl" -t "$notify_time" "MPV" "[youtube-dl] Loading video information..."
+    notify-send -i "$icon_youtube_dl" -t "$notify_time" "MPV" "[yt-dlp] Loading video information..."
 
     if video_info="$(yt-dlp -F --no-playlist "$link")"; then
         parse-video-info "$video_info"
     else
-        send-error '[youtube-dl] Error while fetching video info' && exit 1
+        send-error '[yt-dlp] Error while fetching video info' && exit 1
     fi
 }
 

@@ -471,13 +471,12 @@
             "files": []
         },
         {
-            "display_name": "youtube-dl",
-            "name": "youtube-dl",
+            "display_name": "yt-dlp",
+            "name": "yt-dlp",
             "installer": "custom",
             "auto_start": [],
             "post_install_commands": [
-                "sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl",
-                "sudo chmod a+rx /usr/local/bin/youtube-dl"
+                "bash $HOME/.dotfiles/install/scripts/setup-yt-dlp.sh"
             ],
             "comments": [],
             "files": [
@@ -491,17 +490,6 @@
                     "comments": []
                 }
             ]
-        },
-        {
-            "display_name": "yt-dlp",
-            "name": "yt-dlp",
-            "installer": "custom",
-            "auto_start": [],
-            "post_install_commands": [
-                "bash $HOME/.dotfiles/install/scripts/setup-yt-dlp.sh"
-            ],
-            "comments": [],
-            "files": []
         },
         {
             "display_name": "Cron",

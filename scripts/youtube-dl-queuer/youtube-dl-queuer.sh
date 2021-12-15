@@ -68,7 +68,7 @@ start-download() {
     if [[ -e "$files_folder/queue" ]]; then
         touch "/tmp/ytqueuer-running.tmp"
 
-        notify-send -i "$icon_youtube_dl" -t "$notify_time" "[youtube-dl]" "Starting download..."
+        notify-send -i "$icon_youtube_dl" -t "$notify_time" "[yt-dlp]" "Starting download..."
 
         if [[ -e "$files_folder/writesub" ]]; then
             output=$(yt-dlp --write-sub -f "$video_format" --no-playlist -a "$files_folder/queue")
@@ -77,7 +77,7 @@ start-download() {
         fi
 
         if [ "$?" -eq 0 ]; then
-            notify-send -i "$icon_youtube_dl" "[youtube-dl]" "$queue_count item(s) successfully downloaded!"
+            notify-send -i "$icon_youtube_dl" "[yt-dlp]" "$queue_count item(s) successfully downloaded!"
             clear-queue
         else
             send-error "An error ocurred while downloading one or more items. The queue was preserved.\nOutput saved to file."
