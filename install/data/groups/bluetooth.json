@@ -11,8 +11,7 @@
             ],
             "comments": [
                 "Use '$ bluetoothctl' to pair and connect to a device.",
-                "To automatically power on bluetooth at boot add 'AutoEnable=true' to the last line in '/etc/bluetooth/main.conf'",
-                "If there are errors when trying to connect to a device, try installing 'pulseaudio-bluetooth-a2dp-gdm-fix' or checking the wiki."
+                "To automatically power on bluetooth at boot add 'AutoEnable=true' to the last line in '/etc/bluetooth/main.conf' in the [Policy] section."
             ],
             "files": []
         },
