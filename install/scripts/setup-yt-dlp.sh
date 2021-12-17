@@ -5,6 +5,7 @@
 WORK_DIR=$HOME/.dotfiles/install/workdir/
 SOURCE=https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp
 SOURCE_DOCS=https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.tar.gz
+ZSH_COMPLETION_DIR=/usr/share/zsh/functions/Completion/X
 
 # -- SETUP --
 if [ ! -d "$WORK_DIR" ]; then
@@ -25,8 +26,8 @@ curl -L "$SOURCE_DOCS" -o yt-dlp.tar.gz
 tar xf yt-dlp.tar.gz
 cd yt-dlp || exit 1
 sudo cp -vf yt-dlp.1 /usr/share/man/man1
-[ -d /usr/share/zsh/functions/Completion/X ] && \
-    sudo cp -vf completions/zsh/_yt-dlp /usr/share/zsh/functions/Completion/X
+[ -d $ZSH_COMPLETION_DIR ] && \
+    sudo cp -vf completions/zsh/_yt-dlp $ZSH_COMPLETION_DIR
 sudo mandb
 
 # -- CLEANUP --

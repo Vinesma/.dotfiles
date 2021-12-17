@@ -5,6 +5,7 @@
 WORK_DIR=$HOME/.dotfiles/install/workdir/
 USB_NAME=OTDRIVE
 SOURCE=https://rclone.org/install.sh
+ZSH_COMPLETION_DIR=/usr/share/zsh/functions/Completion/X
 RCLONE_CONFIG_DIR="$HOME/.config/rclone/"
 declare -a CONFIG_SOURCES=(
     "/run/media/$USER/$USB_NAME/rclone/rclone.conf"
@@ -21,7 +22,11 @@ fi
 # -- ACT --
 cd "$WORK_DIR" || exit 1
 
-curl "$SOURCE" -o install.sh && sudo bash install.sh
+if ! command -v rclone; then
+    curl "$SOURCE" -o install.sh && sudo bash install.sh
+else
+    sudo rclone selfupdate
+fi
 
 found=0
 for i in "${!CONFIG_SOURCES[@]}"; do
@@ -29,6 +34,11 @@ for i in "${!CONFIG_SOURCES[@]}"; do
         mkdir -p "$RCLONE_CONFIG_DIR"
         cp -vf "${CONFIG_SOURCES[i]}" "$RCLONE_CONFIG_DIR/rclone.conf"
         found=1
+
+        if [ -d $ZSH_COMPLETION_DIR ]; then
+            printf "%s\n" "Generating completions for zsh..."
+            rclone completion zsh | sudo tee -a ${ZSH_COMPLETION_DIR}/_rclone > /dev/null
+        fi
     fi
 done
 
