@@ -2,6 +2,29 @@
 
 Meant as a companion guide to the [official Arch guide.](https://wiki.archlinux.org/title/Installation_guide) Some things are only covered there, while this gets you up to speed faster.
 
+## Navigation
+- [Setup](#setup)
+- [Boot Start](#boot-start)
+- [Internet](#internet)
+- [Update the System Clock](#update-the-system-clock)
+- [Disk Partitioning](#disk-partitioning)
+- [Operating System Installation](#operating-system-installation)
+- [Fstab](#fstab)
+- [Chroot](#chroot)
+- [Localization](#localization)
+- [Network Configuration](#network-configuration)
+- [Password](#password)
+- [Boot Loader](#boot-loader)
+- [Installation Wrapup](#installation-wrapup)
+- [Post-Install Internet](#post-install-internet)
+- [Creating a User](#creating-a-user)
+- [Core](#core)
+- [Cloning](#cloning)
+- [Custom Install](#custom-install)
+- [Extra Guides](#extras)
+- [Problems & Fixes](#problems)
+- [Other Resources](#resources)
+
 ## Install instructions
 
 ## Setup <a name="setup"></a>
@@ -177,7 +200,7 @@ I use `ext4` as my primary filesystem.
   I also recommend installing a text editor.
   Additionally, you may consider `linux-zen` over `linux` on desktops for performance reasons.
   ```
-  pacstrap /mnt base linux linux-firmware neovim networkmanager
+  pacstrap /mnt base linux linux-firmware neovim networkmanager man-db man-pages texinfo
   ```
 
 ## Fstab <a name="fstab"></a>
@@ -259,7 +282,7 @@ I use `ext4` as my primary filesystem.
 
 ## Boot Loader <a name="boot-loader"></a>
 
-I use Grub as a bootloader because it is simple, quick, and works on both UEFI/BIOS systems. It also has a customizeable appearance.
+I use Grub as a bootloader because it is simple, quick, and works on both UEFI/BIOS systems. It also has a customizeable appearance. The commands below only work for UEFI systems, if using BIOS please check the wiki.
 
 - Install the bootloader.
   ```
@@ -315,6 +338,11 @@ At this point, we have completely installed everything needed for a fully functi
 
 ## Core <a name="core"></a>
 
+- Enable the multilib repos in `/etc/pacman.conf`:
+  ```
+  [multilib]
+  Include = /etc/pacman.d/mirrorlist
+  ```
 - Run a system upgrade to update any packages that were not up to date when the system was installed.
   It's a good practice to do this on a clean install even if no packages need updating.
   ```
@@ -323,11 +351,6 @@ At this point, we have completely installed everything needed for a fully functi
 - Install git and other core utilities.
   ```
   sudo pacman -S git python
-  ```
-- Enable the multilib repos in `/etc/pacman.conf`:
-  ```
-  [multilib]
-  Include = /etc/pacman.d/mirrorlist
   ```
 
 ## Cloning <a name="cloning"></a>
@@ -402,7 +425,30 @@ VSCode integration:
 
 ### libvirt + KVM/QEMU + virt-manager
 
-\# WIP
+- Check if KVM is enabled:
+  ```
+  LC_ALL=C lscpu | grep Virtualization
+  ```
+- Check if the necessary modules are available, they must be set to either `y` or `m`:
+  ```
+  zgrep CONFIG_KVM /proc/config.gz
+  ```
+- Verify if the kernel modules are automatically loaded with:
+  ```
+  lsmod | grep kvm
+  ```
+  The command should return something. If not, you will need to manually load the modules. Check the wiki.
+- Install `libvirt qemu virt-manager`
+- Add yourself to the `libvirt` group:
+  ```sh
+  sudo gpasswd -a "$USER" libvirt
+  ```
+- Enable libvirtd:
+  ```sh
+  systemctl enable --now libvirtd
+  ```
+- Now you can run and use `virt-manager`.
+- [More info](https://wiki.archlinux.org/title/Libvirt#Installation)
 
 ### Android Studio
 
@@ -469,7 +515,7 @@ Tips:
 
 - A `ssh-agent` user file is included in the install, this will cache ssh passwords so that they only have to be typed once every user session. To use it, enable the service with `systemctl enable --user --now ssh-agent.service` and add your private keys with `ssh-add ~/.ssh/KEY_NAME`. To make all ssh clients store keys in the agent on first use, add the configuration setting `AddKeysToAgent yes` to `~/.ssh/config`.
 
-## TLP
+### TLP
 
 Provides power saving capabilities. More relevant if using a laptop.
 
@@ -489,6 +535,36 @@ To check the status of TLP run: `tlp-stat -s`
   ```
 
 - Edit the example file: `X11/10-monitor.conf` accordingly for each monitor you have, then copy the file to `/etc/X11/xorg.conf.d`.
+
+### Anacron
+
+Anacron is included with `cronie`.
+
+Edit the config file in `/etc/anacrontab` to add new jobs.
+```sh
+# period in days    delay in minutes    job-identifier    command
+
+@weekly    5    test-job    /usr/local/bin/yt-dlp -q 'myfavplaylist'
+```
+
+If the jobs don't seem to run, check if `/etc/cron.hourly/0anacron` is preventing jobs when on battery power.
+
+### PulseAudio
+
+PulseAudio uses rather conservative settings by default so it can run fine on most hardware. Changing these defaults may increase audio quality substantially.
+
+- Copy `/etc/pulse/daemon.conf` to `~/.config/pulse/` and use the resources below:
+- [A rather extensive guide on configuring PulseAudio](https://forum.level1techs.com/t/improving-linux-audio-updated/134511)
+- A small snippet of good options to change:
+  ```sh
+  # ~/.config/pulse/daemon.conf
+  avoid-resampling = yes # might distort audio
+  resample-method = speex-float-6 # higher uses more cpu, 7 is transparent, use -fixed instead -float on ancient cards
+  flat-volumes = no
+  default-sample-format = float32le # based on endianness: $ lscpu | grep 'Byte'
+  default-sample-rate = 48000
+  alternate-sample-rate = 44100 # windows-computers default
+  ```
 
 ## Problems & fixes <a name="problems"></a>
 
