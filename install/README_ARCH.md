@@ -438,7 +438,8 @@ VSCode integration:
   lsmod | grep kvm
   ```
   The command should return something. If not, you will need to manually load the modules. Check the wiki.
-- Install `libvirt qemu virt-manager`
+- Install: `libvirt qemu virt-manager`
+- Install: `iptables-nft dnsmasq` for default networking via NAT/DHCP, and no, just `iptables` does not work.
 - Add yourself to the `libvirt` group:
   ```sh
   sudo gpasswd -a "$USER" libvirt
@@ -447,7 +448,7 @@ VSCode integration:
   ```sh
   systemctl enable --now libvirtd
   ```
-- Now you can run and use `virt-manager`.
+- Now you can run and use `virt-manager`, click the + button and follow the instructions to create a VM.
 - [More info](https://wiki.archlinux.org/title/Libvirt#Installation)
 
 ### Android Studio
