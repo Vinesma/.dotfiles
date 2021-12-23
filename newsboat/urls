@@ -4,8 +4,6 @@ https://forum.manjaro.org/c/announcements/stable-updates.rss "~Manjaro Updates"
 https://archlinux.org/feeds/news/ "~Arch Linux News"
 "query:Youtube (Favorites):tags # \"youtube-favorite\" and unread = \"yes\""
 "query:Youtube (Others):tags # \"youtube-others\" and unread = \"yes\""
-"query:Youtube (Tech):tags # \"tech\" and age < 60"
-"query:Youtube (Japanese):tags # \"japanese\""
 "query:Twitter (Artists):tags # \"twitter-artist\" and age < 2"
 "query:Twitter (Artists)(All):tags # \"twitter-artist\"
 https://g1.globo.com/rss/g1/sp/sao-paulo/ "~G1 - São Paulo" news
