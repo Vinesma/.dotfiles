@@ -15,7 +15,7 @@ fi
 # -- ACT --
 cd "$WORK_DIR" || exit 1
 
-if ! command -v yt-dlp; then
+if ! command -v yt-dlp > /dev/null; then
     sudo curl -L "$SOURCE" -o /usr/local/bin/yt-dlp
     sudo chmod a+rx /usr/local/bin/yt-dlp
 else

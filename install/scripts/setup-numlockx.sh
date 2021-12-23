@@ -3,4 +3,5 @@
 # Setup numlockx
 
 # -- ACT --
-sudo sed -i -Ee 's/#?greeter-setup-script=.*/greeter-setup-script=\/usr\/bin\/numlockx on/' /etc/lightdm/lightdm.conf
+sudo sed -i -Ee 's/#?greeter-setup-script=.*/greeter-setup-script=\/usr\/bin\/numlockx on/' \
+    /etc/lightdm/lightdm.conf

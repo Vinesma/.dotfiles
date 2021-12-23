@@ -22,27 +22,30 @@ fi
 # -- ACT --
 cd "$WORK_DIR" || exit 1
 
-if ! command -v rclone; then
-    curl "$SOURCE" -o install.sh && sudo bash install.sh
+if ! command -v rclone > /dev/null; then
+    # shellcheck disable=SC2015
+    curl "$SOURCE" -o install.sh \
+    && sudo bash install.sh \
+    || { printf "%s\n" "FAILED: installation failed."; exit 1; }
 else
     sudo rclone selfupdate
 fi
 
-found=0
-for i in "${!CONFIG_SOURCES[@]}"; do
-    if [ -e "${CONFIG_SOURCES[i]}" ]; then
-        mkdir -p "$RCLONE_CONFIG_DIR"
-        cp -vf "${CONFIG_SOURCES[i]}" "$RCLONE_CONFIG_DIR/rclone.conf"
-        found=1
+if [ -d $ZSH_COMPLETION_DIR ]; then
+    printf "%s\n" "Generating completions for zsh..."
+    rclone completion zsh | sudo tee ${ZSH_COMPLETION_DIR}/_rclone > /dev/null
+fi
 
-        if [ -d $ZSH_COMPLETION_DIR ]; then
-            printf "%s\n" "Generating completions for zsh..."
-            rclone completion zsh | sudo tee -a ${ZSH_COMPLETION_DIR}/_rclone > /dev/null
-        fi
+for i in "${!CONFIG_SOURCES[@]}"; do
+    if [ -f "${CONFIG_SOURCES[i]}" ]; then
+        mkdir -p "$RCLONE_CONFIG_DIR"
+        printf "%s\n" "Found configuration file!"
+        cp -vf "${CONFIG_SOURCES[i]}" "${RCLONE_CONFIG_DIR}/rclone.conf"
+        break
     fi
 done
 
-if [ $found -ne 1 ]; then
+if [ ! -f "${RCLONE_CONFIG_DIR}/rclone.conf" ]; then
     printf "%s\n" "Configuration file not found! Create one using 'rclone config' or place it manually in '$RCLONE_CONFIG_DIR'."
 fi
 
