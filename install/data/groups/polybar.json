@@ -12,16 +12,7 @@
             "comments": [],
             "files": [
                 {
-                    "name": "colors-polybar",
-                    "path_destination": "$HOME/.config/wal/templates",
-                    "path_source": "$HOME/.dotfiles/pywal-templates",
-                    "text": "",
-                    "create_link": true,
-                    "sudo": false,
-                    "comments": []
-                },
-                {
-                    "name": "colors-main-polybar",
+                    "name": "colors-polybar.ini",
                     "path_destination": "$HOME/.config/wal/templates",
                     "path_source": "$HOME/.dotfiles/pywal-templates",
                     "text": "",

@@ -1,14 +1,21 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-config_path="$HOME/.cache/wal/colors-main-polybar"
+# Main config path
+CONFIG_FILE=$HOME/.dotfiles/polybar/config.ini
+
+# List of bar names
+declare -a BARS=(
+    "main"
+)
 
 # Terminate already running bar instances
 killall -q polybar
 
-# Wait until the processes have been shut down
-while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+for i in "${!BARS[@]}"; do
+    temp_file=/tmp/polybar.${BARS[i]}
 
-# Launch Polybar
-polybar -c "$config_path" main &
+    printf "%s\n" "--- LAUNCH ${BARS[i]} ---" | tee -a "$temp_file"
+    polybar "${BARS[i]}" -c "$CONFIG_FILE" 2>&1 | tee -a "$temp_file" & disown
+done
 
-echo -e "Polybar launched...\n\t-> Config: $config_path"
+printf "%s\n" "[Polybar]: Bars launched..."

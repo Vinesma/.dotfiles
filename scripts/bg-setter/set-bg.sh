@@ -12,13 +12,21 @@ send-error() {
     notify-send -i "$icon_error"  -t "$notify_time" "set-bg" "$1"
 }
 
+# Quick and dirty patch to the rofi result template since it looks like upstream will take thousands of years to update.
 patch-rofi() {
-    #quick and dirty patch to the rofi result template since it looks like upstream will take thousands of years to update.
     sed -i -e '$a\\nelement-text {\n    background-color: inherit;\n    text-color: inherit;\n}' ~/.cache/wal/colors-rofi-dark.rasi
 }
 
+# Reset polybar if in use, otherwise do nothing
+reset-polybar() {
+    if killall -q polybar; then
+        # shellcheck source=/dev/null
+        . "$HOME/.dotfiles/polybar/launch.sh" &
+    fi
+}
+
 if wal -n -e -i "$@"; then
-    #. ~/.dotfiles/polybar/launch.sh &
+    reset-polybar
     feh --bg-scale "$(< "${HOME}/.cache/wal/wal")" && patch-rofi
     qtile cmd-obj -o cmd -f restart >/dev/null 2>&1
     pkill dunst
