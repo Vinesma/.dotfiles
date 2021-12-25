@@ -29,6 +29,7 @@ User defined screens for qtile
 """
 
 from libqtile.config import Screen
+
 from modules import taskbar
 
 
@@ -37,6 +38,10 @@ def create():
     Initialize screens for qtile
     """
     return [
-        Screen(top=taskbar.create_bar()),
-        Screen(top=taskbar.create_bar(minimal=True)),
+        # Use when using polybar with override-redirect
+        Screen(top=taskbar.create_gap(30)),
+        Screen(top=taskbar.create_gap(30)),
+        # Use when using qtile's own bar
+        # Screen(top=taskbar.create_bar()),
+        # Screen(top=taskbar.create_bar(minimal=True)),
     ]

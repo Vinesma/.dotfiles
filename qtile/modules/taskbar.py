@@ -223,6 +223,17 @@ def create_bar(minimal=False):
     )
 
 
+def create_gap(size=30):
+    """
+    Create a gap where qtile will avoid placing windows.
+
+    size - The "thickness" of the gap, i.e. the height of a horizontal gap,
+    or the width of a vertical gap.
+    """
+
+    return bar.Gap(size)
+
+
 def generate_defaults():
     """
     Return default values of widgets and bar
