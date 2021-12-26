@@ -59,7 +59,7 @@
             "installer": "pacman",
             "auto_start": [],
             "post_install_commands": [
-                "wal -n -i $HOME/.dotfiles/files/example_wallpaper_drawnby_czy(2894456992).jpg",
+                "wal -e -t -s -n -i $HOME/.dotfiles/files/example_wallpaper_drawnby_czy(2894456992).jpg",
                 "ln -sfv $HOME/.dotfiles/pywal-templates/colors-dunst $HOME/.config/wal/templates/colors-dunst",
                 "mkdir -p $HOME/.config/dunst",
                 "ln -sfv $HOME/.cache/wal/colors-dunst $HOME/.config/dunst/dunstrc"

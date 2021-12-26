@@ -78,12 +78,18 @@ create-display-manager-image() {
     local filename
     local extension
     local final_name
+    local lightdm_wallpaper_dir
     filename=$1
     extension=$2
     final_name="$wallpaper_dir/display-manager-bg$extension"
-
-    magick "$filename" -blur 10x5 -brightness-contrast -15 "$final_name" && \
-    mv -f "$final_name" "${final_name%.*}"
+    lightdm_wallpaper_dir=/usr/share/wallpapers
+    
+    if [ ! -d $lightdm_wallpaper_dir ]; then
+        send-error "Could not find '${lightdm_wallpaper_dir}'\nMake sure the directory exists and run chmod 777 on it."
+    else
+        magick "$filename" -blur 10x5 -brightness-contrast -15 "$final_name" \
+        && mv -f "$final_name" "${lightdm_wallpaper_dir}/display-manager-bg"
+    fi
 }
 
 resize-image() {
