@@ -15,13 +15,29 @@
             "name": "lightdm-gtk-greeter",
             "installer": "pacman",
             "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "LightDM Slick greeter",
+            "name": "lightdm-slick-greeter",
+            "installer": "pacman",
+            "auto_start": [],
             "post_install_commands": [
-                "sudo systemctl enable lightdm"
+                "sudo systemctl enable lightdm",
+                "bash $HOME/.dotfiles/install/scripts/setup-display-manager.sh"
             ],
-            "comments": [
-                "You can use the files in '$HOME/.dotfiles/lightdm' to quickly configure lightdm",
-                "The default config path is /etc/lightdm"
-            ],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Numlock",
+            "name": "numlockx",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
             "files": []
         },
         {
