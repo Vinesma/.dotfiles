@@ -26,13 +26,17 @@ reset-polybar() {
 }
 
 if wal -n -e -i "$@"; then
-    reset-polybar
-    feh --bg-scale "$(< "${HOME}/.cache/wal/wal")" && patch-rofi
-    qtile cmd-obj -o cmd -f restart >/dev/null 2>&1
+    feh --bg-scale "$(< "${HOME}/.cache/wal/wal")"
+    patch-rofi
+
+    { pgrep qtile && qtile cmd-obj -o cmd -f restart; } &> /dev/null
+    { pgrep openbox && openbox --reconfigure; } &> /dev/null
+
     pkill dunst
     pywalfox update
+    reset-polybar
 
-    notify-send -i "$icon_image" "set-bg" "New background set"
+    notify-send -i "$icon_image" "set-bg" "New background and theme set."
 else
     send-error "pywal returned an error"
 fi

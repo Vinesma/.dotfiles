@@ -1,0 +1,46 @@
+{
+    "name": "wm_openbox",
+    "packages": [
+        {
+            "display_name": "Openbox",
+            "name": "openbox",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [
+                "chmod +x $HOME/.autostart",
+                "bash $HOME/.dotfiles/install/scripts/setup-openbox.sh"
+            ],
+            "comments": [],
+            "files": [
+                {
+                    "name": "rc.xml",
+                    "path_destination": "$HOME/.config/openbox",
+                    "path_source": "$HOME/.dotfiles/openbox",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                },
+                {
+                    "name": "menu.xml",
+                    "path_destination": "$HOME/.config/openbox",
+                    "path_source": "$HOME/.dotfiles/openbox",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                },
+                {
+                    "name": "environment",
+                    "path_destination": "$HOME/.config/openbox",
+                    "path_source": null,
+                    "text": "",
+                    "create_link": false,
+                    "sudo": false,
+                    "comments": []
+                }
+            ]
+        }
+    ],
+    "files": []
+}

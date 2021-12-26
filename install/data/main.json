@@ -1,6 +1,6 @@
 [
     "initial",
-    "wm_qtile",
+    "wm_openbox",
     "display_manager",
     "term_kitty",
     "zsh",
