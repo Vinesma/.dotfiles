@@ -809,6 +809,10 @@
   <application class="mpv">
     <desktop>all</desktop>
     <layer>above</layer>
+    <position force="no">
+      <x>-10</x>
+      <y>-10</y>
+    </position>
   </application>
 </applications>
 
