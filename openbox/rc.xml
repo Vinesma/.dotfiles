@@ -175,6 +175,7 @@
         <width>50%</width>
     </action>
     <action name="MoveToEdge"><direction>west</direction></action>
+    <action name="Decorate"/>
   </keybind>
   <keybind key="W-Right">
       <action name="UnmaximizeFull"/>
@@ -183,6 +184,7 @@
           <width>50%</width>
       </action>
       <action name="MoveToEdge"><direction>east</direction></action>
+      <action name="Decorate"/>
   </keybind>
   <keybind key="W-S-Left">
     <action name="MoveToEdge"><direction>west</direction></action>
@@ -196,6 +198,10 @@
       <action name="Raise"/>
       <action name="Unshade"/>
   </keybind>
+  <keybind key="A-space">
+    <action name="ShowMenu"><menu>client-menu</menu></action>
+  </keybind>
+  <!-- Keybinds for moving windows around -->
   <!-- For a 1920x1080 screen this number should ideally be divisible by 20 -->
   <keybind key="W-A-Left">
     <action name="MoveRelative">
@@ -222,8 +228,26 @@
       <y>50</y>
     </action>
   </keybind>
-  <keybind key="A-space">
-    <action name="ShowMenu"><menu>client-menu</menu></action>
+  <!-- Keybinds for resizing windows -->
+  <keybind key="W-C-Left">
+    <action name="ResizeRelative">
+      <right>-20</right>
+    </action>
+  </keybind>
+  <keybind key="W-C-Right">
+    <action name="ResizeRelative">
+      <right>20</right>
+    </action>
+  </keybind>
+  <keybind key="W-C-Up">
+    <action name="ResizeRelative">
+      <bottom>-20</bottom>
+    </action>
+  </keybind>
+  <keybind key="W-C-Down">
+    <action name="ResizeRelative">
+      <bottom>20</bottom>
+    </action>
   </keybind>
 
   <!-- Keybindings for window switching -->
@@ -245,26 +269,12 @@
       </finalactions>
     </action>
   </keybind>
-
-  <!-- Keybindings for window switching with the arrow keys -->
-  <keybind key="W-C-Right">
-    <action name="DirectionalCycleWindows">
-      <direction>right</direction>
-    </action>
-  </keybind>
-  <keybind key="W-C-Left">
-    <action name="DirectionalCycleWindows">
-      <direction>left</direction>
-    </action>
-  </keybind>
-  <keybind key="W-C-Up">
-    <action name="DirectionalCycleWindows">
-      <direction>up</direction>
-    </action>
-  </keybind>
-  <keybind key="W-C-Down">
-    <action name="DirectionalCycleWindows">
-      <direction>down</direction>
+  <keybind key="W-Tab">
+    <action name="NextWindow">
+      <finalactions>
+        <action name="Focus"/>
+        <action name="Unshade"/>
+      </finalactions>
     </action>
   </keybind>
 
@@ -792,7 +802,7 @@
   <application class="*">
     <decor>yes</decor>
   </application>
-  <application class="firefox">
+  <application class="firefox*">
     <decor>no</decor>
     <maximized>yes</maximized>
   </application>
@@ -801,6 +811,12 @@
     <maximized>yes</maximized>
   </application>
   <application class="kitty">
+    <size>
+      <width>50%</width>
+      <height>50%</height>
+    </size>
+  </application>
+  <application class="Thunar">
     <size>
       <width>50%</width>
       <height>50%</height>
