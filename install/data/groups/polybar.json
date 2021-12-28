@@ -10,17 +10,7 @@
             ],
             "post_install_commands": [],
             "comments": [],
-            "files": [
-                {
-                    "name": "colors-polybar.ini",
-                    "path_destination": "$HOME/.config/wal/templates",
-                    "path_source": "$HOME/.dotfiles/pywal-templates",
-                    "text": "",
-                    "create_link": true,
-                    "sudo": false,
-                    "comments": []
-                }
-            ]
+            "files": []
         }
     ],
     "files": []
