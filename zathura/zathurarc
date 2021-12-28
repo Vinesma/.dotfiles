@@ -4,3 +4,5 @@ set adjust-open width
 map i recolor
 map p adjust_window width
 map <A-p> adjust_window best-fit
+
+include ../../.cache/wal/colors-zathura
