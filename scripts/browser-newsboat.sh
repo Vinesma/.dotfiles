@@ -12,6 +12,19 @@
 
 clipboard_mpv_dir="$HOME/.dotfiles/scripts/clipboard-mpv.sh"
 youtube_dl_queuer_dir="$HOME/.dotfiles/scripts/youtube-dl-queuer/hot-queue.sh"
+newsboat_db_file="$HOME/.local/share/newsboat/cache.db"
+
+use-image-viewer() {
+    feh --zoom fill --scale-down "$@" &> /dev/null & disown
+}
+
+use-video-player() {
+    mpv --really-quiet --loop "$@" & disown
+}
+
+use-browser() {
+    firefox "$@" & disown
+}
 
 video-info() {
     local video
@@ -35,7 +48,7 @@ video-info() {
         rm "$temp_file"
     fi
 
-    feh "$thumbnail" -F --title "$title" --info "echo \"LENGTH: $duration\""
+    use-image-viewer "$thumbnail" -F --title "$title" --info "echo \"LENGTH: $duration\""
 }
 
 if [[ "$1" == *youtube.com* ]]; then
@@ -50,20 +63,29 @@ if [[ "$1" == *youtube.com* ]]; then
     esac
 elif [[ "$1" == @(*.jpg|*.jpeg|*.png) ]]; then
     link="$1"
-    if [[ "$1" == *nitter.net/pic/* ]]; then
+    if [[ "$1" == *nitter.net/pic/media* ]]; then
         twitter_id=${1##*media%2F}
         extension=$(echo "$twitter_id" | cut -d '.' -f 2)
         twitter_id=$(echo "$twitter_id" | cut -d '.' -f 1)
         link="https://pbs.twimg.com/media/$twitter_id?format=$extension"
+
+        use-image-viewer "$link"
+    elif [[ "$1" == *nitter.net/pic/ext_tw_video_thumb* ]]; then
+        true_nitter_url=$(sqlite3 "$newsboat_db_file" "select url from rss_item where content glob '*$1*'")
+        link=${true_nitter_url%#*}
+        link=${link/nitter.net/twitter.com}
+
+        use-video-player "$link"
+    else
+        use-image-viewer "$link"
     fi
-        feh -F "$link"
 elif [[ "$1" == @(*.mp4) ]]; then
-    mpv --loop "$1"
+    use-video-player "$1"
 else
     if [[ "$1" == *nitter.net* ]]; then
-        firefox "${1/nitter.net/twitter.com}" &
+        use-browser "${1/nitter.net/twitter.com}"
     else
-        firefox "$1" &
+        use-browser "$1"
     fi
 fi
 
