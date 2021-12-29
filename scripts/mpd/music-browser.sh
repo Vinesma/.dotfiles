@@ -7,8 +7,8 @@
 music_folder="$HOME/Music"
 icon="/usr/share/icons/Papirus/32x32/apps/mpd.svg"
 
-clear_queue="$HOME/.dotfiles/scripts/queue-clear.sh"
-play_genre="$HOME/.dotfiles/scripts/queue-songs.sh"
+clear_queue="$HOME/.dotfiles/scripts/mpd/queue-music.sh clear-music"
+play_genre="$HOME/.dotfiles/scripts/mpd/queue-music.sh"
 
 add-album() {
     echo "$1" | mpc add

@@ -11,7 +11,7 @@
                 "mkdir $HOME/.neomutt"
             ],
             "comments": [
-                "A script for cron is provided in '$HOME/.dotfiles/scripts/cron-jobs', it's suggested to run it in 10 minute intervals.",
+                "A script for cron is provided in '$HOME/.dotfiles/scripts/cron', it's suggested to run it in 10 minute intervals.",
                 "Setting up a gpg keypair is necessary for keeping your password secure and, by extension, be able to use neomutt.",
                 "You can run '$ gpg-keypair-gen' if you are using zsh to quickly generate a new keypair.",
                 "Save your password inside '$HOME/.neomutt/account.gpg'"

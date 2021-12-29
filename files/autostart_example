@@ -26,5 +26,5 @@ fi
 
 # Fetch mail if conditions apply.
 if [[ $(( $(date +%M) % 10 )) -le 6 ]]; then
-    sleep 10 && bash ~/.dotfiles/scripts/cron-jobs/email/fetch-mail.sh &
+    sleep 10 && bash ~/.dotfiles/scripts/cron/email/fetch-mail.sh &
 fi

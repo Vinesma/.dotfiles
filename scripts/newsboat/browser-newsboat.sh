@@ -10,7 +10,7 @@
 # - feh, mpv, yt-dlp, firefox, rofi, clipboard-mpv.sh
 #
 
-clipboard_mpv_dir="$HOME/.dotfiles/scripts/clipboard-mpv.sh"
+clipboard_mpv_dir="$HOME/.dotfiles/scripts/mpv/clipboard-mpv.sh"
 youtube_dl_queuer_dir="$HOME/.dotfiles/scripts/youtube-dl-queuer/hot-queue.sh"
 newsboat_db_file="$HOME/.local/share/newsboat/cache.db"
 

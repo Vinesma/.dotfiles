@@ -115,7 +115,7 @@ def create():
         Key(
             [MOD, "control"],
             "m",
-            lazy.spawn(path.join(scripts_path, "song-browser.sh")),
+            lazy.spawn(path.join(scripts_path, "mpd", "music-browser.sh")),
         ),
         Key([MOD, "mod1"], "s", lazy.spawn(path.join(scripts_path, "rosearch.sh"))),
         Key([MOD, "mod1"], "v", lazy.spawn(path.join(scripts_path, "roconfig.sh"))),
@@ -184,26 +184,28 @@ def create():
         Key(
             [MOD],
             "F9",
-            lazy.spawn(path.join(scripts_path, "queue-clear.sh")),
+            lazy.spawn(path.join(scripts_path, "mpd", "queue-music.sh clear-music")),
         ),
         Key(
             [MOD],
             "F10",
-            lazy.spawn(path.join(scripts_path, "queue-songs.sh Calm")),
+            lazy.spawn(path.join(scripts_path, "mpd", "queue-music.sh Calm")),
         ),
         Key(
             [MOD],
             "F11",
-            lazy.spawn(path.join(scripts_path, "queue-songs.sh Fast")),
+            lazy.spawn(path.join(scripts_path, "mpd", "queue-music.sh Fast")),
         ),
         Key(
             [MOD],
             "F12",
-            lazy.spawn(path.join(scripts_path, "queue-songs.sh Epic")),
+            lazy.spawn(path.join(scripts_path, "mpd", "queue-music.sh Epic")),
         ),
         # mpv (video player)
         Key(
-            [MOD, "mod1"], "p", lazy.spawn(path.join(scripts_path, "clipboard-mpv.sh"))
+            [MOD, "mod1"],
+            "p",
+            lazy.spawn(path.join(scripts_path, "mpv", "clipboard-mpv.sh")),
         ),
         # youtube-dl mass downloading
         Key(

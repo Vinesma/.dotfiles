@@ -324,7 +324,7 @@
   <!-- MPC media control -->
   <keybind key="W-C-m">
     <action name="Execute">
-      <command>~/.dotfiles/scripts/song-browser.sh</command>
+    <command>~/.dotfiles/scripts/mpd/music-browser.sh</command>
     </action>
   </keybind>
   <keybind key="Pause">
@@ -399,28 +399,28 @@
   </keybind>
   <keybind key="W-F9">
     <action name="Execute">
-      <command>~/.dotfiles/scripts/queue-clear.sh</command>
+      <command>~/.dotfiles/scripts/mpd/queue-music.sh clear-music</command>
     </action>
   </keybind>
   <keybind key="W-F10">
     <action name="Execute">
-      <command>~/.dotfiles/scripts/queue-songs.sh Calm</command>
+      <command>~/.dotfiles/scripts/mpd/queue-music.sh Calm</command>
     </action>
   </keybind>
   <keybind key="W-F11">
     <action name="Execute">
-      <command>~/.dotfiles/scripts/queue-songs.sh Fast</command>
+      <command>~/.dotfiles/scripts/mpd/queue-music.sh Fast</command>
     </action>
   </keybind>
   <keybind key="W-F12">
     <action name="Execute">
-      <command>~/.dotfiles/scripts/queue-songs.sh Epic</command>
+      <command>~/.dotfiles/scripts/mpd/queue-music.sh Epic</command>
     </action>
   </keybind>
   <!-- MPV -->
   <keybind key="W-A-p">
     <action name="Execute">
-      <command>~/.dotfiles/scripts/clipboard-mpv.sh</command>
+      <command>~/.dotfiles/scripts/mpv/clipboard-mpv.sh</command>
     </action>
   </keybind>
   <!-- YT-DLP mass downloading -->

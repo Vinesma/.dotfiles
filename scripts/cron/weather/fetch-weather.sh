@@ -9,7 +9,7 @@
 export DISPLAY=:0
 export DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/1000/bus'
 
-folder="$HOME/.dotfiles/scripts/cron-jobs/weather"
+folder="$HOME/.dotfiles/scripts/cron/weather"
 icon="/usr/share/icons/Papirus/32x32/apps/weather.svg"
 curl_dir="/usr/bin/curl"
 site="wttr.in"

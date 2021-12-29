@@ -3,7 +3,7 @@ youtube_dl_format="%(title)s.%(ext)s"
 
 # MINUTELY
 ## Fetch email from gmail to neomutt
-*/10 * * * * cd ~/.dotfiles/scripts/cron-jobs/email/ && bash fetch-mail.sh >/dev/null 2>&1
+*/10 * * * * cd ~/.dotfiles/scripts/cron/email/ && bash fetch-mail.sh >/dev/null 2>&1
 
 # HOURLY
 ## Reload Newsboat (slight delay for proper syncing)

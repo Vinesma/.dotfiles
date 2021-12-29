@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Script meant to be run by a qtile keybind, opens a rofi menu for watching videos in mpv.
+# Script meant to be run by a keybind, opens a rofi menu for watching videos in mpv.
 # Features:
 # - VIDEO: Choose video format and watch straight from the rofi menu after a single keypress
 # Dependencies:
