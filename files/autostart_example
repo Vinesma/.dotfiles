@@ -8,7 +8,6 @@ feh --bg-scale "$(< "${HOME}/.cache/wal/wal")" &
 picom --experimental-backends &
 redshift-gtk &
 fcitx &
-syncthing --no-browser &
 
 # mpd startup
 if [[ ! -s ~/.config/mpd/pid ]]; then

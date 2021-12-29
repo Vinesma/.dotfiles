@@ -291,10 +291,10 @@
             "name": "syncthing",
             "installer": "pacman",
             "auto_start": [],
-            "post_install_commands": [],
-            "comments": [
-                "Add 'syncthing --no-browser &' to the autostart file to use Syncthing"
+            "post_install_commands": [
+                "systemctl enable --user syncthing"
             ],
+            "comments": [],
             "files": []
         },
         {
@@ -330,8 +330,8 @@
             "installer": "pacman",
             "auto_start": [],
             "post_install_commands": [
-                "sudo systemctl enable --user mpd",
-                "sudo systemctl enable --user mpc"
+                "systemctl enable --user mpd",
+                "systemctl enable --user mpc"
             ],
             "comments": [],
             "files": [

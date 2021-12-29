@@ -4,4 +4,3 @@ udiskie &
 redshift-gtk &
 numlockx &
 fcitx &
-sleep 10 && syncthing --no-browser &
