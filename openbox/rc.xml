@@ -186,6 +186,18 @@
       <action name="MoveToEdge"><direction>east</direction></action>
       <action name="Decorate"/>
   </keybind>
+  <keybind key="W-S-Up">
+    <action name="MoveToEdge"><direction>north</direction></action>
+    <action name="Focus"/>
+    <action name="Raise"/>
+    <action name="Unshade"/>
+  </keybind>
+  <keybind key="W-S-Down">
+      <action name="MoveToEdge"><direction>south</direction></action>
+      <action name="Focus"/>
+      <action name="Raise"/>
+      <action name="Unshade"/>
+  </keybind>
   <keybind key="W-S-Left">
     <action name="MoveToEdge"><direction>west</direction></action>
     <action name="Focus"/>
@@ -549,6 +561,7 @@
     </mousebind>
     <mousebind button="Left" action="DoubleClick">
       <action name="ToggleMaximize"/>
+      <action name="ToggleDecorations"/>
     </mousebind>
   </context>
 
