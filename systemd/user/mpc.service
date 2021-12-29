@@ -1,0 +1,13 @@
+[Unit]
+Description=Use mpc to enable repeat/shuffle/crossfade on mpd
+Requires=mpd.service
+After=mpd.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/mpc random on
+ExecStart=/usr/bin/mpc repeat on
+ExecStart=/usr/bin/mpc crossfade 3
+
+[Install]
+WantedBy=default.target

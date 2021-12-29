@@ -328,15 +328,11 @@
             "display_name": "mpd - Music Player Daemon",
             "name": "mpd",
             "installer": "pacman",
-            "auto_start": [
-                "if [[ ! -s ~/.config/mpd/pid ]]; then",
-                "    mpd",
-                "    mpc random on",
-                "    mpc repeat on",
-                "    mpc crossfade 3",
-                "fi"
+            "auto_start": [],
+            "post_install_commands": [
+                "sudo systemctl enable --user mpd",
+                "sudo systemctl enable --user mpc"
             ],
-            "post_install_commands": [],
             "comments": [],
             "files": [
                 {
@@ -349,11 +345,11 @@
                     "comments": []
                 },
                 {
-                    "name": "pid",
-                    "path_destination": "$HOME/.mpd",
-                    "path_source": null,
+                    "name": "mpc.service",
+                    "path_destination": "$HOME/.config/systemd/user",
+                    "path_source": "$HOME/.dotfiles/systemd/user",
                     "text": "",
-                    "create_link": false,
+                    "create_link": true,
                     "sudo": false,
                     "comments": []
                 }
