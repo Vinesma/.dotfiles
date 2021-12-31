@@ -63,17 +63,17 @@ if [[ "$1" == *youtube.com* ]]; then
     esac
 elif [[ "$1" == @(*.jpg|*.jpeg|*.png) ]]; then
     link="$1"
-    if [[ "$1" == *nitter.net/pic/media* ]]; then
+    if [[ "$1" == *nitter.moomoo.me/pic/media* ]]; then
         twitter_id=${1##*media%2F}
         extension=$(echo "$twitter_id" | cut -d '.' -f 2)
         twitter_id=$(echo "$twitter_id" | cut -d '.' -f 1)
         link="https://pbs.twimg.com/media/$twitter_id?format=$extension"
 
         use-image-viewer "$link"
-    elif [[ "$1" == *nitter.net/pic/ext_tw_video_thumb* ]]; then
+    elif [[ "$1" == *nitter.moomoo.me/pic/ext_tw_video_thumb* ]]; then
         true_nitter_url=$(sqlite3 "$newsboat_db_file" "select url from rss_item where content glob '*$1*'")
         link=${true_nitter_url%#*}
-        link=${link/nitter.net/twitter.com}
+        link=${link/nitter.moomoo.me/twitter.com}
 
         use-video-player "$link"
     else
@@ -82,8 +82,8 @@ elif [[ "$1" == @(*.jpg|*.jpeg|*.png) ]]; then
 elif [[ "$1" == @(*.mp4) ]]; then
     use-video-player "$1"
 else
-    if [[ "$1" == *nitter.net* ]]; then
-        use-browser "${1/nitter.net/twitter.com}"
+    if [[ "$1" == *nitter.moomoo.me* ]]; then
+        use-browser "${1/nitter.moomoo.me/twitter.com}"
     else
         use-browser "$1"
     fi

@@ -4,7 +4,7 @@
 
 NEWSBOAT_DB_FILE=$HOME/.local/share/newsboat/cache.db
 CURL_CONFIG_FILE=/tmp/gallery_newsboat_curl_config.tmp
-QUERY='SELECT content FROM rss_item WHERE content GLOB "*nitter.net/pic/media*" AND unread = 1;'
+QUERY='SELECT content FROM rss_item WHERE content GLOB "*nitter.moomoo.me/pic/media*" AND unread = 1;'
 IMAGE_DIR=/tmp/twitter_nb_gallery
 TWITTER_LINK_ID=https://pbs.twimg.com/media/
 TWITTER_LINK_FORMAT='?format='
@@ -56,7 +56,7 @@ mark-as-read() {
     
     find "$IMAGE_DIR" -type f -printf '%f\n' 2> /dev/null | while IFS= read -r _file; do
         id=${_file%.*}
-        sqlite3 "$NEWSBOAT_DB_FILE" "${query} content GLOB '*nitter.net/pic/media%2F$id*' AND unread = 1;"
+        sqlite3 "$NEWSBOAT_DB_FILE" "${query} content GLOB '*nitter.moomoo.me/pic/media%2F$id*' AND unread = 1;"
     done
 }
 

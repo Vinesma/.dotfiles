@@ -16,7 +16,7 @@ articlelist-format "%4i %f %D  %?T?|%-17T|  ?%t"
 articlelist-title-format "Articles in feed '%T' (%u unread, %t total)"
 
 # FILTERS
-define-filter "Only twitter posts with multimedia" "content =~ \"nitter.net/pic/\""
+define-filter "Only twitter posts with multimedia" "content =~ \"nitter.moomoo.me/pic/\""
 
 # MACROS
 macro p toggle-article-read
@@ -43,4 +43,4 @@ highlight article ":.*\\(embedded flash\\)$" magenta default
 
 # KILLFILE
 # ignore retweets in twitter feeds
-ignore-article "*" "link =~ \"nitter.net\" and title =~ \"RT by\""
+ignore-article "*" "link =~ \"nitter.moomoo.me\" and title =~ \"RT by\""
