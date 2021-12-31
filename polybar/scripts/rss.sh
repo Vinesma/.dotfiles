@@ -11,9 +11,9 @@ LOWER_LIMIT=50
 ICON=
 
 if (( UNREAD > UPPER_LIMIT )); then
-    printf "%s%s" $ICON "$UPPER_LIMIT+"
+    printf "%s%s\n" $ICON "$UPPER_LIMIT+"
 elif (( UNREAD < LOWER_LIMIT )); then
-    printf ""
+    echo ""
 else
-    printf "%s%s" $ICON "$UNREAD"
+    printf "%s%s\n" $ICON "$UNREAD"
 fi

@@ -5,7 +5,7 @@
 ICON=
 
 if bluetoothctl show | grep -q "Powered: yes"; then
-    printf "%s" "$ICON"
+    printf "%s\n" "$ICON"
 else
-    printf ""
+    echo ""
 fi
