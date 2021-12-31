@@ -4,7 +4,8 @@
 
 NEWSBOAT_DB_FILE=$HOME/.local/share/newsboat/cache.db
 CURL_CONFIG_FILE=/tmp/gallery_newsboat_curl_config.tmp
-QUERY='SELECT content FROM rss_item WHERE content GLOB "*nitter.moomoo.me/pic/media*" AND unread = 1;'
+NITTER_INSTANCE=nitter.moomoo.me
+QUERY="SELECT content FROM rss_item WHERE content GLOB '*$NITTER_INSTANCE/pic/media*' AND unread = 1;"
 IMAGE_DIR=/tmp/twitter_nb_gallery
 TWITTER_LINK_ID=https://pbs.twimg.com/media/
 TWITTER_LINK_FORMAT='?format='
@@ -46,8 +47,24 @@ fetch-gallery() {
     fi
 }
 
+use-browser() {
+    firefox "$@" &> /dev/null
+}
+
 use-image-viewer() {
-    feh --zoom fill --scale-down "$@" &> /dev/null
+    action=$(feh --zoom fill --scale-down -G \
+        --action ';[Show post]echo %F' \
+        --action1 '[Delete image]rm %F' \
+        "$@" \
+        2> /dev/null)
+    action=$(printf "%s" "$action" | tail -n 1)
+    
+    if [ -n "$action" ]; then
+        id=${action##*/}
+        query="SELECT url FROM rss_item WHERE content GLOB '*$id*';"
+        link=$(sqlite3 "$NEWSBOAT_DB_FILE" "$query")
+        use-browser "${link/$NITTER_INSTANCE/twitter.com}"
+    fi
 }
 
 mark-as-read() {
@@ -56,7 +73,7 @@ mark-as-read() {
     
     find "$IMAGE_DIR" -type f -printf '%f\n' 2> /dev/null | while IFS= read -r _file; do
         id=${_file%.*}
-        sqlite3 "$NEWSBOAT_DB_FILE" "${query} content GLOB '*nitter.moomoo.me/pic/media%2F$id*' AND unread = 1;"
+        sqlite3 "$NEWSBOAT_DB_FILE" "${query} content GLOB '*$NITTER_INSTANCE/pic/media%2F$id*' AND unread = 1;"
     done
 }
 
