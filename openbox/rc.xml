@@ -468,6 +468,14 @@
       <command>light-locker-command -l</command>
     </action>
   </keybind>
+  <!-- NEWSBOAT TWITTER DOWNLOADER -->
+  <keybind key="W-C-n">
+    <action name="Execute">
+      <command>
+        ~/.dotfiles/scripts/newsboat/gallery-newsboat.sh
+      </command>
+    </action>
+  </keybind>
   <!-- KITTY SPAWN -->
   <keybind key="W-A-n">
     <action name="Execute">

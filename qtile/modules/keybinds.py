@@ -132,6 +132,12 @@ def create():
             "w",
             lazy.spawn(path.join(scripts_path, "bg-setter", "choose-bg.sh")),
         ),
+        # newsboat twitter downloader
+        Key(
+            [MOD, "control"],
+            "n",
+            lazy.spawn(path.join(scripts_path, "newsboat", "gallery-newsboat.sh")),
+        ),
         # mpc/mpv contextual remote control
         Key(
             [], "Pause", lazy.spawn(path.join(scripts_path, "media-control.sh toggle"))
