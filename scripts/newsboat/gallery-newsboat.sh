@@ -9,7 +9,8 @@ QUERY="SELECT content FROM rss_item WHERE content GLOB '*$NITTER_INSTANCE/pic/me
 IMAGE_DIR=/tmp/twitter_nb_gallery
 TWITTER_LINK_ID=https://pbs.twimg.com/media/
 TWITTER_LINK_FORMAT='?format='
-SAVE_FOLDER=$HOME/Pictures/Art
+SAVE_DIR=$HOME/Pictures/Art
+SCRIPT_NAME=${0##*/}
 
 ICON_DOWNLOAD=/usr/share/icons/Papirus/32x32/emblems/emblem-downloads.svg
 ICON_INFO=/usr/share/icons/Papirus/32x32/status/dialog-information.svg
@@ -35,16 +36,16 @@ fetch-gallery() {
 
     if [ -f "$CURL_CONFIG_FILE" ]; then
         mkdir -p $IMAGE_DIR
-        send-notification -i "$ICON_DOWNLOAD" "[gallery-newsboat]" "Starting download..."
+        send-notification -i "$ICON_DOWNLOAD" "[$SCRIPT_NAME]" "Starting download..."
         # shellcheck disable=SC2015
         curl --config "$CURL_CONFIG_FILE" \
             && rm "$CURL_CONFIG_FILE" \
-            && send-notification -i "$ICON_INFO" "[gallery-newsboat]" "Download complete!" \
-            || send-notification -i "$ICON_ERROR" "[gallery-newsboat" "Download error!" \
+            && send-notification -i "$ICON_INFO" "[$SCRIPT_NAME]" "Download complete!" \
+            || send-notification -i "$ICON_ERROR" "[$SCRIPT_NAME]" "Download error!" \
             && rm "$CURL_CONFIG_FILE"
         return 0
     else
-        send-notification -i "$ICON_ERROR" "[gallery-newsboat]" "Nothing to download."
+        send-notification -i "$ICON_ERROR" "[$SCRIPT_NAME]" "Nothing to download."
         return 1
     fi
 }
@@ -86,14 +87,14 @@ clear-gallery() {
 
 save-all-images() {
     [ ! -d "$IMAGE_DIR" ] && send-notification -i "$ICON_ERROR" \
-        "[${0##*/}]" \
+        "[$SCRIPT_NAME]" \
         "No images to save" && return 1
 
-    [ ! -d "$SAVE_FOLDER" ] && send-notification -i "$ICON_ERROR" \
-        "[${0##*/}]" \
-        "No folder to put images at '$SAVE_FOLDER'" && return 1
+    [ ! -d "$SAVE_DIR" ] && send-notification -i "$ICON_ERROR" \
+        "[$SCRIPT_NAME]" \
+        "No folder to put images at '$SAVE_DIR'" && return 1
 
-    mv -vf "$IMAGE_DIR"/* "$SAVE_FOLDER"
+    mv -vf "$IMAGE_DIR"/* "$SAVE_DIR"
 }
 
 declare -a options=(
