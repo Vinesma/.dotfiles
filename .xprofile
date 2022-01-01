@@ -1,6 +1,0 @@
-feh --bg-scale "$(< "${HOME}/.cache/wal/wal")" &
-picom &
-udiskie &
-redshift-gtk &
-numlockx &
-fcitx &
