@@ -9,6 +9,7 @@ QUERY="SELECT content FROM rss_item WHERE content GLOB '*$NITTER_INSTANCE/pic/me
 IMAGE_DIR=/tmp/twitter_nb_gallery
 TWITTER_LINK_ID=https://pbs.twimg.com/media/
 TWITTER_LINK_FORMAT='?format='
+SAVE_FOLDER=$HOME/Pictures/Art
 
 ICON_DOWNLOAD=/usr/share/icons/Papirus/32x32/emblems/emblem-downloads.svg
 ICON_INFO=/usr/share/icons/Papirus/32x32/status/dialog-information.svg
@@ -83,11 +84,23 @@ clear-gallery() {
     return 0
 }
 
+save-all-images() {
+    [ ! -d "$IMAGE_DIR" ] && send-notification -i "$ICON_ERROR" \
+        "[${0##*/}]" \
+        "No images to save" && return 1
+
+    [ ! -d "$SAVE_FOLDER" ] && send-notification -i "$ICON_ERROR" \
+        "[${0##*/}]" \
+        "No folder to put images at '$SAVE_FOLDER'" && return 1
+
+    mv -vf "$IMAGE_DIR"/* "$SAVE_FOLDER"
+}
+
 declare -a options=(
     " Download art"
     " View gallery"
-    " Mark all as read"
     " Clear gallery"
+    " Save all"
     " Exit" 
 )
 
@@ -104,9 +117,9 @@ while :; do
 
     case "$choice" in
         1) fetch-gallery && exit ;;
-        2) use-image-viewer "$IMAGE_DIR" ;;
-        3) mark-as-read ;;
-        4) clear-gallery;;
+        2) use-image-viewer "$IMAGE_DIR" && mark-as-read ;;
+        3) clear-gallery ;;
+        4) save-all-images && mark-as-read ;;
         *) exit ;;
     esac
 done
