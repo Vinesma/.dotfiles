@@ -38,9 +38,28 @@ seek-by-value() {
     fi
 }
 
+jump-to() {
+    if ! mpv-command "playlist-$1"; then
+        if [ "$1" == "prev" ]; then
+            time=$(mpc status '%currenttime%')
+            min=${time%%:*}
+            sec=${time##*:}
+            
+            [ "$min" -eq 0 ] && [ "$sec" -le 5 ] \
+                && mpc prev \
+                && return
+
+            mpc seek 0%
+        else
+            mpc next
+        fi
+    fi
+}
+
 case $1 in
-    toggle) toggle_media ;;
-    +*|-*) set-volume "$1" ;;
-    seek) seek-by-value "$2" ;;
-    *) printf 'Invalid args' ;;
+    toggle) toggle_media        ;;
+    +*|-*)  set-volume "$1"     ;;
+    seek)   seek-by-value "$2"  ;;
+    jump)   jump-to "$2"        ;;
+    *) printf "%s\n" "Invalid args" ;;
 esac

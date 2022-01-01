@@ -399,14 +399,14 @@
       <command>mpc stop</command>
     </action>
   </keybind>
-  <keybind key="W-period">
-    <action name="Execute">
-      <command>mpc next</command>
-    </action>
-  </keybind>
   <keybind key="W-comma">
     <action name="Execute">
-      <command>mpc prev</command>
+      <command>~/.dotfiles/scripts/media-control.sh jump prev</command>
+    </action>
+  </keybind>
+  <keybind key="W-period">
+    <action name="Execute">
+      <command>~/.dotfiles/scripts/media-control.sh jump next</command>
     </action>
   </keybind>
   <keybind key="W-F9">

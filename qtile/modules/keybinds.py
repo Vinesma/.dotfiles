@@ -185,8 +185,16 @@ def create():
             lazy.spawn(path.join(scripts_path, "media-control.sh seek -10")),
         ),
         Key([MOD], "Insert", lazy.spawn("mpc stop")),
-        Key([MOD], "period", lazy.spawn("mpc next")),
-        Key([MOD], "comma", lazy.spawn("mpc prev")),
+        Key(
+            [MOD],
+            "period",
+            lazy.spawn(path.join(scripts_path, "media-control.sh jump next")),
+        ),
+        Key(
+            [MOD],
+            "comma",
+            lazy.spawn(path.join(scripts_path, "media-control.sh jump prev")),
+        ),
         Key(
             [MOD],
             "F9",
