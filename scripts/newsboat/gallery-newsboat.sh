@@ -39,7 +39,8 @@ fetch-gallery() {
         curl --config "$CURL_CONFIG_FILE" \
             && rm "$CURL_CONFIG_FILE" \
             && send-notification -i "$ICON_INFO" "[gallery-newsboat]" "Download complete!" \
-            || send-notification -i "$ICON_ERROR" "[gallery-newsboat" "Download error!"
+            || send-notification -i "$ICON_ERROR" "[gallery-newsboat" "Download error!" \
+            && rm "$CURL_CONFIG_FILE"
         return 0
     else
         send-notification -i "$ICON_ERROR" "[gallery-newsboat]" "Nothing to download."
