@@ -1,0 +1,21 @@
+{
+    "name": "multi_monitor",
+    "packages": [
+        {
+            "display_name": "autorandr",
+            "name": "autorandr",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [
+                "bash $HOME/.dotfiles/install/scripts/setup-multihead.sh"
+            ],
+            "comments": [
+                "If using multiple monitors, autorandr can be used as such:",
+                "Configure your profile with xrandr, then create your profile with: '$ autorandr --save profile-name', set it as default with: '$ autorandr --default profile-name'",
+                "Now connect the external monitors and configure other profiles as you wish"
+            ],
+            "files": []
+        }
+    ],
+    "files": []
+}

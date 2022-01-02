@@ -20,5 +20,6 @@
     "polybar",
     "misc",
     "arch_only",
-    "arch_printer"
+    "arch_printer",
+    "multi_monitor"
 ]
