@@ -49,6 +49,7 @@ update-pacman-mirrors() {
 }
 
 # Update mirrors and then download and update all packages in the system.
+# shellcheck disable=SC2015
 update-packages() {
     local icon_success
     local icon_fail
@@ -68,6 +69,7 @@ update-packages() {
 }
 
 # Update mirrors and then download packages without actually installing.
+# shellcheck disable=SC2015
 update-packages-only-download() {
     local icon_success
     local icon_fail
@@ -197,4 +199,25 @@ gpg-decrypt() {
         echo "gpg-decrypt: Output the contents of a encrypted file to stdout."
         echo "Usage: gpg-decrypt [target file.ext.gpg]"
     fi
+}
+
+# Quick local server using python
+lan-server() {
+    local port
+    local address
+    port=$1
+    address=$(hostname -I | cut -d ' ' -f 1)
+
+    python -m http.server "${port:-8080}" --bind "${address:-127.0.0.1}"
+}
+
+# Quick local server using rclone, can serve remotes as well
+lan-server-rclone() {
+    local port
+    local address
+    port=8080
+    address=$(hostname -I | cut -d ' ' -f 1)
+
+    printf "%s\n" "Serving at: ${address:-127.0.0.1}:${port:-8080}"
+    rclone serve http "$@" -v --addr "${address:-127.0.0.1}:${port:-8080}"
 }
