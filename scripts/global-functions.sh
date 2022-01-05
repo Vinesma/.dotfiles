@@ -206,7 +206,7 @@ lan-server() {
     local port
     local address
     port=$1
-    address=$(hostname -I | cut -d ' ' -f 1)
+    address=$(ip -color=never -brief address | grep UP | head -n 1 | awk '{address=$3;sub("\/.+","",address);print address}')
 
     python -m http.server "${port:-8080}" --bind "${address:-127.0.0.1}"
 }
@@ -216,8 +216,8 @@ lan-server-rclone() {
     local port
     local address
     port=8080
-    address=$(hostname -I | cut -d ' ' -f 1)
+    address=$(ip -color=never -brief address | grep UP | head -n 1 | awk '{address=$3;sub("\/.+","",address);print address}')
 
-    printf "%s\n" "Serving at: ${address:-127.0.0.1}:${port:-8080}"
+    printf "Serving at: %s:%s\n" "${address:-127.0.0.1}" "${port:-8080}"
     rclone serve http "$@" -v --addr "${address:-127.0.0.1}:${port:-8080}"
 }
