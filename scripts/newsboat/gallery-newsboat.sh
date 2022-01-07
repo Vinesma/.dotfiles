@@ -3,6 +3,7 @@
 # Reaches into newsboat's database to download unread twitter posts with images
 
 NEWSBOAT_DB_FILE=$HOME/.local/share/newsboat/cache.db
+LOCKFILE=/tmp/newsboat.lock
 CURL_CONFIG_FILE=/tmp/gallery_newsboat_curl_config.tmp
 NITTER_INSTANCE=nitter.moomoo.me
 QUERY="SELECT content FROM rss_item WHERE content GLOB '*$NITTER_INSTANCE/pic/media*' AND unread = 1;"
@@ -55,7 +56,7 @@ use-browser() {
 }
 
 use-image-viewer() {
-    action=$(feh --zoom fill --scale-down -G \
+    action=$(feh -F -G \
         --action ';[Show post]echo %F' \
         --action1 '[Delete image]rm %F' \
         "$@" \
@@ -78,6 +79,10 @@ mark-as-read() {
         id=${_file%.*}
         sqlite3 "$NEWSBOAT_DB_FILE" "${query} content GLOB '*$NITTER_INSTANCE/pic/media%2F$id*' AND unread = 1;"
     done
+    
+    if unread_count=$(flock -n $LOCKFILE newsboat -x print-unread); then
+        printf "%s" "$unread_count" | cut -d ' ' -f 1 > "$NEWSBOAT_SCRIPTS_DIR/unread_count.tmp"
+    fi
 }
 
 clear-gallery() {
@@ -94,6 +99,7 @@ save-all-images() {
         "[$SCRIPT_NAME]" \
         "No folder to put images at '$SAVE_DIR'" && return 1
 
+    mark-as-read
     mv -vf "$IMAGE_DIR"/* "$SAVE_DIR"
 }
 
@@ -120,7 +126,7 @@ while :; do
         1) fetch-gallery && exit ;;
         2) use-image-viewer "$IMAGE_DIR" && mark-as-read ;;
         3) clear-gallery ;;
-        4) save-all-images && mark-as-read ;;
+        4) save-all-images && clear-gallery ;;
         *) exit ;;
     esac
 done
