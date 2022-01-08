@@ -1,6 +1,5 @@
 [
     "initial",
-    "wm_openbox",
     "display_manager",
     "term_kitty",
     "zsh",
@@ -21,5 +20,6 @@
     "misc",
     "arch_only",
     "arch_printer",
+    "wm_openbox",
     "multi_monitor"
 ]
