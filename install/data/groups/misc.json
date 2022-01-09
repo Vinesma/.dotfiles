@@ -2,6 +2,28 @@
     "name": "misc",
     "packages": [
         {
+            "display_name": "Neovim",
+            "name": "neovim",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [
+                "curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim",
+                "nvim --headless -c PlugInstall -c qa"
+            ],
+            "comments": [],
+            "files": [
+                {
+                    "name": "init.vim",
+                    "path_destination": "$HOME/.config/nvim",
+                    "path_source": "$HOME/.dotfiles/nvim",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                }
+            ]
+        },
+        {
             "display_name": "Thunar",
             "name": "thunar",
             "installer": "pacman",
@@ -74,58 +96,6 @@
             "post_install_commands": [],
             "comments": [],
             "files": []
-        },
-        {
-            "display_name": "Neovim",
-            "name": "neovim",
-            "installer": "pacman",
-            "auto_start": [],
-            "post_install_commands": [
-                "curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim",
-                "nvim --headless -c PlugInstall -c qa"
-            ],
-            "comments": [],
-            "files": [
-                {
-                    "name": "init.vim",
-                    "path_destination": "$HOME/.config/nvim",
-                    "path_source": "$HOME/.dotfiles/nvim",
-                    "text": "",
-                    "create_link": true,
-                    "sudo": false,
-                    "comments": []
-                }
-            ]
-        },
-        {
-            "display_name": "VSCodium",
-            "name": "vscodium-bin",
-            "installer": "aur",
-            "auto_start": [],
-            "post_install_commands": [
-                "bash $HOME/.dotfiles/VSCodium/install-extensions.sh"
-            ],
-            "comments": [],
-            "files": [
-                {
-                    "name": "settings.json",
-                    "path_destination": "$HOME/.config/VSCodium/User",
-                    "path_source": "$HOME/.dotfiles/VSCodium/User",
-                    "text": "",
-                    "create_link": true,
-                    "sudo": false,
-                    "comments": []
-                },
-                {
-                    "name": "typescriptreact.json",
-                    "path_destination": "$HOME/.config/VSCodium/User/snippets",
-                    "path_source": "$HOME/.dotfiles/VSCodium/User/snippets",
-                    "text": "",
-                    "create_link": true,
-                    "sudo": false,
-                    "comments": []
-                }
-            ]
         },
         {
             "display_name": "black - Python code formatter",
@@ -421,15 +391,6 @@
             "files": []
         },
         {
-            "display_name": "Github CLI",
-            "name": "github-cli",
-            "installer": "pacman",
-            "auto_start": [],
-            "post_install_commands": [],
-            "comments": [],
-            "files": []
-        },
-        {
             "display_name": "Zathura",
             "name": "zathura",
             "installer": "pacman",
@@ -497,6 +458,36 @@
             ],
             "comments": [],
             "files": []
+        },
+        {
+            "display_name": "VSCodium",
+            "name": "vscodium-bin",
+            "installer": "aur",
+            "auto_start": [],
+            "post_install_commands": [
+                "bash $HOME/.dotfiles/VSCodium/install-extensions.sh"
+            ],
+            "comments": [],
+            "files": [
+                {
+                    "name": "settings.json",
+                    "path_destination": "$HOME/.config/VSCodium/User",
+                    "path_source": "$HOME/.dotfiles/VSCodium/User",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                },
+                {
+                    "name": "typescriptreact.json",
+                    "path_destination": "$HOME/.config/VSCodium/User/snippets",
+                    "path_source": "$HOME/.dotfiles/VSCodium/User/snippets",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                }
+            ]
         }
     ],
     "files": [
