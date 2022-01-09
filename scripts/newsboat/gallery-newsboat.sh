@@ -59,6 +59,7 @@ use-image-viewer() {
     action=$(feh -F -G \
         --action ';[Show post]echo %F' \
         --action1 '[Delete image]rm %F' \
+        --action2 "[Save image]mv -f %F $SAVE_DIR" \
         "$@" \
         2> /dev/null)
     action=$(printf "%s" "$action" | tail -n 1)
