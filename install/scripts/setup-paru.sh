@@ -6,10 +6,7 @@ WORK_DIR=$HOME/.dotfiles/install/workdir/
 SOURCE=https://aur.archlinux.org/paru.git
 
 # -- SETUP --
-if [ ! -d "$WORK_DIR" ]; then
-    mkdir "$WORK_DIR" || { printf "%s\n" "FAILED: creating $WORK_DIR."; exit 1; }
-fi
-
+mkdir -p "$WORK_DIR"
 sudo pacman -Syu --needed base-devel
 
 # -- ACT --

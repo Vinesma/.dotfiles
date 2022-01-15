@@ -8,10 +8,7 @@ DM_WALLPAPER_DIR=/usr/share/wallpapers
 WORK_DIR=$HOME/.dotfiles/$DM_NAME
 
 # -- SETUP --
-if [ ! -d $DM_WALLPAPER_DIR ]; then
-    sudo mkdir -pv $DM_WALLPAPER_DIR
-fi
-
+sudo mkdir -pv $DM_WALLPAPER_DIR
 sudo chmod -v 777 $DM_WALLPAPER_DIR
 
 # -- ACT --

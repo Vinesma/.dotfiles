@@ -6,9 +6,7 @@ WORK_DIR=$HOME/.dotfiles/install/workdir/
 SOURCE=https://github.com/Vinesma/walbox.git
 
 # -- SETUP --
-if [ ! -d "$WORK_DIR" ]; then
-    mkdir "$WORK_DIR" || { printf "%s\n" "FAILED: creating $WORK_DIR."; exit 1; }
-fi
+mkdir -p "$WORK_DIR"
 
 # -- ACT --
 cd "$WORK_DIR" || exit 1

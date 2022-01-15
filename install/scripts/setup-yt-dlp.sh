@@ -8,9 +8,7 @@ SOURCE_DOCS=https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.tar
 ZSH_COMPLETION_DIR=/usr/share/zsh/functions/Completion/X
 
 # -- SETUP --
-if [ ! -d "$WORK_DIR" ]; then
-    mkdir "$WORK_DIR" || { printf "%s\n" "FAILED: creating $WORK_DIR."; exit 1; }
-fi
+mkdir -p "$WORK_DIR"
 
 # -- ACT --
 cd "$WORK_DIR" || exit 1
