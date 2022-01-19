@@ -200,6 +200,7 @@ I use `ext4` as my primary filesystem.
   This usually takes some time to complete depending on your internet stability.
   I also recommend installing a text editor.
   Additionally, you may consider `linux-zen` over `linux` on desktops for performance reasons.
+  Setting up Reflector can also provide better download speeds.
   ```
   pacstrap /mnt base linux linux-firmware neovim networkmanager man-db man-pages texinfo
   ```
@@ -421,10 +422,10 @@ VSCode integration:
 
 [VirtualBox](https://www.virtualbox.org/) runs virtual machines in an easy way.
 
-1. Run the command: 
+1. Run the command:
   ```sh
   LC_ALL=C lscpu | grep Virtualization
-  ``` 
+  ```
   to check if Virtualization is supported. If nothing is shown then Virtualization is **not** supported
 
 1. [Enable virtualization in the BIOS](https://support.bluestacks.com/hc/en-us/articles/115003174386-How-can-I-enable-virtualization-VT-on-my-PC-)
@@ -485,7 +486,7 @@ For ssh, we have to identify what machine you want to use as a `client` and whic
 
 - Install `openssh` (It's probably already installed)
 
-- Enable the server: 
+- Enable the server:
   ```sh
   systemctl enable --now sshd
   ```
@@ -497,7 +498,7 @@ For ssh, we have to identify what machine you want to use as a `client` and whic
 - Copy the newly generated pair to the server using:
   ```sh
   ssh-copy-id -i ~/.ssh/id_rsa.pub $USER@$IP_ADDR
-  
+
   $USER = The username to login at the server
   $ADDR = The server ip. Can be found by running `ip -br -c address` at the server
   ```
@@ -509,7 +510,7 @@ For ssh, we have to identify what machine you want to use as a `client` and whic
 
 `server`:
 
-- Configure `/etc/ssh/sshd_config`, important settings to change are `Port`, changing `PermitRootLogin` to `no` and adding `PasswordAuthentication no` to force key based authentication. This can be done remotely. Don't forget to restart the server afterwards using: 
+- Configure `/etc/ssh/sshd_config`, important settings to change are `Port`, changing `PermitRootLogin` to `no` and adding `PasswordAuthentication no` to force key based authentication. This can be done remotely. Don't forget to restart the server afterwards using:
   ```sh
   systemctl restart sshd.service
   ```
