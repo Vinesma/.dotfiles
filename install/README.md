@@ -449,6 +449,7 @@ VSCode integration:
   The command should return something. If not, you will need to manually load the modules. Check the wiki.
 - Install: `libvirt qemu virt-manager`
 - Install: `iptables-nft dnsmasq` for default networking via NAT/DHCP, and no, just `iptables` does not work.
+- Install: `edk2-ovmf` for UEFI support, be sure to check `Customize before install` in virt-manager.
 - Add yourself to the `libvirt` group:
   ```sh
   sudo gpasswd -a "$USER" libvirt
