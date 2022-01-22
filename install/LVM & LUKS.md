@@ -98,19 +98,40 @@ That's it for partitioning the drive.
 
 This step is taken just before installing the bootloader.
 
-- For LVM to work, a hook needs to be set in `/etc/mkinitcpio.conf` scroll down to the HOOKS section and add `lvm2` to the array before `filesystems`, if using encryption, also add in `encrypt` before `lvm2`:
+- Install `lvm2` in your chroot, if you haven't already.
+- For LVM to work, a hook needs to be set in `/etc/mkinitcpio.conf` scroll down to the HOOKS section and add `lvm2` to the array before `filesystems`.
+- If using encryption things are a little different. If using the `encrypt` hook (do not add '[!]' that's just marking the hooks you need):
   ```
-  HOOKS=(base udev autodetect modconf block encrypt[!] lvm2[!] filesystems keyboard fsck)
+  HOOKS=(base udev autodetect keyboard[!] keymap[!] consolefont[!] modconf block encrypt[!] lvm2[!] filesystems fsck)
+  ```
+- If using `sd-encrypt`, which uses systemd:
+  ```
+  HOOKS=(base systemd[!] autodetect keyboard[!] sd-vconsole[!] modconf block encrypt[!] lvm2[!] filesystems fsck)
   ```
 - Now run:
   ```
   mkinitcpio -p linux
   ```
 
-## Decrypt with GRUB
+## Decrypt with 'encrypt' hook
 
-- Special configuration is needed for GRUB when using LUKS. Grab your `/dev/sda1` UUID and open `/etc/default/grub` for editing, adding the following line in `GRUB_CMDLINE_LINUX`, changing ID_HERE with the actual UUID:
+- Special configuration is needed for booting with LUKS. Grab your `/dev/sda1` UUID and open `/etc/default/grub` for editing, adding the following line in `GRUB_CMDLINE_LINUX`, changing ID_HERE with the actual UUID:
   ```
   cryptdevice=UUID=ID_HERE:CryptPartitionName root=/dev/GroupName/root
   ```
 - Then regenerate GRUB config.
+
+## Decrypt with 'sd-encrypt' hook
+
+- Grab your `/dev/sda1` UUID and open `/etc/default/grub` for editing, adding the following line in `GRUB_CMDLINE_LINUX`, changing ID_HERE with the actual UUID:
+  ```
+  rd.luks.name=ID_HERE=CryptPartitionName root=/dev/GroupName/root
+  ```
+- Then regenerate GRUB config.
+- `sd-encrypt` supports unlocking multiple devices, to do this, simply repeat `rd.luks.name=` for the other devices.
+
+## Useful links
+
+[LVM on LUKS](https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS)
+[Resizing LVM on LUKS](https://wiki.archlinux.org/title/Resizing_LVM-on-LUKS)
+[How to boot an encrypted system.](https://wiki.archlinux.org/title/Dm-crypt/System_configuration)
