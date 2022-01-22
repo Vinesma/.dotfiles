@@ -6,10 +6,11 @@ The steps for partioning the disk are slightly different when using LVM.
 
 With LVM you can just use one partition for the entire device you wish to use, this partition is a PV (Physical Volume). It can be grouped with other PVs in what's called a VG (Volume Group). The VG forms the pool of disk space on which you can "partition" into an LG (Logical Volume). A typical LVM user has multiple LGs which are roughly analogous to a normal partition. Except LVM allows easy resizing of partitions to fit the user's needs.
 
-- First, determine if an /efi partition already resides on the disk. If so, you can't use it with LVM, as other operating systems (notably Windows) have no support for LVM. If there isn't one, you have to create a normal partition to hold the bootloader and another normal partition for LVM as instructed.
+- First, determine if an /efi partition already resides on the disk. If so, you can't use it with LVM, as other operating systems (notably Windows) have no support for LVM. If there isn't one, you have to create a normal partition to hold the bootloader `/boot` and another normal partition for LVM as instructed.
 
 - My partition scheme with LVM will be as follows:
   ```
+  /boot - 200M
   [SWAP] - If hybernation is needed, the size of RAM or double. If not, half of RAM should suffice.
   / - 80 GB
   /home - Remainder of space
@@ -24,6 +25,18 @@ With LVM you can just use one partition for the entire device you wish to use, t
   In this prompt you may type `p` to view the pending partition table.
 - Type `g` to create a new GPT partition scheme.
   This will also erase the old partition table along with any old partitions.
+- Create a boot partition.
+  ```
+  n
+  enter
+  enter
+  +200M
+  ```
+- Tag the new partition as `EFI System`:
+  ```
+  t
+  1
+  ```
 - Create a new partition, use the default partition number and sectors, and size the partition.
   ```
   n
@@ -36,7 +49,7 @@ With LVM you can just use one partition for the entire device you wish to use, t
   You will be returned to the virtual terminal prompt, where you will be able to run `fdisk -l` to view your newly created partitions.
 - You will now start using LVM. To create a PV on the new partition run:
   ```
-  pvcreate /dev/sda1
+  pvcreate /dev/sda2
   ```
 - Check pvs with the command:
   ```
@@ -45,7 +58,7 @@ With LVM you can just use one partition for the entire device you wish to use, t
 - Repeat the pv creation process for every hard disk you have/wish to use.
 - Now you can group your PVs into a VG:
   ```
-  vgcreate GroupName /dev/sda1 /dev/sdaX /dex/sdbX ...
+  vgcreate GroupName /dev/sda2 /dev/sdaX /dex/sdbX ...
   ```
 - Activate your VG:
   ```
@@ -83,14 +96,14 @@ That's it for partitioning the drive.
 
 ## Partitioning with encryption
 
-- In the case of encryption however, the steps change slightly. Only one proper partition is created at first.
-- This partition is encrypted:
+- In the case of encryption however, the steps change slightly. Only one proper partition is created at first, along with the boot partition, which is left unencrypted.
+- The non-boot partition is encrypted:
   ```
-  cryptsetup luksFormat /dev/sda1
+  cryptsetup luksFormat /dev/sda2
   ```
 - And then opened for modifications:
   ```
-  cryptsetup open /dev/sda1 CryptPartitionName
+  cryptsetup open /dev/sda2 CryptPartitionName
   ```
 - The steps for LVM are then done on top of CryptPartitionName. Which can be found at `/dev/mapper/CryptPartitionName`
 
@@ -106,7 +119,7 @@ This step is taken just before installing the bootloader.
   ```
 - If using `sd-encrypt`, which uses systemd:
   ```
-  HOOKS=(base systemd[!] autodetect keyboard[!] sd-vconsole[!] modconf block encrypt[!] lvm2[!] filesystems fsck)
+  HOOKS=(base systemd[!] autodetect keyboard[!] sd-vconsole[!] modconf block sd-encrypt[!] lvm2[!] filesystems fsck)
   ```
 - Now run:
   ```
@@ -115,7 +128,7 @@ This step is taken just before installing the bootloader.
 
 ## Decrypt with 'encrypt' hook
 
-- Special configuration is needed for booting with LUKS. Grab your `/dev/sda1` UUID and open `/etc/default/grub` for editing, adding the following line in `GRUB_CMDLINE_LINUX`, changing ID_HERE with the actual UUID:
+- Special configuration is needed for booting with LUKS. Grab your `/dev/sda2` UUID and open `/etc/default/grub` for editing, adding the following line in `GRUB_CMDLINE_LINUX`, changing ID_HERE with the actual UUID:
   ```
   cryptdevice=UUID=ID_HERE:CryptPartitionName root=/dev/GroupName/root
   ```
@@ -123,15 +136,17 @@ This step is taken just before installing the bootloader.
 
 ## Decrypt with 'sd-encrypt' hook
 
-- Grab your `/dev/sda1` UUID and open `/etc/default/grub` for editing, adding the following line in `GRUB_CMDLINE_LINUX`, changing ID_HERE with the actual UUID:
+- Grab your `/dev/sda2` UUID and open `/etc/default/grub` for editing, adding the following line in `GRUB_CMDLINE_LINUX`, changing ID_HERE with the actual UUID:
   ```
   rd.luks.name=ID_HERE=CryptPartitionName root=/dev/GroupName/root
   ```
 - Then regenerate GRUB config.
-- `sd-encrypt` supports unlocking multiple devices, to do this, simply repeat `rd.luks.name=` for the other devices.
+- Unlike `encrypt`, `sd-encrypt` supports unlocking multiple devices, to do this, simply repeat `rd.luks.name=` for the other devices.
 
 ## Useful links
 
 [LVM on LUKS](https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS)
+
 [Resizing LVM on LUKS](https://wiki.archlinux.org/title/Resizing_LVM-on-LUKS)
+
 [How to boot an encrypted system.](https://wiki.archlinux.org/title/Dm-crypt/System_configuration)

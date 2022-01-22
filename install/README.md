@@ -115,6 +115,8 @@ The boot process should eventually land on a virtual terminal prompt where you c
 
 ## Disk Partitioning <a name="disk-partitioning"></a>
 
+*If using LVM/LUKS [use my other guide.](https://github.com/Vinesma/.dotfiles/blob/master/install/LVM%20%26%20LUKS.md)*
+
 In this guide I assume only one disk and that the full disk is being utilized.
 I use `ext4` as my primary filesystem.
 
@@ -285,6 +287,8 @@ I use `ext4` as my primary filesystem.
 ## Boot Loader <a name="boot-loader"></a>
 
 I use Grub as a bootloader because it is simple, quick, and works on both UEFI/BIOS systems. It also has a customizeable appearance. The commands below only work for UEFI systems, if using BIOS please check the wiki.
+
+*If going along with my LVM/LUKS guide, use `/boot` instead of `/efi` in the following commands.*
 
 - Install the bootloader.
   ```
