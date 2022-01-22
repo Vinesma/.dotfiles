@@ -14,7 +14,7 @@ cd "$WORK_DIR" || exit 1
 
 git clone "$SOURCE"
 cd paru || exit 1
-makepkg -si
+makepkg -si --noconfirm
 
 # -- CLEANUP --
 cd "$HOME" || exit 1
