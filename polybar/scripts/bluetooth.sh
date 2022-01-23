@@ -2,6 +2,8 @@
 #
 # POLYBAR SCRIPT
 
+command -v bluetoothctl &> /dev/null || exit
+
 ICON=
 
 if bluetoothctl show | grep -q "Powered: yes"; then
