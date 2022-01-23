@@ -211,15 +211,6 @@
             "files": []
         },
         {
-            "display_name": "Inkscape",
-            "name": "inkscape",
-            "installer": "pacman",
-            "auto_start": [],
-            "post_install_commands": [],
-            "comments": [],
-            "files": []
-        },
-        {
             "display_name": "Newsboat",
             "name": "newsboat",
             "installer": "pacman",
@@ -248,15 +239,6 @@
             ]
         },
         {
-            "display_name": "Wine",
-            "name": "wine",
-            "installer": "pacman",
-            "auto_start": [],
-            "post_install_commands": [],
-            "comments": [],
-            "files": []
-        },
-        {
             "display_name": "Syncthing",
             "name": "syncthing",
             "installer": "pacman",
@@ -264,15 +246,6 @@
             "post_install_commands": [
                 "systemctl enable --user syncthing"
             ],
-            "comments": [],
-            "files": []
-        },
-        {
-            "display_name": "Anki",
-            "name": "anki",
-            "installer": "aur",
-            "auto_start": [],
-            "post_install_commands": [],
             "comments": [],
             "files": []
         },
