@@ -9,14 +9,6 @@ picom --experimental-backends &
 redshift-gtk &
 fcitx &
 
-# mpd startup
-if [[ ! -s ~/.config/mpd/pid ]]; then
-    mpd
-    mpc random on
-    mpc repeat on
-    mpc crossfade 3
-fi
-
 # Check connection, then run network based apps.
 if ping -c 2 archlinux.org; then
     firefox about:newtab https://en.wikipedia.org/wiki/Main_Page &
