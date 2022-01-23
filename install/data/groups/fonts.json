@@ -63,6 +63,15 @@
             "post_install_commands": [],
             "comments": [],
             "files": []
+        },
+        {
+            "display_name": "Noto Sans Mono",
+            "name": "nerd-fonts-noto-sans-mono",
+            "installer": "aur",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
         }
     ],
     "files": []
