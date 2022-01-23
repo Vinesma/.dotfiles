@@ -480,27 +480,27 @@
   <keybind key="W-A-n">
     <action name="Execute">
       <command>
-        kitty -o background_opacity=0.9 -T newsboat ~/.dotfiles/scripts/newsboat/open-newsboat.sh
+        kitty -T newsboat ~/.dotfiles/scripts/newsboat/open-newsboat.sh
       </command>
     </action>
   </keybind>
   <keybind key="W-A-l">
     <action name="Execute">
       <command>
-        kitty -o background_opacity=0.9 neomutt
+        kitty neomutt
       </command>
     </action>
   </keybind>
   <keybind key="W-A-m">
     <action name="Execute">
       <command>
-        kitty -o background_opacity=0.7 -T MPD ncmpcpp -q
+        kitty -T MPD ncmpcpp -q
       </command>
     </action>
   </keybind>
   <keybind key="C-A-Delete">
     <action name="Execute">
-      <command>kitty -o background_opacity=0.9 htop</command>
+      <command>kitty htop</command>
     </action>
   </keybind>
   <!-- ROFI -->
