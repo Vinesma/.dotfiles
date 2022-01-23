@@ -29,5 +29,6 @@
 	d = diff
 	l = log --graph --abbrev-commit --decorate
 	ps = push
-    psnu = push --set-upstream origin ; push a new upstream branch
 	pl = pull
+    psnu = !git push --set-upstream origin $(git branch --show-current) ; push a local branch to remote and track it
+	alias = !git grep -h -A 100 -e 'alias' "$HOME/.dotfiles/git/.gitconfig"
