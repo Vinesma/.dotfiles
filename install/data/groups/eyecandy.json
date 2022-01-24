@@ -6,7 +6,7 @@
             "name": "feh",
             "installer": "pacman",
             "auto_start": [
-                "feh --bg-scale \"$(< \"${HOME}/.cache/wal/wal\")\" &"
+                ". \"$HOME/.fehbg\" &"
             ],
             "post_install_commands": [],
             "comments": [],

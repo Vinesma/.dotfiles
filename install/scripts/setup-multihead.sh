@@ -21,7 +21,7 @@ printf "%s\n" \
 # shellcheck disable=SC2016
 if command -v feh &> /dev/null; then
     printf "%s\n" \
-        'feh --bg-scale "$(< "${HOME}/.cache/wal/wal")" &' \
+        '. "$HOME/.fehbg" &' \
         > "$POSTSWITCH_EXTRA_DIR/set-wallpaper" \
         && chmod 777 "$POSTSWITCH_EXTRA_DIR/set-wallpaper"
 fi
