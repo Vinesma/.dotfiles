@@ -273,8 +273,7 @@
             "installer": "pacman",
             "auto_start": [],
             "post_install_commands": [
-                "systemctl enable --user mpd",
-                "systemctl enable --user mpc"
+                "systemctl enable --user mpd"
             ],
             "comments": [],
             "files": [
@@ -286,7 +285,19 @@
                     "create_link": true,
                     "sudo": false,
                     "comments": []
-                },
+                }
+            ]
+        },
+        {
+            "display_name": "mpc - remote control mpd",
+            "name": "mpc",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [
+                "systemctl enable --user mpc"
+            ],
+            "comments": [],
+            "files": [
                 {
                     "name": "mpc.service",
                     "path_destination": "$HOME/.config/systemd/user",
