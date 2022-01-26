@@ -40,48 +40,17 @@ calc() {
     node -p "$@"
 }
 
-# Ask user to update mirrors
-update-pacman-mirrors() {
-    echo -e ":: Update mirrorlist with the fastest mirrors? (y/n)"
-    read -r answer
-
-    [[ "$answer" == [yY] ]] && sudo pacman-mirrors -f
-}
-
-# Update mirrors and then download and update all packages in the system.
+# Download and update all packages in the system.
 # shellcheck disable=SC2015
 update-packages() {
     local icon_success
     local icon_fail
-    local answer
     icon_success="/usr/share/icons/Papirus/32x32/apps/system-software-update.svg"
     icon_fail="/usr/share/icons/Papirus/32x32/apps/system-error.svg"
 
-    update-pacman-mirrors
-
-    sudo pacman -Syyu && \
-    notify-send -i "$icon_success" 'PACMAN' 'Update complete!' || \
-    notify-send -i "$icon_fail" 'PACMAN' 'Update FAILURE!'
-
-    yay -Sua && \
-    notify-send -i "$icon_success" 'YAY' 'Update complete!' || \
-    notify-send -i "$icon_fail" 'YAY' 'Update FAILURE!'
-}
-
-# Update mirrors and then download packages without actually installing.
-# shellcheck disable=SC2015
-update-packages-only-download() {
-    local icon_success
-    local icon_fail
-    local answer
-    icon_success="/usr/share/icons/Papirus/32x32/apps/system-software-update.svg"
-    icon_fail="/usr/share/icons/Papirus/32x32/apps/system-error.svg"
-
-    update-pacman-mirrors
-
-    sudo pacman -Syyuw && \
-    notify-send -i "$icon_success" 'PACMAN' 'Update complete!' || \
-    notify-send -i "$icon_fail" 'PACMAN' 'Update FAILURE!'
+    paru \
+        && notify-send -i "$icon_success" 'PACMAN' 'Update complete!' \
+        || notify-send -i "$icon_fail" 'PACMAN' 'Update FAILURE!'
 }
 
 # for easy downloading of music
