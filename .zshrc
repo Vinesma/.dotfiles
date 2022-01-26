@@ -60,6 +60,7 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 ## USER SPACE ##
 
 setopt autocd		# Automatically cd into typed directory.
+setopt correct      # Autocorrect wrongly typed commands
 
 # Edit line in vim with ctrl-v:
 autoload edit-command-line; zle -N edit-command-line
