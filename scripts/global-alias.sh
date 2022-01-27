@@ -58,5 +58,4 @@ alias ffprobe-bitrate-audio='ffprobe -v quiet -select_streams a:0 -show_entries 
 alias sd='shutdown now'
 alias ip='ip -br -c'
 alias lock-session='dm-tool switch-to-greeter'
-alias code='codium'
 alias update-aliases='source ~/.zshrc'
