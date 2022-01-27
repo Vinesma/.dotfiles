@@ -1,11 +1,10 @@
 {
-  "window.zoomLevel": 1.2,
+  "window.zoomLevel": 1,
   "workbench.iconTheme": "vscode-icons",
   "window.menuBarVisibility": "toggle",
-  "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
-  "editor.fontFamily": "'JetBrainsMono NF', 'Droid Sans Mono', 'NotoSansMono Nerd Font', 'monospace', monospace, 'Droid Sans Fallback'",
-  "workbench.colorTheme": "Wal",
-  "terminal.integrated.fontFamily": "'JetBrainsMono NF'",
+  "vscode-neovim.neovimExecutablePaths.linux": "/home/otavio.silva/.config/nvim/nvim.appimage",
+  "editor.fontFamily": "'Source Code Pro', 'Droid Sans Mono', 'NotoSansMono Nerd Font', 'monospace', monospace, 'Droid Sans Fallback'",
+  "terminal.integrated.fontFamily": "'FiraCode Nerd Font'",
   "git.confirmSync": false,
   "git.mergeEditor": false,
   "[typescriptreact]": {
@@ -40,7 +39,7 @@
   "python.linting.pylintEnabled": true,
   "python.formatting.provider": "black",
   "git.enableSmartCommit": true,
-  "editor.fontSize": 16,
+  "editor.fontSize": 14,
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairsHorizontal": false,
   "editor.suggest.preview": true,
@@ -48,8 +47,11 @@
   "editor.guides.bracketPairs": true,
   "editor.scrollBeyondLastLine": false,
   "editor.lineNumbers": "relative",
-  "terminal.external.linuxExec": "kitty",
+  "terminal.external.linuxExec": "gnome-terminal",
   "terminal.integrated.copyOnSelection": true,
+  "emmet.includeLanguages": {
+    "ftl": "html"
+  },
   "prettier.tabWidth": 4,
   "prettier.arrowParens": "avoid",
   "files.trimTrailingWhitespace": true,
