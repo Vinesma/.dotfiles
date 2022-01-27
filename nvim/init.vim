@@ -61,7 +61,6 @@ if !exists('g:vscode')
     call plug#begin('~/.local/share/nvim/plugged')
 
     " Declare the list of plugins.
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'pangloss/vim-javascript'
     Plug 'leafgarland/typescript-vim'
     Plug 'peitalin/vim-jsx-typescript'
