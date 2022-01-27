@@ -47,5 +47,6 @@
   "terminal.integrated.copyOnSelection": true,
   "prettier.tabWidth": 4,
   "prettier.arrowParens": "avoid",
+  "files.trimTrailingWhitespace": true,
   "workbench.startupEditor": "none"
 }
