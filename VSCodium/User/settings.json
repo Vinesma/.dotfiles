@@ -52,6 +52,9 @@
   "editor.lineNumbers": "relative",
   "terminal.external.linuxExec": "gnome-terminal",
   "terminal.integrated.copyOnSelection": true,
+  "emmet.includeLanguages": {
+    "ftl": "html"
+  },
   "prettier.tabWidth": 4,
   "prettier.arrowParens": "avoid",
   "files.trimTrailingWhitespace": true,
