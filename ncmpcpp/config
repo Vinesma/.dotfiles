@@ -263,7 +263,7 @@ visualizer_color = blue, cyan, green
 ## Note: Custom command that will be executed each time song changes. Useful for
 ## notifications etc.
 ##
-execute_on_song_change = "~/.dotfiles/scripts/ncmpcpp-cover/cover-switch.sh"
+#execute_on_song_change = "~/.dotfiles/scripts/ncmpcpp-cover/cover-switch.sh"
 #
 ##
 ## Note: Custom command that will be executed each time player state
