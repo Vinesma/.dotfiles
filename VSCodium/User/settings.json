@@ -52,16 +52,16 @@
   "editor.lineNumbers": "relative",
   "terminal.external.linuxExec": "gnome-terminal",
   "terminal.integrated.copyOnSelection": true,
-  "emmet.includeLanguages": {
-    "ftl": "html",
-    "vue-html": "html",
-    "vue": "html"
-  },
   "prettier.tabWidth": 4,
   "prettier.arrowParens": "avoid",
   "files.trimTrailingWhitespace": true,
   "workbench.startupEditor": "none",
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
+  },
+  "emmet.includeLanguages": {
+    "ftl": "html",
+    "vue-html": "html",
+    "vue": "html"
   }
 }
