@@ -11,43 +11,12 @@ With LVM you can just use one partition for the entire device you wish to use, t
 - My partition scheme with LVM will be as follows:
   ```
   /boot - 200M
+  /efi - 100M
   [SWAP] - If hybernation is needed, the size of RAM or double. If not, half of RAM should suffice.
   / - 80 GB
   /home - Remainder of space
   ```
-- Determine the size of the disk and the size of RAM memory.
-  I will be using and referencing `/dev/sda` as my disk.
-  ```sh
-  fdisk -l
-  free -h
-  ```
-- Use `fdisk /dev/sda` to enter a command-line disk partition editor.
-  In this prompt you may type `p` to view the pending partition table.
-- Type `g` to create a new GPT partition scheme.
-  This will also erase the old partition table along with any old partitions.
-- Create a boot partition.
-  ```
-  n
-  enter
-  enter
-  +200M
-  ```
-- Tag the new partition as `EFI System`:
-  ```
-  t
-  1
-  ```
-- Create a new partition, use the default partition number and sectors, and size the partition.
-  ```
-  n
-  enter
-  enter
-  enter
-  ```
-- Type `p` to view your partitions.
-  Once you are satisfied with your partitioning, type `w` to permanently write the partitioning scheme to the disk.
-  You will be returned to the virtual terminal prompt, where you will be able to run `fdisk -l` to view your newly created partitions.
-- You will now start using LVM. To create a PV on the new partition run:
+- After partitioning you can now start using LVM. To create a PV on a partition run:
   ```
   pvcreate /dev/sda2
   ```
@@ -55,14 +24,10 @@ With LVM you can just use one partition for the entire device you wish to use, t
   ```
   pvs
   ```
-- Repeat the pv creation process for every hard disk you have/wish to use.
+- Repeat the pv creation process for every non-boot/efi hard disk you have/wish to use.
 - Now you can group your PVs into a VG:
   ```
   vgcreate GroupName /dev/sda2 /dev/sdaX /dex/sdbX ...
-  ```
-- Activate your VG:
-  ```
-  vgchange -a y GroupName
   ```
 - Finally, this is the "partitioning" step, create your LVs by specifying their size, the VG they are part of and their name:
 - Starting with SWAP:
@@ -83,11 +48,17 @@ With LVM you can just use one partition for the entire device you wish to use, t
   swapon /dev/GroupName/swap
   mkfs.ext4 -L ROOT /dev/GroupName/root
   mkfs.ext4 -L HOME /dev/GroupName/home
+  mkfs.ext4 -L BOOT /dev/sdXX # boot
+  mkfs.fat -F32 /dev/sdYY # efi
   ```
 - And mount them:
   ```
   mount /dev/GroupName/root /mnt
+  mkdir /mnt/boot
+  mkdir /mnt/efi
   mkdir /mnt/home
+  mount /dev/sdYY /mnt/boot
+  mount /dev/sdXX /mnt/efi
   mount /dev/GroupName/home /mnt/home
   ```
   You can use the `lsblk -f` command to verify that your partitions have been mounted correctly.
