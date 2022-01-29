@@ -51,11 +51,6 @@
   "editor.scrollBeyondLastLine": false,
   "terminal.external.linuxExec": "gnome-terminal",
   "terminal.integrated.copyOnSelection": true,
-  "emmet.includeLanguages": {
-    "ftl": "html",
-    "vue-html": "html",
-    "vue": "html"
-  },
   "prettier.tabWidth": 4,
   "prettier.arrowParens": "avoid",
   "files.trimTrailingWhitespace": true,
@@ -64,5 +59,10 @@
     "asvetliakov.vscode-neovim": 1
   },
   "git.inputValidation": true,
-  "workbench.activityBar.location": "top"
+  "workbench.activityBar.location": "top",
+  "emmet.includeLanguages": {
+    "ftl": "html",
+    "vue-html": "html",
+    "vue": "html"
+  }
 }
