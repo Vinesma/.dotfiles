@@ -465,7 +465,7 @@
   <!-- LOCK SCREEN -->
   <keybind key="W-C-F12">
     <action name="Execute">
-      <command>light-locker-command -l</command>
+      <command>dm-tool switch-to-greeter</command>
     </action>
   </keybind>
   <!-- NEWSBOAT TWITTER DOWNLOADER -->

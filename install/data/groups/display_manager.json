@@ -44,7 +44,7 @@
             "display_name": "light-locker",
             "name": "light-locker",
             "installer": "pacman",
-            "auto_start": ["light-locker --lock-on-lid --lock-on-suspend &"],
+            "auto_start": ["light-locker --lock-on-lid --no-lock-on-suspend &"],
             "post_install_commands": [],
             "comments": [],
             "files": []
