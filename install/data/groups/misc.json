@@ -99,8 +99,8 @@
         },
         {
             "display_name": "black - Python code formatter",
-            "name": "black",
-            "installer": "pip",
+            "name": "python-black",
+            "installer": "pacman",
             "auto_start": [],
             "post_install_commands": [],
             "comments": [],
