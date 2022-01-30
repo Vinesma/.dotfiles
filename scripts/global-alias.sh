@@ -53,7 +53,7 @@ alias android-mount='aft-mtp-cli'
 #
 alias sd='shutdown now'
 alias ip='ip -br -c'
-alias lock-session='light-locker-command -l'
+alias lock-session='dm-tool switch-to-greeter'
 alias code='codium'
 alias update-aliases='source ~/.zshrc'
 
