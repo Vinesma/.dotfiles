@@ -3,7 +3,7 @@ dbaeumer.vscode-eslint
 dlasagno.wal-theme
 esbenp.prettier-vscode
 humao.rest-client
-jpoissonnier.vscode-styled-components
+styled-components.vscode-styled-components
 mads-hartmann.bash-ide-vscode
 ms-python.python
 timonwong.shellcheck
