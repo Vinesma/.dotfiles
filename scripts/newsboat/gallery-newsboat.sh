@@ -21,7 +21,7 @@ send-notification() {
     notify-send "$@"
 }
 
-# Use sqlite3 to filter the newsboat database 
+# Use sqlite3 to filter the newsboat database
 # Look for twitter content with images and transform it into the true twitter image url
 # Append this link into a config file that curl can use to download
 fetch-gallery() {
@@ -31,7 +31,7 @@ fetch-gallery() {
        extension=${twitter_id##*.}
        twitter_id=${twitter_id%.*}
        twitter_link=${TWITTER_LINK_ID}${twitter_id}${TWITTER_LINK_FORMAT}${extension}
-       
+
        printf "%s\n" "url = $twitter_link" "output = $IMAGE_DIR/$twitter_id.$extension" >> $CURL_CONFIG_FILE
     done
 
@@ -63,7 +63,7 @@ use-image-viewer() {
         "$@" \
         2> /dev/null)
     action=$(printf "%s" "$action" | tail -n 1)
-    
+
     if [ -n "$action" ]; then
         id=${action##*/}
         query="SELECT url FROM rss_item WHERE content GLOB '*$id*';"
@@ -75,12 +75,12 @@ use-image-viewer() {
 mark-as-read() {
     local query
     query='UPDATE rss_item SET unread = 0 WHERE'
-    
+
     find "$IMAGE_DIR" -type f -printf '%f\n' 2> /dev/null | while IFS= read -r _file; do
         id=${_file%.*}
         sqlite3 "$NEWSBOAT_DB_FILE" "${query} content GLOB '*$NITTER_INSTANCE/pic/media%2F$id*' AND unread = 1;"
     done
-    
+
     if unread_count=$(flock -n $LOCKFILE newsboat -x print-unread); then
         printf "%s" "$unread_count" | cut -d ' ' -f 1 > "$NEWSBOAT_SCRIPTS_DIR/unread_count.tmp"
     fi
@@ -109,7 +109,7 @@ declare -a options=(
     " View gallery"
     " Clear gallery"
     " Save all"
-    " Exit" 
+    " Exit"
 )
 
 while :; do
@@ -125,7 +125,7 @@ while :; do
 
     case "$choice" in
         1) fetch-gallery && exit ;;
-        2) use-image-viewer "$IMAGE_DIR" && mark-as-read ;;
+        2) mark-as-read && use-image-viewer "$IMAGE_DIR" ;;
         3) clear-gallery ;;
         4) save-all-images && clear-gallery ;;
         *) exit ;;
