@@ -125,7 +125,7 @@ while :; do
 
     case "$choice" in
         1) fetch-gallery && exit ;;
-        2) mark-as-read && use-image-viewer "$IMAGE_DIR" ;;
+        2) { mark-as-read; use-image-viewer "$IMAGE_DIR"; } ;;
         3) clear-gallery ;;
         4) save-all-images && clear-gallery ;;
         *) exit ;;
