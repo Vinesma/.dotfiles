@@ -847,6 +847,12 @@
       <height>50%</height>
     </size>
   </application>
+  <application class="Thunar" type="dialog">
+    <size>
+      <width>default</width>
+      <height>default</height>
+    </size>
+  </application>
   <application class="mpv">
     <desktop>all</desktop>
     <layer>above</layer>
