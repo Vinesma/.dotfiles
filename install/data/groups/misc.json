@@ -178,7 +178,9 @@
             "name": "mpv",
             "installer": "pacman",
             "auto_start": [],
-            "post_install_commands": [],
+            "post_install_commands": [
+                "bash $HOME/.dotfiles/install/scripts/setup-mpv-scripts.sh"
+            ],
             "comments": [],
             "files": [
                 {
