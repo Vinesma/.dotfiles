@@ -40,6 +40,17 @@
             "files": []
         },
         {
+            "display_name": "pacman-contrib",
+            "name": "pacman-contrib",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [
+                "sudo systemctl enable paccache.timer"
+            ],
+            "comments": [],
+            "files": []
+        },
+        {
             "display_name": "man-db",
             "name": "man-db",
             "installer": "pacman",
