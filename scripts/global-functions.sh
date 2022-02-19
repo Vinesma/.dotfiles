@@ -51,6 +51,11 @@ update-packages() {
     paru && paru -Sua \
         && notify-send -i "$icon_success" 'PACMAN' 'Update complete!' \
         || notify-send -i "$icon_fail" 'PACMAN' 'Update FAILURE!'
+
+    while IFS= read -r ext_script; do
+        # shellcheck source=/dev/null
+        source "$ext_script"
+    done <<< "$(find "$HOME/.dotfiles/install/scripts" -type f -perm /u=x,g=x)"
 }
 
 # for easy downloading of music
