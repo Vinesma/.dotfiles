@@ -11,7 +11,7 @@ SCRIPT_DIR=$HOME/.config/mpv/scripts
 
 # -- SETUP --
 mkdir -p "$WORK_DIR"
-mkdir -p "$DESTINATION"
+mkdir -p "$SCRIPT_DIR"
 
 # -- ACT --
 cd "$WORK_DIR" || exit 1
