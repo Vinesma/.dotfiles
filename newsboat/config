@@ -20,6 +20,7 @@ define-filter "Only twitter posts with multimedia" "content =~ \"nitter.moomoo.m
 
 # MACROS
 macro p toggle-article-read
+macro i set pager "/usr/share/doc/newsboat/contrib/kitty-img-pager.sh"; open; set pager internal
 
 # COLORS
 color background          white   black
