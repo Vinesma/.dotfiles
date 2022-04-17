@@ -6,7 +6,6 @@ thunar --daemon &
 dunst &
 feh --bg-scale "$(< "${HOME}/.cache/wal/wal")" &
 picom --experimental-backends &
-redshift-gtk &
 fcitx &
 
 # Check connection, then run network based apps.

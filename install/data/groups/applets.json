@@ -5,10 +5,10 @@
             "display_name": "Redshift",
             "name": "redshift",
             "installer": "pacman",
-            "auto_start": [
-                "redshift-gtk &"
+            "auto_start": [],
+            "post_install_commands": [
+                "systemctl enable --user --now redshift-gtk"
             ],
-            "post_install_commands": [],
             "comments": [],
             "files": [
                 {
