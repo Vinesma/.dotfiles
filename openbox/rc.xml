@@ -861,6 +861,10 @@
       <y>-10</y>
     </position>
   </application>
+  <application class="qBittorrent">
+    <desktop>4</desktop>
+    <maximized>yes</maximized>
+  </application>
 </applications>
 
 </openbox_config>
