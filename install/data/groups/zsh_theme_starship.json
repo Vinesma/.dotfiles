@@ -4,11 +4,9 @@
         {
             "display_name": "Starship",
             "name": "starship",
-            "installer": "custom",
+            "installer": "pacman",
             "auto_start": [],
-            "post_install_commands": [
-                "bash $HOME/.dotfiles/install/scripts/setup-starship.sh"
-            ],
+            "post_install_commands": [],
             "comments": [],
             "files": [
                 {
