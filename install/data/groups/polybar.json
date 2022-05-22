@@ -4,7 +4,7 @@
         {
             "display_name": "Polybar",
             "name": "polybar",
-            "installer": "aur",
+            "installer": "pacman",
             "auto_start": [
                 ". $HOME/.dotfiles/polybar/launch.sh &"
             ],
