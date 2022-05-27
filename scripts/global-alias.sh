@@ -50,6 +50,8 @@ alias gpl='git pull'
 alias git-aliases="grep --color=never \"='git \" ~/.zshrc"
 # android device CLI mounting
 alias android-mount='aft-mtp-cli'
+# kitty
+alias kssh='kitty +kitten ssh'
 #
 alias sd='shutdown now'
 alias ip='ip -br -c'
