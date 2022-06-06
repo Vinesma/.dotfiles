@@ -21,3 +21,5 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export GLFW_IM_MODULE=ibus
 # ssh-agent
 export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
+# pacdiff
+export DIFFPROG="nvim -d"
