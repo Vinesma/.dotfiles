@@ -64,5 +64,8 @@
     "ftl": "html",
     "vue-html": "html",
     "vue": "html"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
