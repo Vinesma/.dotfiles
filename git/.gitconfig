@@ -30,5 +30,7 @@
 	l = log --graph --abbrev-commit --decorate
 	ps = push
 	pl = pull
+    assume-unchanged = update-index --assume-unchanged
+    no-assume-unchanged = update-index --no-assume-unchanged
     psnu = !git push --set-upstream origin $(git branch --show-current) ; push a local branch to remote and track it
 	alias = !git grep -h -A 100 -e 'alias' "$HOME/.dotfiles/git/.gitconfig"
