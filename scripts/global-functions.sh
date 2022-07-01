@@ -56,6 +56,12 @@ update-packages() {
         # shellcheck source=/dev/null
         source "$ext_script"
     done <<< "$(find "$HOME/.dotfiles/install/scripts" -type f -perm /u=x,g=x)"
+
+    if command -v flatpak > /dev/null; then
+        flatpak update \
+        && notify-send -i "$icon_success" 'FLATPAK' 'Update complete!' \
+        || notify-send -i "$icon_fail" 'FLATPAK' 'Update FAILURE!'
+    fi
 }
 
 # for easy downloading of music
