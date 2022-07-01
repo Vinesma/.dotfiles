@@ -26,7 +26,8 @@ cd yt-dlp || exit 1
 sudo cp -vf yt-dlp.1 /usr/share/man/man1
 [ -d $ZSH_COMPLETION_DIR ] && \
     sudo cp -vf completions/zsh/_yt-dlp $ZSH_COMPLETION_DIR
-sudo mandb
+printf "%s\n" "Updating mandb..."
+sudo mandb -q
 
 # -- CLEANUP --
 cd "$HOME" || exit 1
