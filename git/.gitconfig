@@ -30,6 +30,8 @@
 	l = log --graph --abbrev-commit --decorate
 	ps = push
 	pl = pull
+    pr = "!f() { git fetch -fu ${2:-$(git remote |grep ^upstream || echo origin)} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+    pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
     assume-unchanged = update-index --assume-unchanged
     no-assume-unchanged = update-index --no-assume-unchanged
     psnu = !git push --set-upstream origin $(git branch --show-current) ; push a local branch to remote and track it
