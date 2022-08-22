@@ -42,7 +42,7 @@
   "python.linting.pylintEnabled": true,
   "python.formatting.provider": "black",
   "git.enableSmartCommit": true,
-  "editor.fontSize": 14,
+  "editor.fontSize": 13,
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairsHorizontal": false,
   "editor.suggest.preview": true,
