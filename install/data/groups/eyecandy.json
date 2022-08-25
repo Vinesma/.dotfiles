@@ -17,7 +17,7 @@
             "name": "picom-git",
             "installer": "aur",
             "auto_start": [
-                "picom --experimental-backends &"
+                "picom &"
             ],
             "post_install_commands": [],
             "comments": [],
