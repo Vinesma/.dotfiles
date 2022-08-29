@@ -45,8 +45,8 @@ play-all-music() {
 show-menu() {
     local all_albums
     local album
-    all_albums=$(ls "$music_folder")
-    
+    all_albums=$(find "$music_folder" -mindepth 1 \! -name '.*' -type d -printf '%f\n' | sort)
+
     while true; do
         album=$(echo -e " EXIT\n Play All\n Clear Queue\n Show Genres\n况 Show All\n$all_albums" | \
         rofi -dmenu -only-match -i -p ' Play' -lines 15)
