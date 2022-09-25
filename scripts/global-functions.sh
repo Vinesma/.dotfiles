@@ -48,7 +48,7 @@ update-packages() {
     icon_success="/usr/share/icons/Papirus/32x32/apps/system-software-update.svg"
     icon_fail="/usr/share/icons/Papirus/32x32/apps/system-error.svg"
 
-    paru && paru -Sua \
+    paru --sudoloop -Syu && paru --sudoloop -Sua \
         && notify-send -i "$icon_success" 'PACMAN' 'Update complete!' \
         || notify-send -i "$icon_fail" 'PACMAN' 'Update FAILURE!'
 
