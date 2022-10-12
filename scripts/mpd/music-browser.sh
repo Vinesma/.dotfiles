@@ -4,7 +4,6 @@
 # Dependencies:
 # - mpd, mpc, rofi
 
-music_folder="$HOME/Music"
 icon="/usr/share/icons/Papirus/32x32/apps/mpd.svg"
 
 clear_queue="$HOME/.dotfiles/scripts/mpd/queue-music.sh clear-music"
@@ -45,7 +44,7 @@ play-all-music() {
 show-menu() {
     local all_albums
     local album
-    all_albums=$(find "$music_folder" -mindepth 1 \! -name '.*' -type d -printf '%f\n' | sort)
+    all_albums=$(mpc ls)
 
     while true; do
         album=$(echo -e " EXIT\n Play All\n Clear Queue\n Show Genres\n况 Show All\n$all_albums" | \

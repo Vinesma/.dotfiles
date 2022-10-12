@@ -28,7 +28,7 @@ set-volume() {
 
         message=$(mpc volume)
 
-        notify-send -i "$audio_icon" -t "$notify_time" "MPD" "$message"
+        notify-send -r 96069 -i "$audio_icon" -t "$notify_time" "MPD" "$message"
     fi
 }
 
@@ -44,7 +44,7 @@ jump-to() {
             time=$(mpc status '%currenttime%')
             min=${time%%:*}
             sec=${time##*:}
-            
+
             [ "$min" -eq 0 ] && [ "$sec" -le 5 ] \
                 && mpc prev \
                 && return
