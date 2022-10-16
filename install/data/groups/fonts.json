@@ -39,7 +39,7 @@
         },
         {
             "display_name": "Nerd Font",
-            "name": "ttf-nerd-fonts-symbols",
+            "name": "ttf-nerd-fonts-symbols-2048-em",
             "installer": "pacman",
             "auto_start": [],
             "post_install_commands": [],
