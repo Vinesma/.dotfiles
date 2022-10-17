@@ -96,10 +96,10 @@
 </resize>
 
 <margins>
-  <top>0</top>
+  <top>40</top>
   <bottom>0</bottom>
-  <left>0</left>
-  <right>0</right>
+  <left>5</left>
+  <right>5</right>
 </margins>
 
 <dock>
