@@ -1,0 +1,7 @@
+.thunar,
+.thunar .sidebar,
+.thunar .sidebar.view {{ background-color: rgba({background.rgb},0.8); }}
+.thunar .standard-view .view {{
+    background-color: rgba({background.rgb},0.2);
+}}
+
