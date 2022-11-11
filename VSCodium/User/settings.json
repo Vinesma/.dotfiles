@@ -4,7 +4,7 @@
   "window.menuBarVisibility": "toggle",
   "vscode-neovim.neovimExecutablePaths.linux": "/home/otavio.silva/.config/nvim/nvim.appimage",
   "editor.fontFamily": "'Source Code Pro', 'Droid Sans Mono', 'NotoSansMono Nerd Font', 'monospace', monospace, 'Droid Sans Fallback'",
-  "terminal.integrated.fontFamily": "'FiraCode Nerd Font'",
+  "terminal.integrated.fontFamily": "'Fira Code'",
   "git.confirmSync": false,
   "git.mergeEditor": false,
   "[typescriptreact]": {
