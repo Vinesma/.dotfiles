@@ -864,6 +864,12 @@
   <application class="qBittorrent">
     <desktop>4</desktop>
   </application>
+  <application class="Steam">
+    <desktop>4</desktop>
+  </application>
+  <application class="Jellyfin Media Player">
+    <decor>no</decor>
+  </application>
 </applications>
 
 </openbox_config>
