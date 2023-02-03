@@ -6,8 +6,7 @@
 
 icon="/usr/share/icons/Papirus/32x32/apps/mpd.svg"
 
-clear_queue="$HOME/.dotfiles/scripts/mpd/queue-music.sh clear-music"
-play_genre="$HOME/.dotfiles/scripts/mpd/queue-music.sh"
+queue_script_path="$HOME/.dotfiles/scripts/mpd/queue-music.sh"
 
 add-album() {
     echo "$1" | mpc add
@@ -31,7 +30,7 @@ show-genres() {
     local genre
     genre=$(mpc list genre | rofi -dmenu -only-match -i -p 'Play all from' -lines 10)
 
-    . "$play_genre" "$genre"
+    . "$queue_script_path" "$genre"
 }
 
 play-all-music() {
@@ -53,7 +52,7 @@ show-menu() {
         case "$album" in
             *EXIT) exit ;;
             *Play\ All) play-all-music && exit ;;
-            *Clear\ Queue) . "$clear_queue" ;;
+            *Clear\ Queue) . "$queue_script_path" clear-music;;
             *Show\ Genres) show-genres ;;
             *Show\ All) show-all-music ;;
             *) add-album "$album" ;;
