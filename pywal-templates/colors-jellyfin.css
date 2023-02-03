@@ -1,0 +1,82 @@
+:root {{
+  --custom-bg-color: {background};
+  --custom-bg-color-transparent: #{background.strip}BA;
+  --custom-fg-color: {color1};
+}}
+
+.playedIndicator {{
+  background: var(--custom-fg-color);
+}}
+
+.countIndicator {{
+  background: var(--custom-fg-color);
+}}
+
+.itemProgressBarForeground {{
+  background-color: var(--custom-fg-color);
+}}
+
+.mdl-slider-background-lower {{
+  background-color: var(--custom-fg-color);
+}}
+
+.mdl-slider::-moz-range-thumb {{
+  background: var(--custom-fg-color);
+  width: 0.8em;
+  height: 0.8em;
+}}
+
+.mdl-slider::-webkit-slider-thumb {{
+  background: var(--custom-fg-color);
+  width: 0.8em;
+  height: 0.8em;
+}}
+
+.mdl-slider::-ms-thumb {{
+  background: var(--custom-fg-color);
+  width: 0.8em;
+  height: 0.8em;
+}}
+
+.backgroundContainer,
+.dialog,
+html {{
+  background-color: var(--custom-bg-color);
+}}
+
+.detailRibbon {{
+  background: var(--custom-bg-color-transparent);
+}}
+
+.skinHeader.focuscontainer-x.skinHeader-withBackground.skinHeader-blurred {{
+  background: none;
+  background-color: var(--custom-bg-color-transparent);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}}
+
+.skinHeader.focuscontainer-x.skinHeader-withBackground.skinHeader-blurred.noHomeButtonHeader {{
+  background: none;
+  background-color: var(--custom-bg-color-transparent);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}}
+
+.mainDrawer,
+.emby-input,
+.emby-textarea,
+.emby-select,
+.navMenuOption-selected,
+.paperList {{
+  background: var(--custom-bg-color);
+}}
+
+.emby-input,
+.emby-textarea,
+.emby-select-withcolor {{
+  border-color: var(--custom-fg-color);
+}}
+
+.defaultCardBackground1 {{
+  background-color: var(--custom-bg-color);
+}}
