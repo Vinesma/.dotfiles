@@ -12,6 +12,8 @@
     ff = only
 [url "git@github.com:"]
     insteadOf = "gh:" ; allows cloning with "gh:Vinesma/repo" instead of the full url
+[help]
+    autoCorrect = prompt
 [alias]
 	s = status
 	a = add
