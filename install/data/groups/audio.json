@@ -25,8 +25,8 @@
             "files": []
         },
         {
-            "display_name": "Pulseaudio",
-            "name": "pulseaudio",
+            "display_name": "Pipewire",
+            "name": "pipewire",
             "installer": "pacman",
             "auto_start": [],
             "post_install_commands": [],
@@ -34,8 +34,44 @@
             "files": []
         },
         {
-            "display_name": "Pulseaudio (Alsa integration)",
-            "name": "pulseaudio-alsa",
+            "display_name": "Pipewire lib32",
+            "name": "lib32-pipewire",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Pipewire Audio",
+            "name": "pipewire-audio",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "WirePlumber",
+            "name": "wireplumber",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Pipewire (Pulseaudio integration)",
+            "name": "pipewire-pulse",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Pipewire (Alsa integration)",
+            "name": "pipewire-alsa",
             "installer": "pacman",
             "auto_start": [],
             "post_install_commands": [],
