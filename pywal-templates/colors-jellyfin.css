@@ -77,6 +77,6 @@ html {{
   border-color: var(--custom-fg-color);
 }}
 
-.defaultCardBackground1 {{
+.defaultCardBackground {{
   background-color: var(--custom-bg-color);
 }}
