@@ -20,9 +20,10 @@ printf "%s\n" \
 # wallpaper setter hook
 # shellcheck disable=SC2016
 if command -v feh &> /dev/null; then
+    printf "%s\n" '#!/bin/bash' > "$POSTSWITCH_EXTRA_DIR/set-wallpaper"
     printf "%s\n" \
         '. "$HOME/.fehbg" &' \
-        > "$POSTSWITCH_EXTRA_DIR/set-wallpaper" \
+        >> "$POSTSWITCH_EXTRA_DIR/set-wallpaper" \
         && chmod 777 "$POSTSWITCH_EXTRA_DIR/set-wallpaper"
 fi
 
