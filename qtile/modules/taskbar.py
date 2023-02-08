@@ -239,7 +239,7 @@ def generate_defaults():
     Return default values of widgets and bar
     """
     return {
-        "font": "Source Code Pro Bold",
+        "font": "RobotoMono Nerd Font",
         "fontsize": FONT_SIZE,
         "padding": 6,
         "foreground": colors_main.get("foreground"),

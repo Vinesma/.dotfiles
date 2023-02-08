@@ -3,9 +3,9 @@
   "workbench.iconTheme": "vscode-icons",
   "window.menuBarVisibility": "toggle",
   "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
-  "editor.fontFamily": "'Source Code Pro', 'Droid Sans Mono', 'NotoSansMono Nerd Font', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.fontFamily": "'JetBrainsMono Nerd Font', 'Droid Sans Mono', 'NotoSansMono Nerd Font', 'monospace', monospace, 'Droid Sans Fallback'",
   "workbench.colorTheme": "Wal",
-  "terminal.integrated.fontFamily": "'MesloLGS NF'",
+  "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font'",
   "git.confirmSync": false,
   "git.mergeEditor": false,
   "[typescriptreact]": {

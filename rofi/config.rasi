@@ -3,7 +3,7 @@ configuration {
 	width: 50;
 	lines: 8;
 	columns: 1;
-	font: "Source Code Pro 12";
+	font: "RobotoMono Nerd Font 12";
 /*	bw: 1;*/
 /*	location: 0;*/
 /*	padding: 5;*/
