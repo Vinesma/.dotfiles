@@ -2,6 +2,7 @@
   --custom-bg-color: {background};
   --custom-bg-color-transparent: #{background.strip}BA;
   --custom-fg-color: {color1};
+  --custom-highlight-color: {color4};
 }}
 
 .playedIndicator {{
@@ -74,9 +75,9 @@ html {{
 .emby-input,
 .emby-textarea,
 .emby-select-withcolor {{
-  border-color: var(--custom-fg-color);
+  border-color: var(--custom-highlight-color);
 }}
 
 .defaultCardBackground {{
-  background-color: var(--custom-bg-color);
+  background-color: var(--custom-highlight-color);
 }}
