@@ -20,6 +20,24 @@
             "files": []
         },
         {
+            "display_name": "JetBrains Mono Nerd",
+            "name": "ttf-jetbrains-mono-nerd",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "Roboto Mono Nerd",
+            "name": "ttf-roboto-mono-nerd",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
             "display_name": "Noto Fonts CJK (JP/CH/KR Font)",
             "name": "noto-fonts-cjk",
             "installer": "pacman",
