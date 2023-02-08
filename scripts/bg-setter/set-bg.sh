@@ -33,7 +33,7 @@ if wal -n -e -i "$@"; then
     { pgrep openbox && openbox --reconfigure; } &> /dev/null
 
     pkill dunst
-    pywalfox update
+    "$HOME"/.local/bin/pywalfox update
     reset-polybar
 
     notify-send -i "$icon_image" "set-bg" "New background and theme set."
