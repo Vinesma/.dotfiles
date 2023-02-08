@@ -22,16 +22,16 @@
     # dynamic width from 0 to 300
     # width = (0, 300)
     # constant width of 300
-    width = 300
+    width = (300, 400)
 
     # The maximum height of a single notification, excluding the frame.
     height = 200
 
     # Position the notification in the top right corner
-    origin = bottom-right
+    origin = top-right
 
     # Offset from the origin
-    offset = 30x30
+    offset = 15x50
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -69,7 +69,7 @@
     frame_width = 2
 
     # Defines color of the frame around the notification window.
-    frame_color = "{color4}"
+    frame_color = "{color1}"
 
     # Define a color for the separator.
     # possible values are:
@@ -92,11 +92,11 @@
     ### Text ###
 
     #font = Monospace 8
-    font = RobotoMono Nerd Font 8
+    font = RobotoMono Nerd Font 9
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
-    line_height = 0
+    line_height = 2
 
     # Possible values are:
     # full: Allow a small subset of html markup in notifications:
@@ -395,4 +395,8 @@
 #    appname = "some_volume_notifiers"
 #    set_stack_tag = "volume"
 #
+[music-notification]
+    summary = "NOW PLAYING"
+    alignment = center
+    max_icon_size = 100
 # vim: ft=cfg
