@@ -5,6 +5,7 @@
 # - mpd, mpc, rofi
 
 icon="/usr/share/icons/Papirus/32x32/apps/mpd.svg"
+rofi_theme="$HOME/.cache/wal/colors-rofi-launcher"
 
 queue_script_path="$HOME/.dotfiles/scripts/mpd/queue-music.sh"
 
@@ -47,7 +48,12 @@ show-menu() {
 
     while true; do
         album=$(echo -e " EXIT\n Play All\n Clear Queue\n Show Genres\n况 Show All\n$all_albums" | \
-        rofi -dmenu -only-match -i -p ' Play' -lines 15)
+        rofi -dmenu -only-match -i \
+        -theme "$rofi_theme" \
+        -theme-str 'textbox-prompt-colon {str: "";}' \
+        -theme-str 'entry {placeholder: "Play...";}' \
+        -theme-str 'listview {lines: 15;}' \
+        -no-show-icons)
 
         case "$album" in
             *EXIT) exit ;;

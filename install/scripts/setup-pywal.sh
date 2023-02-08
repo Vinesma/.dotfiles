@@ -10,17 +10,25 @@ DEFAULT_WALLPAPER=$HOME/.dotfiles/files/wallpaper_default.png
 mkdir -p "$WAL_TEMPLATES_DIR"
 
 # -- ACT --
-# Create links for dunst config
+## Create links for
+# Dunst config
 ln -sfv "$MY_TEMPLATES_DIR/colors-dunst" "$WAL_TEMPLATES_DIR"
 
-# Create links for polybar colors
+# Polybar colors
 ln -sfv "$MY_TEMPLATES_DIR/colors-polybar.ini" "$WAL_TEMPLATES_DIR"
 
-# Create links for zathura colors
+# Zathura colors
 ln -sfv "$MY_TEMPLATES_DIR/colors-zathura" "$WAL_TEMPLATES_DIR"
 
-# Create links for gtk colors
+# Gtk colors
 ln -sfv "$MY_TEMPLATES_DIR/gtk.css" "$WAL_TEMPLATES_DIR"
+
+# Jellyfin colors
+ln -sfv "$MY_TEMPLATES_DIR/colors-jellyfin.css" "$WAL_TEMPLATES_DIR"
+
+# Rofi themes
+ln -sfv "$MY_TEMPLATES_DIR/colors-rofi-launcher.rasi" "$WAL_TEMPLATES_DIR"
+ln -sfv "$MY_TEMPLATES_DIR/colors-rofi-powermenu.rasi" "$WAL_TEMPLATES_DIR"
 
 # Create default color scheme
 wal -e -t -s -n -i "$DEFAULT_WALLPAPER"

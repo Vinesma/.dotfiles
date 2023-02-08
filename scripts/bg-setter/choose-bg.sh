@@ -6,6 +6,7 @@
 
 wallpaper_dir="$HOME/Pictures/Wallpapers"
 files_folder="$HOME/.dotfiles/scripts/bg-setter"
+rofi_theme="$HOME/.cache/wal/colors-rofi-launcher"
 # shellcheck disable=SC2063
 resolution=$(xrandr | grep '*' | head -n 1 | awk '{printf $1}')
 width=$(echo "$resolution" | cut -d 'x' -f 1)
@@ -83,7 +84,7 @@ create-display-manager-image() {
     extension=$2
     final_name="$wallpaper_dir/display-manager-bg$extension"
     lightdm_wallpaper_dir=/usr/share/wallpapers
-    
+
     if [ ! -d $lightdm_wallpaper_dir ]; then
         send-error "Could not find '${lightdm_wallpaper_dir}'\nMake sure the directory exists and run chmod 777 on it."
     else
@@ -101,7 +102,7 @@ resize-image() {
 
     while [ "$accepted" -eq 1 ]; do
         gravity=$(echo -e "NorthWest\nNorth\nNorthEast\nWest\nCenter\nEast\nSouthWest\nSouth\nSouthEast" \
-            | rofi -dmenu -only-match -p 'Center image at' -lines 9 -select 'Center')
+            | rofi -dmenu -only-match -p 'Center image at' -lines 9 -select 'Center' -no-show-icons)
 
         if magick "/tmp/bg-setter-img$extension" \
             -resize "$width"x"$height"^ \
@@ -169,8 +170,11 @@ show-chooser() {
 
 show-menu() {
     local option
-    option=$(echo -e "1  Pick wallpapers\n2  Download image\n3  Clear cache\n4 Set saturation\n5 Set backend\n6 Set transparency\n6  Exit" \
-        | rofi -dmenu -only-match -p 'option' -format 'd' -mesg "Saturation: $saturation_amount | Backend: $backend" -lines 7)
+    option=$(echo -e "1  Pick wallpapers\n2  Download image\n3  Clear cache\n4 Set saturation\n5 Set backend\n6 Set transparency\n7  Exit" \
+        | rofi -dmenu -only-match -format 'd' -mesg "Saturation: $saturation_amount | Backend: $backend" \
+        -theme "$rofi_theme" \
+        -theme-str 'listview {lines: 7;}' \
+        -no-show-icons)
 
     case "$option" in
         1) show-chooser ;;

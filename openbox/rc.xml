@@ -504,14 +504,19 @@
     </action>
   </keybind>
   <!-- ROFI -->
+  <keybind key="W-q">
+    <action name="Execute">
+      <command>~/.dotfiles/scripts/rofi/powermenu.sh</command>
+    </action>
+  </keybind>
   <keybind key="W-r">
     <action name="Execute">
-      <command>rofi -show run</command>
+      <command>rofi -show drun -theme ~/.cache/wal/colors-rofi-launcher.rasi</command>
     </action>
   </keybind>
   <keybind key="W-e">
     <action name="Execute">
-      <command>rofi -show window</command>
+      <command>rofi -show window -theme ~/.cache/wal/colors-rofi-launcher.rasi</command>
     </action>
   </keybind>
 
