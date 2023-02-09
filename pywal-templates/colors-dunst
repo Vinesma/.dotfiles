@@ -28,10 +28,10 @@
     height = 200
 
     # Position the notification in the top right corner
-    origin = top-right
+    origin = bottom-right
 
     # Offset from the origin
-    offset = 15x50
+    offset = 20x20
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -399,4 +399,7 @@
     summary = "NOW PLAYING"
     alignment = center
     max_icon_size = 100
+[mpd-notification]
+    summary = "MPD"
+    history_ignore = true
 # vim: ft=cfg
