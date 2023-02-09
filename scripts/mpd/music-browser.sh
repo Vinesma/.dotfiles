@@ -19,7 +19,7 @@ add-album() {
 show-all-music() {
     local track
     local title
-    track=$(mpc listall | rofi -dmenu -only-match -i -p ' Play one' -lines 15)
+    track=$(mpc listall | rofi -dmenu -only-match -i -theme "$rofi_theme" -theme-str 'listview {lines: 15;}')
     title=$(echo "$track" | sed -e 's/.*\///' -e 's/\.mp3//')
 
     echo "$track" | mpc add
@@ -29,7 +29,7 @@ show-all-music() {
 
 show-genres() {
     local genre
-    genre=$(mpc list genre | rofi -dmenu -only-match -i -p 'Play all from' -lines 10)
+    genre=$(mpc list genre | rofi -dmenu -only-match -i -theme "$rofi_theme" -theme-str 'listview {lines: 10;}')
 
     . "$queue_script_path" "$genre"
 }
