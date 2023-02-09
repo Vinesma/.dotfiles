@@ -1,0 +1,17 @@
+/**
+ *
+ * Author : Aditya Shakya (adi1090x)
+ * Github : @adi1090x
+ * Modified By: Otavio Silva (Vinesma)
+ *
+ * Colors
+ **/
+
+* {{
+    background:     #{background.strip}DB;
+    background-alt: #{background.strip}FF;
+    foreground:     #{foreground.strip}FF;
+    selected:       {color4};
+    active:         {color1};
+    urgent:         {color1};
+}}

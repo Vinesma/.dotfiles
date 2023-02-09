@@ -27,6 +27,7 @@ ln -sfv "$MY_TEMPLATES_DIR/gtk.css" "$WAL_TEMPLATES_DIR"
 ln -sfv "$MY_TEMPLATES_DIR/colors-jellyfin.css" "$WAL_TEMPLATES_DIR"
 
 # Rofi themes
+ln -sfv "$MY_TEMPLATES_DIR/colors-rofi-shared.rasi" "$WAL_TEMPLATES_DIR"
 ln -sfv "$MY_TEMPLATES_DIR/colors-rofi-launcher.rasi" "$WAL_TEMPLATES_DIR"
 ln -sfv "$MY_TEMPLATES_DIR/colors-rofi-powermenu.rasi" "$WAL_TEMPLATES_DIR"
 
