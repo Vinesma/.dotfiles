@@ -74,14 +74,14 @@ textbox-prompt-colon {{
     expand:                      false;
     str:                         " System";
     padding:                     12px;
-    border-radius:               100%;
+    border-radius:               10px;
     background-color:            var(urgent);
     text-color:                  #FFF;
 }}
 prompt {{
     enabled:                     true;
     padding:                     12px;
-    border-radius:               100%;
+    border-radius:               10px;
     background-color:            var(active);
     text-color:                  #FFF;
 }}
@@ -108,14 +108,14 @@ listview {{
 /*****----- Elements -----*****/
 element {{
     enabled:                     true;
-    padding:                     28px 10px;
-    border-radius:               100%;
+    padding:                     20px 5px;
+    border-radius:               10px;
     background-color:            var(background-alt);
     text-color:                  var(foreground);
     cursor:                      pointer;
 }}
 element-text {{
-    font:                        "RobotoMono Nerd Font Mono:style=Bold 60";
+    font:                        "RobotoMono Nerd Font Mono:style=Bold 40";
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;
@@ -130,9 +130,9 @@ element selected.normal {{
 /*****----- Message -----*****/
 message {{
     enabled:                     true;
-    margin:                      0px 15px 15px 15px;
+    margin:                      0px;
     padding:                     15px;
-    border-radius:               100%;
+    border-radius:               0px;
     background-color:            transparent;
     text-color:                  var(foreground);
 }}
