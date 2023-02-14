@@ -28,7 +28,7 @@ set-volume() {
 
         message=$(mpc volume)
 
-        notify-send -r 96069 -i "$audio_icon" -t "$notify_time" "MPD" "$message"
+        notify-send -r 96069 -i "$audio_icon" -t "$notify_time" "MPD" "${message/:1/: 1}"
     fi
 }
 
