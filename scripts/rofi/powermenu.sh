@@ -23,6 +23,7 @@ host=$(cat /etc/hostname)
 # Options
 run='󰼛'
 windows='󰖯'
+music='󰝚'
 logout='󰍃'
 reboot='󰑓'
 shutdown='󰐥'
@@ -57,7 +58,7 @@ confirm_exit() {
 
 # Pass variables to rofi dmenu
 run_rofi() {
-	echo -e "$run\n$windows\n$logout\n$reboot\n$shutdown" | rofi_cmd
+	echo -e "$run\n$windows\n$music\n$logout\n$reboot\n$shutdown" | rofi_cmd
 }
 
 # Execute Command
@@ -98,6 +99,10 @@ case ${chosen} in
         ;;
     "$windows")
         rofi -show window -theme "${dir}/${launch_theme}"
+        ;;
+    "$music")
+		# shellcheck source=/dev/null
+        . ~/.dotfiles/scripts/mpd/music-browser.sh
         ;;
     "$logout")
 		run_cmd --logout
