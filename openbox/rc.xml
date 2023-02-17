@@ -861,6 +861,8 @@
   </application>
   <application class="qBittorrent">
     <desktop>4</desktop>
+    <decor>no</decor>
+    <maximized>yes</maximized>
   </application>
   <application class="Steam">
     <desktop>4</desktop>
