@@ -29,7 +29,7 @@ update-jellyfin() {
         -X POST \
         -H 'Content-Type: application/json' \
         --data-raw "{\"LoginDisclaimer\":\"\",\"CustomCss\":\"${rawCSS}\",\"SplashscreenEnabled\":false}" && \
-        notify-send -i "$icon_image" "set-bg" "Jellyfin branding updated."
+        notify-send "set-bg" "Jellyfin branding updated."
     fi
 }
 
