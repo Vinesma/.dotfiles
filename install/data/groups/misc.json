@@ -53,6 +53,24 @@
             "files": []
         },
         {
+            "display_name": "Thunar Archive Plugin",
+            "name": "thunar-archive-plugin",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "xarchiver - For thunar archive plugin",
+            "name": "xarchiver",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
             "display_name": "tumbler - DBUS service for thumbnails",
             "name": "tumbler",
             "installer": "pacman",
