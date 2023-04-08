@@ -483,6 +483,24 @@
                     "comments": []
                 },
                 {
+                    "name": "javascript.json",
+                    "path_destination": "$HOME/.config/VSCodium/User/snippets",
+                    "path_source": "$HOME/.dotfiles/VSCodium/User/snippets",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                },
+                {
+                    "name": "javascriptreact.json",
+                    "path_destination": "$HOME/.config/VSCodium/User/snippets",
+                    "path_source": "$HOME/.dotfiles/VSCodium/User/snippets",
+                    "text": "",
+                    "create_link": true,
+                    "sudo": false,
+                    "comments": []
+                },
+                {
                     "name": "typescriptreact.json",
                     "path_destination": "$HOME/.config/VSCodium/User/snippets",
                     "path_source": "$HOME/.dotfiles/VSCodium/User/snippets",
