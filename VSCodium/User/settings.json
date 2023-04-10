@@ -1,8 +1,7 @@
 {
-  "window.zoomLevel": 1,
   "workbench.iconTheme": "vscode-icons",
   "window.menuBarVisibility": "toggle",
-  "vscode-neovim.neovimExecutablePaths.linux": "/home/otavio.silva/.config/nvim/nvim.appimage",
+  "vscode-neovim.neovimExecutablePaths.linux": "/home/otaviosilva/.config/nvim/nvim.appimage",
   "editor.fontFamily": "'Source Code Pro', 'Droid Sans Mono', 'NotoSansMono Nerd Font', 'monospace', monospace, 'Droid Sans Fallback'",
   "terminal.integrated.fontFamily": "'Fira Code'",
   "git.confirmSync": false,
@@ -70,5 +69,6 @@
   },
   "[scss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "window.zoomLevel": 1
 }
