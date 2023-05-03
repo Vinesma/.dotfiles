@@ -41,7 +41,7 @@
   "python.linting.pylintEnabled": true,
   "python.formatting.provider": "black",
   "git.enableSmartCommit": true,
-  "editor.fontSize": 13,
+  "editor.fontSize": 12,
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairsHorizontal": false,
   "editor.suggest.preview": true,
@@ -70,5 +70,6 @@
   "[scss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "window.zoomLevel": 1
+  "window.zoomLevel": 1,
+  "explorer.confirmDelete": false
 }
