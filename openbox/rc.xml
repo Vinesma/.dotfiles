@@ -519,6 +519,27 @@
       <command>rofi -show window -theme ~/.cache/wal/colors-rofi-launcher.rasi</command>
     </action>
   </keybind>
+  <!-- Media Keys -->
+  <keybind key="XF86AudioPlay">
+    <action name="Execute">
+      <command>playerctl play-pause</command>
+    </action>
+  </keybind>
+  <keybind key="XF86AudioStop">
+    <action name="Execute">
+      <command>playerctl stop</command>
+    </action>
+  </keybind>
+  <keybind key="XF86AudioNext">
+    <action name="Execute">
+      <command>playerctl next</command>
+    </action>
+  </keybind>
+  <keybind key="XF86AudioPrev">
+    <action name="Execute">
+      <command>playerctl previous</command>
+    </action>
+  </keybind>
 
   <!-- Keybinds for controlling OpenBox -->
   <keybind key="W-C-r">
