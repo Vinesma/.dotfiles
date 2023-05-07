@@ -115,7 +115,7 @@ element {{
     cursor:                      pointer;
 }}
 element-text {{
-    font:                        "RobotoMono Nerd Font Mono:style=Bold 40";
+    font:                        "RobotoMono Nerd Font Mono:style=Bold 32";
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;
