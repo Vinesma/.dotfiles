@@ -10,6 +10,8 @@
     prune = true ; behave as if --prune is always set
 [pull]
     ff = only
+[rebase]
+	updateRefs = true
 [url "git@github.com:"]
     insteadOf = "gh:" ; allows cloning with "gh:Vinesma/repo" instead of the full url
 [help]
