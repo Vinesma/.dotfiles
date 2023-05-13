@@ -22,7 +22,7 @@
 			"import React, { useState } from \"react\";",
 			"",
 			"export default function $TM_FILENAME_BASE() {",
-			"    const [value, useValue] = useState<undefined>(undefined);",
+			"    const [value, setValue] = useState<undefined>(undefined);",
 			"",
 			"    return [value];",
 			"};",
