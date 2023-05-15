@@ -1,0 +1,3 @@
+[submodule "ts-node-arch-installer"]
+	path = ts-node-arch-installer
+	url = gh:Vinesma/ts-node-arch-installer
