@@ -8,6 +8,8 @@
     mnemonicPrefix = true
 [fetch]
     prune = true ; behave as if --prune is always set
+[merge]
+    conflictStyle = diff3 ; add a ||||||| marker and the original text before the ======= marker in conflicts
 [pull]
     ff = only
 [push]
