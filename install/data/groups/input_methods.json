@@ -3,23 +3,43 @@
     "packages": [
         {
             "display_name": "Fcitx",
-            "name": "fcitx",
+            "name": "fcitx5",
             "installer": "pacman",
             "auto_start": [
-                "fcitx &"
+                "fcitx5 &"
             ],
-            "post_install_commands": [],
+            "post_install_commands": [
+                "bash $HOME/.dotfiles/install/scripts/setup-fcitx.sh"
+            ],
             "comments": [
                 "Run these commands to configure the language engine:",
-                "$ fcitx",
-                "$ fcitx-configtool",
+                "$ fcitx5",
+                "$ fcitx5-configtool",
                 "Then restart the program (right click on systray icon) to solidify changes."
             ],
             "files": []
         },
         {
             "display_name": "Mozc",
-            "name": "fcitx-mozc",
+            "name": "fcitx5-mozc",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "fcitx - Qt Support",
+            "name": "fcitx5-qt",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
+            "display_name": "fcitx - GTK Support",
+            "name": "fcitx5-gtk",
             "installer": "pacman",
             "auto_start": [],
             "post_install_commands": [],
@@ -28,7 +48,7 @@
         },
         {
             "display_name": "Fcitx config tool",
-            "name": "fcitx-configtool",
+            "name": "fcitx5-configtool",
             "installer": "pacman",
             "auto_start": [],
             "post_install_commands": [],
