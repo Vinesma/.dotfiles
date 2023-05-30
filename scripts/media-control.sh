@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #
 # Control mpv + mpd playback. If commands would apply to both, mpv gets priority.
+# TODO: See if MPRIS can replace this
 #
 
 mpv_socket="/tmp/mpvsocket"

@@ -111,7 +111,6 @@ def create():
             lazy.spawn(path.join(scripts_path, "ncmpcpp-cover", "kitty-ncmpcpp.sh")),
         ),
         Key([MOD, "mod1"], "l", lazy.spawn(f"{terminal_reduced_opacity} neomutt")),
-        Key([MOD, "mod1"], "i", lazy.spawn(path.join(scripts_path, "wifi-finder.sh"))),
         Key(
             [MOD, "control"],
             "m",
