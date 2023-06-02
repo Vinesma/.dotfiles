@@ -1,0 +1,43 @@
+* {
+    font-family: "RobotoMono Nerd Font", "sans-serif";
+    font-size: 14px;
+}
+
+#window {
+    border-radius: 10px;
+    border: 2px solid --wofi-color3;
+    background-color: --wofi-color0;
+    opacity: 0.9;
+}
+
+#outer-box {
+    padding: 25px;
+}
+
+#scroll scrollbar slider {
+    background: --wofi-color3;
+}
+
+#input {
+    margin-bottom: 15px;
+    border: none;
+    background-color: transparent;
+    color: #FFF;
+}
+
+#img {
+    margin-right: 10px;
+}
+
+#entry {
+    margin-bottom: 10px;
+}
+
+#entry:selected {
+    font-weight: bold;
+    background-color: --wofi-color4;
+}
+
+#entry:not(:selected) #text {
+    color: --wofi-color7;
+}

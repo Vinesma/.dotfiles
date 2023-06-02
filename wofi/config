@@ -1,0 +1,4 @@
+allow_images=true
+image_size=30
+dynamic_lines=true
+width=35%
