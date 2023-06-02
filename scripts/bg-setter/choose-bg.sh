@@ -2,11 +2,11 @@
 
 # Choose several options for wallpaper setting.
 # Dependencies:
-# feh, rofi, magick
+# feh, rofi/wofi, magick
 
 wallpaper_dir="$HOME/Pictures/Wallpapers"
 files_folder="$HOME/.dotfiles/scripts/bg-setter"
-rofi_theme="$HOME/.cache/wal/colors-rofi-launcher"
+session_wrofi="$HOME/.dotfiles/scripts/helpers/session-wrofi.sh"
 # shellcheck disable=SC2063
 resolution=$(xrandr | grep '*' | head -n 1 | awk '{printf $1}')
 width=$(echo "$resolution" | cut -d 'x' -f 1)
@@ -15,6 +15,9 @@ height=$(echo "$resolution" | cut -d 'x' -f 2)
 notify_time=2000
 icon_error="/usr/share/icons/Papirus/32x32/status/dialog-error.svg"
 icon_download="/usr/share/icons/Papirus/32x32/emblems/emblem-downloads.svg"
+
+# shellcheck source=../helpers/session-wrofi.sh
+source "$session_wrofi"
 
 send-error() {
     notify-send -i "$icon_error"  -t "$notify_time" "choose-bg" "$1"
@@ -32,33 +35,48 @@ load-config() {
     else
         backend=wal
     fi
-
-#    if [[ -e "$files_folder/transparency" ]]; then
-#        transparency_amount=$(< "$files_folder/transparency")
-#    else
-#        transparency_amount=1
-#    fi
 }
 
 set-saturation() {
     local value
-    value=$(rofi -dmenu -p 'Saturation' -mesg "Type a value between 0.0 and 1.0" -lines 0)
+    local wrofi_args
+
+    if [ "$XDG_SESSION_TYPE" != "wayland" ]; then
+        wrofi_args=(\
+            "-p" "Saturation"
+            "-mesg" "Type a value between 0.0 and 1.0" \
+            "-theme-str" "listview {lines: 1;}")
+    else
+        wrofi_args=(\
+            "-p" "[Saturation]: Type a value between 0.0 and 1.0"
+            "--lines" "1"
+        )
+    fi
+
+    value=$(wrofi-switch "${wrofi_args[@]}")
 
     echo "$value" > "$files_folder/saturation"
 }
 
 set-backend() {
     local value
-    value=$(wal --backend | sed '1d' | cut -d ' ' -f 3- | rofi -dmenu -p 'Backend' -mesg "Which color generation backend to use?" -lines 5)
+    local wrofi_args
+
+    if [ "$XDG_SESSION_TYPE" != "wayland" ]; then
+        wrofi_args=(\
+            "-p" "Backend"
+            "-mesg" "Which color generation backend to use?" \
+            "-theme-str" "listview {lines: 5;}")
+    else
+        wrofi_args=(\
+            "-p" "[Backend]: Which color generation backend to use?"
+            "--lines" "6"
+        )
+    fi
+
+    value=$(wal --backend | sed '1d' | cut -d ' ' -f 3- | wrofi-switch "${wrofi_args[@]}")
 
     echo "$value" > "$files_folder/backend"
-}
-
-set-transparency() {
-    local value
-    value=$(rofi -dmenu -p 'Transparency' -mesg "Type a value between 0.0 and 1.0" -lines 0)
-
-    echo "$value" > "$files_folder/transparency"
 }
 
 clear-cache() {
@@ -97,12 +115,36 @@ resize-image() {
     local accepted
     local gravity
     local extension
+    local gravity_options
+    local wrofi_args
     accepted=1
     extension=$1
+    gravity_options=(\
+        "NorthWest" \
+        "North" \
+        "NorthEast" \
+        "West" \
+        "Center" \
+        "East" \
+        "SouthWest" \
+        "South" \
+        "SouthEast")
+
+    if [ "$XDG_SESSION_TYPE" != "wayland" ]; then
+        wrofi_args=(\
+            "-p" "Center image at"
+            "-theme-str" "listview {lines: 9;}" \
+            "-no-show-icons" \
+            "-select" "Center")
+    else
+        wrofi_args=(\
+            "-p" "Center image at:"
+            "--lines" "10"
+        )
+    fi
 
     while [ "$accepted" -eq 1 ]; do
-        gravity=$(echo -e "NorthWest\nNorth\nNorthEast\nWest\nCenter\nEast\nSouthWest\nSouth\nSouthEast" \
-            | rofi -dmenu -only-match -p 'Center image at' -lines 9 -select 'Center' -no-show-icons)
+        gravity=$(printf "%s\n" "${gravity_options[@]}" | wrofi-switch "${wrofi_args[@]}")
 
         if magick "/tmp/bg-setter-img$extension" \
             -resize "$width"x"$height"^ \
@@ -129,6 +171,7 @@ resize-image() {
         create-display-manager-image "$filename" "$extension"
         # shellcheck source=/dev/null
         . "$files_folder/set-bg.sh" "$filename" --saturate "$saturation_amount" --backend "$backend" > "$files_folder/setbg-log"
+        sleep 1
     fi
 }
 
@@ -170,19 +213,31 @@ show-chooser() {
 
 show-menu() {
     local option
-    option=$(echo -e "1  Pick wallpapers\n2  Download image\n3  Clear cache\n4 Set saturation\n5 Set backend\n6 Set transparency\n7  Exit" \
-        | rofi -dmenu -only-match -format 'd' -mesg "Saturation: $saturation_amount | Backend: $backend" \
-        -theme "$rofi_theme" \
-        -theme-str 'listview {lines: 7;}' \
-        -no-show-icons)
+    local menu_options
+    local wrofi_args
+    menu_options=("1  Exit" "2  Pick wallpapers" "3  Download image" "4  Clear cache" "5 Set saturation" "6 Set backend")
+
+    if [ "$XDG_SESSION_TYPE" != "wayland" ]; then
+        wrofi_args=(\
+            "-mesg" \
+            "Saturation: $saturation_amount | Backend: $backend" \
+            "-theme-str" "listview {lines: 6;}" \
+            "-no-show-icons")
+    else
+        wrofi_args=(\
+            "-p" "Saturation: $saturation_amount | Backend: $backend"
+            "--lines" "7"
+        )
+    fi
+
+    option=$(printf "%s\n" "${menu_options[@]}" | wrofi-switch "${wrofi_args[@]}")
 
     case "$option" in
-        1) show-chooser ;;
-        2) download-image ;;
-        3) clear-cache ;;
-        4) set-saturation ;;
-        5) set-backend ;;
-        6) set-transparency ;;
+        "${menu_options[1]}") show-chooser ;;
+        "${menu_options[2]}") download-image ;;
+        "${menu_options[3]}") clear-cache ;;
+        "${menu_options[4]}") set-saturation ;;
+        "${menu_options[5]}") set-backend ;;
         *) exit ;;
     esac
 }

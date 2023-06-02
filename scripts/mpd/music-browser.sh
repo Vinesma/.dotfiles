@@ -2,22 +2,14 @@
 
 # Creates a popup window for the user to select an album, then immediately starts playing.
 # Dependencies:
-# - mpd, mpc, rofi
+# - mpd, mpc, rofi/wofi
 
 icon="/usr/share/icons/Papirus/32x32/apps/mpd.svg"
-rofi_theme="$HOME/.cache/wal/colors-rofi-launcher"
-
 queue_script_path="$HOME/.dotfiles/scripts/mpd/queue-music.sh"
+session_wrofi="$HOME/.dotfiles/scripts/helpers/session-wrofi.sh"
 
-rofi-cmd() {
-    rofi \
-    -dmenu \
-    -only-match \
-    -i \
-    -theme "$rofi_theme" \
-    -no-show-icons \
-    "$@"
-}
+# shellcheck source=../helpers/session-wrofi.sh
+source "$session_wrofi"
 
 add-album() {
     echo "$1" | mpc add
@@ -29,7 +21,15 @@ add-album() {
 show-all-music() {
     local track
     local title
-    track=$(mpc listall | rofi-cmd -theme-str 'listview {lines: 15;}')
+    local wrofi_args
+
+    if [ "$XDG_SESSION_TYPE" != "wayland" ]; then
+        wrofi_args=("-theme-str" 'listview {lines: 15;}')
+    else
+        wrofi_args=("--lines" "15")
+    fi
+
+    track=$(mpc listall | wrofi-switch "${wrofi_args[@]}")
     title=$(echo "$track" | sed -e 's/.*\///' -e 's/\.mp3//')
 
     echo "$track" | mpc add
@@ -39,8 +39,17 @@ show-all-music() {
 
 show-genres() {
     local genre
-    genre=$(mpc list genre | rofi-cmd -theme-str 'listview {lines: 8;}')
+    local wrofi_args
 
+    if [ "$XDG_SESSION_TYPE" != "wayland" ]; then
+        wrofi_args=("-theme-str" 'listview {lines: 8;}')
+    else
+        wrofi_args=("--lines" "8")
+    fi
+
+    genre=$(mpc list genre | wrofi-switch "${wrofi_args[@]}")
+
+    # shellcheck source=./queue-music.sh
     . "$queue_script_path" "$genre"
 }
 
@@ -55,15 +64,23 @@ show-menu() {
     local all_albums
     local album
     local menu_options
+    local wrofi_args
     all_albums=$(mpc ls)
     menu_options=(' EXIT' ' Play All' ' Clear Queue' ' Show Genres' '况 Show All' "$all_albums")
 
+    if [ "$XDG_SESSION_TYPE" != "wayland" ]; then
+        wrofi_args=(\
+            "-theme-str" 'textbox-prompt-colon {str: "";}' \
+            "-theme-str" 'entry {placeholder: "Play...";}' \
+            "-theme-str" 'listview {lines: 15;}')
+    else
+        wrofi_args=("--lines" "15" "-p"  " Play...")
+    fi
+
     while true; do
-        album=$(printf "%s\n" "${menu_options[@]}" | \
-        rofi-cmd \
-        -theme-str 'textbox-prompt-colon {str: "";}' \
-        -theme-str 'entry {placeholder: "Play...";}' \
-        -theme-str 'listview {lines: 15;}')
+        local album;
+
+        album=$(printf "%s\n" "${menu_options[@]}" | wrofi-switch "${wrofi_args[@]}")
 
         case "$album" in
             "${menu_options[0]}") exit ;;

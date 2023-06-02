@@ -8,6 +8,7 @@ icon_error="/usr/share/icons/Papirus/32x32/status/dialog-error.svg"
 icon_image="/usr/share/icons/Papirus/32x32/apps/multimedia-photo-viewer.svg"
 jellyfin_css_path="$HOME/.cache/wal/colors-jellyfin.css"
 notify_time=2000
+session_type=$XDG_SESSION_TYPE
 
 send-error() {
     notify-send -i "$icon_error"  -t "$notify_time" "set-bg" "$1"
@@ -42,15 +43,19 @@ reset-polybar() {
 }
 
 if wal -n -e -i "$@"; then
-    feh --bg-scale "$(< "${HOME}/.cache/wal/wal")"
+    if [ "$session_type" != "wayland" ]; then
+        printf "%s\n" "Session type is Xorg."
+        feh --bg-scale "$(< "${HOME}/.cache/wal/wal")"
+
+        { pgrep qtile && qtile cmd-obj -o cmd -f restart; } &> /dev/null
+        { pgrep openbox && openbox --reconfigure; } &> /dev/null
+
+        reset-polybar
+    fi
+
     patch-rofi
-
-    { pgrep qtile && qtile cmd-obj -o cmd -f restart; } &> /dev/null
-    { pgrep openbox && openbox --reconfigure; } &> /dev/null
-
     pkill dunst
     /usr/bin/pywalfox update
-    reset-polybar
 
     notify-send -i "$icon_image" "set-bg" "New background and theme set."
     update-jellyfin
