@@ -5,12 +5,11 @@
 }}
 
 window#waybar {{
-    background-color: {background};
+    background-color: rgba({background.rgb},0.8);
     border-radius: 5px;
     color: {foreground};
     transition-property: background-color;
     transition-duration: .5s;
-    opacity: 0.8;
 }}
 
 window#waybar.hidden {{
