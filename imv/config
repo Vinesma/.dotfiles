@@ -1,0 +1,16 @@
+[options]
+overlay_font = JetBrainsMono Nerd Font:12
+width=640
+height=960
+
+[binds]
+<Ctrl+Up> = pan 0 +15
+<Ctrl+Down> = pan 0 -15
+<Ctrl+Left> = pan +15 0
+<Ctrl+Right> = pan -15 0
+<Shift+Up> = pan 0 +75
+<Shift+Down> = pan 0 -75
+<Shift+Left> = pan +75 0
+<Shift+Right> = pan -75 0
+<Shift+less> = rotate by -90
+<Shift+greater> = rotate by 90
