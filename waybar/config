@@ -49,8 +49,8 @@
     "clock": {
         "timezone": "America/Sao_Paulo",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "󰥔 {:%I:%M}",
-        "format-alt": "󰥔 {:%I:%M %p}"
+        "format": "{:󰃶 %d/%m 󰥔 %I:%M}",
+        "format-alt": "{:󰃶 %d/%m/%Y %a 󰥔 %r}"
     },
     "cpu": {
         "format": "{usage}% ",
