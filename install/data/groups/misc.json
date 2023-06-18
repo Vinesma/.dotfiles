@@ -222,6 +222,15 @@
             ]
         },
         {
+            "display_name": "mpv - MPRIS Support",
+            "name": "mpv-mpris",
+            "installer": "pacman",
+            "auto_start": [],
+            "post_install_commands": [],
+            "comments": [],
+            "files": []
+        },
+        {
             "display_name": "Gimp",
             "name": "gimp",
             "installer": "pacman",
