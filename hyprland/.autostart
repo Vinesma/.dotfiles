@@ -1,0 +1,7 @@
+fcitx &
+gammastep-indicator -m wayland &
+wl-paste --watch cliphist store &
+
+steam &
+qbittorrent &
+sleep 6 && firefox &
