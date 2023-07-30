@@ -66,7 +66,7 @@ update-packages() {
 
 # for easy downloading of music
 yt-dlp-audio() {
-    yt-dlp -x --audio-format mp3 -o "$HOME/Downloads/Audio/%(title)s.%(ext)s" "$@"
+    yt-dlp -x --audio-format mp3 --audio-quality 0 -o "$HOME/Downloads/Audio/%(title)s.%(ext)s" "$@"
 }
 
 # creates pieces of a file
