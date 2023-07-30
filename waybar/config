@@ -1,4 +1,5 @@
 {
+    // Current version: 0.9.20.r43.g629686f7-1
     "layer": "top",
     "position": "top",
     "height": 30,
@@ -26,6 +27,13 @@
             "4": [],
             "5": []
         }
+    },
+    "hyprland/window": {
+        "format": "{initialTitle}",
+        "rewrite": {
+            "zsh": "Terminal"
+        },
+        "separate-outputs": true
     },
     "mpd": {
         "format": "{title} {stateIcon} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) {volume}%",
