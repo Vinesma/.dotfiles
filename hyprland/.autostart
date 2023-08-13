@@ -4,4 +4,4 @@ wl-paste --watch cliphist store &
 
 steam &
 qbittorrent &
-sleep 6 && firefox &
+sleep 8 && firefox &
