@@ -1,15 +1,15 @@
 {
-    // Current version: 0.9.20.r64.gb084bf72-1
+    // Current version: 0.9.22.r12.gb6658430-1
     "layer": "bottom",
     "position": "top",
     "height": 30,
     "margin": "5 6 0 6",
     // "width": 1920,
     "spacing": 4,
-    "modules-left": ["wlr/workspaces", "hyprland/submap", "hyprland/window"],
+    "modules-left": ["hyprland/workspaces", "hyprland/submap", "hyprland/window"],
     "modules-center": ["mpd"],
     "modules-right": ["network", "battery", "clock", "tray"],
-    "wlr/workspaces": {
+    "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
         "format": "{icon}",
