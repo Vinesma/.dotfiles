@@ -1,6 +1,6 @@
 {
     // Current version: 0.9.22.r12.gb6658430-1
-    "layer": "bottom",
+    "layer": "top",
     "position": "top",
     "height": 30,
     "margin": "5 6 0 6",
