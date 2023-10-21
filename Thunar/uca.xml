@@ -1,1 +1,104 @@
-/home/vinesma/.config/Thunar/uca.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<submenu></submenu>
+	<unique-id>1680484126093940-1</unique-id>
+	<command>kitty %f</command>
+	<description>Open this directory in a terminal window</description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>text-x-script</icon>
+	<name>Run Script</name>
+	<submenu></submenu>
+	<unique-id>1680882456032947-1</unique-id>
+	<command>kitty bash %f</command>
+	<description>Run script in terminal</description>
+	<range>1</range>
+	<patterns>*.sh</patterns>
+	<other-files/>
+	<text-files/>
+</action>
+<action>
+	<icon>vscodium</icon>
+	<name>Launch code editor</name>
+	<submenu></submenu>
+	<unique-id>1680966241166928-1</unique-id>
+	<command>codium %f</command>
+	<description>Open this directory in a code editor</description>
+	<range>1</range>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>image-x-generic</icon>
+	<name>Convert to .jpg</name>
+	<submenu>Images</submenu>
+	<unique-id>1681271139245675-1</unique-id>
+	<command>~/.dotfiles/scripts/conversion/image-convert.sh .jpg %F</command>
+	<description>Convert images to jpg</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>image-x-generic</icon>
+	<name>Convert to .png</name>
+	<submenu>Images</submenu>
+	<unique-id>1682088225052415-1</unique-id>
+	<command>~/.dotfiles/scripts/conversion/image-convert.sh .png %F</command>
+	<description>Convert images to png</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>gimp</icon>
+	<name>Open in image editor</name>
+	<submenu>Images</submenu>
+	<unique-id>1681696323890631-1</unique-id>
+	<command>gimp %F</command>
+	<description>Open this image in an image editor</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>application-x-compress</icon>
+	<name>Unzip with JP encoding</name>
+	<submenu></submenu>
+	<unique-id>1682178396557568-1</unique-id>
+	<command>unzip -O shift-jis %F</command>
+	<description>Unzip this archive using japanese encoding</description>
+	<range>*</range>
+	<patterns>*.zip</patterns>
+	<other-files/>
+</action>
+<action>
+	<icon>livewallpaper</icon>
+	<name>Set as wallpaper</name>
+	<submenu>Images</submenu>
+	<unique-id>1684253322118147-1</unique-id>
+	<command>feh --bg-scale %f</command>
+	<description>Set this image as wallpaper</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>winetricks</icon>
+	<name>Winetricks</name>
+	<submenu></submenu>
+	<unique-id>1684850292092808-1</unique-id>
+	<command>WINEPREFIX=%f winetricks</command>
+	<description>Run winetricks using this wineprefix</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+</actions>
