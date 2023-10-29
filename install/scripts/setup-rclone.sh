@@ -6,7 +6,7 @@ WORK_DIR=$HOME/.dotfiles/install/workdir/
 USB_NAME=OTDRIVE
 SOURCE=https://rclone.org/install.sh
 ZSH_COMPLETION_DIR=/usr/share/zsh/functions/Completion/X
-RCLONE_CONFIG_DIR="$HOME/.config/rclone/"
+RCLONE_CONFIG_DIR="$HOME/.config/rclone"
 declare -a CONFIG_SOURCES=(
     "/run/media/$USER/$USB_NAME/rclone/rclone.conf"
     "/media/$USER/$USB_NAME/rclone/rclone.conf"
