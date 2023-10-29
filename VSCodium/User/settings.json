@@ -57,5 +57,8 @@
   "emmet.includeLanguages": {
     "vue-html": "html",
     "vue": "html"
+  },
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
   }
 }
