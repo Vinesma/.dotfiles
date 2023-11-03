@@ -1,5 +1,5 @@
 {
-    // Current version: 0.9.22-1
+    // Current version: 0.9.23-1
     "layer": "top",
     "position": "top",
     "height": 30,
@@ -20,7 +20,7 @@
             "active": "", //Hyprland
             "default": ""
         },
-        "persistent_workspaces": {
+        "persistent-workspaces": {
             "1": ["HMDI-A-1"],
             "2": ["DP-1"],
             "3": [],
