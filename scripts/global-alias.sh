@@ -2,18 +2,18 @@
 # Similar to a .bash_aliases file
 # shellcheck shell=bash
 
-alias cp="cp -i"                          # confirm before overwriting something
-alias df='df -h'                          # human-readable sizes
-alias du='du -h'                          # human-readable sizes
-alias free='free -m'                      # show sizes in MB
+alias cp="cp -i"     # confirm before overwriting something
+alias df='df -h'     # human-readable sizes
+alias du='du -h'     # human-readable sizes
+alias free='free -m' # show sizes in MB
 alias more=less
 alias ls='ls --color=auto'
-alias l='ls'                              # fail-proofing
-alias s='ls'                              # fail-proofing
+alias l='ls' # fail-proofing
+alias s='ls' # fail-proofing
 alias grep='grep --colour=auto'
 alias egrep='egrep --colour=auto'
 alias fgrep='fgrep --colour=auto'
-alias journalctl='journalctl -r'          # always forget this
+alias journalctl='journalctl -r' # always forget this
 alias email='neomutt'
 alias music='ncmpcpp'
 alias anacrontab='sudoedit /etc/anacrontab'
@@ -52,10 +52,11 @@ alias git-aliases="grep --color=never \"='git \" ~/.zshrc"
 alias android-mount='aft-mtp-cli'
 # kitty
 alias kssh='kitty +kitten ssh'
+# ffprobe
+alias ffprobe-bitrate-audio='ffprobe -v quiet -select_streams a:0 -show_entries stream=bit_rate -of default=noprint_wrappers=1:nokey=1'
 #
 alias sd='shutdown now'
 alias ip='ip -br -c'
 alias lock-session='dm-tool switch-to-greeter'
 alias code='codium'
 alias update-aliases='source ~/.zshrc'
-
