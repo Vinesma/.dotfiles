@@ -70,5 +70,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "window.zoomLevel": 1,
-  "explorer.confirmDelete": false
+  "explorer.confirmDelete": false,
+  "redhat.telemetry.enabled": false
 }
