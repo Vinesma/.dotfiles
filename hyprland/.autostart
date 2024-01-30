@@ -1,4 +1,4 @@
-fcitx &
+fcitx5 &
 gammastep-indicator -m wayland &
 wl-paste --watch cliphist store &
 
