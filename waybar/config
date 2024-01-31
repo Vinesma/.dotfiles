@@ -1,5 +1,5 @@
 {
-    // Current version: 0.9.23-1
+    // Current version: 0.9.24-2
     "layer": "top",
     "position": "top",
     "height": 30,
@@ -79,7 +79,7 @@
         "format-ethernet": "",
         "tooltip-format": "{essid} via {gwaddr}",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "",
+        "format-disconnected": "󰌙",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     }
 }
