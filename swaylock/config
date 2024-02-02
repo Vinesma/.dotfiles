@@ -1,0 +1,6 @@
+image=/usr/share/wallpapers/display-manager-bg
+font=JetBrainsMono Nerd Font
+font-size=16
+indicator-idle-visible
+indicator-radius=75
+indicator-thickness=30
