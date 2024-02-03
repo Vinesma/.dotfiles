@@ -2,7 +2,6 @@ fcitx5 &
 gammastep-indicator -m wayland &
 wl-paste --watch cliphist store &
 
-steam &
 qbittorrent &
 nicotine &
 flatpak run md.obsidian.Obsidian &
