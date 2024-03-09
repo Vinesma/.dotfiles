@@ -580,6 +580,15 @@ PulseAudio uses rather conservative settings by default so it can run fine on mo
   default-sample-rate = 48000
   alternate-sample-rate = 44100 # windows-computers default
   ```
+### Blurry Fonts
+
+In `/etc/environment` add the following environment variable:
+
+```
+FREETYPE_PROPERTIES="cff:no-stem-darkening=0 autofitter:no-stem-darkening=0"
+```
+
+This will make fonts a bit bolder by enabling stem-darkening, getting rid of that "Linux look" that fonts have.
 
 ## Problems & fixes <a name="problems"></a>
 
