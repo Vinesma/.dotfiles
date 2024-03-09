@@ -4,4 +4,5 @@ wl-paste --watch cliphist store &
 
 steam -pipewire &
 qbittorrent &
+nicotine &
 sleep 8 && firefox &
