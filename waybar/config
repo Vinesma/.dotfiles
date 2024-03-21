@@ -1,5 +1,5 @@
 {
-    // Current version: 0.9.24-2
+    // Current version: 0.10.0-2
     "layer": "top",
     "position": "top",
     "height": 30,
@@ -57,8 +57,8 @@
     "clock": {
         "timezone": "America/Sao_Paulo",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:󰃶 %d/%m 󰥔 %I:%M}",
-        "format-alt": "{:󰃶 %d/%m/%Y %a 󰥔 %r}"
+        "format": "󰃶 {:%d/%m - %I:%M}",
+        "format-alt": "󰃶 {:%d/%m/%Y %a - %r}"
     },
     "battery": {
         "states": {
