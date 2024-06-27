@@ -2,7 +2,7 @@ fcitx &
 gammastep-indicator -m wayland &
 wl-paste --watch cliphist store &
 
-steam -pipewire &
+steam &
 qbittorrent &
 nicotine &
 sleep 8 && firefox &
