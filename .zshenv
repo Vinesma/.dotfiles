@@ -23,3 +23,6 @@ export GLFW_IM_MODULE=ibus
 export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
 # pacdiff
 export DIFFPROG="nvim -d"
+# protontricks
+export WINE="/usr/bin/wine"
+export WINETRICKS="/usr/bin/winetricks"
