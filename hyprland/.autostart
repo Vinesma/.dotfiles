@@ -5,4 +5,5 @@ wl-paste --watch cliphist store &
 steam &
 qbittorrent &
 nicotine &
+flatpak run md.obsidian.Obsidian &
 sleep 8 && firefox &
