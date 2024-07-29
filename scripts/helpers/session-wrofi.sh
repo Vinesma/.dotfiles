@@ -14,18 +14,6 @@ rofi-cmd() {
     "$@"
 }
 
-wofi-cmd() {
-    wofi \
-    --dmenu \
-    --cache-file /dev/null \
-    -i \
-    "$@"
-}
-
 wrofi-switch() {
-    if [ "$XDG_SESSION_TYPE" != "wayland" ]; then
-        rofi-cmd "$@"
-    else
-        wofi-cmd "$@"
-    fi
+    rofi-cmd "$@"
 }
