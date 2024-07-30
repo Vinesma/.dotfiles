@@ -15,7 +15,7 @@ session_wrofi="$HOME/.dotfiles/scripts/helpers/session-wrofi.sh"
 
 folder_watchlater="$HOME/Sync/.mpv_files"
 folder_videos="$HOME/Videos"
-default_formats="webm[height=720]+bestaudio/webm[height=480]+bestaudio/22/18/720p/480p/360p"
+default_formats="b[height<=720]/bv[height<=720]+ba"
 
 # Check if script is passed an argument or not.
 # If yes, use the argument
