@@ -40,6 +40,11 @@ calc() {
     node -p "$@"
 }
 
+# Random number less than $1
+random() {
+    node -p "Math.floor(Math.random() * $1);"
+}
+
 # Download and update all packages in the system.
 # shellcheck disable=SC2015
 update-packages() {
