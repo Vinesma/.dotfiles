@@ -16,7 +16,7 @@ theme='colors-rofi-powermenu'
 launch_theme='colors-rofi-launcher'
 
 # CMDs
-lastlogin="$(last "$USER" | head -n1 | tr -s ' ' | cut -d' ' -f5,6,7)"
+lastlogin="$(last "$USER" | head -n1 | tr -s ' ' | cut -d' ' -f4,5,6)"
 uptime="$(uptime -p | sed -e 's/up //g')"
 host=$(cat /etc/hostname)
 
