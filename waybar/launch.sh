@@ -5,6 +5,12 @@ CONFIG_FILE=$HOME/.dotfiles/waybar/config
 STYLE_FILE=$HOME/.cache/wal/waybar-style.css
 temp_file=/tmp/waybar.tmp
 
+if pgrep waybar 2> /dev/null; then
+    # just reload running bar
+    killall -q -SIGUSR2 waybar
+    exit 0
+fi
+
 # Terminate already running bar instances
 killall -q waybar
 while pgrep waybar &> /dev/null; do

@@ -6,12 +6,12 @@
     "margin": "5 6 0 6",
     // "width": 1920,
     "spacing": 4,
-    "modules-left": ["hyprland/workspaces", "hyprland/submap", "hyprland/window"],
+    "modules-left": ["custom/distro", "hyprland/workspaces", "hyprland/window"],
     "modules-center": ["mpd"],
-    "modules-right": ["network", "battery", "clock", "tray"],
+    "modules-right": ["custom/updates", "network", "battery", "tray", "clock"],
     "hyprland/workspaces": {
         "disable-scroll": true,
-        "all-outputs": false,
+        "all-outputs": true,
         "format": "{icon}",
         "on-click": "activate",
         "format-icons": {
@@ -21,11 +21,7 @@
             "default": ""
         },
         "persistent-workspaces": {
-            "1": ["DP-2"],
-            "2": ["DP-1"],
-            "3": [],
-            "4": [],
-            "5": []
+            "*": 5
         }
     },
     "hyprland/window": {
@@ -81,6 +77,18 @@
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "󰌙",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "custom/updates": {
+        "exec": "~/.dotfiles/waybar/scripts/update-count.sh",
+        "hide-empty-text": true,
+        "interval": 3600,
+        "tooltip": false,
+        "format": " {}"
+    },
+    "custom/distro": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "~/.dotfiles/scripts/rofi/powermenu.sh"
     }
 }
 

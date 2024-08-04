@@ -5,8 +5,8 @@
 }}
 
 window#waybar {{
-    background-color: rgba({background.rgb},0.8);
-    border-radius: 5px;
+    background-color: rgba(0,0,0,0.8);
+    background: transparent;
     color: {foreground};
     transition-property: background-color;
     transition-duration: .5s;
@@ -50,6 +50,8 @@ button:hover {{
     font-weight: bold;
 }}
 
+#workspaces,
+#window,
 #clock,
 #battery,
 #cpu,
@@ -61,19 +63,33 @@ button:hover {{
 #pulseaudio,
 #wireplumber,
 #custom-media,
+#custom-updates,
+#custom-distro,
 #tray,
 #mode,
 #idle_inhibitor,
 #scratchpad,
 #mpd {{
+    background-color: rgba({background.rgb},0.8);
+    border-radius: 5px;
     padding: 0 10px;
     color: {foreground};
     font-weight: bold;
 }}
 
-#window,
-#workspaces {{
-    margin: 0 4px;
+#custom-distro {{
+    padding-left: 10px;
+    padding-right: 15px;
+    color: {color4};
+    font-size: 15px;
+}}
+
+#mpd.stopped {{
+    background-color: transparent;
+}}
+
+window#waybar.empty #window {{
+    background-color: transparent;
 }}
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -123,9 +139,4 @@ label:focus {{
 
 #tray > .needs-attention {{
     -gtk-icon-effect: highlight;
-}}
-
-#mpd {{
-    color: {color1};
-    font-weight: bold;
 }}
