@@ -15,7 +15,9 @@ session_wrofi="$HOME/.dotfiles/scripts/helpers/session-wrofi.sh"
 
 folder_watchlater="$HOME/Sync/.mpv_files"
 folder_videos="$HOME/Videos"
-default_formats="b[height<=720]/bv[height<=720]+ba"
+format_highq="b/bv+ba"
+format_defaultq="b[height<=720]/bv[height<=720]+ba"
+format_lowq="b[height<=480]/bv[height<=480]+ba"
 
 # Check if script is passed an argument or not.
 # If yes, use the argument
@@ -164,7 +166,7 @@ show-menu() {
     resume=$(grep -hve "# redirect entry" "$folder_watchlater"/* 2>/dev/null | grep "#")
 
     if [[ "$link" == @(*youtube.com/watch*|*youtu.be*|*twitch.tv/videos*) ]]; then
-        option=" Watch (default values)\n Watch\n"
+        option=" Watch (Default values)\n Watch (High Quality)\n Watch (Low Quality)\n Watch\n"
         lines=2
 
         if [[ -n "$resume" ]]; then
@@ -189,7 +191,9 @@ show-menu() {
     resume=$(echo "$resume" | cut -d ' ' -f 2-)
 
     case "$option" in
-        *default*) start-playback "$default_formats" ;;
+        *Default*) start-playback "$format_defaultq" ;;
+        *High\ Quality*) start-playback "$format_highq" ;;
+        *Low\ Quality*) start-playback "$format_lowq" ;;
         *Watch) get-video-info ;;
         *Resume*) show-resume-menu "$resume" ;;
         *) exit ;;
