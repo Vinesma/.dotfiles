@@ -1,3 +1,8 @@
+@define-color foreground    {foreground};
+@define-color primary       {color4};
+@define-color white         #fff;
+@define-color black         #242424;
+
 * {{
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: RobotoMono Nerd Font, FontAwesome, Roboto, Helvetica, Arial, sans-serif;
@@ -7,7 +12,7 @@
 window#waybar {{
     background-color: rgba(0,0,0,0.8);
     background: transparent;
-    color: {foreground};
+    color: @white;
     transition-property: background-color;
     transition-duration: .5s;
 }}
@@ -34,7 +39,7 @@ button:hover {{
     padding: 0 5px;
     padding-right: 6px;
     background-color: transparent;
-    color: {foreground};
+    color: @white;
 }}
 
 #workspaces button:hover {{
@@ -43,7 +48,7 @@ button:hover {{
 
 #workspaces button.focused,
 #workspaces button.active {{
-    color: {color4};
+    color: @primary;
 }}
 
 #submap {{
@@ -73,19 +78,29 @@ button:hover {{
     background-color: rgba({background.rgb},0.8);
     border-radius: 5px;
     padding: 0 10px;
-    color: {foreground};
+    color: @white;
     font-weight: bold;
 }}
 
 #custom-distro {{
     padding-left: 10px;
     padding-right: 15px;
-    color: {color4};
+    color: @primary;
     font-size: 15px;
 }}
 
 #mpd.stopped {{
     background-color: transparent;
+}}
+
+#workspaces {{
+    padding-left: 2px;
+    padding-right: 6px;
+}}
+
+#network {{
+    padding-left: 10px;
+    padding-right: 14px;
 }}
 
 window#waybar.empty #window {{

@@ -15,13 +15,16 @@
         "format": "{icon}",
         "on-click": "activate",
         "format-icons": {
-            "urgent": "",
-            "focused": "",
-            "active": "", //Hyprland
-            "default": ""
+            "active": "",
+            "default": "",
+            "empty": "",
+            "persistent": "",
+            "special": "",
+            "urgent": ""
         },
         "persistent-workspaces": {
-            "*": 5
+            "DP-1": [1,2,3,4,5],
+            "DP-2": [1,2,3,4,5]
         }
     },
     "hyprland/window": {
@@ -32,7 +35,7 @@
         "separate-outputs": true
     },
     "mpd": {
-        "format": "{title} {stateIcon} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) {volume}%",
+        "format": "{stateIcon}  {title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%M:%S})   {volume}%",
         "format-disconnected": "",
         "format-stopped": "",
         "unknown-tag": "N/A",
@@ -41,8 +44,12 @@
             "paused": "",
             "playing": ""
         },
-        "title-len": 45,
+        "title-len": 40,
+        "artist-len": 20,
         "on-click": "mpc toggle -q",
+        "on-click-right": "~/.dotfiles/scripts/music-notification/music-notification.sh",
+        "on-scroll-up": " ~/.dotfiles/scripts/media-control.sh +10",
+        "on-scroll-down": " ~/.dotfiles/scripts/media-control.sh -10",
         "tooltip-format": "MPD (connected)",
         "tooltip-format-disconnected": "MPD (disconnected)"
     },
@@ -53,8 +60,8 @@
     "clock": {
         "timezone": "America/Sao_Paulo",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "󰃶 {:%d/%m - %I:%M}",
-        "format-alt": "󰃶 {:%d/%m/%Y %a - %r}"
+        "format": "<big>󰃶</big> {:%d/%m - %I:%M}",
+        "format-alt": "<big>󰃶</big> {:%d/%m/%Y %a - %r}"
     },
     "battery": {
         "states": {
@@ -71,19 +78,26 @@
         "format-icons": ["", "", "", "", ""]
     },
     "network": {
-        "format-wifi": " ",
-        "format-ethernet": "",
-        "tooltip-format": "{essid} via {gwaddr}",
+        "format-wifi": "<big>{icon}</big>",
+        "format-ethernet": "<big>󰈀</big>",
+        "tooltip-format": "{essid} via {gwaddr}\nStrength: {signalStrength}%\nSpeed Up: {bandwidthUpBytes}\nSpeed Down: {bandwidthDownBytes}",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "󰌙",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-disconnected": "<big>󰌙</big>",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "format-icons": [
+            "󱚵",
+            "󱚵",
+            "󰖩",
+            "󰸋"
+        ]
     },
     "custom/updates": {
         "exec": "~/.dotfiles/waybar/scripts/update-count.sh",
         "hide-empty-text": true,
         "interval": 3600,
-        "tooltip": false,
-        "format": " {}"
+        "tooltip": true,
+        "tooltip-format": "{} packages can be updated",
+        "format": "  {}"
     },
     "custom/distro": {
         "format": "",
