@@ -53,19 +53,24 @@ update-packages() {
     icon_success="/usr/share/icons/Papirus/32x32/apps/system-software-update.svg"
     icon_fail="/usr/share/icons/Papirus/32x32/apps/system-error.svg"
 
-    paru --sudoloop -Syu && paru --sudoloop -Sua \
-        && notify-send -i "$icon_success" 'PACMAN' 'Update complete!' \
-        || notify-send -i "$icon_fail" 'PACMAN' 'Update FAILURE!'
+    if paru --sudoloop -Syu && paru --sudoloop -Sua; then
+        notify-send -i "$icon_success" 'PACMAN' 'Update complete!'
 
-    while IFS= read -r ext_script; do
-        # shellcheck source=/dev/null
-        source "$ext_script"
-    done <<< "$(find "$HOME/.dotfiles/install/scripts" -type f -perm /u=x,g=x)"
+        while IFS= read -r ext_script; do
+            # shellcheck source=/dev/null
+            source "$ext_script"
+        done <<< "$(find "$HOME/.dotfiles/install/scripts" -type f -perm /u=x,g=x)"
 
-    if command -v flatpak > /dev/null; then
-        flatpak update \
-        && notify-send -i "$icon_success" 'FLATPAK' 'Update complete!' \
-        || notify-send -i "$icon_fail" 'FLATPAK' 'Update FAILURE!'
+        if command -v flatpak > /dev/null; then
+            flatpak update \
+            && notify-send -i "$icon_success" 'FLATPAK' 'Update complete!' \
+            || notify-send -i "$icon_fail" 'FLATPAK' 'Update FAILURE!'
+        fi
+
+        # update waybar's custom/updates widget
+        pkill -SIGRTMIN+8 waybar
+    else
+        notify-send -i "$icon_fail" 'PACMAN' 'Update FAILURE!'
     fi
 }
 
