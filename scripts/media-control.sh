@@ -19,13 +19,13 @@ mpv-command() {
 
 toggle_media() {
     if ! mpv-command 'cycle pause'; then
-        mpc toggle
+        mpc -q toggle
     fi
 }
 
 set-volume() {
     if ! mpv-command "add volume $1"; then
-        mpc volume "$1"
+        mpc -q volume "$1"
 
         message=$(mpc volume)
 
@@ -35,7 +35,7 @@ set-volume() {
 
 seek-by-value() {
     if ! mpv-command "seek $1"; then
-        mpc seek "$1"
+        mpc -q seek "$1"
     fi
 }
 
@@ -47,12 +47,12 @@ jump-to() {
             sec=${time##*:}
 
             [ "$min" -eq 0 ] && [ "$sec" -le 5 ] \
-                && mpc prev \
+                && mpc -q prev \
                 && return
 
-            mpc seek 0%
+            mpc -q seek 0%
         else
-            mpc next
+            mpc -q next
         fi
     fi
 }
