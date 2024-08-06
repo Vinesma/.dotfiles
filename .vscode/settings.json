@@ -1,0 +1,9 @@
+{
+  "files.associations": {
+    "waybar-config": "jsonc",
+    "waybar-style.css": "plaintext",
+    "colors-jellyfin.css": "plaintext",
+    "gtk.css": "plaintext",
+    "colors-dunst": "properties"
+  }
+}
