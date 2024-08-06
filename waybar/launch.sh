@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Main config path
-CONFIG_FILE=$HOME/.dotfiles/waybar/config
+CONFIG_FILE=$HOME/.dotfiles/waybar/waybar-config
 STYLE_FILE=$HOME/.cache/wal/waybar-style.css
 temp_file=/tmp/waybar.tmp
 

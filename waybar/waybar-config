@@ -8,7 +8,7 @@
     "spacing": 4,
     "modules-left": ["custom/distro", "hyprland/workspaces", "hyprland/window"],
     "modules-center": ["mpd"],
-    "modules-right": ["custom/updates", "network", "battery", "tray", "clock"],
+    "modules-right": ["network", "custom/updates", "custom/volume", "battery", "tray", "clock"],
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
@@ -35,7 +35,7 @@
         "separate-outputs": true
     },
     "mpd": {
-        "format": "{stateIcon}  {title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%M:%S})   {volume}%",
+        "format": "{stateIcon}  {title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
         "format-disconnected": "",
         "format-stopped": "",
         "unknown-tag": "N/A",
@@ -97,12 +97,21 @@
         "interval": 3600,
         "tooltip": true,
         "tooltip-format": "{} packages can be updated",
-        "format": "  {}"
+        "format": "  {}",
+        "signal": 8
     },
     "custom/distro": {
         "format": "",
         "tooltip": false,
         "on-click": "~/.dotfiles/scripts/rofi/powermenu.sh"
+    },
+    "custom/volume": {
+        "tooltip": false,
+        "max-length": 8,
+        "exec": "~/.dotfiles/waybar/scripts/volume-display.sh",
+        "on-click": "mpc toggle -q",
+        "on-scroll-up": "mpc -q volume +10",
+        "on-scroll-down": "mpc -q volume -10"
     }
 }
 

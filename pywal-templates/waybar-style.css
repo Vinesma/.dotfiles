@@ -70,6 +70,7 @@ button:hover {{
 #custom-media,
 #custom-updates,
 #custom-distro,
+#custom-volume,
 #tray,
 #mode,
 #idle_inhibitor,
@@ -87,6 +88,10 @@ button:hover {{
     padding-right: 15px;
     color: @primary;
     font-size: 15px;
+}}
+
+#mpd {{
+    margin: 0 3px;
 }}
 
 #mpd.stopped {{
