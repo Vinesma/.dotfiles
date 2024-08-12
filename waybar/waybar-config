@@ -35,7 +35,7 @@
         "separate-outputs": true
     },
     "mpd": {
-        "format": "{stateIcon}  {title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
+        "format": "{stateIcon}  {title} - {artist}",
         "format-disconnected": "",
         "format-stopped": "",
         "unknown-tag": "N/A",
