@@ -4,6 +4,7 @@
     "waybar-style.css": "plaintext",
     "colors-jellyfin.css": "plaintext",
     "gtk.css": "plaintext",
-    "colors-dunst": "properties"
+    "colors-dunst": "properties",
+    "xava-config": "properties"
   }
 }

@@ -42,6 +42,14 @@ reset-polybar() {
     fi
 }
 
+reset-xava() {
+    local xava_name
+    xava_name=xava-x86_64.AppImage
+    if command -v "$xava_name" && killall -q "$xava_name"; then
+        xava-x86_64.AppImage -p ~/.cache/wal/xava-config &
+    fi
+}
+
 if wal -n -e -i "$@"; then
     if [ "$session_type" != "wayland" ]; then
         printf "%s\n" "Session type is Xorg."
@@ -58,6 +66,7 @@ if wal -n -e -i "$@"; then
     /usr/bin/pywalfox update
 
     notify-send -i "$icon_image" "set-bg" "New background and theme set."
+    reset-xava
     update-jellyfin
 else
     send-error "pywal returned an error"
