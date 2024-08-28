@@ -17,7 +17,7 @@
         "proxy": null,
         "skip": true,
 
-        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:129.0) Gecko/20100101 Firefox/129.0",
         "retries": 3,
         "timeout": 30.0,
         "verify": true,
