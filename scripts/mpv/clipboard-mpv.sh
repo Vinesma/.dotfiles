@@ -15,9 +15,9 @@ session_wrofi="$HOME/.dotfiles/scripts/helpers/session-wrofi.sh"
 
 folder_watchlater="$HOME/Sync/.mpv_files"
 folder_videos="$HOME/Videos"
-format_highq="b/bv+ba"
-format_defaultq="b[height<=720]/bv[height<=720]+ba"
-format_lowq="b[height<=480]/bv[height<=480]+ba"
+format_highq="bv+ba/b"
+format_defaultq="bv[height<=720]+ba/b[height<=720]"
+format_lowq="bv[height<=480]+ba/b[height<=480]"
 
 # Check if script is passed an argument or not.
 # If yes, use the argument
