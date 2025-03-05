@@ -4,22 +4,36 @@
 [commit]
     verbose = true ; Show diff between HEAD commit and what would be committed at the bottom of the commit message
 [diff]
-    colorMoved = true
+    algorithm = histogram
+    colorMoved = plain
     mnemonicPrefix = true
+    renames = true
 [fetch]
-    prune = true ; behave as if --prune is always set
-[merge]
-    conflictStyle = diff3 ; add a ||||||| marker and the original text before the ======= marker in conflicts
+    prune = true
+    all = true
 [pull]
     ff = only
 [push]
     autoSetupRemote = true ; never have to --set-upstream ever again :)
+    default = simple
+    followTags = true
 [rebase]
 	updateRefs = true
+[rerere]
+    enabled = true
+    autoupdate = true
 [url "git@github.com:"]
     insteadOf = "gh:" ; allows cloning with "gh:Vinesma/repo" instead of the full url
 [help]
     autoCorrect = prompt
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[tag]
+    sort = version:refname
+[init]
+    defaultBranch = master
 [alias]
 	s = status
 	a = add
