@@ -1,6 +1,6 @@
 [user]
-	name = Otavio Cornelio
-	useConfigOnly = true ; prompt to set a local config email in a newly cloned repo
+    name = Otavio Cornelio
+    useConfigOnly = true ; prompt to set a local config email in a newly cloned repo
 [commit]
     verbose = true ; Show diff between HEAD commit and what would be committed at the bottom of the commit message
 [diff]
@@ -18,7 +18,7 @@
     default = simple
     followTags = true
 [rebase]
-	updateRefs = true
+    updateRefs = true
 [rerere]
     enabled = true
     autoupdate = true
@@ -27,34 +27,34 @@
 [help]
     autoCorrect = prompt
 [column]
-	ui = auto
+    ui = auto
 [branch]
-	sort = -committerdate
+    sort = -committerdate
 [tag]
     sort = version:refname
 [init]
     defaultBranch = master
 [alias]
-	s = status
-	a = add
-	aa = add .
-	r = restore
-	c = commit
-	ca = commit -a
-	cam = commit --amend
-	cp = cherry-pick
-	ch = checkout
-	sw = switch
-	b = branch
-	m = merge
-	re = rebase
-	d = diff
-	l = log --graph --abbrev-commit --decorate
-	ps = push
-	pl = pull
+    s = status
+    a = add
+    aa = add .
+    r = restore
+    c = commit
+    ca = commit -a
+    cam = commit --amend
+    cp = cherry-pick
+    ch = checkout
+    sw = switch
+    b = branch
+    m = merge
+    re = rebase
+    d = diff
+    l = log --graph --abbrev-commit --decorate
+    ps = push
+    pl = pull
     pr = "!f() { git fetch -fu ${2:-$(git remote |grep ^upstream || echo origin)} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
     pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
     assume-unchanged = update-index --assume-unchanged
     no-assume-unchanged = update-index --no-assume-unchanged
     psnu = !git push --set-upstream origin $(git branch --show-current) ; push a local branch to remote and track it
-	alias = !git grep -h -A 100 -e 'alias' "$HOME/.dotfiles/git/.gitconfig"
+    alias = !git grep -h -A 100 -e 'alias' "$HOME/.dotfiles/git/.gitconfig"
