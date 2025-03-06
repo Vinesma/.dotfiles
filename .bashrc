@@ -115,3 +115,8 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+export EDITOR=/usr/bin/vim
+
+source "$HOME"/.dotfiles/scripts/global-functions.sh
+source "$HOME"/.dotfiles/scripts/global-alias.sh
