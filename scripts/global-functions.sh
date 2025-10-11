@@ -159,7 +159,7 @@ mass-convert-ffmpeg() {
         echo "$destination_ext"
 
         for FILE in "$directory"/*"$input_ext"
-        do ffmpeg -i "$FILE" "${FILE%.*}$destination_ext"
+        do ffmpeg -i "$FILE" -b:a 320k "${FILE%.*}$destination_ext"
         done
     else
         echo "mass-convert-ffmpeg: convert many files from one format to another."
