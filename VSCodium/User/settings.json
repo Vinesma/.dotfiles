@@ -64,5 +64,9 @@
     "asvetliakov.vscode-neovim": 1
   },
   "git.inputValidation": true,
-  "workbench.activityBar.location": "top"
+  "workbench.activityBar.location": "top",
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "terminal.integrated.enablePersistentSessions": false
 }
