@@ -7,4 +7,4 @@ qbittorrent &
 nicotine &
 flatpak run md.obsidian.Obsidian &
 xava-x86_64.AppImage -p ~/.cache/wal/xava-config &
-sleep 8 && firefox &
+firefox &
