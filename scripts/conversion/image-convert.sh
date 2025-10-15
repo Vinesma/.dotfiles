@@ -5,6 +5,7 @@ set -euo pipefail
 
 delete_original=
 notify_on_end=
+size_skip=
 format="jpg"
 
 show_help() {
@@ -15,6 +16,7 @@ show_help() {
         "-h, --help               Show this help text and exit." \
         "-f, --format             The format to convert to, should be given as an extension with no ., like: 'webp' or 'jpg'." \
         "-d, --delete             Delete the original file after it gets converted." \
+        "-s, --skip-if-size       Skip converting this file if the file size is lower than this number in KB." \
         "-n, --notify-on-end      Set this to send a notification when all files have been converted."
 }
 
@@ -26,20 +28,24 @@ fi
 while :; do
     case $1 in
         -h|-\?|--help)
-            show_help    # Display a usage synopsis.
+            show_help           # Display a usage synopsis.
             exit
             ;;
-        -d|--delete)     # Delete original file
+        -d|--delete)            # Delete original file
             delete_original=true
             ;;
         -n|--notify-on-end)     # Send a notification when all files have been converted.
             notify_on_end=true
             ;;
-        -f|--format)     # Format to convert to, this will become the extension. e.g. 'webp'
+        -f|--format)            # Format to convert to, this will become the extension. e.g. 'webp'
             format="$2"
             shift
             ;;
-        --)              # End of all options.
+        -s|--skip-if-size)      # Skip converting a file if its size is smaller than this number in KB
+            size_skip="$2"
+            shift
+            ;;
+        --)                     # End of all options.
             shift
             break
             ;;
@@ -66,15 +72,18 @@ _convert() {
 }
 
 for FILE in "$@"; do
+    if [[ -n $size_skip ]] && [[ $(stat -c%s "$FILE") -lt $((size_skip * 1024)) ]]; then
+        continue
+    fi
+
     filename=${FILE%%.*}
     if _convert -i "$FILE" "$filename.$format"; then
         if [[ -n $delete_original ]]; then
             _delete_file "$FILE"
         fi
     else
-        printf "%s\n" "ERROR: ffmpeg encoutered an issue for file: $FILE"
+        printf "%s\n" "ERROR: ffmpeg encountered an issue for file: $FILE"
     fi
-
 done
 
 if [[ -n $notify_on_end ]]; then
