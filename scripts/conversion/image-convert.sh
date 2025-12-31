@@ -3,6 +3,7 @@
 
 set -euo pipefail
 
+script_name=$(basename $0)
 delete_original=
 notify_on_end=
 size_skip=
@@ -11,7 +12,7 @@ format="jpg"
 show_help() {
     printf "%s\n" \
         "Convert one or multiple images to a different image format." \
-        "Usage: $0 <options> <path|glob> [more paths/globs]" \
+        "Usage: $script_name <options> <path|glob> [more paths/globs]" \
         "Options:" \
         "-h, --help               Show this help text and exit." \
         "-f, --format             The format to convert to, should be given as an extension with no ., like: 'webp' or 'jpg'." \
@@ -76,7 +77,7 @@ for FILE in "$@"; do
         continue
     fi
 
-    filename=${FILE%%.*}
+    filename=${FILE%.*}
     if _convert -i "$FILE" "$filename.$format"; then
         if [[ -n $delete_original ]]; then
             _delete_file "$FILE"
