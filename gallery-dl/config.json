@@ -112,13 +112,17 @@
             "limits": true,
             "metadata": false,
             "original": true,
-            "sleep-request": 5.0,
+            "sleep": 2,
+            "sleep-extractor": 60,
+            "retries": 2,
             "gp": "stop",
             "cookies": ["firefox"]
         },
         "nhentai":
         {
-            "cookies": ["firefox"]
+            "cookies": ["firefox"],
+            "sleep": 2,
+            "sleep-extractor": 30
         },
         "flickr":
         {
@@ -256,6 +260,8 @@
         },
         "pixiv":
         {
+            "sleep": 2,
+            "sleep-extractor": 4,
             "refresh-token": null,
             "include": "artworks",
             "embeds": false,
@@ -417,7 +423,8 @@
             "adjust-extensions": true,
             "chunk-size": 32768,
             "headers": null,
-            "validate": true
+            "validate": true,
+            "retries": 2
         },
 
         "ytdl":
