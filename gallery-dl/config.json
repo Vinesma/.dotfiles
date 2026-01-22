@@ -424,7 +424,7 @@
             "chunk-size": 32768,
             "headers": null,
             "validate": true,
-            "retries": 2
+            "retries": 1
         },
 
         "ytdl":
