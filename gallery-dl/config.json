@@ -193,7 +193,9 @@
         },
         "khinsider":
         {
-            "format": "mp3"
+            "format": "flac",
+            "sleep": 4,
+            "covers": true
         },
         "luscious":
         {
