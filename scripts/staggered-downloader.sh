@@ -80,7 +80,7 @@ while :; do
         break
     fi
 
-    printf "%s\n" "Download complete. Sleeping for $sleep_for before next download..."
+    printf "%s\n" "($count/$limit) Download complete. Sleeping for $sleep_for before next download..."
     sleep "$sleep_for"
 done
 
