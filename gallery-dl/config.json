@@ -116,13 +116,18 @@
             "sleep-extractor": 60,
             "retries": 2,
             "gp": "stop",
-            "cookies": ["firefox"]
+            "cookies": ["firefox"],
+            "directory": ["{category}", "{gid} {title[b0:240]}"]
         },
         "nhentai":
         {
             "cookies": ["firefox"],
             "sleep": 2,
             "sleep-extractor": 30
+        },
+        "kemonoparty":
+        {
+            "filename": "{id}_{title[b0:120]}_{num:>02}_{filename[b0:120]}.{extension}"
         },
         "flickr":
         {
