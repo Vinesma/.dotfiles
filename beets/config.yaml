@@ -1,0 +1,39 @@
+directory: ~/Music
+library:  ~/Music/.library/library.db
+plugins: musicbrainz deezer fetchart convert smartplaylist
+paths:
+  default: $album%aunique{}/$track - $title
+  singleton: $title - $artist/$title
+  comp: $album%aunique{}/$track - $title
+  showartistflag:yes: $album%aunique{} - $albumartist/$track - $title
+format_item: $album - $artist - $title
+sort_item: album+ artist+ disc+ track+
+import:
+  languages: en ja
+replace:
+    '[\\/]': _
+    '^\.': _
+    '[\x00-\x1f]': _
+    '[<>"\?\*\|]': _
+    '\.$': _
+    '\s+$': ''
+    '^\s+': ''
+    '^-': _
+    '[:]': ' -'
+smartplaylist:
+  relative_to: ~/Music
+  playlist_dir: ~/Music
+  forward_slash: no
+  playlists:
+      - name: Calm.m3u
+        query: 'mood:Calm'
+      - name: 'Calm Only.m3u'
+        query: 'mood:=Calm'
+      - name: Fast.m3u
+        query: 'mood:Fast'
+      - name: 'Fast Only.m3u'
+        query: 'mood:=Fast'
+      - name: Epic.m3u
+        query: 'mood:Epic'
+      - name: 'Epic Only.m3u'
+        query: 'mood:=Epic'
