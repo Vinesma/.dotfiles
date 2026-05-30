@@ -37,8 +37,8 @@ show-all-music() {
     notify-send -i "$icon" "MPD" "$title added to queue!"
 }
 
-show-genres() {
-    local genre
+show-playlists() {
+    local playlist
     local wrofi_args
 
     if [ "$XDG_SESSION_TYPE" != "wayland" ]; then
@@ -47,10 +47,10 @@ show-genres() {
         wrofi_args=("--lines" "8")
     fi
 
-    genre=$(mpc list genre | wrofi-switch "${wrofi_args[@]}")
+    playlist=$(mpc lsplaylists | wrofi-switch "${wrofi_args[@]}")
 
     # shellcheck source=./queue-music.sh
-    . "$queue_script_path" "$genre"
+    . "$queue_script_path" "$playlist"
 }
 
 play-all-music() {
@@ -66,7 +66,7 @@ show-menu() {
     local menu_options
     local wrofi_args
     all_albums=$(mpc ls)
-    menu_options=(' EXIT' ' Play All' ' Clear Queue' ' Show Genres' '况 Show All' "$all_albums")
+    menu_options=(' EXIT' ' Play All' ' Clear Queue' ' Show Playlists' '况 Show All' "$all_albums")
 
     if [ "$XDG_SESSION_TYPE" != "wayland" ]; then
         wrofi_args=(\
@@ -86,7 +86,7 @@ show-menu() {
             "${menu_options[0]}") exit ;;
             "${menu_options[1]}") play-all-music && exit 0;;
             "${menu_options[2]}") . "$queue_script_path" clear-music;;
-            "${menu_options[3]}") show-genres ;;
+            "${menu_options[3]}") show-playlists ;;
             "${menu_options[4]}") show-all-music ;;
             *) add-album "$album" ;;
         esac

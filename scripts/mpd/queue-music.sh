@@ -17,12 +17,11 @@ clear-queue() {
 
 add-to-queue() {
     mpc crop
-    mpc search genre "$1" | mpc add
-    mpc shuffle
+    mpc load "$1"
     mpc repeat on
     mpc play
 
-    notify-send -i "$icon" "MPD" "Playing all $1 tracks!"
+    notify-send -i "$icon" "MPD" "Playing tracks from $1 playlist!"
 }
 
 if [ "$#" -gt 0 ]; then
