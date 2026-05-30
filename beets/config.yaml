@@ -1,6 +1,6 @@
 directory: ~/Music
 library:  ~/Music/.library/library.db
-plugins: musicbrainz deezer fetchart convert smartplaylist
+plugins: musicbrainz deezer fetchart convert smartplaylist play mpdupdate
 paths:
   default: $album%aunique{}/$track - $title
   singleton: $title - $artist/$title
@@ -8,6 +8,7 @@ paths:
   showartistflag:yes: $album%aunique{} - $albumartist/$track - $title
 format_item: $album - $artist - $title
 sort_item: album+ artist+ disc+ track+
+clutter: ['Thumbs.DB', '.DS_Store', 'album.nfo']
 import:
   languages: en ja
 replace:
@@ -20,20 +21,52 @@ replace:
     '^\s+': ''
     '^-': _
     '[:]': ' -'
+convert:
+  copy_album_art: yes
+  never_convert_lossy_files: yes
+  format: mp3
+  formats:
+    mp3: ffmpeg -i $source -y -vn -ab 320k $dest
 smartplaylist:
   relative_to: ~/Music
   playlist_dir: ~/Music
   forward_slash: no
   playlists:
+      - name: Favorites.m3u
+        query: 'favorite:yes'
+
       - name: Calm.m3u
         query: 'mood:Calm'
+      - name: Calm + Favorites.m3u
+        query: 'mood:Calm favorite:yes'
+
       - name: 'Calm Only.m3u'
         query: 'mood:=Calm'
+      - name: 'Calm Only + Favorites.m3u'
+        query: 'mood:=Calm favorite:yes'
+
       - name: Fast.m3u
         query: 'mood:Fast'
+      - name: Fast + Favorites.m3u
+        query: 'mood:Fast favorite:yes'
       - name: 'Fast Only.m3u'
         query: 'mood:=Fast'
+      - name: 'Fast Only + Favorites.m3u'
+        query: 'mood:=Fast favorite:yes'
+
       - name: Epic.m3u
         query: 'mood:Epic'
+      - name: Epic + Favorites.m3u
+        query: 'mood:Epic favorite:yes'
       - name: 'Epic Only.m3u'
         query: 'mood:=Epic'
+      - name: 'Epic Only + Favorites.m3u'
+        query: 'mood:=Epic favorite:yes'
+
+mpdupdate:
+  host: localhost
+  port: 6600
+play:
+  command: mpc add -q
+  raw: yes
+  relative_to: ~/Music
