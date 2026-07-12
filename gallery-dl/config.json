@@ -70,6 +70,7 @@
             "password": null,
             "external": false,
             "metadata": false,
+            "sleep": 2,
             "ugoira": false
         },
         "derpibooru":
