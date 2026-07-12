@@ -2,9 +2,9 @@ fcitx &
 gammastep-indicator -m wayland &
 wl-paste --watch cliphist store &
 
-steam &
 qbittorrent &
 nicotine &
 flatpak run md.obsidian.Obsidian &
 xava-x86_64.AppImage -p ~/.cache/wal/xava-config &
 firefox &
+sleep 8s && steam &
