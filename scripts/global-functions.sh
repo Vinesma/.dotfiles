@@ -211,3 +211,29 @@ lan-server-rclone() {
     printf "Serving at: %s:%s\n" "${address:-127.0.0.1}" "${port:-8080}"
     rclone serve http "$@" -v --addr "${address:-127.0.0.1}:${port:-8080}"
 }
+
+# Quickly ask a question to a local AI model
+ask() {
+    local model
+    local context_size
+    model='unsloth/gemma-4-26B-A4B-it-qat-GGUF:UD-Q4_K_XL'
+    context_size=8192
+    llama-cli -hf "$model" --temp 1.0 --top-p 0.95 --top-k 64 --ctx-size "$context_size" -p "$1" --single-turn
+}
+
+# Get current playing music track
+now-playing() {
+    mpc -f "%title%" | head -n 1
+}
+
+# Modify beets' db for current playing track
+music-tag() {
+    beet modify "$1" title:="$(now-playing)"
+}
+
+# Show beets' db info for QUERY
+music-info() {
+    # shellcheck disable=SC2016
+    beet list -f '%ifdef{favorite,[♥] }$album / $track $title %ifdef{mood,[mood=$mood]}' "$@"
+}
+
