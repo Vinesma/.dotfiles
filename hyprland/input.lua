@@ -26,14 +26,6 @@ hl.config({
 ---- KEYBINDINGS ----
 ---------------------
 
--- Switch workspaces with mainMod + [0-9]
--- Move active window to a workspace with mainMod + SHIFT + [0-9]
-for i = 1, 10 do
-    local key = i % 10 -- 10 maps to key 0
-    hl.bind(MainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
-    hl.bind(MainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
-end
-
 hl.bind(MainMod .. " + CTRL + Q", function()
     hl.dispatch(hl.dsp.exit())
 end)
@@ -123,26 +115,21 @@ hl.bind(MainMod .. " + down", function()
     hl.dispatch(hl.dsp.focus({ direction = "down" }))
 end)
 
+local workspaceKeys = { 'A', 'S', 'D', 'F', 'G' }
 -- SWITCH WORKSPACES
-hl.bind(MainMod .. " + A", hl.dsp.focus({ workspace = 1 }))
-hl.bind(MainMod .. " + S", hl.dsp.focus({ workspace = 2 }))
-hl.bind(MainMod .. " + D", hl.dsp.focus({ workspace = 3 }))
-hl.bind(MainMod .. " + F", hl.dsp.focus({ workspace = 4 }))
-hl.bind(MainMod .. " + G", hl.dsp.focus({ workspace = 5 }))
+for i = 1, #workspaceKeys do
+    hl.bind(MainMod .. " + " .. workspaceKeys[i], hl.dsp.focus({ workspace = i }))
+end
 
 -- MOVE ACTIVE WINDOW TO WORKSPACE
-hl.bind(MainMod .. " + CTRL + A", hl.dsp.window.move({ workspace = 1 }))
-hl.bind(MainMod .. " + CTRL + S", hl.dsp.window.move({ workspace = 2 }))
-hl.bind(MainMod .. " + CTRL + D", hl.dsp.window.move({ workspace = 3 }))
-hl.bind(MainMod .. " + CTRL + F", hl.dsp.window.move({ workspace = 4 }))
-hl.bind(MainMod .. " + CTRL + G", hl.dsp.window.move({ workspace = 5 }))
+for i = 1, #workspaceKeys do
+    hl.bind(MainMod .. " + CTRL + " .. workspaceKeys[i], hl.dsp.window.move({ workspace = i }))
+end
 
 -- SAME AS ABOVE, BUT DO NOT FOLLOW THE WINDOW
-hl.bind(MainMod .. " + SHIFT + A", hl.dsp.window.move({ workspace = 1, follow = false }))
-hl.bind(MainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = 2, follow = false }))
-hl.bind(MainMod .. " + SHIFT + D", hl.dsp.window.move({ workspace = 3, follow = false }))
-hl.bind(MainMod .. " + SHIFT + F", hl.dsp.window.move({ workspace = 4, follow = false }))
-hl.bind(MainMod .. " + SHIFT + G", hl.dsp.window.move({ workspace = 5, follow = false }))
+for i = 1, #workspaceKeys do
+    hl.bind(MainMod .. " + SHIFT + " .. workspaceKeys[i], hl.dsp.window.move({ workspace = i, follow = false }))
+end
 
 -- SCROLL THROUGH EXISTING WORKSPACES
 hl.bind(MainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
