@@ -6,5 +6,8 @@
     "gtk.css": "plaintext",
     "colors-dunst": "properties",
     "xava-config": "properties"
-  }
+  },
+  "Lua.workspace.library": [
+    "/usr/share/hypr/stubs"
+  ]
 }
