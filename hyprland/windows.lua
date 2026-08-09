@@ -135,6 +135,13 @@ hl.window_rule({
     float = true,
     size = "(monitor_w*0.5) (monitor_h*0.5)",
     match = {
+        class = "xdg-desktop-portal-gtk",
+    },
+})
+hl.window_rule({
+    float = true,
+    size = "(monitor_w*0.5) (monitor_h*0.5)",
+    match = {
         class = "^[Tt]hunar$",
     },
 })
