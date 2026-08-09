@@ -1,5 +1,5 @@
 ---------------------
----- GLOBALS ----
+------ GLOBALS ------
 ---------------------
 
 MainMod = "SUPER"
@@ -8,5 +8,6 @@ FileManager = "thunar"
 Browser = "firefox"
 MediaControlScript = "~/.dotfiles/scripts/media-control.sh"
 
-Monitor1 = "DP-2"
-Monitor2 = "DP-3"
+Monitors = { "DP-2", "DP-3" }
+PrimaryMonitor = Monitors[1]
+SecondaryMonitor = Monitors[2]

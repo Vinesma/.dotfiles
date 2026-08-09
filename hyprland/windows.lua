@@ -6,9 +6,16 @@ require("globals")
 -- See https://wiki.hypr.land/Configuring/Basics/Window-Rules/
 -- and https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 
+local firstWorkspaceMonitor
+if SecondaryMonitor then
+    firstWorkspaceMonitor = SecondaryMonitor
+else
+    firstWorkspaceMonitor = PrimaryMonitor
+end
+
 hl.workspace_rule({
     workspace = "1",
-    monitor = Monitor2,
+    monitor = firstWorkspaceMonitor,
     default = true,
     layout_opts = {
         orientation = "right",
@@ -16,19 +23,20 @@ hl.workspace_rule({
 })
 hl.workspace_rule({
     workspace = "2",
-    monitor = Monitor1,
+    monitor = PrimaryMonitor,
     default = true,
 })
 hl.workspace_rule({
     workspace = "3",
-    monitor = Monitor1,
+    monitor = PrimaryMonitor,
 })
 hl.workspace_rule({
     workspace = "4",
-    monitor = Monitor1,
+    monitor = PrimaryMonitor,
 })
 hl.workspace_rule({
     workspace = "5",
+    monitor = PrimaryMonitor
 })
 
 local suppressMaximizeRule = hl.window_rule({
