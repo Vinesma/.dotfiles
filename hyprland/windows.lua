@@ -202,3 +202,57 @@ hl.window_rule({
         title = "^.*VSCodium$",
     },
 })
+hl.window_rule({
+    match           = {
+        title = "^Jellyfin$",
+        fullscreen = true,
+    },
+    border_size     = 0,
+    rounding        = 0,
+    decorate        = false,
+    sync_fullscreen = true,
+    no_dim          = true,
+    no_max_size     = true,
+    no_shadow       = true,
+    persistent_size = true,
+    no_blur         = true,
+    idle_inhibit    = "always",
+})
+-- Rules for games
+hl.window_rule({
+    match = { class = "steam_app_.*|gamescope|steam_proton|retroarch" },
+    tag = "+game",
+})
+hl.window_rule({
+    match = { xdg_tag = "proton-game" },
+    tag = "+game"
+})
+hl.window_rule({
+    name         = "game-rule",
+    match        = { tag = "game" },
+    content      = "game",
+    center       = true,
+    immediate    = true,
+    no_blur      = true,
+    float        = true,
+    opacity      = "2 2",
+    idle_inhibit = "always",
+})
+hl.window_rule({
+    name = "game-rule-fullscreen",
+    match = {
+        tag = "game",
+        fullscreen = true,
+    },
+    border_size = 0,
+    rounding = 0,
+    decorate = false,
+    force_rgbx = true,
+    sync_fullscreen = true,
+    no_anim = true,
+    no_dim = true,
+    no_max_size = true,
+    no_shadow = true,
+    persistent_size = true,
+    focus_on_activate = true,
+})
