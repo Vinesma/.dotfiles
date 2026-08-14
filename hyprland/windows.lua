@@ -76,13 +76,19 @@ hl.window_rule({
     workspace = "1 silent",
     opacity = "0.88 override 0.88 override",
     match = {
-        class = "^md.Obsidian$",
+        class = "^md.obsidian.Obsidian$",
     },
 })
 hl.window_rule({
     workspace = "3 silent",
     match = {
         title = "^Steam$",
+    },
+})
+hl.window_rule({
+    workspace = "3 silent",
+    match = {
+        title = "^Sign in to Steam$",
     },
 })
 hl.window_rule({
@@ -188,12 +194,6 @@ hl.window_rule({
     size = "(monitor_w*0.4) (monitor_h*0.4)",
     match = {
         class = "^virt-manager$",
-    },
-})
-hl.window_rule({
-    float = true,
-    match = {
-        title = "^MTool$",
     },
 })
 hl.window_rule({
