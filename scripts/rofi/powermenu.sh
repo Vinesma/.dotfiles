@@ -11,7 +11,7 @@
 ## style-1   style-2   style-3   style-4   style-5
 
 # Current Theme
-dir="$HOME/.cache/wal"
+dir="$HOME/.config/rofi"
 theme='colors-rofi-powermenu'
 launch_theme='colors-rofi-launcher'
 

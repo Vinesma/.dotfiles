@@ -2,7 +2,7 @@
 #
 # Runs Rofi or Wofi depending on user's session type
 
-rofi_theme="$HOME/.cache/wal/colors-rofi-launcher"
+rofi_theme="$HOME/.config/rofi/colors-rofi-launcher"
 
 rofi-cmd() {
     rofi \

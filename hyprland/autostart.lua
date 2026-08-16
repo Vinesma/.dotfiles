@@ -2,12 +2,13 @@
 ---- AUTOSTART ----
 -------------------
 require("globals")
+require("colors")
 
 -- See https://wiki.hypr.land/Configuring/Basics/Autostart/
 
 hl.on("hyprland.start", function()
     -- Wallpaper
-    hl.exec_cmd("~/.dotfiles/hyprland/scripts/wallpaper.sh")
+    hl.exec_cmd("~/.dotfiles/hyprland/scripts/wallpaper.sh --image-path " .. Image)
     -- Status Bar
     hl.exec_cmd("~/.dotfiles/waybar/launch.sh")
     hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")

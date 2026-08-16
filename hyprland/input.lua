@@ -54,9 +54,9 @@ hl.bind(MainMod .. " + ALT + M", hl.dsp.exec_cmd(Terminal .. " -T MPD ncmpcpp -q
 hl.bind("CTRL + ALT + delete", hl.dsp.exec_cmd(Terminal .. " htop"))
 
 -- ROFI
-hl.bind(MainMod .. " + R", hl.dsp.exec_cmd("rofi -show drun -theme ~/.cache/wal/colors-rofi-launcher.rasi"))
+hl.bind(MainMod .. " + R", hl.dsp.exec_cmd("rofi -show drun -theme ~/.config/rofi/colors-rofi-launcher.rasi"))
 hl.bind(MainMod .. " + Q", hl.dsp.exec_cmd("~/.dotfiles/scripts/rofi/powermenu.sh"))
-hl.bind(MainMod .. " + E", hl.dsp.exec_cmd("rofi -show window -theme ~/.cache/wal/colors-rofi-launcher.rasi"))
+hl.bind(MainMod .. " + E", hl.dsp.exec_cmd("rofi -show window -theme ~/.config/rofi/colors-rofi-launcher.rasi"))
 hl.bind(MainMod .. " + CTRL + M", hl.dsp.exec_cmd("~/.dotfiles/scripts/mpd/music-browser.sh"))
 hl.bind(MainMod .. " + ALT + W", hl.dsp.exec_cmd("~/.dotfiles/scripts/bg-setter/choose-bg.sh"))
 hl.bind(MainMod .. " + ALT + P", hl.dsp.exec_cmd("~/.dotfiles/scripts/mpv/clipboard-mpv.sh"))

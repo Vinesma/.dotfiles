@@ -1,0 +1,82 @@
+[config]
+
+[config.wallpaper]
+set = true
+command = "~/.dotfiles/hyprland/scripts/wallpaper.sh --generate-dp-image --image-path {{ image }}"
+
+[templates.sample]
+input_path = '~/.dotfiles/matugen/templates/sample.css'
+output_path = '~/.config/sample.css'
+
+[templates.imagepath]
+input_path = '~/.dotfiles/matugen/templates/wallpaper-path.txt'
+output_path = '~/.config/wallpaper-path.txt'
+
+[templates.waybar]
+input_path = '~/.dotfiles/matugen/templates/waybar.css'
+output_path = '~/.config/waybar/colors.css'
+post_hook = 'pkill -SIGUSR2 waybar'
+
+[templates.dunst]
+input_path = '~/.dotfiles/matugen/templates/dunst.ini'
+output_path = '~/.config/dunst/dunstrc'
+post_hook = "pkill dunst"
+
+[templates.kitty]
+input_path = '~/.dotfiles/matugen/templates/kitty.conf'
+output_path = '~/.config/kitty/themes/Matugen.conf'
+post_hook = "kitty +kitten themes --reload-in=all Matugen"
+
+[templates.hyprland]
+input_path = '~/.dotfiles/matugen/templates/hyprland.lua'
+output_path = '~/.config/hypr/colors.lua'
+
+[templates.gtk3]
+input_path = '~/.dotfiles/matugen/templates/gtk.css'
+output_path = '~/.config/gtk-3.0/colors.css'
+post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme Matcha-dark-azul'
+
+[templates.gtk4]
+input_path = '~/.dotfiles/matugen/templates/gtk.css'
+output_path = '~/.config/gtk-4.0/colors.css'
+post_hook = '~/.config/matugen/post-hook-scripts/gtk-themes-reload.sh'
+
+[templates.obsidian]
+input_path = '~/.dotfiles/matugen/templates/obsidian.css'
+output_path = '~/Notes/.obsidian/snippets/matugen.css'
+
+[templates.rofi]
+input_path = '~/.dotfiles/matugen/templates/rofi/rofi.css'
+output_path = '~/.config/rofi/colors.rasi'
+
+[templates.rofi_shared]
+input_path = '~/.dotfiles/matugen/templates/rofi/rofi-shared.css'
+output_path = '~/.config/rofi/colors-shared.rasi'
+
+[templates.rofi_launcher]
+input_path = '~/.dotfiles/matugen/templates/rofi/colors-rofi-launcher.rasi'
+output_path = '~/.config/rofi/colors-rofi-launcher.rasi'
+
+[templates.rofi_powermenu]
+input_path = '~/.dotfiles/matugen/templates/rofi/colors-rofi-powermenu.rasi'
+output_path = '~/.config/rofi/colors-rofi-powermenu.rasi'
+
+[templates.qt5ct]
+input_path = '~/.dotfiles/matugen/templates/qt.conf'
+output_path = '~/.config/qt5ct/colors/matugen.conf'
+
+[templates.qt6ct]
+input_path = '~/.dotfiles/matugen/templates/qt.conf'
+output_path = '~/.config/qt6ct/colors/matugen.conf'
+
+[templates.vscode-raw]
+input_path = '~/.dotfiles/matugen/templates/vscode/vscode'
+output_path = '~/.cache/matugen/vscode-colors'
+
+[templates.vscode-json]
+input_path = '~/.dotfiles/matugen/templates/vscode/vscode.json'
+output_path = '~/.cache/matugen/vscode-colors.json'
+
+[templates.zathura]
+input_path = '~/.dotfiles/matugen/templates/zathura'
+output_path = '~/.config/zathura/zathura-colors'

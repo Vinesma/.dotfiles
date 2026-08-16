@@ -1,8 +1,10 @@
 set selection-clipboard clipboard
+set window-title-home-tilde true
+set statusbar-basename true
 set guioptions
 set adjust-open width
 map i recolor
 map p adjust_window width
 map <A-p> adjust_window best-fit
 
-include ../../.cache/wal/colors-zathura
+include ./zathura-colors

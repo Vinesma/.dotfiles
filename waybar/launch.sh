@@ -2,7 +2,7 @@
 
 # Main config path
 CONFIG_FILE=$HOME/.dotfiles/waybar/waybar-config
-STYLE_FILE=$HOME/.cache/wal/waybar-style.css
+STYLE_FILE=$HOME/.config/waybar/styles.css
 temp_file=/tmp/waybar.tmp
 
 if pgrep waybar 2> /dev/null; then

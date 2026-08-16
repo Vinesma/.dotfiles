@@ -4,7 +4,7 @@
   "window.menuBarVisibility": "toggle",
   "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
   "editor.fontFamily": "'JetBrainsMono NF', 'Droid Sans Mono', 'NotoSansMono Nerd Font', 'monospace', monospace, 'Droid Sans Fallback'",
-  "workbench.colorTheme": "Wal",
+  "workbench.colorTheme": "Matugen",
   "terminal.integrated.fontFamily": "'JetBrainsMono NF'",
   "git.confirmSync": false,
   "git.mergeEditor": false,

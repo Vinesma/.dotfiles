@@ -1,0 +1,11 @@
+/*
+* Css Colors
+* Generated with Matugen
+*/
+<* for name, value in colors *>
+@define-color {{name}} {{value.default.hex}};
+<* endfor *>
+@define-color background_alpha {{colors.background.default.rgba | set_alpha: 0.8}};
+
+@define-color white #fff;
+@define-color black #242424;
