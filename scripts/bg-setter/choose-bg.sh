@@ -2,13 +2,13 @@
 
 # Choose several options for wallpaper setting.
 # Dependencies:
-# feh, rofi/wofi, magick
+# feh, rofi/wofi, magick, matugen
 
 wallpaper_dir="$HOME/Pictures/Wallpapers"
 files_folder="$HOME/.dotfiles/scripts/bg-setter"
 session_wrofi="$HOME/.dotfiles/scripts/helpers/session-wrofi.sh"
 # shellcheck disable=SC2063
-resolution=$(xrandr | grep '*' | head -n 1 | awk '{printf $1}')
+resolution=$(hyprctl monitors | grep 'ID 0' -A 1 | tail -n 1 | cut -d @ -f1 | awk '{printf $1}')
 width=$(echo "$resolution" | cut -d 'x' -f 1)
 height=$(echo "$resolution" | cut -d 'x' -f 2)
 
@@ -23,64 +23,24 @@ send-error() {
     notify-send -i "$icon_error"  -t "$notify_time" "choose-bg" "$1"
 }
 
-load-config() {
-    if [[ -e "$files_folder/saturation" ]]; then
-        saturation_amount=$(< "$files_folder/saturation")
-    else
-        saturation_amount=1
-    fi
-
-    if [[ -e "$files_folder/backend" ]]; then
-        backend=$(< "$files_folder/backend")
-    else
-        backend=wal
-    fi
-}
-
-set-saturation() {
-    local value
-    local wrofi_args
-
-    if [ "$XDG_SESSION_TYPE" != "wayland" ]; then
-        wrofi_args=(\
-            "-p" "Saturation"
-            "-mesg" "Type a value between 0.0 and 1.0" \
-            "-theme-str" "listview {lines: 1;}")
-    else
-        wrofi_args=(\
-            "-p" "[Saturation]: Type a value between 0.0 and 1.0"
-            "--lines" "1"
-        )
-    fi
-
-    value=$(wrofi-switch "${wrofi_args[@]}")
-
-    echo "$value" > "$files_folder/saturation"
-}
-
 set-backend() {
     local value
     local wrofi_args
 
-    if [ "$XDG_SESSION_TYPE" != "wayland" ]; then
-        wrofi_args=(\
-            "-p" "Backend"
-            "-mesg" "Which color generation backend to use?" \
-            "-theme-str" "listview {lines: 5;}")
-    else
-        wrofi_args=(\
-            "-p" "[Backend]: Which color generation backend to use?"
-            "--lines" "6"
-        )
-    fi
+    wrofi_args=(\
+        "-p" "Backend"
+        "-mesg" "Which color generation backend to use?" \
+        "-theme-str" "listview {lines: 5;}")
 
     value=$(wal --backend | sed '1d' | cut -d ' ' -f 3- | wrofi-switch "${wrofi_args[@]}")
 
     echo "$value" > "$files_folder/backend"
 }
 
-clear-cache() {
-    wal -c
+new-theme-notification() {
+    local icon_image
+    icon_image="/usr/share/icons/Papirus/32x32/apps/multimedia-photo-viewer.svg"
+    notify-send -i "$icon_image" "Wallpaper" "New background and theme set."
 }
 
 create-filename() {
@@ -90,24 +50,6 @@ create-filename() {
         filename="$wallpaper_dir/wallpaper-pixiv_id-$img_id$extension"
     else
         filename="$wallpaper_dir/wallpaper-$RANDOM-$RANDOM-IMG$extension"
-    fi
-}
-
-create-display-manager-image() {
-    local filename
-    local extension
-    local final_name
-    local lightdm_wallpaper_dir
-    filename=$1
-    extension=$2
-    final_name="$wallpaper_dir/display-manager-bg$extension"
-    lightdm_wallpaper_dir=/usr/share/wallpapers
-
-    if [ ! -d $lightdm_wallpaper_dir ]; then
-        send-error "Could not find '${lightdm_wallpaper_dir}'\nMake sure the directory exists and run chmod 777 on it."
-    else
-        magick "$filename" -blur 10x5 -brightness-contrast -15 "$final_name" \
-        && mv -f "$final_name" "${lightdm_wallpaper_dir}/display-manager-bg"
     fi
 }
 
@@ -130,18 +72,11 @@ resize-image() {
         "South" \
         "SouthEast")
 
-    if [ "$XDG_SESSION_TYPE" != "wayland" ]; then
-        wrofi_args=(\
-            "-p" "Center image at"
-            "-theme-str" "listview {lines: 9;}" \
-            "-no-show-icons" \
-            "-select" "Center")
-    else
-        wrofi_args=(\
-            "-p" "Center image at:"
-            "--lines" "10"
-        )
-    fi
+    wrofi_args=(\
+        "-p" "Center image at"
+        "-theme-str" "listview {lines: 9;}" \
+        "-no-show-icons" \
+        "-select" "Center")
 
     while [ "$accepted" -eq 1 ]; do
         gravity=$(printf "%s\n" "${gravity_options[@]}" | wrofi-switch "${wrofi_args[@]}")
@@ -168,9 +103,8 @@ resize-image() {
     if [ "$accepted" -eq 0 ]; then
         create-filename "$extension"
         mv -f "/tmp/bg-setter-img-final$extension" "$filename"
-        create-display-manager-image "$filename" "$extension"
-        # shellcheck source=/dev/null
-        . "$files_folder/set-bg.sh" "$filename" --saturate "$saturation_amount" --backend "$backend" > "$files_folder/setbg-log"
+        matugen image --prefer=lightness "$filename"
+        new-theme-notification
         sleep 1
     fi
 }
@@ -205,9 +139,8 @@ show-chooser() {
     wallpaper=$(echo "$wallpaper" | tail -n 1)
 
     if [[ -n "$wallpaper" ]]; then
-        # shellcheck source=/dev/null
-        . "$files_folder/set-bg.sh" "$wallpaper" --saturate "$saturation_amount" --backend "$backend" > "$files_folder/setbg-log"
-        create-display-manager-image "$wallpaper" ".${wallpaper##*.}"
+        matugen image --prefer=lightness "$wallpaper"
+        new-theme-notification
     fi
 }
 
@@ -215,34 +148,21 @@ show-menu() {
     local option
     local menu_options
     local wrofi_args
-    menu_options=("1  Exit" "2  Pick wallpapers" "3  Download image" "4  Clear cache" "5 Set saturation" "6 Set backend")
+    menu_options=("1  Exit" "2  Pick wallpapers" "3  Download image")
 
-    if [ "$XDG_SESSION_TYPE" != "wayland" ]; then
-        wrofi_args=(\
-            "-mesg" \
-            "Saturation: $saturation_amount | Backend: $backend" \
-            "-theme-str" "listview {lines: 6;}" \
-            "-no-show-icons")
-    else
-        wrofi_args=(\
-            "-p" "Saturation: $saturation_amount | Backend: $backend"
-            "--lines" "7"
-        )
-    fi
+    wrofi_args=(\
+        "-theme-str" "listview {lines: 3;}" \
+        "-no-show-icons")
 
     option=$(printf "%s\n" "${menu_options[@]}" | wrofi-switch "${wrofi_args[@]}")
 
     case "$option" in
         "${menu_options[1]}") show-chooser ;;
         "${menu_options[2]}") download-image ;;
-        "${menu_options[3]}") clear-cache ;;
-        "${menu_options[4]}") set-saturation ;;
-        "${menu_options[5]}") set-backend ;;
         *) exit ;;
     esac
 }
 
 while true; do
-    load-config
     show-menu
 done
