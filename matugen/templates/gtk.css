@@ -21,9 +21,11 @@
 @define-color sidebar_border_color @window_bg_color;
 @define-color sidebar_backdrop_color @window_bg_color;
 
+@define-color thunar_bg_color {{ colors.surface.default.rgba | set_alpha: 0.6 }};
+
 .thunar,
 .thunar .sidebar,
-.thunar .sidebar.view { background-color: @sidebar_bg_color; }
+.thunar .sidebar.view { background-color: @thunar_bg_color; }
 .thunar .standard-view .view {
-    background-color: @window_bg_color;
+    background-color: @thunar_bg_color;
 }
