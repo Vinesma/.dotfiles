@@ -106,8 +106,16 @@ hl.window_rule({
 })
 hl.window_rule({
     float = true,
+    persistent_size = true,
     match = {
         title = "^Bottles$",
+    },
+})
+hl.window_rule({
+    float = true,
+    persistent_size = true,
+    match = {
+        title = "^Flatseal$",
     },
 })
 hl.window_rule({
