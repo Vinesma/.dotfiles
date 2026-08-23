@@ -1,0 +1,11 @@
+[Unit]
+Description=Keep track of mpd plays using mpdstats
+Requires=mpd.service
+After=mpd.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/beet mpdstats
+
+[Install]
+WantedBy=default.target

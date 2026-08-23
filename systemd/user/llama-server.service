@@ -1,0 +1,20 @@
+[Unit]
+Description=Start llama-server with custom configuration
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/llama-server \
+    --models-preset .dotfiles/llama-cpp/presets.ini \
+    --models-dir .cache/huggingface/hub \
+    --no-models-autoload \
+    --port 9931 \
+    --api-key opensesame \
+    --sleep-idle-seconds 180
+Restart=always
+User=vinesma
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
