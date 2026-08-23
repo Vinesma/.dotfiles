@@ -15,14 +15,14 @@ if SecondaryMonitor then
 
     hl.monitor({
         output   = PrimaryMonitor,
-        mode     = "preferred",
+        mode     = "1920x1080@120",
         position = "1920x0",
         scale    = "1",
     })
 else
     hl.monitor({
         output   = PrimaryMonitor,
-        mode     = "preferred",
+        mode     = "1920x1080@120",
         position = "0x0",
         scale    = "1",
     })
