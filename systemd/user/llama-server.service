@@ -10,7 +10,7 @@ ExecStart=/usr/bin/llama-server \
     --no-models-autoload \
     --port 9931 \
     --api-key opensesame \
-    --sleep-idle-seconds 180
+    --sleep-idle-seconds 300
 Restart=always
 User=vinesma
 StandardOutput=journal
