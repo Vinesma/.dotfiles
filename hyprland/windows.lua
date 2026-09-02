@@ -7,8 +7,13 @@ require("globals")
 -- and https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 
 local firstWorkspaceMonitor
+local firstWorkspaceMonitorLayoutOptions = {}
+
 if SecondaryMonitor then
     firstWorkspaceMonitor = SecondaryMonitor
+    firstWorkspaceMonitorLayoutOptions = {
+        orientation = "right",
+    }
 else
     firstWorkspaceMonitor = PrimaryMonitor
 end
@@ -17,9 +22,7 @@ hl.workspace_rule({
     workspace = "1",
     monitor = firstWorkspaceMonitor,
     default = true,
-    layout_opts = {
-        orientation = "right",
-    },
+    layout_opts = firstWorkspaceMonitorLayoutOptions,
 })
 hl.workspace_rule({
     workspace = "2",
@@ -72,8 +75,14 @@ hl.window_rule({
     float = true,
 })
 
+local obsidianWorkspace
+if SecondaryMonitor then
+    obsidianWorkspace = "1"
+else
+    obsidianWorkspace = "2"
+end
 hl.window_rule({
-    workspace = "1 silent",
+    workspace = obsidianWorkspace .. " silent",
     opacity = "0.88 override 0.88 override",
     match = {
         class = "^md.obsidian.Obsidian$",
