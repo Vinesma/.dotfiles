@@ -1,6 +1,6 @@
 directory: ~/Music
 library:  ~/Music/.library/library.db
-plugins: musicbrainz deezer fetchart convert smartplaylist play unimported mpdupdate mpdstats
+plugins: musicbrainz deezer fetchart convert smartplaylist mpdupdate play unimported mpdstats
 paths:
   default: $album%aunique{}/$track - $title
   singleton: $title - $artist/$title
@@ -69,8 +69,9 @@ mpdupdate:
 mpd:
   host: localhost
   port: 6600
+  played_ratio_threshold: 0.75
 unimported:
-    ignore_extensions: nfo m3u
+    ignore_extensions: nfo m3u jpg png
     ignore_subdirectories: .library
 play:
   command: mpc add -q
