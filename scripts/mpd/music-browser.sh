@@ -65,7 +65,7 @@ show-menu() {
     local album
     local menu_options
     local wrofi_args
-    all_albums=$(mpc ls)
+    all_albums=$(mpc lsdirs)
     menu_options=(' EXIT' ' Play All' ' Clear Queue' ' Show Playlists' '况 Show All' "$all_albums")
 
     if [ "$XDG_SESSION_TYPE" != "wayland" ]; then
