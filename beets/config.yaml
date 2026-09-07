@@ -2,10 +2,10 @@ directory: ~/Music
 library:  ~/Music/.library/library.db
 plugins: musicbrainz deezer fetchart convert smartplaylist mpdupdate play unimported mpdstats
 paths:
-  default: $album%aunique{}/$track - $title
+  default: $album/$track - $title
   singleton: $title - $artist/$title
-  comp: $album%aunique{}/$track - $title
-  showartistflag:yes: $album%aunique{} - $albumartist/$track - $title
+  comp: $album/$track - $title
+  showartistflag:yes: $album - $albumartist/$track - $title
 format_item: $album - $artist - $title
 sort_item: album+ artist+ disc+ track+
 clutter: ['Thumbs.DB', '.DS_Store', 'album.nfo']
