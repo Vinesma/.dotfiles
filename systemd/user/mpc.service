@@ -6,7 +6,6 @@ After=mpd.service
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/mpc -q random on
-ExecStart=/usr/bin/mpc -q repeat on
 ExecStart=/usr/bin/mpc -q crossfade 3
 
 [Install]
