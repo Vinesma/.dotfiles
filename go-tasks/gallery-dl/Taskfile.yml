@@ -1,0 +1,42 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+
+version: '3'
+
+vars:
+  SERVER_HOST: 'serverpi_local'
+  SERVER_DIR: '{{.SERVER_HOST}}:/mnt/storage'
+  SERVER_SELFHOSTED_DIR: '{{.SERVER_DIR}}/PROJECTS/selfhosted-services'
+
+tasks:
+  image:
+    aliases: [i, art]
+    desc: Download images
+    dir: "./Projects/szurubooru-toolkit/uploads"
+    preconditions:
+      - sh: 'command -v gallery-dl'
+        msg: "gallery-dl not found. Install gallery-dl before running this task. Halting."
+    cmds:
+      - gallery-dl -D . {{.CLI_ARGS}}
+    silent: true
+
+  image-tag:
+    aliases: [it, artt]
+    desc: Download images with tags from source
+    dir: "./Projects/szurubooru-toolkit/uploads"
+    preconditions:
+      - sh: 'command -v gallery-dl'
+        msg: "gallery-dl not found. Install gallery-dl before running this task. Halting."
+    cmds:
+      - gallery-dl -D . --write-tags {{.CLI_ARGS}}
+    silent: true
+
+  staggered-downloader:
+    aliases: [stg-dls]
+    desc: Download galleries from a file but wait some time between gallery downloads
+    dir: "./Documents/Misc"
+    preconditions:
+      - sh: 'command -v gallery-dl'
+        msg: "gallery-dl not found. Install gallery-dl before running this task. Halting."
+    cmds:
+      - ./staggered-downloader -i "$HOME/Notes/Automation/ToDownload.md" -s 15m -l 4 --
+    silent: true

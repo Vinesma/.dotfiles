@@ -1,0 +1,92 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+
+version: '3'
+
+vars:
+  SERVER_HOST: 'serverpi_local'
+  SERVER_DIR: '/mnt/storage'
+  SERVER_SELFHOSTED_DIR: '{{.SERVER_DIR}}/PROJECTS/selfhosted-services'
+
+tasks:
+  video-sync:
+    desc: Sync video folder to server
+    dir: "./Videos"
+    preconditions:
+      - sh: 'command -v rsync'
+        msg: "rsync not found. Install rsync before running this task. Halting."
+    cmds:
+      - printf "### [{{.TASK}}] %s\n" "Sync"
+      - rsync -r --info=progress2 ./ "{{.SERVER_HOST}}:{{.SERVER_DIR}}/MEDIA/Videos/Porn"
+      - printf "\n### [{{.TASK}}] %s\n" "Cleanup"
+      - find . -type f -delete
+    silent: true
+
+  imageboard-upload:
+    aliases: [img]
+    desc: Upload all categories to the server imageboard
+    cmds:
+      - task: imageboard-upload-art
+      - printf "\n"
+      - task: imageboard-upload-memes
+    silent: true
+
+  imageboard-upload-art:
+    desc: Upload art with tagging enabled to the server imageboard
+    dir: "./Projects/szurubooru-toolkit"
+    vars:
+      UPLOADS_DIR: "$HOME/Projects/szurubooru-toolkit/uploads"
+      ART_DIR: "$HOME/Pictures/Art"
+    cmds:
+      - printf "### [{{.TASK}}] %s\n" "Uploading art"
+      - cmd: uv run szuru-toolkit upload-media "{{.UPLOADS_DIR}}"
+        if: test $(find "{{.UPLOADS_DIR}}" -type f | wc -l) -gt 0
+      - cmd: uv run szuru-toolkit upload-media "{{.ART_DIR}}"
+        if: test $(find "{{.ART_DIR}}" -type f | wc -l) -gt 0
+    silent: true
+
+  imageboard-upload-memes:
+    desc: Upload memes to the server imageboard
+    dir: "./Projects/szurubooru-toolkit"
+    vars:
+      MEMES_DIR: "$HOME/Pictures/Memes"
+      REACTIONS_DIR: "$HOME/Pictures/Reactions"
+    cmds:
+      - printf "### [{{.TASK}}] %s\n" "Uploading memes/reactions"
+      - cmd: uv run szuru-toolkit upload-media --no-auto-tag --tags "meme" "{{.MEMES_DIR}}"
+        if: test $(find "{{.MEMES_DIR}}" -type f | wc -l) -gt 0
+      - cmd: uv run szuru-toolkit upload-media --no-auto-tag --tags "meme,reaction_image" "{{.REACTIONS_DIR}}"
+        if: test $(find "{{.REACTIONS_DIR}}" -type f | wc -l) -gt 0
+    silent: true
+
+  services-up:
+    aliases: [up]
+    desc: Starts all of the server's services
+    cmds:
+      - printf "### [{{.TASK}}] %s\n" "Starting services"
+      - cmd: kitty +kitten ssh "{{.SERVER_HOST}}" "cd {{.SERVER_SELFHOSTED_DIR}} && bash up-all.sh"
+        if: 'command -v kitty'
+      - cmd: ssh "{{.SERVER_HOST}}" "cd {{.SERVER_SELFHOSTED_DIR}} && bash up-all.sh"
+        if: '! command -v kitty'
+    silent: true
+
+  services-down:
+    aliases: [down]
+    desc: Stops all of the server's services
+    cmds:
+      - printf "### [{{.TASK}}] %s\n" "Stopping services"
+      - cmd: kitty +kitten ssh "{{.SERVER_HOST}}" "cd {{.SERVER_SELFHOSTED_DIR}} && bash down-all.sh"
+        if: 'command -v kitty'
+      - cmd: ssh "{{.SERVER_HOST}}" "cd {{.SERVER_SELFHOSTED_DIR}} && bash down-all.sh"
+        if: '! command -v kitty'
+    silent: true
+
+  services-update:
+    aliases: [update]
+    desc: Updates all of the server's services
+    cmds:
+      - printf "### [{{.TASK}}] %s\n" "Updating services"
+      - cmd: kitty +kitten ssh "{{.SERVER_HOST}}" "cd {{.SERVER_SELFHOSTED_DIR}} && bash update-all.sh"
+        if: 'command -v kitty'
+      - cmd: ssh "{{.SERVER_HOST}}" "cd {{.SERVER_SELFHOSTED_DIR}} && bash update-all.sh"
+        if: '! command -v kitty'
+    silent: true

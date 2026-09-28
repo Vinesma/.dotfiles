@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+
+version: '3'
+
+includes:
+  server:
+    taskfile: $HOME/.dotfiles/go-tasks/server/Taskfile.yml
+    aliases: [s]
+  gallery-dl:
+    taskfile: $HOME/.dotfiles/go-tasks/gallery-dl/Taskfile.yml
+    aliases: [dlg]
+
+tasks:
+  test:
+    desc: Test templates and variables
+    cmds:
+      - echo "{{.SERVER_SELFHOSTED_DIR}}"
