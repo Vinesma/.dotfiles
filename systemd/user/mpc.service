@@ -1,5 +1,5 @@
 [Unit]
-Description=Enable repeat/shuffle/crossfade on mpd
+Description=Enable shuffle/crossfade on mpd
 Requires=mpd.service
 After=mpd.service
 
