@@ -2,6 +2,10 @@
 
 version: '3'
 
+vars:
+  LOG_FORMAT_HEADER: "### [{{.TASK}}] %s\n"
+  LOG_FORMAT_INNER: "\n### [{{.TASK}}] %s\n"
+
 includes:
   server:
     taskfile: $HOME/.dotfiles/go-tasks/server/Taskfile.yml
@@ -11,6 +15,70 @@ includes:
     aliases: [dlg]
 
 tasks:
+  linker:
+    desc: Symlink taskfiles to system folders
+    cmds:
+      - ln -sfv "$HOME/.dotfiles/go-tasks/video/Taskfile.yml" "$HOME/Videos/"
+      - ln -sfv "$HOME/.dotfiles/go-tasks/games/Taskfile.yml" "$HOME/Downloads/Games/"
+    silent: true
+
+  report:
+    desc: Generate a report of things to work on
+    vars:
+      IMAGES_TO_CATEGORIZE:
+        sh: find "$HOME/Pictures/Uncategorized" -type f | wc -l
+      IMAGES_TO_UPLOAD_1:
+        sh: find "$HOME/Pictures/"{Art,Memes,Reactions} -type f | wc -l
+      IMAGES_TO_UPLOAD_2:
+        sh: find "$HOME/Projects/szurubooru-toolkit/uploads" -type f \! -name "*.txt" | wc -l
+      IMAGES_TO_UPLOAD:
+        sh: printf $(({{.IMAGES_TO_UPLOAD_1}} + {{.IMAGES_TO_UPLOAD_2}}))
+      WIPS_TO_UPLOAD:
+        sh: find "$HOME/Documents/WIP" -type f | wc -l
+      GALLERIES_TO_DOWNLOAD:
+        sh: wc -l < "$HOME/Notes/Automation/ToDownload.md"
+      GALLERIES_TO_UPLOAD:
+        sh: find "$HOME/Documents/Misc/gallery-dl" -mindepth 2 -type d | wc -l
+      TOTAL_MUSIC:
+        sh: beet stats | grep Tracks | cut -d ' ' -f2
+      LOW_QUALITY_MUSIC:
+        sh: beet list bitrate:..319000 | wc -l
+      HIGH_QUALITY_MUSIC:
+        sh: beet list format:=FLAC | wc -l
+      UNTAGGED_MUSIC:
+        sh: beet list mood::'^$' | wc -l
+      UNTAGGED_FAVS:
+        sh: beet list favorite:yes mood::"^$" | wc -l
+      LOW_RATED_MUSIC:
+        sh: beet list rating:..0.4 skip_count:2.. | wc -l
+      HIGH_RATED_MUSIC:
+        sh: beet list -f '    $title - $album' favorite::"^$" rating:0.75.. play_count:3..
+      UNTAGGED_HIGH_RATED_MUSIC:
+        sh: printf "{{.HIGH_RATED_MUSIC}}" | wc -l
+      HIGH_RATED_MUSIC_SAMPLE:
+        sh: printf "{{.HIGH_RATED_MUSIC}}" | sort -R | head -n 5
+      PENDING_TASKS:
+        sh: grep -he '- \[ \]' "$HOME"/Notes/Tasks/{Job,House,Programming,Server}* | cut -d ' ' -f4- | sort -R | head -n 8
+    cmds:
+      - printf "{{.LOG_FORMAT_HEADER}}" "Art"
+      - printf "- %s = %s\n" "Images to categorize" "{{.IMAGES_TO_CATEGORIZE}}"
+      - printf "- %s = %s\n" "Images to upload" "{{.IMAGES_TO_UPLOAD}}"
+      - printf "- %s = %s\n" "WIPs to upload" "{{.WIPS_TO_UPLOAD}}"
+      - printf "- %s = %s\n" "Galleries to upload" "{{.GALLERIES_TO_UPLOAD}}"
+      - printf "- %s = %s\n" "Galleries to download" "{{.GALLERIES_TO_DOWNLOAD}}"
+      - printf "{{.LOG_FORMAT_INNER}}" "Music"
+      - printf "- %s = %s\n" "Untagged music" "{{.UNTAGGED_MUSIC}}"
+      - printf "    %s\n" "Use \"beet play mood::'^$'\" to queue these up for some tagging!"
+      - printf "- %s = %s\n" "Untagged favorites" "{{.UNTAGGED_FAVS}}"
+      - printf "- %s = %s\n" "Low quality music (vs. total)" "{{.LOW_QUALITY_MUSIC}} / {{.TOTAL_MUSIC}}"
+      - printf "- %s = %s\n" "High quality music (vs. total)" "{{.HIGH_QUALITY_MUSIC}} / {{.TOTAL_MUSIC}}"
+      - printf "- %s = %s\n" "Low rated music" "{{.LOW_RATED_MUSIC}}"
+      - printf "- %s = %s\n" "Highly rated music that is not favorited" "{{.UNTAGGED_HIGH_RATED_MUSIC}}"
+      - printf "%s\n" "{{.HIGH_RATED_MUSIC_SAMPLE}}"
+      - printf "{{.LOG_FORMAT_INNER}}" "Pending Tasks (Sample)"
+      - printf "\n%s\n" "{{.PENDING_TASKS}}"
+    silent: true
+
   test:
     desc: Test templates and variables
     cmds:

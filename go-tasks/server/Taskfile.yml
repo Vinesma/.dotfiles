@@ -6,21 +6,10 @@ vars:
   SERVER_HOST: 'serverpi_local'
   SERVER_DIR: '/mnt/storage'
   SERVER_SELFHOSTED_DIR: '{{.SERVER_DIR}}/PROJECTS/selfhosted-services'
+  LOG_FORMAT_HEADER: "### [{{.TASK}}] %s\n"
+  LOG_FORMAT_INNER: "\n### [{{.TASK}}] %s\n"
 
 tasks:
-  video-sync:
-    desc: Sync video folder to server
-    dir: "./Videos"
-    preconditions:
-      - sh: 'command -v rsync'
-        msg: "rsync not found. Install rsync before running this task. Halting."
-    cmds:
-      - printf "### [{{.TASK}}] %s\n" "Sync"
-      - rsync -r --info=progress2 ./ "{{.SERVER_HOST}}:{{.SERVER_DIR}}/MEDIA/Videos/Porn"
-      - printf "\n### [{{.TASK}}] %s\n" "Cleanup"
-      - find . -type f -delete
-    silent: true
-
   imageboard-upload:
     aliases: [img]
     desc: Upload all categories to the server imageboard
@@ -37,7 +26,7 @@ tasks:
       UPLOADS_DIR: "$HOME/Projects/szurubooru-toolkit/uploads"
       ART_DIR: "$HOME/Pictures/Art"
     cmds:
-      - printf "### [{{.TASK}}] %s\n" "Uploading art"
+      - printf "{{.LOG_FORMAT_HEADER}}" "Uploading art"
       - cmd: uv run szuru-toolkit upload-media "{{.UPLOADS_DIR}}"
         if: test $(find "{{.UPLOADS_DIR}}" -type f | wc -l) -gt 0
       - cmd: uv run szuru-toolkit upload-media "{{.ART_DIR}}"
@@ -51,7 +40,7 @@ tasks:
       MEMES_DIR: "$HOME/Pictures/Memes"
       REACTIONS_DIR: "$HOME/Pictures/Reactions"
     cmds:
-      - printf "### [{{.TASK}}] %s\n" "Uploading memes/reactions"
+      - printf "{{.LOG_FORMAT_HEADER}}" "Uploading memes/reactions"
       - cmd: uv run szuru-toolkit upload-media --no-auto-tag --tags "meme" "{{.MEMES_DIR}}"
         if: test $(find "{{.MEMES_DIR}}" -type f | wc -l) -gt 0
       - cmd: uv run szuru-toolkit upload-media --no-auto-tag --tags "meme,reaction_image" "{{.REACTIONS_DIR}}"
@@ -62,7 +51,7 @@ tasks:
     aliases: [up]
     desc: Starts all of the server's services
     cmds:
-      - printf "### [{{.TASK}}] %s\n" "Starting services"
+      - printf "{{.LOG_FORMAT_HEADER}}" "Starting services"
       - cmd: kitty +kitten ssh "{{.SERVER_HOST}}" "cd {{.SERVER_SELFHOSTED_DIR}} && bash up-all.sh"
         if: 'command -v kitty'
       - cmd: ssh "{{.SERVER_HOST}}" "cd {{.SERVER_SELFHOSTED_DIR}} && bash up-all.sh"
@@ -73,7 +62,7 @@ tasks:
     aliases: [down]
     desc: Stops all of the server's services
     cmds:
-      - printf "### [{{.TASK}}] %s\n" "Stopping services"
+      - printf "{{.LOG_FORMAT_HEADER}}" "Stopping services"
       - cmd: kitty +kitten ssh "{{.SERVER_HOST}}" "cd {{.SERVER_SELFHOSTED_DIR}} && bash down-all.sh"
         if: 'command -v kitty'
       - cmd: ssh "{{.SERVER_HOST}}" "cd {{.SERVER_SELFHOSTED_DIR}} && bash down-all.sh"
@@ -84,9 +73,33 @@ tasks:
     aliases: [update]
     desc: Updates all of the server's services
     cmds:
-      - printf "### [{{.TASK}}] %s\n" "Updating services"
+      - printf "{{.LOG_FORMAT_HEADER}}" "Updating services"
       - cmd: kitty +kitten ssh "{{.SERVER_HOST}}" "cd {{.SERVER_SELFHOSTED_DIR}} && bash update-all.sh"
         if: 'command -v kitty'
       - cmd: ssh "{{.SERVER_HOST}}" "cd {{.SERVER_SELFHOSTED_DIR}} && bash update-all.sh"
         if: '! command -v kitty'
+    silent: true
+
+  backup:
+    desc: Mount an external drive and sync server files to it
+    vars:
+      DRIVE_DEVICE: /dev/sdb1
+      MAPPED_NAME: crypt
+      MOUNT_POINT: /mnt/ssd
+    cmds:
+      - printf "{{.LOG_FORMAT_HEADER}}" "Decrypting backup drive..."
+      - sudo cryptsetup open "{{.DRIVE_DEVICE}}" "{{.MAPPED_NAME}}"
+      - printf "{{.LOG_FORMAT_INNER}}" "Mounting decrypted drive..."
+      - sudo mkdir -p "{{.MOUNT_POINT}}"
+      - sudo mount "/dev/mapper/{{.MAPPED_NAME}}" "{{.MOUNT_POINT}}"
+      - printf "{{.LOG_FORMAT_INNER}}" "Running server down before backup..."
+      - task: services-down
+      - printf "{{.LOG_FORMAT_INNER}}" "Interactive session complete, you may now step away from the keyboard and grab a coffee. Backup will be done shortly."
+      - printf "{{.LOG_FORMAT_INNER}}" "Starting backup..."
+      - cmd: rsync -aHAX --delete --info=progress2 "{{.SERVER_HOST}}":"{{.SERVER_DIR}}/" "{{.MOUNT_POINT}}"
+        ignore_error: true
+      - printf "{{.LOG_FORMAT_INNER}}" "Running server up after backup..."
+      - task: services-up
+      - cmd: shutdown now
+        if: '[ {{eq .CLI_ARGS "shutdown"}} || {{eq .CLI_ARGS "s"}} ]'
     silent: true

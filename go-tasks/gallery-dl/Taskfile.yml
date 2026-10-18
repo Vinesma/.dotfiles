@@ -9,7 +9,7 @@ vars:
 
 tasks:
   image:
-    aliases: [i, art]
+    aliases: [i, img]
     desc: Download images
     dir: "./Projects/szurubooru-toolkit/uploads"
     preconditions:
@@ -20,7 +20,7 @@ tasks:
     silent: true
 
   image-tag:
-    aliases: [it, artt]
+    aliases: [it, imgt]
     desc: Download images with tags from source
     dir: "./Projects/szurubooru-toolkit/uploads"
     preconditions:
