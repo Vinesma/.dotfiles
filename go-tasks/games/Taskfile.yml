@@ -1,0 +1,51 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+
+version: '3'
+
+vars:
+  SERVER_HOST: 'serverpi_local'
+  SERVER_DIR: '/mnt/storage'
+
+tasks:
+  'backup:r18':
+    desc: Loop through all R18 games in this folder and back them up.
+    dir: '{{.USER_WORKING_DIR}}'
+    preconditions:
+      - sh: 'command -v rsync'
+        msg: "rsync not found. Install rsync before running this task. Halting."
+    cmds:
+      - task: zip-folders
+
+      - rsync -vP '*.tar.zstd' "{{.SERVER_HOST}}":"{{.SERVER_DIR}}"/BACKUPS/GAMES/R18
+
+      - task: rm-folders
+
+      - task: rm-archives
+    silent: true
+
+  zip-folders:
+    internal: true
+    desc: Zip all folders in this directory
+    dir: '{{.USER_WORKING_DIR}}'
+    preconditions:
+      - sh: 'command -v zstd'
+        msg: "zstd not found. Install zstd before running this task. Halting."
+    cmds:
+      - sh: 'for d in *; do [ -d "$d" ] && tar --zstd -cf "$d.tar.zstd" "$d"; done'
+    silent: true
+
+  rm-folders:
+    internal: true
+    desc: Delete all folders in this directory
+    dir: '{{.USER_WORKING_DIR}}'
+    cmds:
+      - sh: 'for d in *; do [ -d "$d" ] && rm -rf "$d"; done'
+    silent: true
+
+  rm-archives:
+    internal: true
+    desc: Delete all .tar.zstd archives in this directory
+    dir: '{{.USER_WORKING_DIR}}'
+    cmds:
+      - sh: 'for a in *.tar.zstd; do [ -f "$a" ] && rm -f "$a"; done'
+    silent: true
