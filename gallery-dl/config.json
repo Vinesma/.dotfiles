@@ -130,6 +130,11 @@
         {
             "filename": "{id}_{title[b0:120]}_{num:>02}_{filename[b0:120]}.{extension}"
         },
+        "pawchive":
+        {
+            "cookies": ["firefox"],
+            "sleep": "3"
+        },
         "flickr":
         {
             "exif": false,
