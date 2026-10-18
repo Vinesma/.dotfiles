@@ -27,6 +27,9 @@ convert:
   format: mp3
   formats:
     mp3: ffmpeg -i $source -y -vn -ab 320k $dest
+    mp3volup:
+      command: "ffmpeg -i $source -y -vn -ab 320k -filter:a \"volume=1.5\" $dest"
+      extension: mp3
 smartplaylist:
   relative_to: ~/Music
   playlist_dir: ~/Music
@@ -34,6 +37,9 @@ smartplaylist:
   playlists:
       - name: Favorites.m3u
         query: 'favorite:yes'
+
+      - name: High Rated.m3u
+        query: 'rating:0.75.. play_count:3..'
 
       - name: Calm.m3u
         query: 'mood:Calm'
