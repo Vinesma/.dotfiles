@@ -1,6 +1,6 @@
 directory: ~/Music
 library:  ~/Music/.library/library.db
-plugins: musicbrainz deezer fetchart convert smartplaylist mpdupdate play unimported mpdstats
+plugins: musicbrainz deezer fetchart convert smartplaylist play unimported mpdstats
 paths:
   default: $album/$track - $title
   singleton: $title - $artist/$title
