@@ -237,3 +237,7 @@ music-info() {
     beet list -f '%ifdef{favorite,[♥] }$album / $track $title %ifdef{mood,[mood=$mood]}' "$@"
 }
 
+ai() {
+    docker compose -f ~/.dotfiles/pi/docker-compose.yml run --rm -w /workspace pi
+}
+

@@ -1,0 +1,33 @@
+services:
+  pi:
+    image: pi-sandbox
+    user: "1000:1000"
+    stdin_open: true
+    tty: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 256
+    extra_hosts:
+      - "host.docker.internal:172.30.0.1"
+    environment:
+      HOME: /home/node
+    volumes:
+      - type: bind
+        source: ${PWD:?Run Compose from the project directory}
+        target: /workspace
+      - type: bind
+        source: ${HOME}/.pi/agent
+        target: /home/node/.pi/agent
+    networks:
+      - pi-isolated
+
+networks:
+  pi-isolated:
+    driver: bridge
+    internal: true
+    ipam:
+      config:
+        - subnet: 172.30.0.0/24
+          gateway: 172.30.0.1

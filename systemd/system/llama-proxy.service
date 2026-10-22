@@ -1,0 +1,13 @@
+[Unit]
+Description=Forward Docker bridge connections to local llama-server
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/socat TCP4-LISTEN:9932,bind=172.30.0.1,reuseaddr,fork TCP4:127.0.0.1:9931
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
