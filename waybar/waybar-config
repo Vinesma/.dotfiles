@@ -8,7 +8,7 @@
     "spacing": 4,
     "modules-left": ["custom/distro", "hyprland/workspaces", "hyprland/window"],
     "modules-center": ["mpd"],
-    "modules-right": ["network", "custom/updates", "custom/volume", "battery", "tray", "clock"],
+    "modules-right": ["network", "custom/pomodoro", "custom/updates", "custom/volume", "battery", "tray", "clock"],
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
@@ -112,6 +112,13 @@
         "on-click": "mpc toggle -q",
         "on-scroll-up": "mpc -q volume +10",
         "on-scroll-down": "mpc -q volume -10"
+    },
+    "custom/pomodoro": {
+        "exec": "~/.dotfiles/waybar/scripts/pomodoro.sh",
+        "interval": 1,
+        "on-click": "~/.dotfiles/waybar/scripts/pomodoro.sh toggle",
+        "on-click-right": "~/.dotfiles/waybar/scripts/pomodoro.sh reset",
+        "tooltip-format": "Left click: start / pause\nRight click: reset"
     }
 }
 
