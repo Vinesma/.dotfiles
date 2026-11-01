@@ -24,6 +24,7 @@ replace:
 convert:
   copy_album_art: yes
   never_convert_lossy_files: yes
+  keep_new: yes
   format: mp3
   formats:
     mp3: ffmpeg -i $source -y -vn -ab 320k $dest
