@@ -133,7 +133,8 @@
         "pawchive":
         {
             "cookies": ["firefox"],
-            "sleep": "3"
+            "sleep": "3",
+            "file-filter": ["'cover' not in filename.lower()", "extension.lower() != 'psd'"]
         },
         "flickr":
         {
