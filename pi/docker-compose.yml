@@ -1,5 +1,8 @@
 services:
   pi:
+    build:
+      context: .
+      dockerfile: Dockerfile.pi
     image: pi-sandbox
     user: "1000:1000"
     stdin_open: true
