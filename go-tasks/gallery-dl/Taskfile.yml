@@ -28,6 +28,7 @@ tasks:
         msg: "gallery-dl not found. Install gallery-dl before running this task. Halting."
     cmds:
       - gallery-dl -D . --write-tags {{.CLI_ARGS}}
+      - for FILE in *.*.txt; do mv "$FILE" "${FILE%%.*}.txt"; done
     silent: true
 
   staggered-downloader:
