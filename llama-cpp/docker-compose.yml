@@ -1,0 +1,23 @@
+services:
+  llama-server:
+    image: ghcr.io/ggml-org/llama.cpp:server-vulkan
+    command:
+      - --models-preset
+      - /config/presets.ini
+      - --models-dir
+      - /models
+      - --no-models-autoload
+      - --port
+      - "9931"
+      - --api-key
+      - ${LLAMA_API_KEY:?Set LLAMA_API_KEY in the environment file}
+      - --sleep-idle-seconds
+      - "300"
+    ports:
+      - "9931:9931"
+    volumes:
+      - /home/vinesma/.dotfiles/llama-cpp/presets.ini:/config/presets.ini:ro
+      - /home/vinesma/.cache/huggingface/hub:/models
+    devices:
+      - /dev/dri:/dev/dri
+    restart: "no"

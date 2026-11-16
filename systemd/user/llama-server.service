@@ -1,20 +1,16 @@
 [Unit]
-Description=Start llama-server with custom configuration
-After=network.target
+Description=llama.cpp server via Docker Compose
+After=docker.service
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/llama-server \
-    --models-preset .dotfiles/llama-cpp/presets.ini \
-    --models-dir .cache/huggingface/hub \
-    --no-models-autoload \
-    --port 9931 \
-    --api-key opensesame \
-    --sleep-idle-seconds 300
+WorkingDirectory=%h/.dotfiles/llama-cpp
+EnvironmentFile=%h/.dotfiles/llama-cpp/llama.env
+ExecStart=/usr/bin/docker compose --env-file /home/vinesma/.dotfiles/llama-cpp/llama.env up --no-color --abort-on-container-exit
+ExecStop=/usr/bin/docker compose --env-file /home/vinesma/.dotfiles/llama-cpp/llama.env down
 Restart=always
-User=vinesma
-StandardOutput=journal
-StandardError=journal
+RestartSec=5
+TimeoutStopSec=30
 
 [Install]
 WantedBy=default.target
