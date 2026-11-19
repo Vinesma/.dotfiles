@@ -5,29 +5,30 @@ require("globals")
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 
-if SecondaryMonitor then
-    hl.monitor({
-        output   = SecondaryMonitor,
-        mode     = "preferred",
-        position = "0x0",
-        scale    = "1",
-    })
+local function monitor_entry(m)
+    local cfg = {
+        output   = m.name,
+        mode     = m.mode,
+        position = m.position,
+        scale    = m.scale,
+    }
+    if m.transform then
+        cfg.transform = m.transform
+    end
+    if m.vrr then
+        cfg.vrr = m.vrr
+    end
+    if m.cm then
+        cfg.cm = m.cm
+    end
+    if m.bitdepth then
+        cfg.bitdepth = m.bitdepth
+    end
+    return cfg
+end
 
-    hl.monitor({
-        output   = PrimaryMonitor,
-        mode     = "1920x1080@120",
-        position = "1920x0",
-        scale    = "1",
-        vrr      = 3,
-    })
-else
-    hl.monitor({
-        output   = PrimaryMonitor,
-        mode     = "1920x1080@120",
-        position = "0x0",
-        scale    = "1",
-        vrr      = 3,
-    })
+for _, m in ipairs(Monitors) do
+    hl.monitor(monitor_entry(m))
 end
 
 -- Fallback rule

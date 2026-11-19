@@ -44,37 +44,55 @@ hl.bind("ALT + tab", function()
     hl.dispatch(hl.dsp.window.cycle_next())
 end)
 
+local function bind_exec(bindings)
+    for key, cmd in pairs(bindings) do
+        hl.bind(key, hl.dsp.exec_cmd(cmd))
+    end
+end
+
 -- APPS
-hl.bind(MainMod .. " + return", hl.dsp.exec_cmd(Terminal))
-hl.bind(MainMod .. " + ALT + B", hl.dsp.exec_cmd(Browser))
-hl.bind(MainMod .. " + ALT + E", hl.dsp.exec_cmd(FileManager))
-hl.bind(MainMod .. " + ALT + S",
-    hl.dsp.exec_cmd("SDL_VIDEODRIVER=x11 gamescope -W 1920 -H 1080 -r 140 -e -f -- steam -gamepadui"))
-hl.bind(MainMod .. " + ALT + M", hl.dsp.exec_cmd(Terminal .. " -T MPD ncmpcpp -q"))
-hl.bind("CTRL + ALT + delete", hl.dsp.exec_cmd(Terminal .. " htop"))
+bind_exec({
+    [MainMod .. " + return"]      = Terminal,
+    [MainMod .. " + ALT + B"]     = Browser,
+    [MainMod .. " + ALT + E"]     = FileManager,
+    [MainMod .. " + ALT + S"]     = "steam -gamepadui",
+    [MainMod .. " + ALT + M"]     = Terminal .. " -T MPD ncmpcpp -q",
+    [MainMod .. " + ALT + W"]     = "~/.dotfiles/scripts/bg-setter/choose-bg.sh",
+    ["CTRL + ALT + delete"]       = Terminal .. " htop",
+})
 
 -- ROFI
-hl.bind(MainMod .. " + R", hl.dsp.exec_cmd("rofi -show drun -theme ~/.config/rofi/colors-rofi-launcher.rasi"))
-hl.bind(MainMod .. " + Q", hl.dsp.exec_cmd("~/.dotfiles/scripts/rofi/powermenu.sh"))
-hl.bind(MainMod .. " + E", hl.dsp.exec_cmd("rofi -show window -theme ~/.config/rofi/colors-rofi-launcher.rasi"))
-hl.bind(MainMod .. " + CTRL + M", hl.dsp.exec_cmd("~/.dotfiles/scripts/mpd/music-browser.sh"))
-hl.bind(MainMod .. " + ALT + W", hl.dsp.exec_cmd("~/.dotfiles/scripts/bg-setter/choose-bg.sh"))
-hl.bind(MainMod .. " + ALT + P", hl.dsp.exec_cmd("~/.dotfiles/scripts/mpv/clipboard-mpv.sh"))
+bind_exec({
+    [MainMod .. " + R"]           = "rofi -show drun -theme ~/.config/rofi/colors-rofi-launcher.rasi",
+    [MainMod .. " + CTRL + M"]    = "~/.dotfiles/scripts/mpd/music-browser.sh",
+    [MainMod .. " + ALT + P"]     = "~/.dotfiles/scripts/mpv/clipboard-mpv.sh",
+    [MainMod .. " + Q"]           = "~/.dotfiles/scripts/rofi/powermenu.sh",
+    [MainMod .. " + E"]           = "rofi -show window -theme ~/.config/rofi/colors-rofi-launcher.rasi",
+})
 
 -- MEDIA CONTROL
-hl.bind("pause", hl.dsp.exec_cmd(MediaControlScript .. " toggle"))
-hl.bind(MainMod .. " + P", hl.dsp.exec_cmd(MediaControlScript .. " toggle"))
-hl.bind(MainMod .. " + page_up", hl.dsp.exec_cmd(MediaControlScript .. " +10"))
-hl.bind(MainMod .. " + page_down", hl.dsp.exec_cmd(MediaControlScript .. " -10"))
-hl.bind(MainMod .. " + home", hl.dsp.exec_cmd(MediaControlScript .. " seek +10"))
-hl.bind(MainMod .. " + end", hl.dsp.exec_cmd(MediaControlScript .. " seek -10"))
-hl.bind(MainMod .. " + insert", hl.dsp.exec_cmd("mpc stop"))
-hl.bind(MainMod .. " + comma", hl.dsp.exec_cmd(MediaControlScript .. " jump prev"))
-hl.bind(MainMod .. " + period", hl.dsp.exec_cmd(MediaControlScript .. " jump next"))
-hl.bind("xf86audioplay", hl.dsp.exec_cmd("playerctl play-pause"))
-hl.bind("xf86audiostop", hl.dsp.exec_cmd("playerctl stop"))
-hl.bind("xf86audionext", hl.dsp.exec_cmd("playerctl next"))
-hl.bind("xf86audioprev", hl.dsp.exec_cmd("playerctl previous"))
+local media = function(cmd) return MediaControlScript .. cmd end
+bind_exec({
+    [MainMod .. " + P"]           = media(" toggle"),
+    [MainMod .. " + page_up"]     = media(" +10"),
+    [MainMod .. " + page_down"]   = media(" -10"),
+    [MainMod .. " + home"]        = media(" seek +10"),
+    [MainMod .. " + end"]         = media(" seek -10"),
+    [MainMod .. " + comma"]       = media(" jump prev"),
+    [MainMod .. " + period"]      = media(" jump next"),
+    ["pause"]                     = media(" toggle"),
+    ["xf86audioplay"]             = "playerctl play-pause",
+    ["xf86audiostop"]             = "playerctl stop",
+    ["xf86audionext"]             = "playerctl next",
+    ["xf86audioprev"]             = "playerctl previous",
+})
+
+-- NOTIFICATIONS
+bind_exec({
+    [MainMod .. " + H"]           = "dunstctl history-pop",
+    ["CTRL + space"]              = "dunstctl close",
+    ["CTRL + SHIFT + space"]      = "dunstctl close-all",
+})
 
 -- SCREENSHOTS
 hl.bind("Print",
@@ -82,38 +100,19 @@ hl.bind("Print",
         "grim -o \"$(hyprctl activeworkspace | grep -o \"monitor .*:\" | head -n 1 | cut -d ' ' -f2 | cut -d ':' -f1)\""))
 hl.bind(MainMod .. " + Print", hl.dsp.exec_cmd("grim -g \"$(slurp)\""))
 
--- NOTIFICATIONS
-hl.bind("CTRL + space", hl.dsp.exec_cmd("dunstctl close"))
-hl.bind("CTRL + SHIFT + space", hl.dsp.exec_cmd("dunstctl close-all"))
-hl.bind(MainMod .. " + H", hl.dsp.exec_cmd("dunstctl history-pop"))
-
 -- WINDOW SWAPPING
-hl.bind(MainMod .. " + SHIFT + left", function()
-    hl.dispatch(hl.dsp.window.move({ direction = "left" }))
-end)
-hl.bind(MainMod .. " + SHIFT + right", function()
-    hl.dispatch(hl.dsp.window.move({ direction = "right" }))
-end)
-hl.bind(MainMod .. " + SHIFT + up", function()
-    hl.dispatch(hl.dsp.window.move({ direction = "up" }))
-end)
-hl.bind(MainMod .. " + SHIFT + down", function()
-    hl.dispatch(hl.dsp.window.move({ direction = "down" }))
-end)
+for _, dir in ipairs({ "left", "right", "up", "down" }) do
+    hl.bind(MainMod .. " + SHIFT + " .. dir, function()
+        hl.dispatch(hl.dsp.window.move({ direction = dir }))
+    end)
+end
 
 -- FOCUS MOVE
-hl.bind(MainMod .. " + left", function()
-    hl.dispatch(hl.dsp.focus({ direction = "left" }))
-end)
-hl.bind(MainMod .. " + right", function()
-    hl.dispatch(hl.dsp.focus({ direction = "right" }))
-end)
-hl.bind(MainMod .. " + up", function()
-    hl.dispatch(hl.dsp.focus({ direction = "up" }))
-end)
-hl.bind(MainMod .. " + down", function()
-    hl.dispatch(hl.dsp.focus({ direction = "down" }))
-end)
+for _, dir in ipairs({ "left", "right", "up", "down" }) do
+    hl.bind(MainMod .. " + " .. dir, function()
+        hl.dispatch(hl.dsp.focus({ direction = dir }))
+    end)
+end
 
 local workspaceKeys = { 'A', 'S', 'D', 'F', 'G' }
 -- SWITCH WORKSPACES
@@ -122,12 +121,9 @@ for i = 1, #workspaceKeys do
 end
 
 -- MOVE ACTIVE WINDOW TO WORKSPACE
+-- + THE DON'T-FOLLOW VARIANT
 for i = 1, #workspaceKeys do
     hl.bind(MainMod .. " + CTRL + " .. workspaceKeys[i], hl.dsp.window.move({ workspace = i }))
-end
-
--- SAME AS ABOVE, BUT DO NOT FOLLOW THE WINDOW
-for i = 1, #workspaceKeys do
     hl.bind(MainMod .. " + SHIFT + " .. workspaceKeys[i], hl.dsp.window.move({ workspace = i, follow = false }))
 end
 

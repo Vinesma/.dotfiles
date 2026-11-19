@@ -6,16 +6,12 @@ require("globals")
 -- See https://wiki.hypr.land/Configuring/Basics/Window-Rules/
 -- and https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 
-local firstWorkspaceMonitor
+local primaryMonitor = PrimaryMonitor()
+local firstWorkspaceMonitor = SecondaryMonitor() or PrimaryMonitor()
 local firstWorkspaceMonitorLayoutOptions = {}
 
-if SecondaryMonitor then
-    firstWorkspaceMonitor = SecondaryMonitor
-    firstWorkspaceMonitorLayoutOptions = {
-        orientation = "right",
-    }
-else
-    firstWorkspaceMonitor = PrimaryMonitor
+if SecondaryMonitor() then
+    firstWorkspaceMonitorLayoutOptions.orientation = "right"
 end
 
 hl.workspace_rule({
@@ -26,20 +22,20 @@ hl.workspace_rule({
 })
 hl.workspace_rule({
     workspace = "2",
-    monitor = PrimaryMonitor,
+    monitor = primaryMonitor,
     default = true,
 })
 hl.workspace_rule({
     workspace = "3",
-    monitor = PrimaryMonitor,
+    monitor = primaryMonitor,
 })
 hl.workspace_rule({
     workspace = "4",
-    monitor = PrimaryMonitor,
+    monitor = primaryMonitor,
 })
 hl.workspace_rule({
     workspace = "5",
-    monitor = PrimaryMonitor
+    monitor = primaryMonitor
 })
 
 local suppressMaximizeRule = hl.window_rule({
@@ -75,12 +71,7 @@ hl.window_rule({
     float = true,
 })
 
-local obsidianWorkspace
-if SecondaryMonitor then
-    obsidianWorkspace = "1"
-else
-    obsidianWorkspace = "2"
-end
+local obsidianWorkspace = SecondaryMonitor() and "1" or "2"
 hl.window_rule({
     workspace = obsidianWorkspace .. " silent",
     opacity = "0.88 override 0.88 override",
@@ -133,41 +124,26 @@ hl.window_rule({
         title = "^Firefox — Sharing Indicator$",
     },
 })
-hl.window_rule({
-    float = true,
-    size = "(monitor_w*0.3) (monitor_h*0.4)",
-    match = {
-        title = "^Select Bottle$",
-    },
-})
-hl.window_rule({
-    float = true,
-    size = "(monitor_w*0.6) (monitor_h*0.6)",
-    match = {
-        title = "^Picture-in-Picture$",
-    },
-})
-hl.window_rule({
-    float = true,
-    size = "(monitor_w*0.8) (monitor_h*0.8)",
-    match = {
-        class = "^onion.torzu_emu.torzu$",
-    },
-})
-hl.window_rule({
-    float = true,
-    size = "(monitor_w*0.5) (monitor_h*0.5)",
-    match = {
-        class = "xdg-desktop-portal-gtk",
-    },
-})
-hl.window_rule({
-    float = true,
-    size = "(monitor_w*0.5) (monitor_h*0.5)",
-    match = {
-        class = "^[Tt]hunar$",
-    },
-})
+
+-- Floating rules
+local function float_rule(name, match, size)
+    hl.window_rule({
+        float = true,
+        name  = name,
+        match = match,
+        size  = size,
+    })
+end
+
+float_rule("select-bottle", { title = "^Select Bottle$" },         "(monitor_w*0.3) (monitor_h*0.4)")
+float_rule("pip",           { title = "^Picture-in-Picture$" },    "(monitor_w*0.6) (monitor_h*0.6)")
+float_rule("torzu",         { class = "^onion.torzu_emu.torzu$" }, "(monitor_w*0.8) (monitor_h*0.8)")
+float_rule("portal-gtk",    { class = "xdg-desktop-portal-gtk" },  "(monitor_w*0.5) (monitor_h*0.5)")
+float_rule("thunar",        { class = "^[Tt]hunar$" },             "(monitor_w*0.5) (monitor_h*0.5)")
+float_rule("mpv",           { class = "^mpv$" },                   "(monitor_w*0.4) (monitor_h*0.4)")
+float_rule("xarchiver",     { class = "^xarchiver$" },             "(monitor_w*0.3) (monitor_h*0.4)")
+float_rule("virt-manager",  { class = "^virt-manager$" },          "(monitor_w*0.4) (monitor_h*0.4)")
+
 hl.window_rule({
     size = "(monitor_w*0.3) (monitor_h*0.2)",
     match = {
@@ -193,27 +169,6 @@ hl.window_rule({
     },
 })
 hl.window_rule({
-    float = true,
-    size = "(monitor_w*0.4) (monitor_h*0.4)",
-    match = {
-        class = "^mpv$",
-    },
-})
-hl.window_rule({
-    float = true,
-    size = "(monitor_w*0.3) (monitor_h*0.4)",
-    match = {
-        class = "^xarchiver$",
-    },
-})
-hl.window_rule({
-    float = true,
-    size = "(monitor_w*0.4) (monitor_h*0.4)",
-    match = {
-        class = "^virt-manager$",
-    },
-})
-hl.window_rule({
     opacity = "0.85 override 0.85 override",
     match = {
         title = "^.*VSCodium$",
@@ -235,18 +190,17 @@ hl.window_rule({
     no_blur         = true,
     idle_inhibit    = "always",
 })
--- Rules for games
-hl.window_rule({
-    match = { class = "steam_app_.*|gamescope|steam_proton|retroarch" },
-    tag = "+game",
-})
-hl.window_rule({
-    match = { xdg_tag = "proton-game" },
-    tag = "+game"
-})
-hl.window_rule({
-    name         = "game-rule",
-    match        = { tag = "game" },
+
+-- Game rules
+local function tag_game(match)
+    hl.window_rule({ match = match, tag = "+game" })
+end
+
+tag_game({ class = "steam_app_.*|gamescope|steam_proton|retroarch" })
+tag_game({ xdg_tag = "proton-game" })
+
+-- Shared options applied to every game window rule.
+local game_opts = {
     content      = "game",
     center       = true,
     immediate    = true,
@@ -254,22 +208,21 @@ hl.window_rule({
     float        = true,
     opacity      = "2 2",
     idle_inhibit = "always",
-})
+}
+
 hl.window_rule({
-    name = "game-rule-fullscreen",
-    match = {
-        tag = "game",
-        fullscreen = true,
-    },
-    border_size = 0,
-    rounding = 0,
-    decorate = false,
-    force_rgbx = true,
+    name  = "game-rule",
+    match = { tag = "game" },
+    table.unpack(game_opts),
+    border_size     = 0,
+    rounding        = 0,
+    decorate        = false,
+    force_rgbx      = true,
     sync_fullscreen = true,
-    no_anim = true,
-    no_dim = true,
-    no_max_size = true,
-    no_shadow = true,
+    no_anim         = true,
+    no_dim          = true,
+    no_max_size     = true,
+    no_shadow       = true,
     persistent_size = true,
     focus_on_activate = true,
 })
