@@ -4,7 +4,8 @@
 require("globals")
 require("colors")
 
--- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
+-- Refer to https://wiki.hypr.land/hypr-ecosystem/dev/hyprlang/#defining-variables
+
 hl.config({
     general = {
         gaps_in     = 5,
@@ -21,7 +22,7 @@ hl.config({
             -- Set to true to enable resizing windows by clicking and dragging on borders and gaps
             resize_on_border = true,
 
-            -- Please see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/ before you turn this on
+            -- Please see https://wiki.hypr.land/configuring/extra/tearing before you turn this on
             allow_tearing    = false,
 
             layout           = "master",
@@ -56,7 +57,7 @@ hl.config({
     }
 )
 
--- Default curves and animations, see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/
+-- Default curves and animations, see https://wiki.hypr.land/configuring/core/animations
 hl.curve("easeOutQuint", { type = "bezier", points = { { 0.23, 1 }, { 0.32, 1 } } })
 hl.curve("easeInOutCubic", { type = "bezier", points = { { 0.65, 0.05 }, { 0.36, 1 } } })
 hl.curve("linear", { type = "bezier", points = { { 0, 0 }, { 1, 1 } } })
@@ -84,7 +85,8 @@ hl.animation({ leaf = "workspacesIn", enabled = true, speed = 1.21, bezier = "al
 hl.animation({ leaf = "workspacesOut", enabled = true, speed = 1.94, bezier = "almostLinear", style = "fade" })
 hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7, bezier = "quick" })
 
--- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
+-- See https://wiki.hypr.land/configuring/core/rules/workspace-rules
+
 -- "Smart gaps" / "No gaps when only"
 -- uncomment all if you wish to use that.
 -- hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 0, gaps_in = 0 })
@@ -102,14 +104,14 @@ hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7, bezier = "quick" 
 --     rounding    = 0,
 -- })
 
--- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
+-- See https://wiki.hypr.land/configuring/layouts/dwindle-layout
 hl.config({
     dwindle = {
         preserve_split = true, -- You probably want this
     },
 })
 
--- See https://wiki.hypr.land/Configuring/Layouts/Master-Layout/ for more
+-- See https://wiki.hypr.land/configuring/layouts/master-layout
 hl.config({
     master = {
         new_status = "slave",
@@ -117,7 +119,7 @@ hl.config({
     },
 })
 
--- See https://wiki.hypr.land/Configuring/Layouts/Scrolling-Layout/ for more
+-- See https://wiki.hypr.land/configuring/layouts/scrolling-layout
 hl.config({
     scrolling = {
         fullscreen_on_one_column = true,

@@ -3,8 +3,8 @@
 --------------------------------
 require("globals")
 
--- See https://wiki.hypr.land/Configuring/Basics/Window-Rules/
--- and https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
+-- See https://wiki.hypr.land/configuring/core/rules/window-rules
+-- and https://wiki.hypr.land/configuring/core/rules/workspace-rules
 
 local primaryMonitor = PrimaryMonitor()
 local firstWorkspaceMonitor = SecondaryMonitor() or PrimaryMonitor()

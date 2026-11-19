@@ -3,7 +3,7 @@
 ------------------
 require("globals")
 
--- See https://wiki.hypr.land/Configuring/Basics/Monitors/
+-- See https://wiki.hypr.land/configuring/core/monitors
 
 local function monitor_entry(m)
     local cfg = {

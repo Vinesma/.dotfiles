@@ -2,7 +2,7 @@
 ----- PERMISSIONS -----
 -----------------------
 
--- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Permissions/
+-- See https://wiki.hypr.land/configuring/core/advanced-configuration/permissions
 -- Please note permission changes here require a Hyprland restart and are not applied on-the-fly
 -- for security reasons
 

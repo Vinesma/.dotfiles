@@ -4,7 +4,7 @@
 require("globals")
 require("colors")
 
--- See https://wiki.hypr.land/Configuring/Basics/Autostart/
+-- See https://wiki.hypr.land/configuring/core/autostart
 
 hl.on("hyprland.start", function()
     -- Wallpaper
